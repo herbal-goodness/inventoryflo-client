@@ -1,10 +1,18 @@
 import React, { Component } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import logo from "../../images/logo.png";
 
+const isActive = (history, path) => {
+	if (history.location.pathname === path) {
+		return { color: "#ff8800" };
+	} else {
+		return { color: "#ffffff" };
+	}
+};
 class Navbar extends Component {
 	render() {
+		const { history } = this.props;
 		return (
 			<div>
 				<nav
@@ -26,8 +34,11 @@ class Navbar extends Component {
 
 					<div className="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul className="navbar-nav mr-auto">
-							<li className="nav-item active">
-								<Link className="nav-link" to="/">
+							<li className="nav-item">
+								<Link
+									className="nav-link"
+									style={isActive(history, "/")}
+									to="/dashboard">
 									Dashboard
 								</Link>
 							</li>
@@ -35,6 +46,7 @@ class Navbar extends Component {
 							<li className="nav-item dropdown">
 								<Link
 									className="nav-link dropdown-toggle"
+									style={isActive(history, "/products")}
 									to=""
 									id="navbarDropdown"
 									role="button"
@@ -50,12 +62,9 @@ class Navbar extends Component {
 									<Link className="dropdown-item" to="">
 										Inventory
 									</Link>
-									<div className="dropdown-divider"></div>
-									<Link className="dropdown-item" to="">
-										Something else here
-									</Link>
 								</div>
 							</li>
+
 							<li className="nav-item dropdown">
 								<Link
 									className="nav-link dropdown-toggle"
@@ -69,17 +78,23 @@ class Navbar extends Component {
 								</Link>
 								<div className="dropdown-menu" aria-labelledby="navbarDropdown">
 									<Link className="dropdown-item" to="">
-										All Products
+										<i className="fa fa-amazon mr-2" aria-hidden="true"></i>
+										Amazon-Canada-FBA
 									</Link>
 									<Link className="dropdown-item" to="">
-										Inventory
+										<i className="fa fa-amazon mr-2" aria-hidden="true"></i>
+										Amazon-HerbalGoodness
 									</Link>
 									<Link className="dropdown-item" to="">
-										Inventory
+										<i
+											className="fa fa-shopping-bag mr-2"
+											aria-hidden="true"></i>
+										Shopify-Herbal-Goodness
 									</Link>
 									<div className="dropdown-divider"></div>
 									<Link className="dropdown-item" to="">
-										Something else here
+										<i className="fa fa-cog mr-2" aria-hidden="true"></i>
+										Add/Manage Channels
 									</Link>
 								</div>
 							</li>
@@ -96,10 +111,10 @@ class Navbar extends Component {
 								</Link>
 								<div className="dropdown-menu" aria-labelledby="navbarDropdown">
 									<Link className="dropdown-item" to="">
-										All Products
+										orders
 									</Link>
 									<Link className="dropdown-item" to="">
-										Inventory
+										shipments
 									</Link>
 								</div>
 							</li>
@@ -112,11 +127,36 @@ class Navbar extends Component {
 						<ul className="navbar-nav justify-content-end">
 							<li className="nav-item">
 								<Link to="" className="nav-link">
-									<i
-										className="fa fa-sign-out fa-fw mr-1"
-										aria-hidden="true"></i>
-									Logout
+									<i className="fa fa-cog mr-2" aria-hidden="true"></i>
+									settings
 								</Link>
+							</li>
+							<li className="nav-item">
+								<li className="nav-item dropdown">
+									<Link
+										className="nav-link dropdown-toggle btn btn-outline-secondary"
+										to=""
+										id="navbarDropdown"
+										role="button"
+										data-toggle="dropdown"
+										aria-haspopup="true"
+										aria-expanded="false">
+										user management
+									</Link>
+									<div
+										className="dropdown-menu"
+										aria-labelledby="navbarDropdown">
+										<Link className="dropdown-item" to="">
+											account info
+										</Link>
+										<Link className="dropdown-item" to="">
+											<i
+												className="fa fa-sign-out fa-fw mr-1"
+												aria-hidden="true"></i>{" "}
+											log out
+										</Link>
+									</div>
+								</li>
 							</li>
 						</ul>
 					</div>
@@ -126,4 +166,4 @@ class Navbar extends Component {
 	}
 }
 
-export default Navbar;
+export default withRouter(Navbar);

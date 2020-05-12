@@ -188,11 +188,10 @@ table {
 
 /* Globals */
 html {
-	background-color: var(--mainWhite);
 	overflow-x: hidden;
 }
 body {
-	background-color: var(--mainWhite);
+	background-color: var(--mainGrey);
 	overflow: hidden;
 }
 h1 {
@@ -228,7 +227,7 @@ h1,
 h2,
 h3,
 h4 {
-	color: var(--lighterGrey);
+	color: var(--mainGrey);
 }
 section {
 	padding: 50px 0;
@@ -243,6 +242,51 @@ h5 a {
 	font-weight: bold;
 }
 
+/* Buttons */
+
+.btn-outline-secondary {
+	background-color: transparent !important;
+	border-color: #011627 !important;
+	border-radius: 0;
+	position: relative;
+}
+/* ':before' depicts the is a pseudo element and rep the div b4 the button */
+/* Usually the content of this div is set to empty hence 'content: ""' */
+.btn-outline-secondary:before {
+	content: "";
+	position: absolute;
+	background-color: var(--mainWhite);
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 0%;
+	z-index: -1;
+	transition: 0.5s;
+}
+.btn-outline-secondary:hover:before {
+	width: 100%;
+}
+.btn-secondary {
+	background: #011627 !important;
+	border-color: #011627 !important;
+
+	border-radius: 0;
+}
+.btn-secondary:hover {
+	color: #83f3ed !important;
+}
+.btn-primary {
+	background: #83f3ed !important;
+	border-color: #83f3ed !important;
+	color: #011627 !important;
+	border-radius: 0;
+}
+.btn-primary:hover {
+	color: #83f3ed !important;
+
+	background: #011627 !important;
+}
+
 /* Navbar */
 
 #mainNav {
@@ -251,14 +295,15 @@ h5 a {
 }
 
 .nav-link {
-	font-size: 0.9em;
+	font-size: 1em;
 	text-decoration: none;
 	text-transform: capitalize;
-	font-size: 18px;
 	font-weight: 500;
-
 	font-family: var(--roboto);
+	color: var(--mainWhite) !important;
 }
 .nav-link:hover {
 	color: var(--light-green) !important;
 }
+
+/* Dropdown Menu */
