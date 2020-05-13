@@ -1,68 +1,277 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Inventoryflo-client
 
-## Available Scripts
+# Development Environment
 
-In the project directory, you can run:
+#### Node and NPM
 
-### `npm start`
+Make sure you are using [Node 10 or higher](https://nodejs.org/en/download/)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Gives you access to modern Javascript syntax
+2. Provides the latest `npm`
+3. `Recommended 12.0.0 LTS`
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+#### Javascript Linting
 
-### `npm test`
+Install ESLint in your IDE
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- It assures that you are following a [basic level of Javascript coding conventions](https://eslint.org/docs/developer-guide/code-conventions)
 
-### `npm run build`
+# Git Work Flow
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Feature branches
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Leverage [feature branches](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow) whenever you want to add a feature or fix a bug.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Pull the most recent master
+2. Create a feature/bug branch with the following pattern `feature/[your name]/[name of feature]`
+3. Example => `feature/Uche/add-new-modal` or `bug/Uche/fix-broken-navigation`
 
-### `npm run eject`
+#### Commit and Push
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+When working on a feature make sure to commit and push your changes to the remote branch as often as possible.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- This assures that your commits are small and manageable.
+- Additionally, in the event of system failure or any random that affects your local code, you will have a fairly recent backup of your code in the remote branch.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Before Pull Requests
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Before you create a pull request, run the following commands locally:
 
-## Learn More
+1. `npm run lint`: to check your code for linting errors. There should be zero.
+2. `npm run test`: if there are tests, they should all be passing.
+3. `npm run build`: to make sure that your code will successfully build in production.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Pull Requests (PR)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+After you have finished working on your feature or bug fix, you should [create a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request) from your feature branch to the master branch.
 
-### Code Splitting
+- This PR allows you to see the difference between the current master code and the feature code that you want to merge into the master.
+- This process is very important because it allows your teammates to review your code in order make sure that it is consistent with coding conventions and make potential suggestions to improve the code quality.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+#### Pull Request Maximum Changes
 
-### Analyzing the Bundle Size
+Each PR should contain small and specific code changes. It is difficult for your teammates to review your code when they are many changes all pushed into one Pull Request. Therefore, you must absolutely abide by the following rules:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+- All Pull Requests can contain at most 250 changes.
+- If your PR contains more than 250 changes, you must break down this PR into smaller different PRs.
 
-### Making a Progressive Web App
+#### Review All Pull Requests
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+It is required that each member of the team review and comment on every PR that is created. This makes sure that:
 
-### Advanced Configuration
+- You are keeping your teammates accountable for the quality of the code that they are writing.
+- The code merged into your master meets the highest of standards.
+- You are learning from the code that your teammates are writing.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+# More Coding Conventions
 
-### Deployment
+#### Comment Your Code
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+Comments help, not only you but, other developers better understand the logic behind your code. It is essential that you comment often and frequently.
 
-### `npm run build` fails to minify
+1. Single comments - used for comments that are only 1 line long
+   - starts with `//`
+2. Multiple comments - used for comments that are more than 1 line long
+   - starts with `/**` and ends with `*/`
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+#### Function comments
+
+Each and every function and class must be commented. You have to define what the function or class does, what are its parameters and what is the expected result
+
+When commenting on functions/classes use [JSDoc conventions](http://usejsdoc.org/about-getting-started.html)
+
+```
+/**
+ * Helper function that is used to make api requests
+ *
+ * @function
+ * @param {String} url - the url being requested
+ * @param {String} method - the request protocol (i.e get, post, put ...)
+ * @param {Object} body - the data to send to the endpoint
+ * @return {Object} the result of the api request
+ */
+function goFetch(url, method, body) {
+    ...
+}
+```
+
+- [Commenting on Actions, ActionTypes and Sagas](#actions-actiontypes-and-sagas)
+
+#### Styles
+
+[Do not use in-line styles](https://reactjs.org/docs/faq-styling.html) within any of the react components. Instead, give the element a `className` and define its style in the style sheet.
+
+- Incorrect:
+
+```
+// Example.js
+...
+    <div style={{width: '200px', height: '100px'}} />
+...
+```
+
+- Correct:
+
+```
+// Example.js
+...
+    <div className='example-element' />
+...
+
+
+// styles.css
+...
+.example-element {
+    width: '200px';
+    height: '100px';
+}
+...
+```
+
+#### CSS Class Names
+
+Class names should be consistent and explicit. By following, the [ABEM](https://css-tricks.com/abem-useful-adaptation-bem/) methodology you will accomplish both.
+
+#### File Structure
+
+The file structure for our react components should look exactly as depicted below
+
+```
+components
+└───login // component folder
+│   │   actions.js // all component redux actions
+│   │   actionTypes.js // all action actionTypes
+│   │   constants.js // all components strings and numbers
+│   │   index.js // the component exportables
+│   │   reducer.js // all the redux reducers
+│   │   sagas.js // all redux asynchronous operation
+|   |
+│   └───components // the main component and sub-components folder
+│       │   Login.js // the main component
+│       │   Button.js // a sub-component
+│       │   Modal.js // a sub-component
+│       │   ...
+│       │   styles.css // components styles
+│       │   index.js // exports the main component.
+│
+└───productsAvailable
+    ...
+```
+
+#### File Naming Component Files
+
+All react components files should be start with a capitalized letter and the rest of the name should be camel-cased.
+
+```
+components
+└───login
+│   │   ...
+│   └───components
+│       │   Login.js // capitalized
+│       │   ...
+│
+└───productsAvailable
+│   │   ...
+│   └───components
+│       │  ProductsAvailable.js // capitalized and camel-cased
+│       │   ...
+```
+
+#### Constants File
+
+Define all strings and numbers used in a component within the `constants.js` file. Add a comment that describes the constant.
+
+```
+/**
+ * Defines the url for the database.
+ *
+ * @constant
+ */
+export const TEST_URL = 'localhost:3000';
+```
+
+- The only exception is `classNames`. These strings should be defined in the component directly.
+
+#### Index File
+
+Each component should have an `index.js` that looks like the following:
+
+```
+import actions from './actions';
+import components from './components';
+import reducers from './reducers';
+import sagas from './sagas';
+
+export { actions, components, reducers, sagas };
+```
+
+#### Components Folder's Index File
+
+Within the `components` folder of a component there should also be an `index.js` file.
+Here you will import the CSS stylesheet and then export the main component (_as shown below_).
+
+```
+import './styles.css';
+import Login from './Login';
+
+export default { Login };
+```
+
+# Actions, ActionTypes and Sagas
+
+Using redux can quickly get confusing if you are not careful. That is why adding comments to redux artifacts plays such a crucial role.
+
+#### Actions
+
+When commenting an action, you must specify the linked actionTypes (use _@link_).
+
+```
+// actions.js
+
+/**
+ * Triggers request to fetch data from the server
+ *
+ * @function
+ * @return {Object} The {@link actionTypes.GET_REQUEST_DATA GET_REQUEST_DATA} action.
+ */
+export const getRequestData = () => ({ type: actionTypes.GET_REQUEST_DATA });
+```
+
+#### ActionTypes
+
+When commenting on actionsTypes you must specify the linked action creator (use _@link_).
+
+```
+// actionsTypes.js
+
+/**
+ * Fired by the {@link actions.getRequestData getRequestData}
+ * action creator.
+ *
+ * @type {String}
+ */
+export const GET_REQUEST_DATA = 'GET_REQUEST_DATA';
+
+```
+
+#### Sagas
+
+When commenting on saga you must specify the linked actionTypes (use _@link_).
+
+```
+// sagas.js
+
+/**
+ * Watches for the {@link actionTypes.GET_REQUEST_DATA GET_REQUEST_DATA} action.
+ * Gets the requested data from the server.
+ *
+ * @return {void}
+ */
+export const GET_REQUEST_DATA = 'GET_REQUEST_DATA';
+
+```
+
+### Components
+
+Finally, use functional components only and use class components only where you can't work with hooks.
+Hooks is the recommended.
