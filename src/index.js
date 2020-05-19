@@ -7,10 +7,14 @@ import Popper from "popper.js";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import Inventoryflo from "./Inventoryflo";
 import * as serviceWorker from "./serviceWorker";
+import { Provider } from "react-redux";
+import store from "./store";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Inventoryflo />
+		<Provider store={store}>
+			<Inventoryflo />
+		</Provider>
 	</React.StrictMode>,
 	document.getElementById("root")
 );
