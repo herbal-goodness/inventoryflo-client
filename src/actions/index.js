@@ -1,6 +1,6 @@
 import { actionTypes } from "./actionTypes";
 export const setProductsLoading = () => {
-	type: actionTypes.LOAD_PRODUCTS;
+	return { type: actionTypes.LOAD_PRODUCTS };
 };
 
 export const getAllProducts = () => {
@@ -9,9 +9,9 @@ export const getAllProducts = () => {
 	};
 };
 
-export const receiveProducts = (data) => {
+export const receiveProducts = (products) => {
 	return {
 		type: actionTypes.RECEIVE_PRODUCTS,
-		payload: data,
+		payload: products,
 	};
 };
