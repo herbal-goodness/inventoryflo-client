@@ -241,6 +241,9 @@ p a,
 h5 a {
 	font-weight: bold;
 }
+.font-icons {
+	color: var(--transparentGreen);
+}
 
 /* Buttons */
 
@@ -306,4 +309,89 @@ h5 a {
 	color: var(--light-green) !important;
 }
 
-/* Dropdown Menu */
+/* Dashboard */
+.main {
+	margin-top: 100px;
+}
+.dashboard-header h2 {
+	font-family: var(--roboto);
+	text-transform: capitalize;
+}
+.dashboard-header h4 {
+	font-family: var(--josefin);
+	font-size: 14px;
+}
+.title {
+	background: var(--transparentGreen);
+	width: 180px;
+	padding: 4px 10px;
+	height: 30px;
+	margin-bottom: 20px;
+	display: flex;
+}
+.title h2 {
+	font-size: 20px;
+	color: #fff;
+}
+.title::after {
+	content: "";
+	border-top: 30px solid var(--transparentGreen);
+	border-right: 50px solid transparent;
+	position: absolute;
+	display: flex;
+	margin-top: -4px;
+	margin-left: 170px;
+}
+.card-title {
+	border: 1px solid var(--mainGrey);
+	padding: 13px;
+	border-radius: 5px;
+	font-size: 18px;
+}
+.overlay-right-1 {
+	display: block;
+	opacity: 0;
+	position: absolute;
+	top: 25%;
+	margin-left: 0;
+	width: 17px;
+}
+.overlay-right-2 {
+	display: block;
+	opacity: 0;
+	position: absolute;
+	top: 52%;
+	margin-left: 0;
+	width: 17px;
+}
+.overlay-right-3 {
+	display: block;
+	opacity: 0;
+	position: absolute;
+	top: 77%;
+	margin-left: 0;
+	width: 17px;
+}
+.overlay-right .fa {
+	cursor: pointer;
+	background-color: #fff;
+	color: #000;
+	height: 35px;
+
+	width: 35px;
+	font-size: 20px;
+	padding: 7px;
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+.overlay-right .btn-secondary {
+	background: none !important;
+	border: none !important;
+	box-shadow: none !important;
+}
+
+.card:hover .overlay-right {
+	opacity: 1;
+	margin-left: 72%;
+	transition: 0.5s;
+}
