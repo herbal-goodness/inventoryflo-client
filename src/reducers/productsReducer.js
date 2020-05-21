@@ -1,7 +1,7 @@
 import { actionTypes } from "../actions/actionTypes";
 const initState = {
 	loading: false,
-	data: [],
+	data: {},
 };
 const productsReducer = (state = initState, action) => {
 	switch (action.type) {
@@ -9,7 +9,7 @@ const productsReducer = (state = initState, action) => {
 			return {
 				...state,
 				loading: true,
-				data: [],
+				data: {},
 			};
 		case actionTypes.RECEIVE_PRODUCTS:
 			return {
