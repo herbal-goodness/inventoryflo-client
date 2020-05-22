@@ -14,9 +14,9 @@ class Navbar extends Component {
 	render() {
 		const { history } = this.props;
 		return (
-			<div>
+			<div className="mb-5">
 				<nav
-					className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top mb-4"
+					className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
 					id="mainNav">
 					<Link className="navbar-brand" to="/">
 						<img src={logo} alt="logo" />
@@ -38,7 +38,7 @@ class Navbar extends Component {
 								<Link
 									className="nav-link"
 									style={isActive(history, "/")}
-									to="/dashboard">
+									to="/">
 									Dashboard
 								</Link>
 							</li>
