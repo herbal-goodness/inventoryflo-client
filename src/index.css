@@ -29,6 +29,7 @@
 	--deep-blue: #002333;
 	--light-green: #00e677;
 	--transparentGray: #f8f9fa;
+	--grayBackground: #f7f7f7;
 	/* FONTS */
 	--roboto: "Roboto", sans-serif;
 	--josefin: "Josefin Sans", sans-serif;
@@ -321,6 +322,11 @@ h5 a {
 	font-family: var(--josefin);
 	font-size: 14px;
 }
+.card-header {
+	font-size: 24px;
+	font-family: var(--josefin);
+	font-weight: 700;
+}
 .title {
 	background: var(--transparentGreen);
 	width: 180px;
@@ -394,4 +400,12 @@ h5 a {
 	opacity: 1;
 	margin-left: 72%;
 	transition: 0.5s;
+}
+
+/* Charts */
+/* Sales Chart */
+.chart-container {
+	position: relative;
+	width: 600;
+	height: 550;
 }

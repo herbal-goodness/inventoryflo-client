@@ -37,8 +37,8 @@ class Navbar extends Component {
 							<li className="nav-item">
 								<Link
 									className="nav-link"
-									style={isActive(history, "/dashboard")}
-									to="/dashboard">
+									style={isActive(history, "/")}
+									to="/">
 									Dashboard
 								</Link>
 							</li>

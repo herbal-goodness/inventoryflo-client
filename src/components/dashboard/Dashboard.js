@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import SalesChart from "../charts/SalesChart";
 
 export class Dashboard extends Component {
 	render() {
@@ -71,8 +72,23 @@ export class Dashboard extends Component {
 							</div>
 						</div>
 					</div>
-					<div className="col-md-6"></div>
-					<div className="col-md-3"></div>
+					<div className="col-md-6">
+						<SalesChart />
+					</div>
+					<div className="col-md-3">
+						<div class="card">
+							<div class="card-header">Sales Titans</div>
+							<div class="card-body">
+								<h5 class="card-title">Shopify is the best shot</h5>
+								<p class="card-text">
+									Try inventoryflo roadmap to a succesful sales magnate .
+								</p>
+								<Link to="" class="btn btn-primary">
+									Try InventoryFlo
+								</Link>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		);

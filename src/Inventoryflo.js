@@ -8,7 +8,7 @@ function Inventoryflo() {
 		<Router>
 			<div className="App">
 				<Navbar />
-				<Route exact path="/dashboard" component={Dashboard} />
+				<Route exact path="/" component={Dashboard} />
 			</div>
 		</Router>
 	);
