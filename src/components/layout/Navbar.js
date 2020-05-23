@@ -14,7 +14,7 @@ class Navbar extends Component {
 	render() {
 		const { history } = this.props;
 		return (
-			<div className="mb-5">
+			<>
 				<nav
 					className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
 					id="mainNav">
@@ -59,7 +59,7 @@ class Navbar extends Component {
 									<Link className="dropdown-item" to="">
 										All Products
 									</Link>
-									<Link className="dropdown-item" to="">
+									<Link className="dropdown-item" to="/inventories">
 										Inventory
 									</Link>
 								</div>
@@ -161,7 +161,7 @@ class Navbar extends Component {
 						</ul>
 					</div>
 				</nav>
-			</div>
+			</>
 		);
 	}
 }

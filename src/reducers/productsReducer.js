@@ -9,7 +9,7 @@ const productsReducer = (state = initState, action) => {
 			return {
 				...state,
 				loading: true,
-				data: {},
+				data: {}, //empty since data is still loading
 			};
 		case actionTypes.RECEIVE_PRODUCTS:
 			return {

@@ -6,7 +6,7 @@ import api from "../services";
 // Worker saga
 export function* getAllProducts() {
 	const products = yield call(api.getProducts);
-	yield put(actions.receiveProducts(products));
+	yield put(actions.receiveProducts(products)); //dispatches product to the store
 }
 // Watcher saga - listens to actions and invoke the workerSaga
 export function* watchGetProducts() {
@@ -19,4 +19,5 @@ export function* watchGetProducts() {
 
 export default function* root() {
 	yield all([fork(getAllProducts), fork(watchGetProducts)]);
+	// yield all([watchGetProducts()]);
 }
