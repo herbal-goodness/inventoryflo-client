@@ -10,6 +10,7 @@ export const getAllProducts = () => {
 };
 
 export const receiveProducts = (products) => {
+	//products will come from API call in the productSagas
 	return {
 		type: actionTypes.RECEIVE_PRODUCTS,
 		payload: products,

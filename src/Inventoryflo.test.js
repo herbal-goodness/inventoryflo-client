@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import Inventoryflo from "./Inventoryflo";
 
 test("renders learn react link", () => {
-	const { queryAllByText } = render(<Inventoryflo />);
-	const linkElement = queryAllByText(/InventoryContainer/i);
+	const { getByText } = render(<Inventoryflo />);
+	const linkElement = getByText(/Export/i);
 	expect(linkElement).toBeInTheDocument();
 });

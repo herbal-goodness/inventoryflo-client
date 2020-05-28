@@ -8,6 +8,7 @@ const api = {
 		try {
 			// Make call to API
 			const result = await axios.get(productsUrl);
+
 			const productsFound = result.data;
 			return productsFound;
 		} catch (error) {

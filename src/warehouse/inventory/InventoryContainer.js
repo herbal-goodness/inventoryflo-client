@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import InventoryTable from "./InventoryTable";
+import { Link } from "react-router-dom";
 
 export class InventoryContainer extends Component {
 	render() {
@@ -12,7 +13,26 @@ export class InventoryContainer extends Component {
 							<h2>
 								<i className="fa fa-cube"></i> inventory
 							</h2>
-							<h4>Last update less than a minute ago</h4>
+							<h4>
+								<Link to="" className="btn btn-outline-primary mr-2">
+									<i
+										className="fa fa-sign-out fa-fw mr-1"
+										aria-hidden="true"></i>{" "}
+									Import from CSV
+								</Link>
+								<Link to="" className="btn btn-info mr-2">
+									<i
+										className="fa fa-building fa-fw mr-1"
+										aria-hidden="true"></i>{" "}
+									Manage locations
+								</Link>
+								<Link to="" className="btn btn-outline-primary">
+									<i
+										className="fa fa-sign-out fa-fw mr-1"
+										aria-hidden="true"></i>{" "}
+									Export
+								</Link>
+							</h4>
 						</header>
 						<InventoryTable />
 					</div>

@@ -187,7 +187,7 @@ table {
 	border-spacing: 0;
 }
 
-/* Globals */
+/* GLOBALS */
 html {
 	overflow-x: hidden;
 }
@@ -246,7 +246,7 @@ h5 a {
 	color: var(--transparentGreen);
 }
 
-/* Buttons */
+/* BUTTONS */
 
 .btn-outline-secondary {
 	background-color: transparent !important;
@@ -254,8 +254,7 @@ h5 a {
 	border-radius: 0;
 	position: relative;
 }
-/* ':before' depicts the is a pseudo element and rep the div b4 the button */
-/* Usually the content of this div is set to empty hence 'content: ""' */
+
 .btn-outline-secondary:before {
 	content: "";
 	position: absolute;
@@ -291,7 +290,7 @@ h5 a {
 	background: #011627 !important;
 }
 
-/* Navbar */
+/* NAVBAR */
 
 #mainNav {
 	background: var(--deep-blue) !important;
@@ -310,7 +309,7 @@ h5 a {
 	color: var(--light-green) !important;
 }
 
-/* Dashboard */
+/* DASHBOARD */
 .main {
 	margin-top: 100px;
 }
@@ -402,10 +401,41 @@ h5 a {
 	transition: 0.5s;
 }
 
-/* Charts */
-/* Sales Chart */
+/* CHARTS */
+/* SALES CHART */
 .chart-container {
 	position: relative;
 	width: 600;
 	height: 550;
+}
+
+/* TABLE */
+td img {
+	width: 39px;
+	height: 39px;
+}
+th:not(.sku) {
+	text-transform: capitalize;
+}
+.truncate {
+	text-overflow: ellipsis;
+	width: 200px;
+	white-space: nowrap;
+	overflow: hidden;
+	display: inline-block;
+	resize: horizontal;
+}
+th a {
+	text-decoration: none;
+	color: #333;
+}
+th a:hover {
+	text-decoration-color: var(--transparentGreen);
+}
+
+/* Spinner */
+.spinner img {
+	width: 200px;
+	margin: auto;
+	display: block;
 }
