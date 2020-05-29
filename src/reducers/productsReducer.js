@@ -1,23 +1,25 @@
+import { Map, fromJS } from "immutable";
 import { actionTypes } from "../actions/actionTypes";
-const initState = {
+const initState = Map({
 	loading: false,
-	data: {},
-};
+	productsQueryData: [],
+});
 const productsReducer = (state = initState, action) => {
+	console.log(action);
 	switch (action.type) {
 		case actionTypes.GET_ALL_PRODUCTS:
 			return {
 				...state,
 				loading: true,
-				data: {},
+				productsQueryData: [], //empty since data is still loading
 			};
 		case actionTypes.RECEIVE_PRODUCTS:
-			return {
+			return state.merge({
 				...state,
 				loading: false,
 
-				data: action.payload,
-			};
+				productsQueryData: fromJS(action.payload),
+			});
 
 		default:
 			return state;
