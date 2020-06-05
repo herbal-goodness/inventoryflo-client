@@ -1,18 +1,11 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
-// import { receiveProducts } from "../../../actions";
+
 import { Link } from "react-router-dom";
 import Spinner from "../../utils/Spinner";
 
 export class InventoryTable extends Component {
-	// componentDidMount() {
-	// 	this.props.receiveProducts();
-	// }
-
 	render() {
 		const { products } = this.props;
-		// console.log(this.props.products);
-		// const data = this.props.products;
 
 		const showProducts = () => {
 			if (products) {
@@ -84,9 +77,4 @@ export class InventoryTable extends Component {
 	}
 }
 
-// const mapStateToProps = (state) => ({
-// 	products: state.products.get("productsQueryData"),
-// });
-
-// export default connect(mapStateToProps, { receiveProducts })(InventoryTable);
 export default InventoryTable;

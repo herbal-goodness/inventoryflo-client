@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-
-import SelectField from "../../commons/SelectField";
 
 export class InventorySidePane extends Component {
 	render() {
@@ -9,8 +6,6 @@ export class InventorySidePane extends Component {
 		const showCategories = () => {
 			if (this.props.products) {
 				return products.map((eachData, index) => (
-					// <SelectField key={index} categories={eachData} />
-
 					<select className="form-control" key={index}>
 						<option>{eachData.toJS().product_type}</option>
 					</select>
@@ -60,7 +55,7 @@ export class InventorySidePane extends Component {
 							<option>Damaged</option>
 						</select>
 					</div>
-					{/* {showCategories} */}
+
 					<div class="form-group">
 						<label htmlFor="select">Warehouses</label>
 						<select class="form-control">

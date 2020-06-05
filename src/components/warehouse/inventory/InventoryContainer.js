@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { receiveProducts } from "../../../actions";
 import { Link } from "react-router-dom";
-import Spinner from "../../utils/Spinner";
+
 import InventoryTable from "./InventoryTable";
 
 import InventorySidePane from "./InventorySidePane";
