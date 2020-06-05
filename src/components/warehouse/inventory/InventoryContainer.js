@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import InventoryTable from "./InventoryTable";
 import { Link } from "react-router-dom";
+import InventorySidePane from "./InventorySidePane";
 
 export class InventoryContainer extends Component {
 	render() {
 		return (
 			<div className="container-fluid mx-auto main">
 				<div className="row">
-					<div className="col-md-3">....</div>
+					<div className="col-md-3">
+						<h2 className="filter-inv-header">filter inventory</h2>
+						<InventorySidePane />
+					</div>
 					<div className="col-md-9">
 						<header className="d-flex justify-content-between mb-2 dashboard-header">
 							<h2>
@@ -24,7 +28,7 @@ export class InventoryContainer extends Component {
 									<i
 										className="fa fa-building fa-fw mr-1"
 										aria-hidden="true"></i>{" "}
-									Manage locations
+									Manage warehouses
 								</Link>
 								<Link to="" className="btn btn-outline-primary">
 									<i

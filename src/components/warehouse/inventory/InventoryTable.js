@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { receiveProducts } from "../../actions";
+import { receiveProducts } from "../../../actions";
 import { Link } from "react-router-dom";
-import Spinner from "../../components/utils/Spinner";
+import Spinner from "../../utils/Spinner";
 
 export class InventoryTable extends Component {
 	componentDidMount() {
