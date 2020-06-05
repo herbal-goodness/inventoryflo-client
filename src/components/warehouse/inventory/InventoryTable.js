@@ -1,21 +1,22 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { receiveProducts } from "../../../actions";
+// import { connect } from "react-redux";
+// import { receiveProducts } from "../../../actions";
 import { Link } from "react-router-dom";
 import Spinner from "../../utils/Spinner";
 
 export class InventoryTable extends Component {
-	componentDidMount() {
-		this.props.receiveProducts();
-	}
+	// componentDidMount() {
+	// 	this.props.receiveProducts();
+	// }
 
 	render() {
-		console.log(this.props.products);
-		const data = this.props.products;
+		const { products } = this.props;
+		// console.log(this.props.products);
+		// const data = this.props.products;
 
 		const showProducts = () => {
-			if (data) {
-				return data.map((eachData, index) => (
+			if (products) {
+				return products.map((eachData, index) => (
 					<tr key={index}>
 						<td>
 							<input type="checkbox" class="form-check-input" />
@@ -83,8 +84,9 @@ export class InventoryTable extends Component {
 	}
 }
 
-const mapStateToProps = (state) => ({
-	products: state.products.get("productsQueryData"),
-});
+// const mapStateToProps = (state) => ({
+// 	products: state.products.get("productsQueryData"),
+// });
 
-export default connect(mapStateToProps, { receiveProducts })(InventoryTable);
+// export default connect(mapStateToProps, { receiveProducts })(InventoryTable);
+export default InventoryTable;
