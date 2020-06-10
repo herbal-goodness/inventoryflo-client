@@ -1,4 +1,5 @@
-import { createStore, applyMiddleware, compose } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 import createSagaMiddleware from "redux-saga";
 
 import rootReducer from "../reducers";
@@ -15,10 +16,7 @@ const middleware = [sagaMiddleware];
 const store = createStore(
 	rootReducer,
 	initialState,
-	compose(
-		applyMiddleware(...middleware),
-		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-	)
+	composeWithDevTools(applyMiddleware(...middleware))
 );
 // then run the saga - to listen to the dispatched actions and execute
 sagaMiddleware.run(rootSaga);
