@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import SalesChart from "../charts/SalesChart";
+import Orders from "./Orders";
 
 export class Dashboard extends Component {
 	render() {
@@ -74,6 +75,7 @@ export class Dashboard extends Component {
 					</div>
 					<div className="col-md-6">
 						<SalesChart />
+						<Orders />
 					</div>
 					<div className="col-md-3">
 						<div class="card">
