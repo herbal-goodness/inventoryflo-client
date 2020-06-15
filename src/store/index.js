@@ -1,29 +1,29 @@
-import { createStore, applyMiddleware, compose } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
+import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
+import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+import rootReducer from "../reducers/index";
+import { mainSaga } from "../sagas/index";
 
-import rootReducer from "../reducers";
-import rootSaga from "../sagas";
-
-const initialState = {};
-// create the saga middleware
+const composeEnhancers = composeWithDevTools({
+  // Specify here name, actionsBlacklist, actionsCreators and other options
+});
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["user", "products"], // only state specified here will be persisted
+};
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 const sagaMiddleware = createSagaMiddleware();
-
 const middleware = [sagaMiddleware];
 
-// mount saga middleware on the Store
-
 const store = createStore(
-	rootReducer,
-	initialState,
-	// composeWithDevTools(applyMiddleware(...middleware))
-
-	compose(
-		applyMiddleware(...middleware),
-		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-	)
+  persistedReducer,
+  composeEnhancers(applyMiddleware(...middleware))
 );
-// then run the saga - to listen to the dispatched actions and execute
-sagaMiddleware.run(rootSaga);
 
-export default store;
+sagaMiddleware.run(mainSaga);
+
+const persistor = persistStore(store);
+export { store, persistor };
