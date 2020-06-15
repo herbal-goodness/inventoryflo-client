@@ -16,7 +16,7 @@ class Navbar extends Component {
 		return (
 			<>
 				<nav
-					className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
+					className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top mb-4"
 					id="mainNav">
 					<Link className="navbar-brand" to="/">
 						<img src={logo} alt="logo" />
@@ -148,6 +148,19 @@ class Navbar extends Component {
 										aria-labelledby="navbarDropdown">
 										<Link className="dropdown-item" to="">
 											account info
+										</Link>
+
+										<Link className="dropdown-item" to="/signup-user">
+											<i
+												className="fa fa-user-o fa-fw mr-1"
+												aria-hidden="true"></i>{" "}
+											sign up
+										</Link>
+										<Link className="dropdown-item" to="/signin-user">
+											<i
+												className="fa fa-user fa-fw mr-1"
+												aria-hidden="true"></i>{" "}
+											login
 										</Link>
 										<Link className="dropdown-item" to="">
 											<i

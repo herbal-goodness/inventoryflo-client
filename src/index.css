@@ -151,6 +151,7 @@ section {
 
 body {
 	line-height: 1;
+	background-color: #eceef1;
 }
 
 ol,
@@ -245,6 +246,33 @@ h5 a {
 .font-icons {
 	color: var(--transparentGreen);
 }
+.card {
+	-webkit-box-shadow: 10px 13px 19px 0px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 10px 13px 19px 0px rgba(0, 0, 0, 0.75);
+	box-shadow: 10px 13px 19px 0px rgba(0, 0, 0, 0.75);
+}
+
+.main-logo {
+	width: 120px;
+	margin-bottom: 12px;
+}
+
+.logo-list {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	font-family: Helvetica, Arial, sans-serif;
+	letter-spacing: 0.1rem;
+	color: #666;
+}
+
+.brand {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 10px;
+}
 
 /* BUTTONS */
 
@@ -310,7 +338,9 @@ h5 a {
 }
 
 /* DASHBOARD */
-.main {
+.main,
+.register,
+.login {
 	margin-top: 100px;
 }
 .dashboard-header h2 {
