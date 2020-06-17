@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import TextFieldGroup from "../commons/TextFieldGroup";
 import logo from "../../images/logo.png";
 
-class Login extends Component {
+export class ConfirmSignUp extends Component {
 	state = {
-		email: "",
-		password: "",
+		confirmationCode: "",
+
 		errors: {},
 	};
 
@@ -31,26 +31,17 @@ class Login extends Component {
 								</h1>
 							</header>
 							<div className="card">
-								<div className="card-header text-center">Log In</div>
+								<div className="card-header text-center">Confirm Signup</div>
 								<div className="card-body">
 									<div className="card-text">
 										<form>
 											<TextFieldGroup
-												placeholder="Email Address"
-												name="email"
-												type="email"
-												value={this.state.email}
+												placeholder="Enter confirmation code"
+												name="confirmationCode"
+												type="text"
+												value={this.state.confirmationCode}
 												onChange={this.handleChange}
-												error={errors.email}
-											/>
-
-											<TextFieldGroup
-												placeholder="Password"
-												name="password"
-												type="password"
-												value={this.state.password}
-												onChange={this.handleChange}
-												error={errors.password}
+												error={errors.confirmationCode}
 											/>
 											<input
 												type="submit"
@@ -68,4 +59,4 @@ class Login extends Component {
 	}
 }
 
-export default Login;
+export default ConfirmSignUp;
