@@ -3,8 +3,10 @@ The index file holds all the different reducers*/
 import { combineReducers } from "redux";
 import productsReducer from "./productsReducer";
 import errorReducer from "./errorReducer";
+import signup from "../components/signup";
 
 export default combineReducers({
-	products: productsReducer,
-	errors: errorReducer,
+  signup: signup.reducer,
+  products: productsReducer,
+  errors: errorReducer,
 });
