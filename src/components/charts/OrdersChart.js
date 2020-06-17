@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
+import Spinner from "../utils/Spinner";
 
 const OrdersChart = ({ orders }) => {
 	const lineChart = orders ? (
@@ -32,7 +33,11 @@ const OrdersChart = ({ orders }) => {
 				],
 			}}
 		/>
-	) : null;
+	) : (
+		<h2>
+			<Spinner />
+		</h2>
+	);
 
 	return (
 		<div

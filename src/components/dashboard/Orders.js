@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import OrdersChart from "../charts/OrdersChart";
+import Spinner from "../utils/Spinner";
 
 const Orders = () => {
 	const [orderlist, setOrders] = useState([]);
 	const [loading, setLoading] = useState(false);
-	const url =
-		"https://td8ton72u4.execute-api.us-east-2.amazonaws.com/test/orders";
+	const [url, setUrl] = useState(
+		"https://td8ton72u4.execute-api.us-east-2.amazonaws.com/test/orders"
+	);
+
 	const fetchData = async () => {
 		try {
 			// While waiting for the data to be fetched
@@ -27,10 +30,21 @@ const Orders = () => {
 
 	useEffect(() => {
 		fetchData();
-	});
+	}, [url]);
+
+	// Loading
+	const showLoading = () =>
+		loading ? (
+			<h2>
+				<Spinner />
+			</h2>
+		) : (
+			""
+		);
 
 	return (
 		<div>
+			{showLoading()}
 			<OrdersChart orders={orderlist} />
 		</div>
 	);
