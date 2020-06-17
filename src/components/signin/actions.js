@@ -9,7 +9,7 @@ export function loginRequest(payload) {
 
 export function loginSuccess(payload) {
   return {
-    type: actionTypes.REQUEST_SUCCESS,
+    type: actionTypes.LOGIN_REQUEST_SUCCESS,
     payload,
   };
 }

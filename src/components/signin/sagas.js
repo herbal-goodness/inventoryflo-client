@@ -5,7 +5,7 @@ import { loginError, loginSuccess } from "./actions";
 // Register Worker
 function* loginWorker({ payload }) {
   console.log(payload);
-  const response = yield fetch(`${API.API_ROOT + API.urls.SIGN_UP}`, {
+  const response = yield fetch(`${API.API_ROOT + API.urls.SIGN_IN}`, {
     body: JSON.stringify(payload),
     headers: {
       "Content-Type": "application/json",
@@ -15,8 +15,11 @@ function* loginWorker({ payload }) {
 
   try {
     if (response.ok) {
-      const data = yield response.json();
-      yield put(loginSuccess(data.data));
+      const { data } = yield response.json();
+      if (!data.verified) {
+        // push to confirm page.
+      }
+      yield put(loginSuccess(data));
     } else {
       const data = yield response.json();
       yield put(loginError(data));

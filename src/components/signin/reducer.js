@@ -1,7 +1,7 @@
 import actionTypes from "./actionTypes";
 const {
   REQUEST_LOGIN,
-  REQUEST_SUCCESS,
+  LOGIN_REQUEST_SUCCESS,
   LOGIN_ERROR,
   RESET_STATE,
 } = actionTypes;
@@ -20,7 +20,7 @@ export default (state = initialState, actions) => {
         ...state,
         loading: true,
       };
-    case REQUEST_SUCCESS:
+    case LOGIN_REQUEST_SUCCESS:
       return {
         ...state,
         userInfo: actions.payload,

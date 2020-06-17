@@ -37,7 +37,11 @@ const SignUp = () => {
   };
 
   useEffect(() => {
-    if (successful) return history.push(`/confirm-signup/${user.userId}`);
+    if (successful)
+      return history.push(`/confirm-signup`, {
+        userId: user.userId,
+        email: user.email,
+      });
     // TODO: Replace alert with cool toast message
     if (error) return alert(error.error);
   }, [loading]);
