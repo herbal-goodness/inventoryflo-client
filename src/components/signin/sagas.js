@@ -5,7 +5,7 @@ import { loginError, loginSuccess } from "./actions";
 // Register Worker
 function* loginWorker({ payload }) {
   console.log(payload);
-  const response = yield fetch(`${API.API_ROOT + API.urls.LOGIN}`, {
+  const response = yield fetch(`${API.API_ROOT + API.urls.SIGN_IN}`, {
     body: JSON.stringify(payload),
     headers: {
       "Content-Type": "application/json",
