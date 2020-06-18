@@ -7,6 +7,7 @@ import signin from "../components/signin";
 import NotFound from "./NotFound";
 import Layout from "../components/layout/Layout";
 import ConfirmSignUp from "../components/signup/ConfirmSignUp";
+import ForgotPassword from "../components/signin/ForgotPassword";
 
 function Inventoryflo() {
 	return (
@@ -17,6 +18,7 @@ function Inventoryflo() {
 					<Route exact path="/signin-user" component={signin.Login} />
 					{/* TODO: replace with confirm password */}
 					<Route path="/confirm-signup/:userId" component={ConfirmSignUp} />
+					<Route exact path="/forgot-password" component={ForgotPassword} />
 					<Route exact path="/" component={Dashboard} />
 					<Route exact path="/inventories" component={InventoryContainer} />
 					<Route exact path="*" component={NotFound} />
