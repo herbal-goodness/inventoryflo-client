@@ -12,7 +12,7 @@ const composeEnhancers = composeWithDevTools({
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["user", "products"], // only state specified here will be persisted
+  whitelist: ["products"], // only state specified here will be persisted
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const sagaMiddleware = createSagaMiddleware();

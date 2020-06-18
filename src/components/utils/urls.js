@@ -2,6 +2,7 @@ export default {
   urls: {
     SIGN_UP: "/signup-user",
     SIGN_IN: "/signin-user",
+    CONFIRM_CODE: "/confirm-signup",
   },
   API_ROOT:
     process.env.NODE_ENV === "development"

@@ -1,12 +1,12 @@
-import { put, all, call, takeLatest } from "redux-saga/effects";
+import { put, all, takeLatest } from "redux-saga/effects";
 import API from "../utils/urls";
 import { loginError, loginSuccess } from "./actions";
 
 // Register Worker
 function* loginWorker({ payload }) {
-  console.log(payload);
+  const { loginInfo, history } = payload;
   const response = yield fetch(`${API.API_ROOT + API.urls.SIGN_IN}`, {
-    body: JSON.stringify(payload),
+    body: JSON.stringify(loginInfo),
     headers: {
       "Content-Type": "application/json",
     },
@@ -15,11 +15,23 @@ function* loginWorker({ payload }) {
 
   try {
     if (response.ok) {
-      const data = yield response.json();
-      yield put(loginSuccess(data.data));
+      const { data } = yield response.json();
+      yield put(loginSuccess(data));
     } else {
-      const data = yield response.json();
-      yield put(loginError(data));
+      const errData = yield response.json();
+      console.log(errData);
+
+      if (errData.data != null) {
+        const {
+          data: { email, userId },
+        } = errData;
+
+        return history.push(API.urls.CONFIRM_CODE, {
+          userId: userId,
+          email: email,
+        });
+      }
+      yield put(loginError(errData));
       yield put({ type: "RESET_STATE" });
     }
   } catch (err) {
