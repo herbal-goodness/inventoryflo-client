@@ -1,4 +1,4 @@
-import { put, all, select, takeLatest } from "redux-saga/effects";
+import { put, all, takeLatest } from "redux-saga/effects";
 import API from "../utils/urls";
 import { loginError, loginSuccess } from "./actions";
 
