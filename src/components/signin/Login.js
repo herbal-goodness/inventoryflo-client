@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import TextFieldGroup from "../commons/TextFieldGroup";
 import logo from "../../images/logo.png";
 import { loginRequest } from "./actions";
+import Spinner from "../utils/Spinner";
 
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState({});
@@ -12,7 +13,7 @@ const Login = () => {
   const history = useHistory();
 
   /**selects some pieces of the state */
-  const { user, successful, loading, error } = useSelector(({ login }) => ({
+  const { successful, loading, error } = useSelector(({ login }) => ({
     loading: login.loading,
     successful: login.successful,
     user: login.userInfo,
@@ -32,12 +33,12 @@ const Login = () => {
       setErrors({ password: "invalid", email: "invalid" });
     }
     // dispatch the login action with the login details payload
-    dispatch(loginRequest(loginInfo));
+    dispatch(loginRequest({ loginInfo, history }));
   };
 
   useEffect(() => {
     //TODO: push user to dashboard and pull users data
-    if (successful) return history.push(`/confirm-signup/${user.userId}`);
+    if (successful) return history.push(`/`);
     // TODO: Replace alert with cool toast message
     if (error) return alert(error.error);
   }, [loading]);
@@ -47,37 +48,41 @@ const Login = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-4 m-auto">
-            <header class="brand">
+            <header className="brand">
               <h1>
-                <img class="main-logo" src={logo} alt="inventoryflo logo" />
+                <img className="main-logo" src={logo} alt="inventoryflo logo" />
               </h1>
             </header>
-            <div class="card">
-              <div class="card-header text-center">Log In</div>
-              <div class="card-body">
-                <TextFieldGroup
-                  placeholder="Email Address"
-                  name="email"
-                  type="email"
-                  value={loginInfo.email}
-                  onChange={handleChange}
-                  error={errors.email}
-                />
+            <div className="card">
+              <div className="card-header text-center">Log In</div>
+              {loading ? (
+                Spinner()
+              ) : (
+                <div className="card-body">
+                  <TextFieldGroup
+                    placeholder="Email Address"
+                    name="email"
+                    type="email"
+                    value={loginInfo.email}
+                    onChange={handleChange}
+                    error={errors.email}
+                  />
 
-                <TextFieldGroup
-                  placeholder="Password"
-                  name="password"
-                  type="password"
-                  value={loginInfo.password}
-                  onChange={handleChange}
-                  error={errors.password}
-                />
-                <input
-                  onClick={handleSubmit}
-                  type="submit"
-                  className="btn btn-info btn-block mt-4"
-                />
-              </div>
+                  <TextFieldGroup
+                    placeholder="Password"
+                    name="password"
+                    type="password"
+                    value={loginInfo.password}
+                    onChange={handleChange}
+                    error={errors.password}
+                  />
+                  <input
+                    onClick={handleSubmit}
+                    type="submit"
+                    className="btn btn-info btn-block mt-4"
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import logo from "../../images/logo.png";
 import API from "../utils/urls";
 import Spinner from "../utils/Spinner";
+import { useDispatch } from "react-redux";
 
 const ConfirmSignUp = () => {
   const [confirmationCode, setConfirmationCode] = useState("");
@@ -11,6 +12,7 @@ const ConfirmSignUp = () => {
   const [clickedSubmit, setclickedSubmit] = useState(false);
   const history = useHistory();
   const { state } = useLocation();
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setConfirmationCode(e.target.value);
@@ -20,6 +22,7 @@ const ConfirmSignUp = () => {
     const url = state.userId
       ? `${API.urls.CONFIRM_CODE}/${state.userId}?email=${state.email}&confirmationCode=${confirmationCode}`
       : "";
+    console.log(url);
     const handleSubmit = async () => {
       try {
         const res = await fetch(API.API_ROOT + url, {
@@ -33,6 +36,7 @@ const ConfirmSignUp = () => {
             // TODO: Replace with a good toast message
             alert("Thanks for the verification");
             history.push("/signin-user");
+            dispatch({ type: "RESET_STATE" });
           }
         }
 
