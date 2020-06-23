@@ -32,7 +32,9 @@ export const RequestCode = () => {
           if (data.status === "success") {
             // TODO: Replace with a good toast message
             alert("Code sent successfully");
-            history.push("/forgot-password");
+            history.push("/forgot-password", {
+              email,
+            });
             dispatch({ type: "RESET_STATE" });
           }
         }
@@ -70,7 +72,7 @@ export const RequestCode = () => {
             </header>
             <div className="card">
               <div className="card-header text-center">
-                Create a new password
+                Send reset password code
               </div>
               <div className="card-body">
                 <div className="card-text">
@@ -90,6 +92,7 @@ export const RequestCode = () => {
                       <input
                         onClick={() => setclickedSubmit(true)}
                         type="submit"
+                        disabled={!/^.+@[^\.].*\.[a-z]{2,}$/.test(email)}
                         className="btn btn-info btn-block mt-4"
                       />
                     </>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import TextFieldGroup from "../commons/TextFieldGroup";
@@ -13,6 +13,7 @@ export const ForgotPassword = () => {
   const [loading, setLoading] = useState(false);
   const [clickedSubmit, setclickedSubmit] = useState(false);
   const history = useHistory();
+  const { state } = useLocation();
   const dispatch = useDispatch();
 
   const handleChange = ({ target }) => {
@@ -21,13 +22,12 @@ export const ForgotPassword = () => {
 
   useEffect(() => {
     const url = `${API.urls.FORGOT_PASSWORD}`;
-    console.log(forgotPassdetails);
 
     const handleSubmit = async () => {
       try {
         const res = await fetch(API.API_ROOT + url, {
           method: "PUT",
-          body: JSON.stringify(forgotPassdetails),
+          body: JSON.stringify({ ...forgotPassdetails, email: state.email }),
           headers: {
             "Content-Type": "application/json",
           },
@@ -109,10 +109,16 @@ export const ForgotPassword = () => {
                       />
                     </>
                   )}
-                  {/* TODO: make this align with design */}
-                  <p>
-                    Resquest a <Link to="/send-reset-code"> new code</Link>
-                  </p>
+                  <div className="mt-3">
+                    <p>
+                      <span className="text-decoration-none text-slim text-primary">
+                        Didn't receive any code?{" "}
+                      </span>
+                      <Link to="/send-reset-code" className="ml-3 text-left">
+                        Resend Code
+                      </Link>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
