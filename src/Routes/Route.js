@@ -8,13 +8,20 @@ import Layout from "../components/layout/Layout";
 import ConfirmSignUp from "../components/signup/ConfirmSignUp";
 import AuthRoute from "./AuthRoute";
 import PrivateRoute from "./PrivateRoutes";
+import Spinner from "../components/utils/Spinner";
 const Dashboard = lazy(() => import("../components/dashboard/Dashboard"));
 
 function Inventoryflo() {
   return (
     <Router>
       <Layout>
-        <Suspense fallback={<h1 style={{ margin: "20% 22%" }}>Loading</h1>}>
+        <Suspense
+          fallback={
+            <h1 style={{ margin: "20% 22%" }}>
+              <Spinner />
+            </h1>
+          }
+        >
           <Switch>
             <AuthRoute exact path="/signup-user" component={register.SignUp} />
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
