@@ -243,6 +243,16 @@ p a,
 h5 a {
 	font-weight: bold;
 }
+
+.text-slim {
+	font-size: 0.9rem;
+}
+.more-info {
+	font-style: italic;
+	font-size: 0.78rem;
+	line-height: 1.4;
+	color: #666;
+}
 .font-icons {
 	color: var(--transparentGreen);
 }
