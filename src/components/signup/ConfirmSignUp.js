@@ -47,10 +47,9 @@ const ConfirmSignUp = () => {
       } catch (error) {
         setLoading(false);
         // TODO: Replace with a good toast message
-        alert("something went wrong");
+        console.log(error);
       }
     };
-    console.log(confirmationCode.length, clickedSubmit);
     if (
       confirmationCode.length === 6 ||
       (clickedSubmit && confirmationCode.length === 6)
