@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import TextFieldGroup from "../commons/TextFieldGroup";

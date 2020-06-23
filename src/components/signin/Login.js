@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import TextFieldGroup from "../commons/TextFieldGroup";
@@ -81,6 +82,17 @@ const Login = () => {
                     type="submit"
                     className="btn btn-info btn-block mt-4"
                   />
+                  <div className="text-center mt-3">
+                    <p className="text-muted">
+                      Don't have an account?{" "}
+                      <Link
+                        to="/signup-user"
+                        className="text-decoration-none text-info text-slim ml-1"
+                      >
+                        Sign Up
+                      </Link>
+                    </p>
+                  </div>
                 </div>
               )}
             </div>
