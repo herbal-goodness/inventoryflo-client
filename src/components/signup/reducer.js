@@ -3,7 +3,7 @@ const {
   REQUEST_SIGNUP,
   REQUEST_SUCCESS,
   SIGNUP_ERROR,
-  RESET_STATE,
+  RESET_SIGNUP_STATE,
 } = actionTypes;
 
 const initialState = {
@@ -34,7 +34,7 @@ export default (state = initialState, actions) => {
         loading: false,
         successful: false,
       };
-    case RESET_STATE:
+    case RESET_SIGNUP_STATE:
       return initialState;
 
     default:

@@ -7,9 +7,14 @@ export function loginRequest(payload) {
   };
 }
 
-export function loginSuccess(payload) {
+export function loginSuccess() {
   return {
     type: actionTypes.LOGIN_REQUEST_SUCCESS,
+  };
+}
+export function storeUser(payload) {
+  return {
+    type: actionTypes.STORE_USER,
     payload,
   };
 }

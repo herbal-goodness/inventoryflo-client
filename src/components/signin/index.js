@@ -1,5 +1,5 @@
 import Login from "./Login";
 import sagas from "./sagas";
-import reducer from "./reducer";
-
-export default { Login, sagas, reducer };
+import * as loginReducer from "./reducer";
+const { userInfo, reducer } = loginReducer;
+export default { Login, sagas, reducer, userInfo };

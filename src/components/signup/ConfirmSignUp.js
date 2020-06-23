@@ -22,7 +22,6 @@ const ConfirmSignUp = () => {
     const url = state.userId
       ? `${API.urls.CONFIRM_CODE}/${state.userId}?email=${state.email}&confirmationCode=${confirmationCode}`
       : "";
-    console.log(url);
     const handleSubmit = async () => {
       try {
         const res = await fetch(API.API_ROOT + url, {
@@ -35,7 +34,7 @@ const ConfirmSignUp = () => {
           if (data.status === "success") {
             // TODO: Replace with a good toast message
             alert("Thanks for the verification");
-            history.push("/signin-user");
+            history.push("/");
             dispatch({ type: "RESET_STATE" });
           }
         }

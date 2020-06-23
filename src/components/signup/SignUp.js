@@ -7,7 +7,7 @@ import { signupRequest } from "./actions";
 import { useHistory } from "react-router-dom";
 import Spinner from "../utils/Spinner";
 
-const SignUp = () => {
+const SignUp = (props) => {
   const [userInfo, setUserInfo] = useState({});
   const [errors, setError] = useState({});
   const dispatch = useDispatch();
@@ -18,6 +18,10 @@ const SignUp = () => {
     successful: signup.successful,
     user: signup.userInfo,
     error: signup.error,
+  }));
+  const { loginSuccessful, isLoading } = useSelector(({ login }) => ({
+    isLoading: login.loading,
+    loginSuccessful: login.successful,
   }));
   const handleChange = (e) => {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
@@ -46,7 +50,12 @@ const SignUp = () => {
     if (error) return alert(error.error);
   }, [loading]);
 
-  return (
+  //TODO: Replace with a betther UI to redirect user to home
+  return loginSuccessful && !isLoading ? (
+    <h1 style={{ margin: "20% 20%" }}>
+      You are already logged in, <a href="/dashboard"> go home</a>
+    </h1>
+  ) : (
     <div className="register mb-5">
       <div className="container">
         <div className="row">

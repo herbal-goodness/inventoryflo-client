@@ -37,8 +37,7 @@ const Login = () => {
   };
 
   useEffect(() => {
-    //TODO: push user to dashboard and pull users data
-    if (successful) return history.push(`/`);
+    if (successful) return history.push("/dashboard");
     // TODO: Replace alert with cool toast message
     if (error) return alert(error.error);
   }, [loading]);

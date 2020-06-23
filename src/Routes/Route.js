@@ -1,26 +1,48 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Dashboard from "../components/dashboard/Dashboard";
 import InventoryContainer from "../components/warehouse/inventory/InventoryContainer";
 import register from "../components/signup";
 import signin from "../components/signin";
 import NotFound from "./NotFound";
 import Layout from "../components/layout/Layout";
 import ConfirmSignUp from "../components/signup/ConfirmSignUp";
+import AuthRoute from "./AuthRoute";
+import PrivateRoute from "./PrivateRoutes";
+import Spinner from "../components/utils/Spinner";
+const Dashboard = lazy(() => import("../components/dashboard/Dashboard"));
 
 function Inventoryflo() {
   return (
     <Router>
       <Layout>
-        <Switch>
-          <Route exact path="/signup-user" component={register.SignUp} />
-          <Route exact path="/signin-user" component={signin.Login} />
-          {/* TODO: replace with confirm password */}
-          <Route path="/confirm-signup" component={ConfirmSignUp} />
-          <Route exact path="/" component={Dashboard} />
-          <Route exact path="/inventories" component={InventoryContainer} />
-          <Route exact path="*" component={NotFound} />
-        </Switch>
+        <Suspense
+          fallback={
+            <h1 style={{ margin: "20% 22%" }}>
+              <Spinner />
+            </h1>
+          }
+        >
+          <Switch>
+            <AuthRoute exact path="/signup-user" component={register.SignUp} />
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <AuthRoute path="/confirm-signup" component={ConfirmSignUp} />
+            <AuthRoute exact path="/" component={signin.Login} />
+            <PrivateRoute
+              exact
+              path="/inventories"
+              component={InventoryContainer}
+            />
+            {/*This route is a placeholder */}
+            <PrivateRoute
+              exact
+              path="/admin"
+              component={function Admin() {
+                return <h1 style={{ margin: "20% 20%" }}>Admin</h1>;
+              }}
+            />
+            <Route exact path="*" component={NotFound} />
+          </Switch>
+        </Suspense>
       </Layout>
     </Router>
   );
