@@ -13,11 +13,12 @@ const Login = () => {
   const history = useHistory();
 
   /**selects some pieces of the state */
-  const { successful, loading, error } = useSelector(({ login }) => ({
+  const { loading, error } = useSelector(({ login }) => ({
     loading: login.loading,
-    successful: login.successful,
-    user: login.userInfo,
     error: login.error,
+  }));
+  const { successful } = useSelector(({ userInfo }) => ({
+    successful: userInfo.successful,
   }));
 
   /** gets the information from the input fields */
@@ -40,7 +41,7 @@ const Login = () => {
     if (successful) return history.push("/dashboard");
     // TODO: Replace alert with cool toast message
     if (error) return alert(error.error);
-  }, [loading]);
+  }, [loading, successful]);
 
   return (
     <div className="login mb-5">
