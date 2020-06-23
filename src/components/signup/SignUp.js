@@ -76,17 +76,17 @@ const SignUp = (props) => {
               <div className="card">
                 <div className="card-header text-center">Sign Up</div>
                 <div className="card-body">
-                  {FORM_DETAILS.map(({ placeholder, name, type }) => (
+                  {FORM_DETAILS.map(({ placeholder, name, type }, index) => (
                     <TextFieldGroup
+                      key={index}
                       placeholder={placeholder}
                       name={name}
                       type={type}
                       onChange={handleChange}
-                      value={userInfo.name}
-                      error={errors.name}
+                      value={userInfo[name]}
+                      error={errors[name]}
                     />
                   ))}
-
                   <input
                     onClick={handleSubmit}
                     type="submit"
