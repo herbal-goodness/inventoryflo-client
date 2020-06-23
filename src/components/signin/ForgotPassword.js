@@ -10,6 +10,7 @@ import Spinner from "../utils/Spinner";
 
 export const ForgotPassword = () => {
   const [forgotPassdetails, setDetails] = useState({});
+  const [showLink, setShowLink] = useState(false);
   const [loading, setLoading] = useState(false);
   const [clickedSubmit, setclickedSubmit] = useState(false);
   const history = useHistory();
@@ -21,6 +22,8 @@ export const ForgotPassword = () => {
   };
 
   useEffect(() => {
+    setTimeout(() => setShowLink(true), 10000);
+
     const url = `${API.urls.FORGOT_PASSWORD}`;
     if (state !== undefined) {
       const handleSubmit = async () => {
@@ -114,16 +117,19 @@ export const ForgotPassword = () => {
                       />
                     </>
                   )}
-                  <div className="mt-3">
-                    <p>
-                      <span className="text-decoration-none text-slim text-primary">
-                        Didn't receive any code?{" "}
-                      </span>
-                      <Link to="/send-reset-code" className="ml-3 text-left">
-                        Resend Code
-                      </Link>
-                    </p>
-                  </div>
+
+                  {showLink && (
+                    <div className="mt-3">
+                      <p>
+                        <span className="text-decoration-none text-slim text-primary">
+                          Didn't receive any code?{" "}
+                        </span>
+                        <Link to="/send-reset-code" className="ml-3 text-left">
+                          Resend Code
+                        </Link>
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
