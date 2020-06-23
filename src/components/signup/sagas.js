@@ -20,10 +20,12 @@ function* signupWorker({ payload }) {
     } else {
       const data = yield response.json();
       yield put(signupError(data));
-      yield put({ type: "RESET_STATE" });
+      yield put({ type: "RESET_SIGNUP_STATE" });
     }
   } catch (err) {
     console.log(err);
+    yield put(signupError(err));
+    yield put({ type: "RESET_SIGNUP_STATE" });
   }
 }
 

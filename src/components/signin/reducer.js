@@ -3,7 +3,8 @@ const {
   REQUEST_LOGIN,
   LOGIN_REQUEST_SUCCESS,
   LOGIN_ERROR,
-  RESET_STATE,
+  RESET_SIGNIN_STATE,
+  STORE_USER,
 } = actionTypes;
 
 const initialState = {
@@ -13,7 +14,7 @@ const initialState = {
   error: null,
 };
 
-export default (state = initialState, actions) => {
+export const reducer = (state = initialState, actions) => {
   switch (actions.type) {
     case REQUEST_LOGIN:
       return {
@@ -23,7 +24,6 @@ export default (state = initialState, actions) => {
     case LOGIN_REQUEST_SUCCESS:
       return {
         ...state,
-        userInfo: actions.payload,
         successful: true,
         loading: false,
       };
@@ -34,8 +34,25 @@ export default (state = initialState, actions) => {
         loading: false,
         successful: false,
       };
-    case RESET_STATE:
+    case RESET_SIGNIN_STATE:
       return initialState;
+
+    default:
+      return state;
+  }
+};
+
+const user = {};
+export const userInfo = (state = user, actions) => {
+  switch (actions.type) {
+    case STORE_USER:
+      return {
+        ...state,
+        successful: true,
+        user: { ...state.user, ...actions.payload },
+      };
+    case "RESET_STATE":
+      return user;
 
     default:
       return state;

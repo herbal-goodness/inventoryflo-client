@@ -9,10 +9,10 @@ import { mainSaga } from "../sagas/index";
 const composeEnhancers = composeWithDevTools({
   // Specify here name, actionsBlacklist, actionsCreators and other options
 });
-const persistConfig = {
+export const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["products"], // only state specified here will be persisted
+  whitelist: ["products", "userInfo"], // only state specified here will be persisted
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const sagaMiddleware = createSagaMiddleware();
