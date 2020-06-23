@@ -90,9 +90,9 @@ const Login = () => {
                       >
                         Sign Up
                       </Link>
-                      <h6>
+                      <span className={"d-block"}>
                         <Link to="/send-reset-code">forgot password</Link>
-                      </h6>
+                      </span>
                     </p>
                   </div>
                 </div>
