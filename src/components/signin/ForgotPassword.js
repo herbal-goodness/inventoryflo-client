@@ -25,37 +25,35 @@ export const ForgotPassword = () => {
               </div>
               <div className="card-body">
                 <div className="card-text">
-                  <form>
-                    <TextFieldGroup
-                      placeholder="Email Address"
-                      name="email"
-                      type="email"
-                      value={details.email}
-                      onChange={handleChange}
-                      // error={errors.email}
-                    />
+                  <TextFieldGroup
+                    placeholder="Email Address"
+                    name="email"
+                    type="email"
+                    value={details.email}
+                    onChange={handleChange}
+                    // error={errors.email}
+                  />
 
-                    <TextFieldGroup
-                      placeholder="New Password"
-                      name="password"
-                      type="password"
-                      value={details.password}
-                      onChange={handleChange}
-                      // error={errors.password}
-                    />
-                    <TextFieldGroup
-                      placeholder="Enter confirmation code"
-                      name="confirmationCode"
-                      type="text"
-                      value={details.confirmationCode}
-                      onChange={handleChange}
-                      // error={errors.confirmationCode}
-                    />
-                    <input
-                      type="submit"
-                      className="btn btn-info btn-block mt-4"
-                    />
-                  </form>
+                  <TextFieldGroup
+                    placeholder="New Password"
+                    name="password"
+                    type="password"
+                    value={details.password}
+                    onChange={handleChange}
+                    // error={errors.password}
+                  />
+                  <TextFieldGroup
+                    placeholder="Enter confirmation code"
+                    name="confirmationCode"
+                    type="text"
+                    value={details.confirmationCode}
+                    onChange={handleChange}
+                    // error={errors.confirmationCode}
+                  />
+                  <input
+                    type="submit"
+                    className="btn btn-info btn-block mt-4"
+                  />
                 </div>
               </div>
             </div>

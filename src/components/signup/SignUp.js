@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { signupRequest } from "./actions";
 import { useHistory } from "react-router-dom";
 import Spinner from "../utils/Spinner";
+import { FORM_DETAILS } from "./constants";
 
 const SignUp = (props) => {
   const [userInfo, setUserInfo] = useState({});
@@ -75,50 +76,17 @@ const SignUp = (props) => {
               <div className="card">
                 <div className="card-header text-center">Sign Up</div>
                 <div className="card-body">
-                  <TextFieldGroup
-                    placeholder="First Name"
-                    name="firstName"
-                    value={userInfo.firstName}
-                    onChange={handleChange}
-                    error={errors.firstName}
-                  />
-                  <TextFieldGroup
-                    placeholder="Last Name"
-                    name="lastName"
-                    value={userInfo.lastName}
-                    onChange={handleChange}
-                    error={errors.lastName}
-                  />
-                  <TextFieldGroup
-                    placeholder="Email"
-                    name="email"
-                    type="email"
-                    value={userInfo.email}
-                    onChange={handleChange}
-                    error={errors.email}
-                  />
-                  <TextFieldGroup
-                    placeholder="Password"
-                    name="password"
-                    type="password"
-                    value={userInfo.password}
-                    onChange={handleChange}
-                    error={errors.password}
-                  />
-                  <TextFieldGroup
-                    placeholder="Company"
-                    name="company"
-                    value={userInfo.company}
-                    onChange={handleChange}
-                    error={errors.company}
-                  />
-                  <TextFieldGroup
-                    placeholder="Phone"
-                    name="phone"
-                    value={userInfo.phone}
-                    onChange={handleChange}
-                    error={errors.phone}
-                  />
+                  {FORM_DETAILS.map(({ placeholder, name, type }) => (
+                    <TextFieldGroup
+                      placeholder={placeholder}
+                      name={name}
+                      type={type}
+                      onChange={handleChange}
+                      value={userInfo.name}
+                      error={errors.name}
+                    />
+                  ))}
+
                   <input
                     onClick={handleSubmit}
                     type="submit"

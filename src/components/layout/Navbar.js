@@ -159,7 +159,7 @@ function Navbar() {
                       account info
                     </Link>
 
-                    <Link className="dropdown-item" to="/signup-user">
+                    {/* <Link className="dropdown-item" to="/signup-user">
                       <i
                         className="fa fa-user-o fa-fw mr-1"
                         aria-hidden="true"
@@ -172,7 +172,7 @@ function Navbar() {
                         aria-hidden="true"
                       ></i>{" "}
                       login
-                    </Link>
+                    </Link> */}
                     <Link
                       className="dropdown-item"
                       to="/"
