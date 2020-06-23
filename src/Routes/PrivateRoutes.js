@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { Route, Redirect, useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Route, useHistory } from "react-router-dom";
 import Navbar from "../components/layout/Navbar";
 import { isAuthenticated } from "../services/auth";
 import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../components/utils/Spinner";
+import AuthRoute from "./AuthRoute";
+import Login from "../components/signin/Login";
 
 const PrivateRoute = (props) => {
   const [isLoggedIn, setLogin] = useState(false);
@@ -40,13 +42,7 @@ const PrivateRoute = (props) => {
     );
   }
   if (!successful && !isLoggedIn) {
-    return (
-      <Redirect
-        to={{
-          pathname: "/",
-        }}
-      />
-    );
+    return <AuthRoute path="/" component={Login} />;
   }
 };
 
