@@ -20,7 +20,6 @@ const PrivateRoute = (props) => {
     async function checkForAuth() {
       try {
         const data = await isAuthenticated(dispatch, history);
-        console.log(data, "========");
         setLogin(data);
       } catch (error) {
         console.log(error);

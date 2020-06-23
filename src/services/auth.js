@@ -17,7 +17,6 @@ export const refreshToken = () => Cookies.get("refreshToken");
 // export const isAuthenticated = () => !!getAccessToken();
 
 export async function isAuthenticated(dispatch, history) {
-  console.log(refreshToken(), "=========");
   if (refreshToken()) {
     try {
       const response = await fetch(

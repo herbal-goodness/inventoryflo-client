@@ -17,6 +17,7 @@ function* loginWorker({ payload }) {
       const inOneHour = new Date(new Date().getTime() + expires);
       Cookies.set("refreshToken", data.refreshToken, { expires: inOneHour });
       yield put(storeUser(data));
+
       /** Dispatch action for success */
       yield put(loginSuccess());
     } else {

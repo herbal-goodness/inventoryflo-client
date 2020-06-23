@@ -25,6 +25,7 @@ function Inventoryflo() {
               path="/inventories"
               component={InventoryContainer}
             />
+            {/*This route is a placeholder */}
             <PrivateRoute
               exact
               path="/admin"
