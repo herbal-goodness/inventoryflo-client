@@ -90,6 +90,9 @@ const Login = () => {
                       >
                         Sign Up
                       </Link>
+                      <h6>
+                        <Link to="/send-reset-code">forgot password</Link>
+                      </h6>
                     </p>
                   </div>
                 </div>
