@@ -22,46 +22,51 @@ export const ForgotPassword = () => {
 
   useEffect(() => {
     const url = `${API.urls.FORGOT_PASSWORD}`;
+    if (state !== undefined) {
+      const handleSubmit = async () => {
+        try {
+          const res = await fetch(API.API_ROOT + url, {
+            method: "PUT",
+            body: JSON.stringify({ ...forgotPassdetails, email: state.email }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          const data = await res.json();
 
-    const handleSubmit = async () => {
-      try {
-        const res = await fetch(API.API_ROOT + url, {
-          method: "PUT",
-          body: JSON.stringify({ ...forgotPassdetails, email: state.email }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        const data = await res.json();
-
-        if (res.ok) {
-          setLoading(!loading);
-          if (data.status === "success") {
-            // TODO: Replace with a good toast message
-            alert("Password changed please login to continue");
-            history.push("/");
-            dispatch({ type: "RESET_STATE" });
+          if (res.ok) {
+            setLoading(!loading);
+            if (data.status === "success") {
+              // TODO: Replace with a good toast message
+              alert("Password changed please login to continue");
+              history.push("/");
+              dispatch({ type: "RESET_STATE" });
+            }
           }
-        }
 
-        if (res.status > 300) {
+          if (res.status > 300) {
+            setLoading(false);
+            // TODO: Replace with a good toast message
+            console.log(data.error);
+
+            alert(data.error);
+          }
+        } catch (error) {
           setLoading(false);
           // TODO: Replace with a good toast message
-          console.log(data.error);
-
-          alert(data.error);
+          console.log(error);
         }
-      } catch (error) {
-        setLoading(false);
-        // TODO: Replace with a good toast message
-        console.log(error);
-      }
-    };
+      };
+      console.log(state);
 
-    if (clickedSubmit) {
-      setclickedSubmit(false);
-      setLoading(true);
-      handleSubmit();
+      if (clickedSubmit) {
+        setclickedSubmit(false);
+        setLoading(true);
+        handleSubmit();
+      }
+    } else {
+      // redirect to send code since the state has no email for the user
+      return history.push("/send-reset-code");
     }
   }, [clickedSubmit]);
 
