@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import TextFieldGroup from "../commons/TextFieldGroup";
 import logo from "../../images/logo.png";
 import { loginRequest } from "./actions";
@@ -49,9 +49,9 @@ const Login = () => {
         <div className="row">
           <div className="col-md-4 m-auto">
             <header className="brand">
-              <h1>
+              <Link to="/">
                 <img className="main-logo" src={logo} alt="inventoryflo logo" />
-              </h1>
+              </Link>
             </header>
             <div className="card">
               <div className="card-header text-center">Log In</div>

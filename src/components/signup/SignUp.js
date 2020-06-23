@@ -4,7 +4,7 @@ import TextFieldGroup from "../commons/TextFieldGroup";
 import logo from "../../images/logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { signupRequest } from "./actions";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import Spinner from "../utils/Spinner";
 import { FORM_DETAILS } from "./constants";
 
@@ -65,13 +65,13 @@ const SignUp = (props) => {
           ) : (
             <div className="col-md-4 m-auto">
               <header className="brand">
-                <h1>
+                <Link to="/">
                   <img
                     className="main-logo"
                     src={logo}
                     alt="inventoryflo logo"
                   />
-                </h1>
+                </Link>
               </header>
               <div className="card">
                 <div className="card-header text-center">Sign Up</div>

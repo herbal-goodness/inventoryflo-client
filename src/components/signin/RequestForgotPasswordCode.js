@@ -1,36 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import TextFieldGroup from "../commons/TextFieldGroup";
 import logo from "../../images/logo.png";
-import { FORM_DETAILS } from "./constants";
 import API from "../utils/urls";
 import Spinner from "../utils/Spinner";
 
-export const ForgotPassword = () => {
-  const [forgotPassdetails, setDetails] = useState({});
+export const RequestCode = () => {
+  const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [clickedSubmit, setclickedSubmit] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
 
   const handleChange = ({ target }) => {
-    setDetails({ ...forgotPassdetails, [target.name]: target.value });
+    setEmail(target.value);
   };
 
   useEffect(() => {
-    const url = `${API.urls.FORGOT_PASSWORD}`;
-    console.log(forgotPassdetails);
-
+    const url = `${API.urls.SEND_RESET_CODE}/${email}`;
     const handleSubmit = async () => {
       try {
         const res = await fetch(API.API_ROOT + url, {
-          method: "PUT",
-          body: JSON.stringify(forgotPassdetails),
-          headers: {
-            "Content-Type": "application/json",
-          },
+          method: "POST",
         });
         const data = await res.json();
 
@@ -38,8 +31,8 @@ export const ForgotPassword = () => {
           setLoading(!loading);
           if (data.status === "success") {
             // TODO: Replace with a good toast message
-            alert("Password changed please login to continue");
-            history.push("/");
+            alert("Code sent successfully");
+            history.push("/forgot-password");
             dispatch({ type: "RESET_STATE" });
           }
         }
@@ -85,34 +78,22 @@ export const ForgotPassword = () => {
                     <Spinner />
                   ) : (
                     <>
-                      {FORM_DETAILS.map(
-                        ({ name, placeholder, type }, index) => (
-                          <TextFieldGroup
-                            key={index}
-                            placeholder={placeholder}
-                            name={name}
-                            type={type}
-                            value={forgotPassdetails[name]}
-                            onChange={handleChange}
-                            //  error={errors.email}
-                          />
-                        )
-                      )}
+                      <TextFieldGroup
+                        placeholder="Enter your email"
+                        name="email"
+                        type="email"
+                        value={email}
+                        onChange={handleChange}
+                        //  error={errors.email}
+                      />
 
                       <input
                         onClick={() => setclickedSubmit(true)}
                         type="submit"
-                        disabled={
-                          forgotPassdetails.confirmationCode?.length !== 6
-                        }
                         className="btn btn-info btn-block mt-4"
                       />
                     </>
                   )}
-                  {/* TODO: make this align with design */}
-                  <p>
-                    Resquest a <Link to="/send-reset-code"> new code</Link>
-                  </p>
                 </div>
               </div>
             </div>
@@ -123,4 +104,4 @@ export const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default RequestCode;

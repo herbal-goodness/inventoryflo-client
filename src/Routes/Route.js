@@ -29,6 +29,11 @@ function Inventoryflo() {
               path="/forgot-password"
               component={signin.ForgotPassword}
             />
+            <AuthRoute
+              exact
+              path="/send-reset-code"
+              component={signin.RequestForgotPasswordCode}
+            />
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <AuthRoute path="/confirm-signup" component={ConfirmSignUp} />
             <AuthRoute exact path="/" component={signin.Login} />
