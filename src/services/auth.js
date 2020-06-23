@@ -2,19 +2,7 @@ import Cookies from "js-cookie";
 import API from "../components/utils/urls";
 import { storeUser } from "../components/signin/actions";
 
-// co(function* () {
-//   var result = yield Promise.resolve(true);
-//   return result;
-// }).then(function (value) {
-//   console.log(value);
-// }, function (err) {
-//   console.error(err.stack);
-// });
-
-// export const getAccessToken = () => Cookies.get("access_token");
 export const refreshToken = () => Cookies.get("refreshToken");
-// export const getTokens = () => localStorage.getItem("login");
-// export const isAuthenticated = () => !!getAccessToken();
 
 export async function isAuthenticated(dispatch, history) {
   if (refreshToken()) {
