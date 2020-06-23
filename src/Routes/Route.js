@@ -17,6 +17,11 @@ function Inventoryflo() {
         <Suspense fallback={<h1 style={{ margin: "20% 22%" }}>Loading</h1>}>
           <Switch>
             <AuthRoute exact path="/signup-user" component={register.SignUp} />
+            <AuthRoute
+              exact
+              path="/forgot-password"
+              component={signin.ForgotPassword}
+            />
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <AuthRoute path="/confirm-signup" component={ConfirmSignUp} />
             <AuthRoute exact path="/" component={signin.Login} />
