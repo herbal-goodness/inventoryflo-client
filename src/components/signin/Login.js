@@ -89,13 +89,12 @@ const Login = () => {
 												className="text-decoration-none text-green text-slim">
 												New to inventoryflo?
 											</Link>
-											<span className={"d-block"}>
-												<Link
-													to="/send-reset-code"
-													className="text-info text-slim">
-													forgot password?
-												</Link>
-											</span>
+
+											<Link
+												to="/send-reset-code"
+												className="text-info text-slim d-block">
+												forgot password?
+											</Link>
 										</p>
 									</div>
 								</div>
