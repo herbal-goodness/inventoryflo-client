@@ -28,6 +28,7 @@
 	--mainPurple: #38165f;
 	--deep-blue: #002333;
 	--light-green: #00e677;
+	--deep-green: #00715c;
 	--transparentGray: #f8f9fa;
 	--grayBackground: #f7f7f7;
 	/* FONTS */
@@ -247,6 +248,14 @@ h5 a {
 .text-slim {
 	font-size: 0.9rem;
 }
+
+.text-green {
+	color: #20846b;
+}
+.form-group input {
+	border: 2px solid #20846b;
+}
+
 .more-info {
 	font-style: italic;
 	font-size: 0.78rem;
@@ -285,6 +294,10 @@ h5 a {
 }
 
 /* BUTTONS */
+
+body .btn-info {
+	background: var(--deep-green);
+}
 
 .btn-outline-secondary {
 	background-color: transparent !important;
