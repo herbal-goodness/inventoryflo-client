@@ -4,14 +4,17 @@ import { useHistory, Link } from "react-router-dom";
 import TextFieldGroup from "../commons/TextFieldGroup";
 import logo from "../../images/logo.png";
 import { loginRequest } from "./actions";
-import Spinner from "../utils/Spinner";
+import { Spinner, AlertDismissible } from "../utils/components";
 
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState({});
-  const [errors, setErrors] = useState({});
+  const [{ isError, errorMessage }, setErrors] = useState({
+    isError: false,
+    errorMessage: "",
+  });
   const dispatch = useDispatch();
   const history = useHistory();
-
+  const strongRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
   /**selects some pieces of the state */
   const { loading, error } = useSelector(({ login }) => ({
     loading: login.loading,
@@ -40,7 +43,7 @@ const Login = () => {
   useEffect(() => {
     if (successful) return history.push("/dashboard");
     // TODO: Replace alert with cool toast message
-    if (error) return alert(error.error);
+    if (error) setErrors({ isError: !isError, errorMessage: error.error });
   }, [loading, successful]);
 
   return (
@@ -48,6 +51,13 @@ const Login = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-4 m-auto">
+            {isError && (
+              <AlertDismissible
+                header={"Error"}
+                message={errorMessage}
+                variant={"danger"}
+              />
+            )}
             <header className="brand">
               <Link to="/">
                 <img className="main-logo" src={logo} alt="inventoryflo logo" />
@@ -65,7 +75,12 @@ const Login = () => {
                     type="email"
                     value={loginInfo.email}
                     onChange={handleChange}
-                    error={errors.email}
+                    error={
+                      !/^.+@[^\.].*\.[a-z]{2,}$/.test(loginInfo.email) &&
+                      loginInfo.email?.length > 2
+                        ? "This is not a valid mail"
+                        : ""
+                    }
                   />
 
                   <TextFieldGroup
@@ -74,11 +89,17 @@ const Login = () => {
                     type="password"
                     value={loginInfo.password}
                     onChange={handleChange}
-                    error={errors.password}
+                    error={
+                      !strongRegex.test(loginInfo.password) &&
+                      loginInfo.password?.length > 3
+                        ? "Password must contain  at least 1 lowercase,uppercase, special character and number"
+                        : ""
+                    }
                   />
                   <input
                     onClick={handleSubmit}
                     type="submit"
+                    disabled={!strongRegex.test(loginInfo.password)}
                     className="btn btn-info btn-block mt-4"
                   />
                   <div className="text-center mt-3">

@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import TextFieldGroup from "../commons/TextFieldGroup";
 import logo from "../../images/logo.png";
 import API from "../utils/urls";
-import Spinner from "../utils/Spinner";
+import { Spinner, AlertDismissible } from "../utils/components";
 
 export const RequestCode = () => {
   const [email, setEmail] = useState("");

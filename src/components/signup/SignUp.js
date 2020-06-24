@@ -4,7 +4,7 @@ import logo from "../../images/logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { signupRequest } from "./actions";
 import { useHistory, Link } from "react-router-dom";
-import Spinner from "../utils/Spinner";
+import { Spinner, AlertDismissible } from "../utils/components";
 import { FORM_DETAILS } from "./constants";
 
 const SignUp = (props) => {

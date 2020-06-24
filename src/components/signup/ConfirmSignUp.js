@@ -3,7 +3,7 @@ import TextFieldGroup from "../commons/TextFieldGroup";
 import { useHistory, useLocation } from "react-router-dom";
 import logo from "../../images/logo.png";
 import API from "../utils/urls";
-import Spinner from "../utils/Spinner";
+import { Spinner, AlertDismissible } from "../utils/components";
 import { useDispatch } from "react-redux";
 
 const ConfirmSignUp = () => {

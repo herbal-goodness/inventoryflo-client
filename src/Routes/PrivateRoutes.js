@@ -3,7 +3,7 @@ import { Route, useHistory } from "react-router-dom";
 import Navbar from "../components/layout/Navbar";
 import { isAuthenticated } from "../services/auth";
 import { useSelector, useDispatch } from "react-redux";
-import Spinner from "../components/utils/Spinner";
+import { Spinner } from "../components/utils/components";
 import AuthRoute from "./AuthRoute";
 import Login from "../components/signin/Login";
 

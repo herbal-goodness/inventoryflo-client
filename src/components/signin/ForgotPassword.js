@@ -6,7 +6,7 @@ import TextFieldGroup from "../commons/TextFieldGroup";
 import logo from "../../images/logo.png";
 import { FORM_DETAILS } from "./constants";
 import API from "../utils/urls";
-import Spinner from "../utils/Spinner";
+import { Spinner, AlertDismissible } from "../utils/components";
 
 export const ForgotPassword = () => {
   const [forgotPassdetails, setDetails] = useState({});
