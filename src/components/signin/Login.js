@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import TextFieldGroup from "../commons/TextFieldGroup";
-import logo from "../../images/logo.png";
+import logo from "../../images/inventoryflo-logo-2.png";
 import { loginRequest } from "./actions";
 import { Spinner, AlertDismissible } from "../utils/components";
 
@@ -96,23 +96,29 @@ const Login = () => {
                         : ""
                     }
                   />
+
                   <input
                     onClick={handleSubmit}
                     type="submit"
                     disabled={!strongRegex.test(loginInfo.password)}
+                    value="Sign in to your account"
                     className="btn btn-info btn-block mt-4"
                   />
                   <div className="text-center mt-3">
-                    <p className="text-muted">
-                      Don't have an account?{" "}
+                    <p className="text-muted d-flex justify-content-between">
                       <Link
                         to="/signup-user"
-                        className="text-decoration-none text-info text-slim ml-1"
+                        className="text-decoration-none text-green text-slim"
                       >
-                        Sign Up
+                        New to inventoryflo?
                       </Link>
                       <span className={"d-block"}>
-                        <Link to="/send-reset-code">forgot password</Link>
+                        <Link
+                          to="/send-reset-code"
+                          className="text-info text-slim"
+                        >
+                          forgot password?
+                        </Link>
                       </span>
                     </p>
                   </div>
