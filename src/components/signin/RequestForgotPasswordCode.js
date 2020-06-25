@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
 import TextFieldGroup from "../commons/TextFieldGroup";
 import logo from "../../images/logo.png";
@@ -11,45 +10,53 @@ export const RequestCode = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [clickedSubmit, setclickedSubmit] = useState(false);
+  const [{ isError, message }, setMessage] = useState({
+    isError: false,
+    message: "",
+  });
   const history = useHistory();
-  const dispatch = useDispatch();
 
   const handleChange = ({ target }) => {
     setEmail(target.value);
   };
 
   useEffect(() => {
-    const url = `${API.urls.SEND_RESET_CODE}/${email}`;
+    console.log(API.API_ROOT + API.urls.SEND_RESET_CODE);
     const handleSubmit = async () => {
       try {
-        const res = await fetch(API.API_ROOT + url, {
+        const res = await fetch(API.API_ROOT + API.urls.SEND_RESET_CODE, {
           method: "POST",
+          body: JSON.stringify({ email }),
+          headers: {
+            "Content-Type": "application/json",
+          },
         });
+
         const data = await res.json();
 
         if (res.ok) {
           setLoading(!loading);
           if (data.status === "success") {
-            // TODO: Replace with a good toast message
-            alert("Code sent successfully");
             history.push("/forgot-password", {
               email,
             });
-            dispatch({ type: "RESET_STATE" });
           }
         }
 
         if (res.status > 300) {
           setLoading(false);
-          // TODO: Replace with a good toast message
-          console.log(data.error);
-
-          alert(data.error);
+          setMessage({
+            isError: true,
+            message: data.error,
+          });
         }
       } catch (error) {
         setLoading(false);
-        // TODO: Replace with a good toast message
         console.log(error);
+        setMessage({
+          isError: true,
+          message: error.error,
+        });
       }
     };
 
@@ -65,6 +72,13 @@ export const RequestCode = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-4 m-auto">
+            {isError && (
+              <AlertDismissible
+                header={"Error!"}
+                message={message}
+                variant={"danger"}
+              />
+            )}
             <header className="brand">
               <Link to="/">
                 <img className="main-logo" src={logo} alt="inventoryflo logo" />
@@ -86,7 +100,6 @@ export const RequestCode = () => {
                         type="email"
                         value={email}
                         onChange={handleChange}
-                        //  error={errors.email}
                       />
 
                       <input

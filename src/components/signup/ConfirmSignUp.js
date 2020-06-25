@@ -10,6 +10,10 @@ const ConfirmSignUp = () => {
   const [confirmationCode, setConfirmationCode] = useState("");
   const [loading, setLoading] = useState(false);
   const [clickedSubmit, setclickedSubmit] = useState(false);
+  const [{ isError, message }, setMessage] = useState({
+    isError: false,
+    message: "",
+  });
   const history = useHistory();
   const { state } = useLocation();
   const dispatch = useDispatch();
@@ -19,6 +23,7 @@ const ConfirmSignUp = () => {
   };
 
   useEffect(() => {
+    setMessage({ isError: false, message: "" });
     const url = state.userId
       ? `${API.urls.CONFIRM_CODE}/${state.userId}?email=${state.email}&confirmationCode=${confirmationCode}`
       : "";
@@ -32,21 +37,24 @@ const ConfirmSignUp = () => {
         if (res.ok) {
           setLoading(!loading);
           if (data.status === "success") {
-            // TODO: Replace with a good toast message
-            alert("Thanks for the verification");
-            history.push("/");
+            history.push("/sign-up-succsess");
             dispatch({ type: "RESET_STATE" });
           }
         }
 
         if (res.status > 300) {
           setLoading(false);
-          // TODO: Replace with a good toast message
-          alert(data.error);
+          setMessage({
+            isError: true,
+            message: data.error,
+          });
         }
       } catch (error) {
         setLoading(false);
-        // TODO: Replace with a good toast message
+        setMessage({
+          isError: true,
+          message: error.error,
+        });
         console.log(error);
       }
     };
@@ -64,6 +72,13 @@ const ConfirmSignUp = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-4 m-auto">
+            {isError && (
+              <AlertDismissible
+                header={"Error!"}
+                message={message}
+                variant={"danger"}
+              />
+            )}
             <header className="brand">
               <h1>
                 <img className="main-logo" src={logo} alt="inventoryflo logo" />

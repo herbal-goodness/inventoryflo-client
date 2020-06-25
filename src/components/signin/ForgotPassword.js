@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
 import TextFieldGroup from "../commons/TextFieldGroup";
 import logo from "../../images/logo.png";
@@ -13,9 +12,13 @@ export const ForgotPassword = () => {
   const [showLink, setShowLink] = useState(false);
   const [loading, setLoading] = useState(false);
   const [clickedSubmit, setclickedSubmit] = useState(false);
+  const [{ isError, isSuccess, message }, setMessage] = useState({
+    isError: false,
+    isSuccess: false,
+    message: "",
+  });
   const history = useHistory();
   const { state } = useLocation();
-  const dispatch = useDispatch();
 
   const handleChange = ({ target }) => {
     setDetails({ ...forgotPassdetails, [target.name]: target.value });
@@ -40,23 +43,34 @@ export const ForgotPassword = () => {
           if (res.ok) {
             setLoading(!loading);
             if (data.status === "success") {
-              // TODO: Replace with a good toast message
-              alert("Password changed please login to continue");
-              history.push("/");
-              dispatch({ type: "RESET_STATE" });
+              setMessage({
+                isError: false,
+                isSuccess: true,
+                message: "Password changed please login to continue",
+              });
+
+              setTimeout(() => {
+                history.push("/");
+              }, 4000);
             }
           }
 
           if (res.status > 300) {
             setLoading(false);
-            // TODO: Replace with a good toast message
+            setMessage({
+              isError: true,
+              isSuccess: false,
+              message: data.error,
+            });
             console.log(data.error);
-
-            alert(data.error);
           }
         } catch (error) {
           setLoading(false);
-          // TODO: Replace with a good toast message
+          setMessage({
+            isError: true,
+            isSuccess: false,
+            message: error.error,
+          });
           console.log(error);
         }
       };
@@ -78,6 +92,22 @@ export const ForgotPassword = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-4 m-auto">
+            {isSuccess && (
+              <AlertDismissible
+                header={"Successfully"}
+                message={message}
+                variant={"success"}
+              />
+            )}
+
+            {isError && (
+              <AlertDismissible
+                header={"Error"}
+                message={message}
+                variant={"danger"}
+              />
+            )}
+
             <header className="brand">
               <Link to="/">
                 <img className="main-logo" src={logo} alt="inventoryflo logo" />

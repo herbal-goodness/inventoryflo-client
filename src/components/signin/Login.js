@@ -32,18 +32,15 @@ const Login = () => {
   /** dispatch action to submit login details */
   const handleSubmit = (e) => {
     e.preventDefault();
-    // TODO: Replace with a better check for error and report appropriately
-    if (!/@/.test(loginInfo.email) || loginInfo.password.length < 3) {
-      setErrors({ password: "invalid", email: "invalid" });
-    }
+
     // dispatch the login action with the login details payload
     dispatch(loginRequest({ loginInfo, history }));
   };
 
   useEffect(() => {
+    setErrors({ isError: false, errorMessage: "" });
     if (successful) return history.push("/dashboard");
-    // TODO: Replace alert with cool toast message
-    if (error) setErrors({ isError: !isError, errorMessage: error.error });
+    if (error) setErrors({ isError: true, errorMessage: error.error });
   }, [loading, successful]);
 
   return (

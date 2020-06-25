@@ -9,5 +9,3 @@ export default {
   },
   API_ROOT: "https://38knpk9vq1.execute-api.us-east-2.amazonaws.com/dev/v1",
 };
-
-//
