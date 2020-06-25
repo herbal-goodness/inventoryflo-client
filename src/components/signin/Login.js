@@ -110,7 +110,7 @@ const Login = () => {
                         to="/signup-user"
                         className="text-decoration-none text-green text-slim"
                       >
-                        New to inventoryflo?
+                        New to inventoryflo ?
                       </Link>
                       <span className={"d-block"}>
                         <Link
