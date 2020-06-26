@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 import TextFieldGroup from "../commons/TextFieldGroup";
-import logo from "../../images/logo.png";
+import logo from "../../images/inventoryflo-logo-2.png";
 import API from "../utils/urls";
 import { Spinner, AlertDismissible } from "../utils/components";
 
@@ -105,9 +105,24 @@ export const RequestCode = () => {
                       <input
                         onClick={() => setclickedSubmit(true)}
                         type="submit"
+                        value="Reset Password"
                         disabled={!/^.+@[^\.].*\.[a-z]{2,}$/.test(email)}
                         className="btn btn-info btn-block mt-4"
                       />
+                      <div className="text-center mt-3">
+                        <p className="text-muted d-flex justify-content-between">
+                          <Link
+                            to="/"
+                            className="text-decoration-none text-green text-slim"
+                          >
+                            Never mind, i remembered
+                          </Link>
+
+                          <Link to="/" className="text-info text-slim d-block">
+                            sign in again
+                          </Link>
+                        </p>
+                      </div>
                     </>
                   )}
                 </div>

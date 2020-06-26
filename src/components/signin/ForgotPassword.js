@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
-
 import TextFieldGroup from "../commons/TextFieldGroup";
-import logo from "../../images/logo.png";
+import logo from "../../images/inventoryflo-logo-2.png";
 import { FORM_DETAILS } from "./constants";
 import API from "../utils/urls";
 import { Spinner, AlertDismissible } from "../utils/components";
@@ -150,11 +149,14 @@ export const ForgotPassword = () => {
 
                   {showLink && (
                     <div className="mt-3">
-                      <p>
-                        <span className="text-decoration-none text-slim text-primary">
+                      <p className="text-muted d-flex justify-content-between">
+                        <span className="text-decoration-none text-green text-slim">
                           Didn't receive any code?{" "}
                         </span>
-                        <Link to="/send-reset-code" className="ml-3 text-left">
+                        <Link
+                          to="/send-reset-code"
+                          className="text-info text-slim d-block"
+                        >
                           Resend Code
                         </Link>
                       </p>

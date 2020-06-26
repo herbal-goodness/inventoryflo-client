@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TextFieldGroup from "../commons/TextFieldGroup";
-import { useHistory, useLocation } from "react-router-dom";
-import logo from "../../images/logo.png";
+import { useHistory, useLocation, Link } from "react-router-dom";
+import logo from "../../images/inventoryflo-logo-2.png";
 import API from "../utils/urls";
 import { Spinner, AlertDismissible } from "../utils/components";
 import { useDispatch } from "react-redux";
@@ -88,7 +88,9 @@ const ConfirmSignUp = () => {
               Spinner()
             ) : (
               <div className="card">
-                <div className="card-header text-center">Confirm Signup</div>
+                <div className="card-header text-center text-green">
+                  Confirm Signup
+                </div>
                 <div className="card-body">
                   <div className="card-text">
                     <TextFieldGroup
@@ -101,8 +103,24 @@ const ConfirmSignUp = () => {
                     <input
                       onClick={() => setclickedSubmit(true)}
                       type="submit"
+                      value="Register"
                       className="btn btn-info btn-block mt-4"
                     />
+                    <div className="mt-3">
+                      <p className="text-muted d-flex justify-content-between">
+                        <span className="text-decoration-none text-green text-slim">
+                          Didn't receive any code?{" "}
+                        </span>
+                        <Link
+                          onClick={() => {
+                            alert("Your request has been sent");
+                          }}
+                          className="text-info text-slim d-block"
+                        >
+                          Resend Code
+                        </Link>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
