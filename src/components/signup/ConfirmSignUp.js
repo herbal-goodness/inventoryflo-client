@@ -5,7 +5,6 @@ import logo from "../../images/inventoryflo-logo-2.png";
 import API from "../utils/urls";
 import { Spinner, AlertDismissible } from "../utils/components";
 import { useDispatch } from "react-redux";
-import { Toast, ToastBody } from "react-bootstrap";
 
 const ConfirmSignUp = () => {
   const [confirmationCode, setConfirmationCode] = useState("");
