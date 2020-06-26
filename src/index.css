@@ -262,6 +262,7 @@ h5 a {
 	line-height: 1.4;
 	color: #666;
 }
+
 .font-icons {
 	color: var(--transparentGreen);
 }
@@ -517,4 +518,23 @@ th a:hover {
 	text-transform: uppercase;
 	font-weight: 100;
 	font-size: 1rem;
+}
+
+/* PRIVACY POLICY */
+
+.wrapper {
+	display: grid;
+	grid-gap: 20px;
+	font-family: Lato sans-serif;
+	background: rgba(224, 224, 224, 0.26);
+	margin-top: 100px;
+}
+
+.policy-article {
+	color: rgba(0, 0, 0, 0.6);
+	line-height: 26px;
+	font-size: 1.1rem;
+}
+#main-menu li a {
+	color: #777 !important;
 }
