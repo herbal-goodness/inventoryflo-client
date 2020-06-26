@@ -21,7 +21,7 @@ export const RequestCode = () => {
   };
 
   useEffect(() => {
-    console.log(API.API_ROOT + API.urls.SEND_RESET_CODE);
+    setMessage({ isError: false, message: "" });
     const handleSubmit = async () => {
       try {
         const res = await fetch(API.API_ROOT + API.urls.SEND_RESET_CODE, {
@@ -55,7 +55,7 @@ export const RequestCode = () => {
         console.log(error);
         setMessage({
           isError: true,
-          message: error.error,
+          message: "Network error",
         });
       }
     };
