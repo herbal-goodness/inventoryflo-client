@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import TextFieldGroup from "../commons/TextFieldGroup";
-import { useHistory, useLocation, Link } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import logo from "../../images/inventoryflo-logo-2.png";
 import API from "../utils/urls";
 import { Spinner, AlertDismissible } from "../utils/components";
 import { useDispatch } from "react-redux";
+import { Toast, ToastBody } from "react-bootstrap";
 
 const ConfirmSignUp = () => {
   const [confirmationCode, setConfirmationCode] = useState("");
   const [loading, setLoading] = useState(false);
+  const [counter, setCounter] = React.useState(30);
   const [clickedSubmit, setclickedSubmit] = useState(false);
   const [{ isError, message }, setMessage] = useState({
     isError: false,
@@ -18,8 +20,28 @@ const ConfirmSignUp = () => {
   const { state } = useLocation();
   const dispatch = useDispatch();
 
-  const handleChange = (e) => {
-    setConfirmationCode(e.target.value);
+  const resendConfirm = async () => {
+    setCounter(30);
+    try {
+      const res = await fetch(`${API.API_ROOT}/resend-confirm-code`, {
+        body: JSON.stringify({ email: state.email }),
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (res.ok) {
+        const { message } = await res.json();
+        console.log(message);
+      }
+
+      if (res.status > 300) {
+        const data = await res.json();
+        alert(data.error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -67,6 +89,12 @@ const ConfirmSignUp = () => {
     }
   }, [confirmationCode, clickedSubmit]);
 
+  useEffect(() => {
+    let timer;
+    timer = counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+
+    return () => clearInterval(timer);
+  }, [counter]);
   return (
     <div className="login mb-5">
       <div className="container">
@@ -98,7 +126,7 @@ const ConfirmSignUp = () => {
                       name="confirmationCode"
                       type="text"
                       value={confirmationCode}
-                      onChange={handleChange}
+                      onChange={(e) => setConfirmationCode(e.target.value)}
                     />
                     <input
                       onClick={() => setclickedSubmit(true)}
@@ -106,21 +134,35 @@ const ConfirmSignUp = () => {
                       value="Register"
                       className="btn btn-info btn-block mt-4"
                     />
-                    <div className="mt-3">
-                      <p className="text-muted d-flex justify-content-between">
-                        <span className="text-decoration-none text-green text-slim">
-                          Didn't receive any code?{" "}
-                        </span>
-                        <Link
-                          onClick={() => {
-                            alert("Your request has been sent");
-                          }}
-                          className="text-info text-slim d-block"
-                        >
-                          Resend Code
-                        </Link>
-                      </p>
-                    </div>
+                    {counter !== 0 ? (
+                      <>
+                        <h3 className="mt-2 text-center">{counter}</h3>
+                        <div style={{ width: "100%" }}>
+                          <div
+                            style={{
+                              height: "5px",
+                              backgroundColor: "green",
+                              width: `calc(100% / ${counter})`,
+                            }}
+                          ></div>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="mt-3">
+                        <p className="text-muted d-flex justify-content-between">
+                          <span className="pt-2 text-decoration-none text-green text-slim">
+                            Didn't receive any code?{" "}
+                          </span>
+                          <button
+                            type="button"
+                            className="btn btn-link text-info text-slim d-block"
+                            onClick={resendConfirm}
+                          >
+                            Resend Code
+                          </button>
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -131,5 +173,4 @@ const ConfirmSignUp = () => {
     </div>
   );
 };
-
 export default ConfirmSignUp;
