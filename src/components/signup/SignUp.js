@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TextFieldGroup from "../commons/TextFieldGroup";
-import logo from "../../images/logo.png";
+import TextFieldGroupRow from "../commons/TextFieldGroupRow";
+import logo from "../../images/inventoryflo-logo-2.png";
 import { useDispatch, useSelector } from "react-redux";
 import { signupRequest } from "./actions";
 import { useHistory, Link } from "react-router-dom";
@@ -62,7 +63,7 @@ const SignUp = (props) => {
 					{loading ? (
 						Spinner()
 					) : (
-						<div className="col-md-4 m-auto">
+						<div className="col-md-5 m-auto">
 							<header className="brand">
 								<Link to="/">
 									<img
@@ -73,25 +74,67 @@ const SignUp = (props) => {
 								</Link>
 							</header>
 							<div className="card">
-								<div className="card-header text-center">Sign Up</div>
+								<div className="card-header text-center text-green">
+									Sign Up
+								</div>
 								<div className="card-body">
-									{FORM_DETAILS.map(({ placeholder, name, type }, index) => (
-										<TextFieldGroup
-											key={index}
-											placeholder={placeholder}
-											name={name}
-											type={type}
-											onChange={handleChange}
-											value={userInfo[name]}
-											error={errors[name]}
-										/>
-									))}
+									{FORM_DETAILS.map(({ placeholder, name, type }, index) =>
+										name === "firstName" ? (
+											<TextFieldGroup
+												key={index}
+												placeholder={placeholder}
+												name={name}
+												type={type}
+												onChange={handleChange}
+												value={userInfo[name]}
+												error={errors[name]}
+											/>
+										) : name === "lastName" ? (
+											<TextFieldGroup
+												key={index}
+												placeholder={placeholder}
+												name={name}
+												type={type}
+												onChange={handleChange}
+												value={userInfo[name]}
+												error={errors[name]}
+											/>
+										) : (
+											<TextFieldGroup
+												key={index}
+												placeholder={placeholder}
+												name={name}
+												type={type}
+												onChange={handleChange}
+												value={userInfo[name]}
+												error={errors[name]}
+											/>
+										)
+									)}
 									<input
 										onClick={handleSubmit}
 										type="submit"
 										value="Create Account"
 										className="btn btn-info btn-block mt-4"
 									/>
+									<div className="mt-3">
+										<p className="text-muted d-flex justify-content-between">
+											<span className="text-green text-slim">
+												Already have an account?
+											</span>
+
+											<Link to="/" className="text-info text-slim d-block">
+												Sign In
+											</Link>
+										</p>
+										<p className="more-info text-center">
+											By clicking on "Create Account", you are accepting our{" "}
+											<br />
+											<Link className="text-decoration-none text-green text-slim">
+												data privacy policy
+											</Link>
+										</p>
+									</div>
 								</div>
 							</div>
 						</div>
