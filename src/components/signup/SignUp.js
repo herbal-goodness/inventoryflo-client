@@ -23,10 +23,14 @@ const SignUp = () => {
     user: signup.userInfo,
     error: signup.error,
   }));
-  const { loginSuccessful, isLoading } = useSelector(({ login }) => ({
+
+  const { isLoading } = useSelector(({ login }) => ({
     isLoading: login.loading,
-    loginSuccessful: login.successful,
   }));
+  const { loginSuccessful } = useSelector(({ userInfo }) => ({
+    loginSuccessful: userInfo.successful,
+  }));
+
   const handleChange = (e) => {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
   };
@@ -56,7 +60,7 @@ const SignUp = () => {
 
   //TODO: Replace with a betther UI to redirect user to home
   return loginSuccessful && !isLoading ? (
-    <h1 style={{ margin: "20% 20%" }}>
+    <h1 style={{ margin: "25% 20%" }}>
       You are already logged in, <a href="/dashboard"> go home</a>
     </h1>
   ) : (
