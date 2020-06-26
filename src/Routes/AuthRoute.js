@@ -3,7 +3,7 @@ import { Route, useHistory } from "react-router-dom";
 import { isAuthenticated } from "../services/auth";
 import { useSelector, useDispatch } from "react-redux";
 import PrivateRoute from "./PrivateRoutes";
-import Spinner from "../components/utils/Spinner";
+import { Spinner } from "../components/utils/components";
 
 const AuthRoute = (props) => {
   const [isLoggedIn, setLogin] = useState(false);

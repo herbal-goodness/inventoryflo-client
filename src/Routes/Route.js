@@ -8,7 +8,8 @@ import Layout from "../components/layout/Layout";
 import ConfirmSignUp from "../components/signup/ConfirmSignUp";
 import AuthRoute from "./AuthRoute";
 import PrivateRoute from "./PrivateRoutes";
-import Spinner from "../components/utils/Spinner";
+import { Spinner } from "../components/utils/components";
+import signup from "../components/signup";
 const Dashboard = lazy(() => import("../components/dashboard/Dashboard"));
 
 function Inventoryflo() {
@@ -28,6 +29,11 @@ function Inventoryflo() {
               exact
               path="/forgot-password"
               component={signin.ForgotPassword}
+            />
+            <AuthRoute
+              exact
+              path="/sign-up-succsess"
+              component={register.Success}
             />
             <AuthRoute
               exact
