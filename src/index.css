@@ -540,11 +540,11 @@ th a:hover {
 	-moz-box-shadow: 3px 9px 4px -1px rgba(204, 204, 204, 1);
 	box-shadow: 3px 9px 4px -1px rgba(204, 204, 204, 1);
 }
-#main-menu li a {
+#main-menu .nav-link {
 	color: #777 !important;
-}
-#main-menu li a {
-	color: #777 !important;
+	font-weight: bold;
+	font-size: 1.2rem;
+	line-height: 22px;
 }
 
 #main-menu .btn-green {
@@ -562,4 +562,48 @@ th a:hover {
 }
 .nav-link-border {
 	border-right: 2px solid black;
+}
+
+/* INTEGRATIONS */
+.integrations h1 {
+	font-weight: 800;
+	font-size: 3rem;
+	line-height: 58px;
+	color: #000;
+}
+#integrations-container h2 {
+	font-style: normal;
+	font-weight: 600;
+	font-size: 30px;
+	line-height: 36px;
+	color: #f2994a;
+}
+
+#integrations-container .card {
+	width: 15.4rem;
+	margin: 0 auto;
+	height: 360px;
+}
+
+#integrations-container .card:hover {
+	transform: scale(1.2);
+	transition: all 0.4s ease-in-out;
+}
+
+#integrations-container .card-title {
+	border: none;
+	border-radius: 0;
+	font-size: 18px;
+}
+#integrations-container .card-body h2 {
+	padding-left: 0;
+	font-family: Lato sans-serif;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 22px;
+	line-height: 26px;
+	color: #333;
+}
+#integrations-container img {
+	padding: 10px 20px;
 }
