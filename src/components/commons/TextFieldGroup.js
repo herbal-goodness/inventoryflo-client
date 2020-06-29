@@ -12,9 +12,10 @@ const TextFieldGroup = ({
   info,
   onChange,
   disabled,
+  className,
 }) => {
   return (
-    <div className="form-group">
+    <div className={`form-group ${className}`}>
       <input
         type={type}
         className={classnames("form-control form-control-lg", {
