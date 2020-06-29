@@ -107,7 +107,7 @@ const Login = () => {
                         to="/signup-user"
                         className="text-decoration-none text-green text-slim"
                       >
-                        New to inventoryflo ?
+                        Create account
                       </Link>
                       <span className={"d-block"}>
                         <Link
