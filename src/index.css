@@ -527,7 +527,7 @@ th a:hover {
 	grid-gap: 20px;
 	font-family: Lato sans-serif;
 	background: rgba(224, 224, 224, 0.26);
-	margin-top: 100px;
+	margin-top: 0.2rem;
 }
 
 .policy-article {
@@ -535,6 +535,31 @@ th a:hover {
 	line-height: 26px;
 	font-size: 1.1rem;
 }
+#main-menu {
+	-webkit-box-shadow: 3px 9px 4px -1px rgba(204, 204, 204, 1);
+	-moz-box-shadow: 3px 9px 4px -1px rgba(204, 204, 204, 1);
+	box-shadow: 3px 9px 4px -1px rgba(204, 204, 204, 1);
+}
 #main-menu li a {
 	color: #777 !important;
+}
+#main-menu li a {
+	color: #777 !important;
+}
+
+#main-menu .btn-green {
+	background-color: #2e8474;
+	color: #ffffff !important;
+	border-radius: 0;
+}
+.policy-header h1 {
+	color: #333;
+	font-weight: bold;
+}
+.policy-article h3 {
+	color: #777;
+	font-weight: bold;
+}
+.nav-link-border {
+	border-right: 2px solid black;
 }

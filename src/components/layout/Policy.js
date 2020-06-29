@@ -6,7 +6,7 @@ const Policy = () => {
 	return (
 		<>
 			<Menu />
-			<main className="wrapper container-fluid mx-auto p-4">
+			<main className="wrapper container-fluid mx-auto px-5 py-3">
 				<header className="policy-header">
 					<h1>Terms of Service</h1>
 				</header>
@@ -37,7 +37,7 @@ const Policy = () => {
 						can confidently trust.
 					</p>
 				</article>
-				<article class="policy-article policy-info">
+				<article className="policy-article policy-info">
 					<h3 className="policy-sub-header">
 						What information we collect, how we collect it, and why
 					</h3>
@@ -90,7 +90,7 @@ const Policy = () => {
 						reason for which it was provided to us.
 					</p>
 				</article>
-				<article class="policy-article policy-info">
+				<article className="policy-article policy-info">
 					<h3 className="policy-sub-header">How we utilize information</h3>
 					<p>
 						We strongly believe in both minimizing the data we collect and
@@ -214,7 +214,7 @@ const Policy = () => {
 				</article>
 
 				{/* How we secure data */}
-				<article class="policy-article policy-info">
+				<article className="policy-article policy-info">
 					<h3 className="policy-sub-header">
 						How we secure, store and retain your data
 					</h3>
@@ -251,7 +251,7 @@ const Policy = () => {
 					</p>
 				</article>
 				{/* How to access/update data */}
-				<article class="policy-article policy-info">
+				<article className="policy-article policy-info">
 					<h3 className="policy-sub-header">
 						How you can access, update or delete your data
 					</h3>
@@ -272,7 +272,7 @@ const Policy = () => {
 					<p>
 						If you are unable for any reason to access your Account Settings,
 						you may also contact us by one of the methods described in the{" "}
-						<Link>“Contact Us”</Link> section below.
+						<Link to="">“Contact Us”</Link> section below.
 					</p>
 					<p>
 						If you have an unresolved privacy or data use concern that we have
@@ -296,7 +296,7 @@ const Policy = () => {
 				</article>
 
 				{/* Do not track notifications */}
-				<article class="policy-article policy-info">
+				<article className="policy-article policy-info">
 					<h3 className="policy-sub-header">‘Do Not Track’ notifications.</h3>
 					<p>
 						Some browsers allow you to automatically notify websites you visit
@@ -310,18 +310,19 @@ const Policy = () => {
 					</p>
 				</article>
 				{/* Age Restrictions */}
-				<article class="policy-article policy-info">
+				<article className="policy-article policy-info">
 					<h3 className="policy-sub-header">Age Restrictions</h3>
 					<p>
 						Our Services are available for purchase only for those over the age
 						of 18. Our Services are not targeted to, intended to be consumed by
 						or designed to entice individuals under the age of 18. If you know
 						of or have reason to believe anyone under the age of 18 has provided
-						us with any personal information, please <Link>contact us</Link>.
+						us with any personal information, please{" "}
+						<Link to="">contact us</Link>.
 					</p>
 				</article>
 				{/* Non-Discrimination */}
-				<article class="policy-article policy-info">
+				<article className="policy-article policy-info">
 					<h3 className="policy-sub-header">Non-Discrimination</h3>
 					<p>
 						We will not discriminate against you for exercising any of your
@@ -344,7 +345,7 @@ const Policy = () => {
 					</ul>
 				</article>
 				{/* Changes to this policy */}
-				<article class="policy-article policy-info">
+				<article className="policy-article policy-info">
 					<h3 className="policy-sub-header">Changes to this policy</h3>
 					<p>
 						We reserve the right to modify this Privacy Policy at any time. If
@@ -358,7 +359,7 @@ const Policy = () => {
 					</p>
 				</article>
 				{/*  Contact us */}
-				<article class="policy-article policy-info">
+				<article className="policy-article policy-info">
 					<h3 className="policy-sub-header"> Contact us</h3>
 					<p>
 						If you have any privacy-related questions, concerns or complaints
