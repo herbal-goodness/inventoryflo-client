@@ -31,6 +31,7 @@
 	--deep-green: #00715c;
 	--transparentGray: #f8f9fa;
 	--grayBackground: #f7f7f7;
+	--mainSpacing: 3px;
 	/* FONTS */
 	--roboto: "Roboto", sans-serif;
 	--josefin: "Josefin Sans", sans-serif;
@@ -275,6 +276,11 @@ h5 a {
 .main-logo {
 	width: 120px;
 	margin-bottom: 12px;
+}
+
+.nav-logo {
+	width: 70px;
+	max-width: 100%;
 }
 
 .logo-list {
@@ -571,12 +577,14 @@ th a:hover {
 	line-height: 58px;
 	color: #000;
 }
-#integrations-container h2 {
+#integrations-container .section-title h2 {
 	font-style: normal;
 	font-weight: 600;
-	font-size: 30px;
 	line-height: 36px;
 	color: #f2994a;
+	font-size: 2rem;
+	letter-spacing: var(--mainSpacing);
+	margin-bottom: 1rem;
 }
 
 #integrations-container .card {
@@ -606,4 +614,11 @@ th a:hover {
 }
 #integrations-container img {
 	padding: 10px 20px;
+}
+
+.section-title div {
+	width: 8rem;
+	height: 5px;
+	margin: 0 auto;
+	background: #2e8474;
 }
