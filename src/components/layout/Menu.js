@@ -4,9 +4,9 @@ import logo from "../../images/inventoryflo-logo-2.png";
 const Navbar = () => {
 	return (
 		<>
-			<nav className="navbar navbar-expand-lg" id="main-menu">
+			<nav className="navbar navbar-expand-lg fixed-top mb-4" id="main-menu">
 				<Link className="navbar-brand" to="/">
-					<img src={logo} alt="logo" className="main-logo" />
+					<img src={logo} alt="logo" className="nav-logo" />
 				</Link>
 				<div className="container">
 					<button
@@ -31,7 +31,7 @@ const Navbar = () => {
 								</Link>
 							</li>
 							<li className="nav-item">
-								<Link className="nav-link" to="">
+								<Link className="nav-link" to="/integrations">
 									Integrations
 								</Link>
 							</li>
@@ -49,7 +49,9 @@ const Navbar = () => {
 							</li>
 							<li className="nav-item"></li>
 							<li className="nav-item">
-								<Link className="nav-link btn btn-green ml-3" to="/signup-user">
+								<Link
+									className="nav-link btn btn-green ml-3 align-self-center"
+									to="/signup-user">
 									Get Started
 								</Link>
 							</li>

@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivateRoutes";
 import { Spinner } from "../components/utils/components";
 import signup from "../components/signup";
 import Policy from "../components/layout/Policy";
+import Integrations from "../components/layout/Integrations";
 const Dashboard = lazy(() => import("../components/dashboard/Dashboard"));
 
 function Inventoryflo() {
@@ -57,6 +58,7 @@ function Inventoryflo() {
 							}}
 						/>
 						<Route exact path="/privacy-policy" component={Policy} />
+						<Route exact path="/integrations" component={Integrations} />
 						<Route exact path="*" component={NotFound} />
 					</Switch>
 				</Suspense>
