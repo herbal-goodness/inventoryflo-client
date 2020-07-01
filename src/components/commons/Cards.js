@@ -1,9 +1,12 @@
 import React from "react";
 
-const Cards = ({ source, alternate, title, header, children }) => {
+const Cards = ({ source, alternate, title, header, children, coming }) => {
 	return (
-		<div>
+		<div className={coming}>
 			<div className="card mb-4 mx-sm-auto">
+				<h3 className="ribbon ">
+					<span>Coming Soon!!!</span>
+				</h3>
 				<img
 					className="card-img-top img-fluid"
 					src={source}

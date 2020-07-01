@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Menu from "../layout/Menu";
 
 const Policy = () => {
+	const [newComponent, setComp] = useState({ visible: true });
+	const { visible } = newComponent;
 	return (
-		<>
-			<Menu />
+		<div className="data-policy">
+			{visible ? <Menu /> : null}
 			<main className="wrapper container-fluid mx-auto px-5 py-3">
 				<header className="policy-header">
 					<h1>Terms of Service</h1>
@@ -378,7 +380,7 @@ const Policy = () => {
 					</p>
 				</article>
 			</main>
-		</>
+		</div>
 	);
 };
 
