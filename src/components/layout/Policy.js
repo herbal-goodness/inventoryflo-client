@@ -34,9 +34,12 @@ const Policy = () => {
 						any time you have questions about our practices or any of your
 						rights described below, you may reach our Data Protection Officer
 						(“DPO”) and our dedicated team that supports this office by
-						contacting us at abc@inventoryflo.com. This inbox is actively
-						monitored and managed so that we can deliver an experience that you
-						can confidently trust.
+						contacting us at{" "}
+						<Link to="info@inventoryflo.com" className="text-muted">
+							info@inventoryflo.com
+						</Link>
+						. This inbox is actively monitored and managed so that we can
+						deliver an experience that you can confidently trust.
 					</p>
 				</article>
 				<article className="policy-article policy-info">
@@ -47,7 +50,7 @@ const Policy = () => {
 						Much of what you likely consider personal information is collected
 						directly from you when you:
 					</p>
-					<ol id="policy-requirement-list">
+					<ol id="policy-requirement-list-unordered">
 						<li>
 							Create an account or purchase any of our Services (ex: billing
 							information, including name, address, credit card number,
@@ -92,6 +95,7 @@ const Policy = () => {
 						reason for which it was provided to us.
 					</p>
 				</article>
+				{/* How we uitilize information */}
 				<article className="policy-article policy-info">
 					<h3 className="policy-sub-header">How we utilize information</h3>
 					<p>
@@ -109,20 +113,20 @@ const Policy = () => {
 					</p>
 					<ul className="policy-info-utilization">
 						<li>
-							Improve and optimize the operation and performance of our Services
-							(again, including our websites and mobile applications)
+							- Improve and optimize the operation and performance of our
+							Services (again, including our websites and mobile applications)
 						</li>
 						<li>
-							Diagnose problems with and identify any security risks, errors, or
-							needed enhancements to the Services
+							- Diagnose problems with and identify any security risks, errors,
+							or needed enhancements to the Services
 						</li>
 						<li>
-							Detect and prevent fraud and abuse of our Services and systems
+							- Detect and prevent fraud and abuse of our Services and systems
 						</li>
-						<li>Collecting aggregate statistics about use of the Services</li>
+						<li>- Collecting aggregate statistics about use of the Services</li>
 						<li>
-							Understand and analyze how you use our Services and what products
-							and services are most relevant to you.
+							- Understand and analyze how you use our Services and what
+							products and services are most relevant to you.
 						</li>
 					</ul>
 					<p>
@@ -139,14 +143,14 @@ const Policy = () => {
 						services on our behalf, such as:
 					</p>
 					<ul className="policy-info-utilization">
-						<li>Processing credit card payments</li>
+						<li>- Processing credit card payments</li>
 						<li>
-							Performing analysis of our Services and customers demographics
+							- Performing analysis of our Services and customers demographics
 						</li>
 						<li>
-							Communicating with you, such as by way email or survey delivery
+							- Communicating with you, such as by way email or survey delivery
 						</li>
-						<li>Customer relationship management</li>
+						<li>- Customer relationship management</li>
 					</ul>
 					<p>
 						We only share your personal information as necessary for any third
@@ -169,15 +173,20 @@ const Policy = () => {
 						include:
 					</p>
 					<ul>
-						<li>Email - Text (SMS) messages</li>
-						<li>Telephone calls</li>
-						<li>Messenger applications (e.g. WhatsApp, etc.)</li>
-						<li>Automated phone calls or text messages.</li>
+						<li>- Email </li>
+						<li>- Text (SMS) messages</li>
+						<li>- Telephone calls</li>
+						<li>- Messenger applications (e.g. WhatsApp, etc.)</li>
+						<li>- Automated phone calls or text messages.</li>
 					</ul>
 					<p>
 						You may opt-out of receiving promotional emails from Inventoryflo by
 						following the opt-out instructions provided in those emails or by
-						contacting abc@inventoryflo.com.
+						contacting{" "}
+						<Link to="info@inventoryflo.com" className="text-muted">
+							info@inventoryflo.com
+						</Link>
+						.
 					</p>
 					<p>
 						If we collect information from you in connection with a co-branded
@@ -194,8 +203,11 @@ const Policy = () => {
 						orders, we will only use the contacts and any other personal
 						information for the requested service. If you believe that anyone
 						has provided us with your personal information and you would like to
-						request that it be removed from our database, please contact us at
-						abc@inventoryflo.com.
+						request that it be removed from our database, please contact us at{" "}
+						<Link to="info@inventoryflo.com" className="text-muted">
+							info@inventoryflo.com
+						</Link>
+						.
 					</p>
 					<p>
 						Compliance with legal, regulatory and law enforcement requests. We
@@ -235,21 +247,25 @@ const Policy = () => {
 
 					<ul id="policy-requirement-list">
 						<li>
-							Mandated by law, contract or similar obligations applicable to our
-							business operations;
+							- Mandated by law, contract or similar obligations applicable to
+							our business operations;
 						</li>
 						<li>
-							For preserving, resolving, defending or enforcing our
+							- For preserving, resolving, defending or enforcing our
 							legal/contractual rights; or
 						</li>
 						<li>
-							Needed to maintain adequate and accurate business and financial
+							- Needed to maintain adequate and accurate business and financial
 							records.
 						</li>
 					</ul>
 					<p>
 						If you have any questions about the security or retention of your
-						personal information, you can contact us at abc@inventoryflo.com.
+						personal information, you can contact us at{" "}
+						<Link to="info@inventoryflo.com" className="text-muted">
+							info@inventoryflo.com
+						</Link>
+						.
 					</p>
 				</article>
 				{/* How to access/update data */}
@@ -264,23 +280,29 @@ const Policy = () => {
 					</p>
 					<p>
 						If you wish to delete or port your personal information, you may
-						submit your request to abc@inventoryflo.com. If you make a request
-						to delete your personal information and that data is necessary for
-						the products or services you have purchased, the request will be
-						honored only to the extent it is no longer necessary for any
-						Services purchased or required for our legitimate business purposes
-						or legal or contractual record keeping requirements.
+						submit your request to{" "}
+						<Link to="info@inventoryflo.com" className="text-muted">
+							info@inventoryflo.com
+						</Link>
+						. If you make a request to delete your personal information and that
+						data is necessary for the products or services you have purchased,
+						the request will be honored only to the extent it is no longer
+						necessary for any Services purchased or required for our legitimate
+						business purposes or legal or contractual record keeping
+						requirements.
 					</p>
 					<p>
 						If you are unable for any reason to access your Account Settings,
 						you may also contact us by one of the methods described in the{" "}
-						<Link to="">“Contact Us”</Link> section below.
+						“Contact Us” section below.
 					</p>
 					<p>
 						If you have an unresolved privacy or data use concern that we have
 						not addressed satisfactorily, please contact our U.S.-based third
-						party dispute resolution provider (free of charge) at
-						<Link to="https://feedback-form.truste.com/watchdog/request">
+						party dispute resolution provider (free of charge) at{" "}
+						<Link
+							to="https://feedback-form.truste.com/watchdog/request"
+							className="text-muted">
 							https://feedback-form.truste.com/watchdog/request
 						</Link>
 						. Under certain conditions, more fully described on the Privacy
@@ -308,7 +330,10 @@ const Policy = () => {
 						currently do not alter our practices when we receive a “Do Not
 						Track” signal from a visitor’s browser. To find out more about “Do
 						Not Track,” you may wish to visit{" "}
-						<Link to="www.allaboutdnt.com">www.allaboutdnt.com</Link>.
+						<Link to="www.allaboutdnt.com" className="text-muted">
+							www.allaboutdnt.com
+						</Link>
+						.
 					</p>
 				</article>
 				{/* Age Restrictions */}
@@ -319,8 +344,7 @@ const Policy = () => {
 						of 18. Our Services are not targeted to, intended to be consumed by
 						or designed to entice individuals under the age of 18. If you know
 						of or have reason to believe anyone under the age of 18 has provided
-						us with any personal information, please{" "}
-						<Link to="">contact us</Link>.
+						us with any personal information, please contact us.
 					</p>
 				</article>
 				{/* Non-Discrimination */}
@@ -331,17 +355,17 @@ const Policy = () => {
 						privacy rights. Unless permitted under applicable laws, we will not:
 					</p>
 					<ul id="policy-requirement-list">
-						<li>Deny you goods or services.</li>
+						<li>- Deny you goods or services.</li>
 						<li>
-							Charge you different prices or rates for goods or services,
+							- Charge you different prices or rates for goods or services,
 							including through granting discounts or other benefits, or
 							imposing penalties.
 						</li>
 						<li>
-							Provide you a different level or quality of goods or services
+							- Provide you a different level or quality of goods or services
 						</li>
 						<li>
-							Suggest that you may receive a different price or rate for goods
+							- Suggest that you may receive a different price or rate for goods
 							or services or a different level or quality of goods or services
 						</li>
 					</ul>
@@ -367,12 +391,22 @@ const Policy = () => {
 						If you have any privacy-related questions, concerns or complaints
 						about our Privacy Policy, our practices or our Services, you may
 						contact us by email at{" "}
-						<Link to="abc@inventoryflo.com">abc@inventoryflo.com</Link>. In the
-						alternative, you may contact us by either of the following means:
+						<Link to="info@inventoryflo.com" className="text-muted">
+							info@inventoryflo.com
+						</Link>
+						. In the alternative, you may contact us by either of the following
+						means:
 					</p>
 					<ul id="policy-requirement-list">
-						<li>By Mail:</li>
-						<li>By Phone:</li>
+						<li className="mb-5">
+							<span className="border-btm">- By Mail: </span> &nbsp; &nbsp; 2150
+							S. Central expressway, <br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+							&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Suite 200 Mckinney TX 75069
+						</li>
+						<li>
+							<span className="border-btm">- By Phone:</span> &nbsp;(469)
+							415-1200
+						</li>
 					</ul>
 					<p>
 						We will respond to all requests, inquiries or concerns within thirty
