@@ -253,6 +253,9 @@ h5 a {
 .text-green {
 	color: #20846b;
 }
+.text-gray {
+	color: #828282;
+}
 .form-group input {
 	border: 2px solid #20846b;
 }
