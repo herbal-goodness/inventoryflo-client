@@ -256,6 +256,9 @@ h5 a {
 .text-gray {
 	color: #828282;
 }
+.text-orange {
+	color: #f7931e !important;
+}
 .form-group input {
 	border: 2px solid #20846b;
 }
@@ -273,6 +276,9 @@ h5 a {
 
 .border-btm {
 	border-bottom: 2px solid #999;
+}
+.bg-mid-green {
+	background-color: #20846b;
 }
 .card {
 	-webkit-box-shadow: 10px 13px 19px 0px rgba(0, 0, 0, 0.75);
@@ -707,4 +713,28 @@ th a:hover {
 	border-right: 3px solid #79a70a;
 	border-bottom: 3px solid transparent;
 	border-top: 3px solid #79a70a;
+}
+
+/* FOOTER */
+.footer {
+	font-family: Lato sans-serif;
+	font-style: normal;
+	line-height: 22px;
+	align-items: center;
+}
+.footer-header {
+	color: var(--mainWhite);
+	font-weight: bold;
+	font-size: 1.3rem;
+	text-transform: capitalize;
+}
+
+.footer-nav a {
+	color: var(--mainWhite);
+	text-decoration: none;
+	font-size: 1rem;
+	line-height: 17px;
+}
+.footer-nav a:hover {
+	color: #f7931e;
 }

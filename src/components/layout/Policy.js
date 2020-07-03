@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Menu from "../layout/Menu";
+import Footer from "../commons/Footer";
 
 const Policy = () => {
 	const [newComponent, setComp] = useState({ visible: true });
@@ -400,8 +401,9 @@ const Policy = () => {
 					<ul id="policy-requirement-list">
 						<li className="mb-5">
 							<span className="border-btm">- By Mail: </span> &nbsp; &nbsp; 2150
-							S. Central expressway, <br /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-							&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Suite 200 Mckinney TX 75069
+							S. Central expressway, Suite 200 <br /> &nbsp; &nbsp; &nbsp;
+							&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Mckinney
+							TX 75069
 						</li>
 						<li>
 							<span className="border-btm">- By Phone:</span> &nbsp;(469)
@@ -414,6 +416,7 @@ const Policy = () => {
 					</p>
 				</article>
 			</main>
+			{visible ? <Footer /> : null}
 		</div>
 	);
 };

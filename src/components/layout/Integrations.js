@@ -9,6 +9,7 @@ import walmart from "../../images/walmart-logo.jpg";
 import slack from "../../images/slack-logo.jpg";
 import Cards from "../commons/Cards";
 import SectionTitle from "../commons/SectionTitle";
+import Footer from "../commons/Footer";
 
 const Integrations = () => {
 	const [newComponent, setComp] = useState({ visible: true });
@@ -122,6 +123,7 @@ const Integrations = () => {
 					</div>
 				</div>
 			</div>
+			{visible ? <Footer /> : null}
 		</div>
 	);
 };
