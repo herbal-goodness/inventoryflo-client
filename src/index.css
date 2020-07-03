@@ -267,6 +267,10 @@ h5 a {
 .font-icons {
 	color: var(--transparentGreen);
 }
+
+.border-btm {
+	border-bottom: 2px solid #999;
+}
 .card {
 	-webkit-box-shadow: 10px 13px 19px 0px rgba(0, 0, 0, 0.75);
 	-moz-box-shadow: 10px 13px 19px 0px rgba(0, 0, 0, 0.75);
