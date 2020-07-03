@@ -63,4 +63,18 @@ export const FOOTER_CONTENT = [
       },
     ],
   },
+  {
+    title: "Term of Service",
+    color: "text-orange",
+    links: [
+      {
+        to: "/user-sigin",
+        text: "Login",
+      },
+      {
+        to: "/sign-up",
+        text: "Try InventoryFlo",
+      },
+    ],
+  },
 ];

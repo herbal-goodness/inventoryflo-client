@@ -16,38 +16,23 @@ const Footer = () => {
             </p>
           </div>
 
-          {FOOTER_CONTENT.map(({ title, links }) => (
+          {FOOTER_CONTENT.map(({ title, links, color }) => (
             <div className="col-md-2">
-              <h2 className="footer-header mb-3">{title}</h2>
+              <h2 className={`footer-header mb-3 ${color && "text-black-50"}`}>
+                {title}
+              </h2>
 
               <ul className="footer-nav">
                 {links.map(({ text, to }) => (
                   <li>
-                    <Link to={to}>{text}</Link>
+                    <Link className={color ? color : ""} to={to}>
+                      {text}
+                    </Link>
                   </li>
                 ))}
               </ul>
             </div>
           ))}
-
-          <div className="col-md-2">
-            <h2 className="footer-header mb-3 text-black-50">
-              terms of service
-            </h2>
-
-            <ul className="footer-nav">
-              <li>
-                <Link to="/" className="text-orange">
-                  Login
-                </Link>
-              </li>
-              <li>
-                <Link to="/signup-user" className="text-orange">
-                  Try Inventoryflo
-                </Link>
-              </li>
-            </ul>
-          </div>
         </div>
       </footer>
     </div>
