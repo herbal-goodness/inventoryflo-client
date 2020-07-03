@@ -534,6 +534,10 @@ th a:hover {
 .data-policy {
 	background: #e0e0e0;
 }
+.data-policy .container-fluid {
+	padding-left: 4.9%;
+	padding-right: 4.9%;
+}
 
 .wrapper {
 	display: grid;
@@ -551,7 +555,7 @@ th a:hover {
 	-webkit-box-shadow: 3px 9px 4px -1px rgb(204, 204, 204);
 	-moz-box-shadow: 3px 9px 4px -1px rgb(204, 204, 204);
 	box-shadow: 3px 9px 4px -1px rgb(204, 204, 204);
-	background: yellowgreen;
+	background: var(--mainWhite);
 }
 #main-menu .nav-link {
 	color: #777 !important;

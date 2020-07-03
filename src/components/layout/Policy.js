@@ -8,7 +8,7 @@ const Policy = () => {
 	return (
 		<div className="data-policy">
 			{visible ? <Menu /> : null}
-			<main className="wrapper container-fluid mx-auto px-5 py-3">
+			<main className="wrapper container-fluid mx-auto py-3">
 				<header className="policy-header">
 					<h1>Terms of Service</h1>
 				</header>
@@ -52,27 +52,27 @@ const Policy = () => {
 					</p>
 					<ol id="policy-requirement-list-unordered">
 						<li>
-							Create an account or purchase any of our Services (ex: billing
+							1. Create an account or purchase any of our Services (ex: billing
 							information, including name, address, credit card number,
 							government identification);
 						</li>
 						<li>
-							Connect our Services to your marketplace accounts on third-party
-							websites (ex: login and authentication information necessary to
-							maintain connection; order and inventory information downloaded
-							from these third-party websites);
+							2. Connect our Services to your marketplace accounts on
+							third-party websites (ex: login and authentication information
+							necessary to maintain connection; order and inventory information
+							downloaded from these third-party websites);
 						</li>
 						<li>
-							Request assistance from our customer support team (ex: phone
+							3. Request assistance from our customer support team (ex: phone
 							number);
 						</li>
 						<li>
-							Complete contact forms or request newsletters or other information
-							from us (ex: email); or
+							4. Complete contact forms or request newsletters or other
+							information from us (ex: email); or
 						</li>
 						<li>
-							Participate in contests and surveys, apply for a job, or otherwise
-							participate in activities we promote that might require
+							5. Participate in contests and surveys, apply for a job, or
+							otherwise participate in activities we promote that might require
 							information about you.
 						</li>
 					</ol>
