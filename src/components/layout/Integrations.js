@@ -26,7 +26,6 @@ const Integrations = () => {
 					<div className="row mb-5">
 						<div className="col-lg-4 col-md-6">
 							<Cards
-								className="comingSoon"
 								source={shopify}
 								alternate="shopify"
 								title="shopify"
@@ -41,10 +40,14 @@ const Integrations = () => {
 
 						<div className="col-lg-4 col-md-6">
 							<Cards
+								className="comingSoon"
 								source={amazon}
 								alternate="amazon"
 								title="amazon"
 								header="amazon">
+								<h3 className="ribbon">
+									<span>Coming Soon!!!</span>
+								</h3>
 								<p className="card-text text-muted">
 									Stay on top of sales orders and fulfilments and have stock
 									levels updated in real-time with the Amazon integration.
@@ -57,6 +60,9 @@ const Integrations = () => {
 								alternate="walmart"
 								title="walmart"
 								header="walmart">
+								<h3 className="ribbon">
+									<span>Coming Soon!!!</span>
+								</h3>
 								<p className="card-text text-muted">
 									Manage the products and listings in the largest retailer in
 									the world with over 80 million unique visitors.
@@ -72,6 +78,9 @@ const Integrations = () => {
 								alternate="amazon FBA"
 								title="amazon FBA"
 								header="amazon FBA">
+								<h3 className="ribbon">
+									<span>Coming Soon!!!</span>
+								</h3>
 								<p className="card-text text-muted">
 									Inventoryflo synchronizes with the Amazon FBA so your stock
 									levels will be accurate across all your warehouse locations.
@@ -84,6 +93,9 @@ const Integrations = () => {
 								alternate="eFulfillment Service"
 								title="eFulfillment Service"
 								header="eFulfillment Service">
+								<h3 className="ribbon">
+									<span>Coming Soon!!!</span>
+								</h3>
 								<p className="card-text text-muted">
 									Inventoryflo synchronizes with the EFS to precisely track all
 									the stocks and provides a monitor to check on your
@@ -100,6 +112,9 @@ const Integrations = () => {
 								alternate="google drive"
 								title="google drive"
 								header="google drive">
+								<h3 className="ribbon">
+									<span>Coming Soon!!!</span>
+								</h3>
 								<p className="card-text text-muted">
 									Inventoryflo reports can be saved to the Google drive. Export
 									manual batch sheets or files to visualize inventory and
@@ -114,6 +129,9 @@ const Integrations = () => {
 								alternate="slack"
 								title="slack"
 								header="slack">
+								<h3 className="ribbon">
+									<span>Coming Soon!!!</span>
+								</h3>
 								<p className="card-text text-muted">
 									Bring your team together by posting updates from inventoryflo
 									to slack and update the organization with latest content.
