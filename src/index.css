@@ -662,6 +662,9 @@ th a:hover {
 #integrations-container .card:hover h3 {
 	display: block;
 }
+/* .comingSoon span {
+	display: none !important;
+} */
 
 .ribbon {
 	position: absolute;
