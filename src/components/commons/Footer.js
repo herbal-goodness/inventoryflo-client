@@ -8,7 +8,9 @@ const Footer = () => {
       <footer className="container footer py-5">
         <div className="row">
           <div className="col-md-3 ml-5">
-            <img src={footerlogo} alt="logo" className="mb-2" />
+            <Link to="/">
+              <img src={footerlogo} alt="logo" className="mb-2" />
+            </Link>
             <p>
               Use of this site is subject to express terms of use. By using this
               site, you signify that you agree to be bound by these Terms of

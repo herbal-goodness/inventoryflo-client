@@ -68,11 +68,11 @@ export const FOOTER_CONTENT = [
     color: "text-orange",
     links: [
       {
-        to: "/user-sigin",
+        to: "/signin-user",
         text: "Login",
       },
       {
-        to: "/sign-up",
+        to: "/signup-user",
         text: "Try InventoryFlo",
       },
     ],
