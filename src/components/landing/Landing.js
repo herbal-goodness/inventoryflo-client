@@ -4,6 +4,7 @@ import Header from "./Header";
 import ProcessFlow from "./ProcessFlow";
 import Stock from "./Stock";
 import Sales from "./Sales";
+import IntegrationsPage from "./IntegrationsPage";
 
 const Landing = () => {
 	const [newComponent, setComp] = useState({ visible: true });
@@ -15,6 +16,7 @@ const Landing = () => {
 			<ProcessFlow />
 			<Stock />
 			<Sales />
+			<IntegrationsPage />
 		</>
 	);
 };

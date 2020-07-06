@@ -828,6 +828,27 @@ th a:hover {
 	color: #f7931e;
 }
 
+.int-wrapper {
+	background: rgba(224, 224, 224, 0.26);
+}
+.int-header {
+	font-family: Lato sans-serif;
+	font-style: italic;
+	font-weight: 600;
+	font-size: 48px;
+	line-height: 58px;
+	color: var(--mainBlack);
+}
+.int-links {
+	font-family: Lato sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 24px;
+	line-height: 29px;
+	text-decoration-line: underline;
+	color: #828282;
+}
+
 /* FOOTER */
 .footer {
 	font-family: Lato sans-serif;
