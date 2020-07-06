@@ -141,7 +141,6 @@ const Integrations = () => {
 					</div>
 				</div>
 			</div>
-			{visible ? <Footer /> : null}
 		</div>
 	);
 };

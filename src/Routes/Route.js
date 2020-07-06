@@ -12,6 +12,7 @@ import { Spinner } from "../components/utils/components";
 import signup from "../components/signup";
 import Policy from "../components/layout/Policy";
 import Integrations from "../components/layout/Integrations";
+import Landing from "../components/landing/Landing";
 const Dashboard = lazy(() => import("../components/dashboard/Dashboard"));
 
 function Inventoryflo() {
@@ -57,6 +58,7 @@ function Inventoryflo() {
 								return <h1 style={{ margin: "20% 20%" }}>Admin</h1>;
 							}}
 						/>
+						<Route exact path="/home" component={Landing} />
 						<Route exact path="/privacy-policy" component={Policy} />
 						<Route exact path="/integrations" component={Integrations} />
 						<Route exact path="*" component={NotFound} />
