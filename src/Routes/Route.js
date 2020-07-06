@@ -26,11 +26,11 @@ function Inventoryflo() {
           }
         >
           <Switch>
-            {authRoutes.map((item) => (
-              <AuthRoute exact {...item} />
+            {authRoutes.map((item, i) => (
+              <AuthRoute key={i} exact {...item} />
             ))}
-            {privateRoutes.map((item) => (
-              <PrivateRoute exact {...item} />
+            {privateRoutes.map((item, i) => (
+              <PrivateRoute key={i} exact {...item} />
             ))}
             <Route exact path="/" component={Landing} />
             <Route exact path="/privacy-policy" component={Policy} />
