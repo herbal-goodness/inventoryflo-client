@@ -663,9 +663,6 @@ th a:hover {
 #integrations-container .card:hover h3 {
 	display: block;
 }
-/* .comingSoon span {
-	display: none !important;
-} */
 
 .ribbon {
 	position: absolute;
@@ -726,7 +723,6 @@ th a:hover {
 }
 .header-wrapper .header {
 	padding-top: 100px;
-	/* margin-bottom: 10px; */
 	font-family: Open Sans sans-serif;
 	font-style: normal;
 	font-weight: 800;
@@ -776,6 +772,9 @@ th a:hover {
 	font-size: 20px;
 	line-height: 30px;
 	color: #333;
+}
+.sub-align-right {
+	margin-right: 12.5rem;
 }
 
 /* STOCK */

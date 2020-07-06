@@ -6,7 +6,9 @@ const ProcessFlow = () => {
 			<div className="process-flow container">
 				<h1 className="process-flow-header">
 					<span className="d-block text-right">Monitor the supplychain </span>
-					<span className="d-block text-right">uninterrupted</span>
+					<span className="d-block text-right sub-align-right">
+						uninterrupted!
+					</span>
 				</h1>
 				<div className="row">
 					<div className="col-lg-6">

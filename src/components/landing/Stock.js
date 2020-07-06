@@ -6,7 +6,7 @@ const Stock = () => {
 	return (
 		<section className="container-fluid stock-wrapper">
 			<div className="stock container text-left">
-				<h1 className="stock-header">Where is yout stock?</h1>
+				<h1 className="stock-header">Where is your stock?</h1>
 				<div className="row">
 					<div className="col-md-7 stock-header-content">
 						<p>
