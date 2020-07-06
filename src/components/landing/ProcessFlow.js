@@ -2,8 +2,8 @@ import React from "react";
 import processFlow from "../../images/process_flow.png";
 const ProcessFlow = () => {
 	return (
-		<div className="container-fluid process-flow-wrapper">
-			<header className="process-flow container">
+		<section className="container-fluid process-flow-wrapper">
+			<div className="process-flow container">
 				<h1 className="process-flow-header">
 					<span className="d-block text-right">Monitor the supplychain </span>
 					<span className="d-block text-right">uninterrupted</span>
@@ -47,8 +47,8 @@ const ProcessFlow = () => {
 						</div>
 					</div>
 				</div>
-			</header>
-		</div>
+			</div>
+		</section>
 	);
 };
 

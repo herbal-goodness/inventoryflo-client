@@ -775,6 +775,45 @@ th a:hover {
 	line-height: 30px;
 	color: #333;
 }
+
+/* STOCK */
+
+.stock-wrapper {
+	background-color: #f7931e;
+}
+.stock-header {
+	font-family: Lato sans-serif;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 48px;
+	line-height: 58px;
+	color: var(--mainWhite);
+}
+.stock-header-content {
+	font-family: Lato sans-serif;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 24px;
+	color: var(--mainBlack);
+}
+.stock-wrapper h2 {
+	font-family: Lato sans-serif;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 33px;
+	line-height: 42px;
+	color: var(--mainBlack);
+}
+
+.stock-content p {
+	font-family: Lato sans-serif;
+	font-style: italic;
+	font-weight: normal;
+	font-size: 25px;
+	line-height: 30px;
+	color: var(--mainWhite);
+}
 /* FOOTER */
 .footer {
 	font-family: Lato sans-serif;
