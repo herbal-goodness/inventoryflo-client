@@ -30,30 +30,14 @@ const Stock = () => {
 				<div className="row">
 					<div className="col-lg-12 py-4">
 						<div className="stock-content overflow-hidden">
-							<p className="pb-2 ">
-								<i
-									className="fa fa-check-circle fa-fw text-success"
-									aria-hidden="true"></i>
+							<p className="pb-2">
 								Keep track of your current inventory in all warehouses
 							</p>
-							<p className="pb-2 ">
-								<i
-									className="fa fa-check-circle fa-fw text-success"
-									aria-hidden="true"></i>
+							<p className="pb-2">
 								Set benchmarks to keep out of stock issues under check
 							</p>
-							<p className="pb-2 ">
-								<i
-									className="fa fa-check-circle fa-fw text-success"
-									aria-hidden="true"></i>
-								Find the slack in the products &amp; goods
-							</p>
-							<p className="pb-2 ">
-								<i
-									className="fa fa-check-circle fa-fw text-success"
-									aria-hidden="true"></i>
-								Enable fast allocation of stock
-							</p>
+							<p className="pb-2">Find the slack in the products &amp; goods</p>
+							<p className="pb-2">Enable fast allocation of stock</p>
 						</div>
 					</div>
 				</div>
