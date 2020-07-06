@@ -16,15 +16,18 @@ const Footer = () => {
             </p>
           </div>
 
-          {FOOTER_CONTENT.map(({ title, links, color }) => (
-            <div className="col-md-2">
-              <h2 className={`footer-header mb-3 ${color && "text-black-50"}`}>
+          {FOOTER_CONTENT.map(({ title, links, color }, index) => (
+            <div className="col-md-2" key={index + 1}>
+              <h2
+                key={title}
+                className={`footer-header mb-3 ${color && "text-black-50"}`}
+              >
                 {title}
               </h2>
 
               <ul className="footer-nav">
-                {links.map(({ text, to }) => (
-                  <li>
+                {links.map(({ text, to }, i) => (
+                  <li key={i + 10}>
                     <Link className={color ? color : ""} to={to}>
                       {text}
                     </Link>
