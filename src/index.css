@@ -755,7 +755,8 @@ th a:hover {
 
 /* PROCESS FLOW */
 
-.process-flow-wrapper {
+.process-flow-wrapper,
+.sales-wrapper {
 	background: #fff;
 }
 .process-flow-header {
@@ -767,11 +768,12 @@ th a:hover {
 	color: #00715c;
 }
 
-.process-flow-content {
+.process-flow-content,
+.sales-content {
 	font-family: Lato;
 	font-style: italic;
 	font-weight: normal;
-	font-size: 25px;
+	font-size: 20px;
 	line-height: 30px;
 	color: #333;
 }
@@ -814,6 +816,18 @@ th a:hover {
 	line-height: 30px;
 	color: var(--mainWhite);
 }
+
+/* SALES */
+
+.sales-content h2 {
+	font-family: Lato sans-serif;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 48px;
+	line-height: 58px;
+	color: #f7931e;
+}
+
 /* FOOTER */
 .footer {
 	font-family: Lato sans-serif;
