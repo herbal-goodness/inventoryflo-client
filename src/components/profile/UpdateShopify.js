@@ -26,14 +26,14 @@ const ShopifyDetails = () => {
 
   return (
     <form className="pt-5">
-      {!loading && error && (
+      {!loading && error !== null && (
         <AlertDismissible
           header={"Error"}
           message={error.error}
           variant={"danger"}
         />
       )}
-      {!loading && !error && success && (
+      {!loading && error === null && success && (
         <AlertDismissible
           header={"Done"}
           message={"Successful"}

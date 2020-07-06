@@ -9,13 +9,12 @@ export const handleSubmitShopify = async (
 ) => {
   try {
     setLoading(true);
-    console.log(tokens);
     const res = await fetch(API.API_ROOT + "/add-shopify", {
       body: JSON.stringify(details),
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${tokens.IdToken}`,
+        Authorization: `Bearer ${tokens.AccessToken}`,
       },
     });
 
@@ -23,11 +22,13 @@ export const handleSubmitShopify = async (
     console.log(data);
     if (res.status > 300) {
       setError(data);
+      setSucess(false);
       setLoading(false);
+    } else {
+      setSucess(true);
+      setLoading(false);
+      setError(null);
     }
-
-    setSucess(true);
-    setLoading(false);
   } catch (error) {
     setLoading(false);
     setError(error);
