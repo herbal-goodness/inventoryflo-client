@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import { handleSubmitShopify } from "./functions";
+import { handleSubmit } from "./functions";
 import TextFieldGroup from "../commons/TextFieldGroup";
 import { AlertDismissible } from "../utils/components";
 
@@ -8,24 +8,26 @@ const ShopifyDetails = ({ details, handleChange, tokens }) => {
   const [loading, setLoading] = useState(false);
   const [success, setSucess] = useState(false);
   const [error, setError] = useState(null);
-  const { shopifyUrl, password, apiKey } = details;
+  const { shopifyUrl, apiPassword, apiKey } = details;
 
   return (
     <form className="pt-5">
-      {!loading && error !== null && (
-        <AlertDismissible
-          header={"Error"}
-          message={error.error}
-          variant={"danger"}
-        />
-      )}
-      {!loading && error === null && success && (
-        <AlertDismissible
-          header={"Done"}
-          message={"Successful"}
-          variant="success"
-        />
-      )}
+      <div style={{ maxWidth: "300px" }}>
+        {!loading && error !== null && (
+          <AlertDismissible
+            header={"Error"}
+            message={error.error}
+            variant={"danger"}
+          />
+        )}
+        {!loading && error === null && success && (
+          <AlertDismissible
+            header={"Done"}
+            message={"Successful"}
+            variant="success"
+          />
+        )}
+      </div>
       <p style={{ fontSize: "2em" }}>Shopify Details</p>
       <TextFieldGroup
         name="shopifyUrl"
@@ -36,8 +38,8 @@ const ShopifyDetails = ({ details, handleChange, tokens }) => {
         placeholder="example.myshopify.com"
       />
       <TextFieldGroup
-        name="password"
-        value={password}
+        name="apiPassword"
+        value={apiPassword}
         onChange={handleChange}
         type="password"
         placeholder="Password"
@@ -51,7 +53,14 @@ const ShopifyDetails = ({ details, handleChange, tokens }) => {
       />
       <Button
         onClick={() =>
-          handleSubmitShopify(details, setLoading, setError, setSucess, tokens)
+          handleSubmit(
+            "shopify",
+            details,
+            setLoading,
+            setError,
+            setSucess,
+            tokens
+          )
         }
       >
         {loading ? "Saving..." : "Save"}
