@@ -17,7 +17,7 @@ const PersonalDetails = ({ details, handleChange, tokens }) => {
             name={name}
             type={type}
             disabled
-            placeholder={placeholder}
+            placeholder={details && details[name]}
           />
         ) : (
           <TextFieldGroup
