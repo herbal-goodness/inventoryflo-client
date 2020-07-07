@@ -3,26 +3,12 @@ import { Button } from "react-bootstrap";
 import { handleSubmitShopify } from "./functions";
 import TextFieldGroup from "../commons/TextFieldGroup";
 import { AlertDismissible } from "../utils/components";
-import { useSelector } from "react-redux";
-// import Success from "../signup/Success";
 
-const ShopifyDetails = () => {
-  const [shopifyDetails, setShopifyDetails] = useState({});
+const ShopifyDetails = ({ details, handleChange, tokens }) => {
   const [loading, setLoading] = useState(false);
   const [success, setSucess] = useState(false);
   const [error, setError] = useState(null);
-  const { shopifyUrl, password, apiKey } = shopifyDetails;
-  const { IdToken, AccessToken } = useSelector(({ userInfo }) => ({
-    IdToken: userInfo.user?.IdToken,
-    AccessToken: userInfo.user?.AccessToken,
-  }));
-
-  const handleChange = (e) => {
-    e.preventDefault();
-
-    const { value, name } = e.target;
-    setShopifyDetails({ ...shopifyDetails, [name]: value });
-  };
+  const { shopifyUrl, password, apiKey } = details;
 
   return (
     <form className="pt-5">
@@ -40,7 +26,7 @@ const ShopifyDetails = () => {
           variant="success"
         />
       )}
-      <h3>Shopify Details</h3>
+      <p style={{ fontSize: "2em" }}>Shopify Details</p>
       <TextFieldGroup
         name="shopifyUrl"
         value={shopifyUrl}
@@ -65,10 +51,7 @@ const ShopifyDetails = () => {
       />
       <Button
         onClick={() =>
-          handleSubmitShopify(shopifyDetails, setLoading, setError, setSucess, {
-            IdToken,
-            AccessToken,
-          })
+          handleSubmitShopify(details, setLoading, setError, setSucess, tokens)
         }
       >
         {loading ? "Saving..." : "Save"}

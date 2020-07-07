@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Route, useHistory } from "react-router-dom";
 import Navbar from "../components/layout/Navbar";
-import { isAuthenticated } from "../services/auth";
+import { isAuthenticated, refreshToken } from "../services/auth";
 import { useSelector, useDispatch } from "react-redux";
 import { Spinner } from "../components/utils/components";
 import AuthRoute from "./AuthRoute";
@@ -29,6 +29,7 @@ const PrivateRoute = (props) => {
   }, [successful]);
 
   if (successful && !isLoggedIn) {
+    !refreshToken() && dispatch({ type: "RESET_STATE", payload: history });
     return <div style={{ margin: "25% 25%" }}>{<Spinner />}</div>;
   }
 
