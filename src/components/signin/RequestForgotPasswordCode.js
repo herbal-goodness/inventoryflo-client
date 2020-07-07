@@ -111,14 +111,14 @@ export const RequestCode = () => {
                       />
                       <div className="text-center mt-3">
                         <p className="text-muted d-flex justify-content-between">
-                          <Link
-                            to="/"
-                            className="text-decoration-none text-green text-slim"
-                          >
+                          <span className="text-decoration-none text-green text-slim">
                             Never mind, i remembered
-                          </Link>
+                          </span>
 
-                          <Link to="/" className="text-info text-slim d-block">
+                          <Link
+                            to="/signin-user"
+                            className="text-info text-slim d-block"
+                          >
                             sign in again
                           </Link>
                         </p>

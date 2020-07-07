@@ -1,19 +1,14 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import InventoryContainer from "../components/warehouse/inventory/InventoryContainer";
-import register from "../components/signup";
-import signin from "../components/signin";
 import NotFound from "./NotFound";
 import Layout from "../components/layout/Layout";
-import ConfirmSignUp from "../components/signup/ConfirmSignUp";
-import AuthRoute from "./AuthRoute";
-import PrivateRoute from "./PrivateRoutes";
 import { Spinner } from "../components/utils/components";
-import signup from "../components/signup";
 import Policy from "../components/layout/Policy";
 import Integrations from "../components/layout/Integrations";
-const Dashboard = lazy(() => import("../components/dashboard/Dashboard"));
-const UserProfile = lazy(() => import("../components/profile/UserProfile"));
+import Landing from "../components/landing/Landing";
+import AuthRoute from "./AuthRoute";
+import PrivateRoute from "./PrivateRoutes";
+import { authRoutes, privateRoutes } from "./constants";
 
 function Inventoryflo() {
   return (
@@ -27,39 +22,13 @@ function Inventoryflo() {
           }
         >
           <Switch>
-            <AuthRoute exact path="/signup-user" component={register.SignUp} />
-            <AuthRoute
-              exact
-              path="/forgot-password"
-              component={signin.ForgotPassword}
-            />
-            <AuthRoute
-              exact
-              path="/sign-up-succsess"
-              component={register.Success}
-            />
-            <AuthRoute
-              exact
-              path="/send-reset-code"
-              component={signin.RequestForgotPasswordCode}
-            />
-            <PrivateRoute exact path="/profile" component={UserProfile} />
-            <PrivateRoute exact path="/dashboard" component={Dashboard} />
-            <AuthRoute path="/confirm-signup" component={ConfirmSignUp} />
-            <AuthRoute exact path="/" component={signin.Login} />
-            <PrivateRoute
-              exact
-              path="/inventories"
-              component={InventoryContainer}
-            />
-            {/*This route is a placeholder */}
-            <PrivateRoute
-              exact
-              path="/admin"
-              component={function Admin() {
-                return <h1 style={{ margin: "20% 20%" }}>Admin</h1>;
-              }}
-            />
+            {authRoutes.map((item, i) => (
+              <AuthRoute key={i} exact {...item} />
+            ))}
+            {privateRoutes.map((item, i) => (
+              <PrivateRoute key={i} exact {...item} />
+            ))}
+            <Route exact path="/" component={Landing} />
             <Route exact path="/privacy-policy" component={Policy} />
             <Route exact path="/integrations" component={Integrations} />
             <Route exact path="*" component={NotFound} />

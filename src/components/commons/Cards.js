@@ -4,9 +4,6 @@ const Cards = ({ source, alternate, title, header, children }) => {
 	return (
 		<div>
 			<div className="card mb-4 mx-sm-auto">
-				{/* <h3 className="ribbon">
-					<span>Coming Soon!!!</span>
-				</h3> */}
 				<img
 					className="card-img-top img-fluid"
 					src={source}
