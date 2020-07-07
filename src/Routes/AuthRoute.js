@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Route, useHistory } from "react-router-dom";
-import { isAuthenticated } from "../services/auth";
+import { isAuthenticated, refreshToken } from "../services/auth";
 import { useSelector, useDispatch } from "react-redux";
 import PrivateRoute from "./PrivateRoutes";
 import { Spinner } from "../components/utils/components";
@@ -26,6 +26,7 @@ const AuthRoute = (props) => {
   }, [successful]);
 
   if (successful && !isLoggedIn) {
+    !refreshToken() && dispatch({ type: "RESET_STATE", payload: history });
     return <div style={{ margin: "25% 25%" }}>{<Spinner />}</div>;
   }
 

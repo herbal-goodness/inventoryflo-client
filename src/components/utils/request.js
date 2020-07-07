@@ -1,9 +1,9 @@
 import urls from "./urls";
 import { select } from "redux-saga/effects";
 
-export const getAccessToken = (state) => state.login.userInfo.accessToken;
+export const getAccessToken = (state) => state.login.userInfo.AccessToken;
 export const getrefreshToken = (state) => state.login.userInfo.refreshToken;
-export const getIdToken = (state) => state.login.userInfo.idToken;
+export const getIdToken = (state) => state.login.userInfo.IdToken;
 
 /**
  * Function to make api call to the backend

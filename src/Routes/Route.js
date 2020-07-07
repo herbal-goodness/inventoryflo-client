@@ -1,8 +1,5 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import InventoryContainer from "../components/warehouse/inventory/InventoryContainer";
-import register from "../components/signup";
-import signin from "../components/signin";
 import NotFound from "./NotFound";
 import Layout from "../components/layout/Layout";
 import { Spinner } from "../components/utils/components";
@@ -11,7 +8,6 @@ import Integrations from "../components/layout/Integrations";
 import Landing from "../components/landing/Landing";
 import AuthRoute from "./AuthRoute";
 import PrivateRoute from "./PrivateRoutes";
-
 import { authRoutes, privateRoutes } from "./constants";
 
 function Inventoryflo() {
