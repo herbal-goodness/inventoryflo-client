@@ -1,5 +1,11 @@
 import namor from "namor";
-
+import {
+  filterGreaterThan,
+  SelectColumnFilter,
+  SliderColumnFilter,
+  roundedMedian,
+  NumberRangeColumnFilter,
+} from "./inventory/functions";
 const range = (len) => {
   const arr = [];
   for (let i = 0; i < len; i++) {
@@ -38,3 +44,64 @@ export function makeData(...lens) {
 
   return makeDataLevel();
 }
+
+export const TABLE_COLUMN = [
+  {
+    Header: "",
+    accessor: "img",
+  },
+  {
+    Header: "Name",
+    accessor: "name",
+    filter: "fuzzyText",
+    aggregate: "count",
+    Aggregated: ({ value }) => `${value} Names`,
+  },
+  {
+    Header: "SKU",
+    accessor: "sku",
+    // Filter: SliderColumnFilter,
+    // filter: "equals",
+    // // Aggregate the average age of visitors
+    // aggregate: "average",
+    // Aggregated: ({ value }) => `${value} (avg)`,
+  },
+  {
+    Header: "Condition",
+    accessor: "consdition",
+    Filter: SelectColumnFilter,
+    filter: "includes",
+  },
+  {
+    Header: "Location",
+    accessor: "location",
+    aggregate: "count",
+    Aggregated: ({ value }) => `${value} Names`,
+  },
+  {
+    Header: "Available",
+    accessor: "available",
+    Filter: SliderColumnFilter,
+    filter: filterGreaterThan,
+    // Use our custom roundedMedian aggregator
+    aggregate: roundedMedian,
+    Aggregated: ({ value }) => `${value} (med)`,
+  },
+  {
+    Header: "Reserved",
+    accessor: "reserved",
+  },
+  {
+    Header: "Price",
+    accessor: "price",
+    Filter: NumberRangeColumnFilter,
+    filter: "between",
+    // Aggregate the sum of all visits
+    aggregate: "sum",
+    Aggregated: ({ value }) => `${value} (total)`,
+  },
+  {
+    Header: "Last Modified",
+    accessor: "lastModified",
+  },
+];
