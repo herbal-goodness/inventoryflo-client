@@ -22,6 +22,7 @@ export class SalesChart extends Component {
 	render() {
 		return (
 			<div className="chart-container mb-5">
+				<h3 className="p-4">Sales Trend</h3>
 				<Line
 					options={{
 						responsive: true,

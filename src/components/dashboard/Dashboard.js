@@ -7,27 +7,29 @@ import TodoSidePane from "./TodoSidePane";
 import UserActivities from "./UserActivities";
 import Channel from "./Channel";
 import RecentActivity from "./RecentActivity";
+import TotalListingsProductChart from "../charts/TotalListingsProductChart";
 
 const Dashboard = () => {
-  return (
-    <div className="container-fluid mx-auto main dashboard">
-      <DashboardHeader />
+	return (
+		<div className="container-fluid mx-auto main dashboard">
+			<DashboardHeader />
 
-      <div className="row">
-        <div className="col-md-3">
-          <TodoSidePane />
-          <Channel />
-          <RecentActivity />
-        </div>
+			<div className="row">
+				<div className="col-md-3">
+					<TodoSidePane />
+					<Channel />
+					<RecentActivity />
+				</div>
 
-        <div className="col-md-9">
-          <UserActivities />
-          <SalesChart />
-          <Orders />
-        </div>
-      </div>
-    </div>
-  );
+				<div className="col-md-9">
+					<UserActivities />
+					<SalesChart />
+					<Orders />
+					<TotalListingsProductChart />
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default Dashboard;
