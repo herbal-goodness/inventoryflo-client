@@ -11,32 +11,31 @@ import PrivateRoute from "./PrivateRoutes";
 import { authRoutes, privateRoutes } from "./constants";
 
 function Inventoryflo() {
-  return (
-    <Router>
-      <Layout>
-        <Suspense
-          fallback={
-            <h1 style={{ margin: "20% 22%" }}>
-              <Spinner />
-            </h1>
-          }
-        >
-          <Switch>
-            {authRoutes.map((item, i) => (
-              <AuthRoute key={i} exact {...item} />
-            ))}
-            {privateRoutes.map((item, i) => (
-              <PrivateRoute key={i} exact {...item} />
-            ))}
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/privacy-policy" component={Policy} />
-            <Route exact path="/integrations" component={Integrations} />
-            <Route exact path="*" component={NotFound} />
-          </Switch>
-        </Suspense>
-      </Layout>
-    </Router>
-  );
+	return (
+		<Router>
+			<Layout>
+				<Suspense
+					fallback={
+						<h1 style={{ margin: "20% 22%" }}>
+							<Spinner />
+						</h1>
+					}>
+					<Switch>
+						{authRoutes.map((item, i) => (
+							<AuthRoute key={i} exact {...item} />
+						))}
+						{privateRoutes.map((item, i) => (
+							<PrivateRoute key={i} exact {...item} />
+						))}
+						<Route exact path="/" component={Landing} />
+						<Route exact path="/privacy-policy" component={Policy} />
+						<Route exact path="/integrations" component={Integrations} />
+						<Route exact path="*" component={NotFound} />
+					</Switch>
+				</Suspense>
+			</Layout>
+		</Router>
+	);
 }
 
 export default Inventoryflo;
