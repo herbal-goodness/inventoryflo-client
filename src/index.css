@@ -195,17 +195,10 @@ html {
 	overflow-x: hidden;
 }
 body {
-	background-color: var(--mainGrey);
 	overflow: hidden;
 }
-/* h1 {
-	font-size: 3em;
-	line-height: 1;
-	margin-bottom: 0.5em;
-} */
 
 h2 {
-	font-size: 2em;
 	margin-bottom: 0.75em;
 }
 
@@ -320,8 +313,8 @@ body .btn-info {
 }
 
 .btn-outline-secondary {
-	background-color: transparent !important;
-	border-color: #011627 !important;
+	background-color: #f7931e !important;
+	/* border-color: #011627 !important; */
 	border-radius: 0;
 	position: relative;
 }
@@ -357,15 +350,16 @@ body .btn-info {
 }
 .btn-primary:hover {
 	color: #83f3ed !important;
-
 	background: #011627 !important;
 }
 
 /* NAVBAR */
 
 #mainNav {
-	background: var(--deep-blue) !important;
-	font-family: var(--roboto);
+	background: #20846b !important;
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
 }
 
 .nav-link {
@@ -393,6 +387,17 @@ body .btn-info {
 .dashboard-header h4 {
 	font-family: var(--josefin);
 	font-size: 14px;
+}
+.user-activities {
+	background: rgba(224, 224, 224, 0.26);
+}
+.user-activities .content {
+	width: 111px;
+	height: 93px;
+	background: #ffffff;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	box-sizing: border-box;
+	text-align: center;
 }
 .card-header {
 	font-size: 24px;
@@ -561,9 +566,9 @@ th a:hover {
 	font-size: 1.1rem;
 }
 #main-menu {
-	-webkit-box-shadow: 3px 9px 4px -1px rgb(204, 204, 204);
+	/* -webkit-box-shadow: 3px 9px 4px -1px rgb(204, 204, 204);
 	-moz-box-shadow: 3px 9px 4px -1px rgb(204, 204, 204);
-	box-shadow: 3px 9px 4px -1px rgb(204, 204, 204);
+	box-shadow: 3px 9px 4px -1px rgb(204, 204, 204); */
 	background: var(--mainWhite);
 }
 #main-menu .nav-link {
