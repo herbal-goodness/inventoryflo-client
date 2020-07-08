@@ -3,6 +3,7 @@ import register from "../components/signup";
 import signin from "../components/signin";
 import ConfirmSignUp from "../components/signup/ConfirmSignUp";
 import profile from "../components/profile";
+import Sales from "../components/warehouse/inventory/Sales";
 const Dashboard = lazy(() => import("../components/dashboard/Dashboard"));
 
 export const authRoutes = [
@@ -29,6 +30,10 @@ export const authRoutes = [
   {
     path: "/signin-user",
     component: signin.Login,
+  },
+  {
+    path: "/sales",
+    component: Sales,
   },
 ];
 
