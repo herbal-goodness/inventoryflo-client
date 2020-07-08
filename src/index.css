@@ -200,7 +200,7 @@ body {
 }
 
 h2 {
-	margin-bottom: 0.75em;
+  margin-bottom: 0.75em;
 }
 
 h3 {
@@ -314,11 +314,10 @@ body .btn-info {
 }
 
 .btn-outline-secondary {
-	background-color: #f7931e !important;
-	/* border-color: #011627 !important; */
-	border-radius: 0;
-	position: relative;
-
+  background-color: #f7931e !important;
+  /* border-color: #011627 !important; */
+  border-radius: 0;
+  position: relative;
 }
 
 .btn-outline-secondary:before {
@@ -351,19 +350,17 @@ body .btn-info {
   border-radius: 0;
 }
 .btn-primary:hover {
-
-	color: #83f3ed !important;
-	background: #011627 !important;
+  color: #83f3ed !important;
+  background: #011627 !important;
 }
 
 /* NAVBAR */
 
 #mainNav {
-
-	background: #20846b !important;
-	font-family: Lato;
-	font-style: normal;
-	font-weight: normal;
+  /* background: #20846b !important; */
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
 }
 
 .nav-link {
@@ -386,16 +383,16 @@ body .btn-info {
 }
 .dashboard form,
 .chart-container {
-	background: rgba(224, 224, 224, 0.26);
+  background: rgba(224, 224, 224, 0.26);
 }
 .dashboard form h3 {
-	font-family: Lato;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 20px;
-	line-height: 24px;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
 
-	color: #000000;
+  color: #000000;
 }
 .dashboard-header h2 {
   font-family: var(--roboto);
@@ -406,20 +403,20 @@ body .btn-info {
   font-size: 14px;
 }
 .user-activities {
-	background: rgba(224, 224, 224, 0.26);
+  background: rgba(224, 224, 224, 0.26);
 }
 .user-activities .content {
-	padding: 50px 15px;
-	background: #ffffff;
-	border: 1px solid rgba(0, 0, 0, 0.2);
-	box-sizing: border-box;
-	text-align: center;
-	font-family: Lato;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 26px;
-	line-height: 31px;
-	color: #20846b;
+  padding: 50px 15px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  text-align: center;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 31px;
+  color: #20846b;
 }
 .card-header {
   font-size: 24px;
@@ -588,12 +585,10 @@ th a:hover {
   font-size: 1.1rem;
 }
 #main-menu {
-
-	/* -webkit-box-shadow: 3px 9px 4px -1px rgb(204, 204, 204);
+  /* -webkit-box-shadow: 3px 9px 4px -1px rgb(204, 204, 204);
 	-moz-box-shadow: 3px 9px 4px -1px rgb(204, 204, 204);
 	box-shadow: 3px 9px 4px -1px rgb(204, 204, 204); */
-	background: var(--mainWhite);
-
+  background: var(--mainWhite);
 }
 #main-menu .nav-link {
   color: #777 !important;
