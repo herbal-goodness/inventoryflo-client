@@ -5,6 +5,7 @@ const {
   LOGIN_ERROR,
   RESET_SIGNIN_STATE,
   STORE_USER,
+  GET_USER,
 } = actionTypes;
 
 const initialState = {

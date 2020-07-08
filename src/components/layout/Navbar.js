@@ -155,7 +155,7 @@ function Navbar() {
                     className="dropdown-menu"
                     aria-labelledby="navbarDropdown"
                   >
-                    <Link className="dropdown-item" to="">
+                    <Link className="dropdown-item" to="/profile">
                       account info
                     </Link>
 
@@ -175,7 +175,7 @@ function Navbar() {
                     </Link> */}
                     <Link
                       className="dropdown-item"
-                      to="/"
+                      to=""
                       onClick={handleLogout}
                     >
                       <i

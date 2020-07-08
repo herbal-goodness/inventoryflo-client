@@ -2,7 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import footerlogo from "../../images/footer-logo-1.png";
 import { FOOTER_CONTENT } from "./constants";
+import { useSelector } from "react-redux";
 const Footer = () => {
+  const { successful } = useSelector(({ userInfo }) => ({
+    successful: userInfo.successful,
+  }));
   return (
     <div className="container-fluid bg-mid-green">
       <footer className="container footer py-5">
@@ -28,13 +32,30 @@ const Footer = () => {
               </h2>
 
               <ul className="footer-nav">
-                {links.map(({ text, to }, i) => (
-                  <li key={i + 10}>
-                    <Link className={color ? color : ""} to={to}>
-                      {text}
-                    </Link>
-                  </li>
-                ))}
+                {links.map(({ text, to }, i) => {
+                  if (!successful) {
+                    return (
+                      <li key={i + 10}>
+                        <Link className={color ? color : ""} to={to}>
+                          {text}
+                        </Link>
+                      </li>
+                    );
+                  } else {
+                    return !(
+                      (to !== "/signin-user") ^
+                      (to !== "/signup-user")
+                    ) ? (
+                      <li key={i + 10}>
+                        <Link className={color ? color : ""} to={to}>
+                          {text}
+                        </Link>
+                      </li>
+                    ) : (
+                      ""
+                    );
+                  }
+                })}
               </ul>
             </div>
           ))}

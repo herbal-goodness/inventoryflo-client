@@ -1,14 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
 import TextFieldGroup from "../commons/TextFieldGroup";
 import { Button } from "react-bootstrap";
+import { handleSubmit } from "./functions";
+import { AlertDismissible } from "../utils/components";
 
-const Password = () => {
+const Password = ({ details, handleChange, tokens }) => {
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(null);
+
   return (
     <div className="pt-5">
       <p style={{ fontSize: "2em" }}>Change Password</p>
-      <TextFieldGroup type="password" placeholder="Old Password" />
-      <TextFieldGroup type="password" placeholder="New Password" />
-      <Button> Save </Button>
+      <div style={{ maxWidth: "300px" }}>
+        {!loading && error !== null && (
+          <AlertDismissible
+            header={"Error"}
+            message={error.error.message || error.error}
+            variant={"danger"}
+          />
+        )}
+        {!loading && error === null && success && (
+          <AlertDismissible
+            header={"Done"}
+            message={"Successful"}
+            variant="success"
+          />
+        )}
+      </div>
+
+      <TextFieldGroup
+        name="previousPassword"
+        onChange={handleChange}
+        value={details && details["previousPassword"]}
+        type="password"
+        placeholder="Old Password"
+      />
+
+      <TextFieldGroup
+        name="proposedPassword"
+        onChange={handleChange}
+        value={details && details["proposedPassword"]}
+        type="text"
+        placeholder="New Password"
+      />
+      <Button
+        onClick={() =>
+          handleSubmit(
+            "passowrd",
+            details,
+            setLoading,
+            setError,
+            setSuccess,
+            tokens
+          )
+        }
+      >
+        {loading ? "Saving..." : "Save"}
+      </Button>
     </div>
   );
 };

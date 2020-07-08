@@ -11,7 +11,7 @@ export const USER_FIELDS = [
     placeholder: "okemmadueric@gmail.com",
   },
   {
-    name: "companyName",
+    name: "company",
     type: "text",
     placeholder: "Company Name",
   },
