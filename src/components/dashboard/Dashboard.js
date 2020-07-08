@@ -6,14 +6,21 @@ import Orders from "./Orders";
 import DashboardHeader from "./DashboardHeader";
 import TodoSidePane from "./TodoSidePane";
 import UserActivities from "./UserActivities";
+import Channel from "./Channel";
+import RecentActivity from "./RecentActivity";
 
 const Dashboard = () => {
 	return (
-		<div className="container-fluid mx-auto main">
+		<div className="container-fluid mx-auto main dashboard">
 			<DashboardHeader />
 
 			<div className="row">
-				<TodoSidePane />
+				<div className="col-md-3">
+					<TodoSidePane />
+					<Channel />
+					<RecentActivity />
+				</div>
+
 				<div className="col-md-9">
 					<UserActivities />
 					<SalesChart />
