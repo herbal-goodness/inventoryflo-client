@@ -9,7 +9,6 @@ const PersonalDetails = ({ details, handleChange, tokens }) => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
-
   return (
     <div className=" pt-5">
       <div style={{ maxWidth: "300px" }}>
@@ -31,7 +30,7 @@ const PersonalDetails = ({ details, handleChange, tokens }) => {
       <p style={{ fontSize: "2em" }}>Account Information</p>
 
       {USER_FIELDS.map(({ name, placeholder, type }, i) => {
-        return name === "email" ? (
+        return !(name !== "firstName") ^ (name !== "lastName") ? (
           <TextFieldGroup
             key={i}
             value={details && details[name]}

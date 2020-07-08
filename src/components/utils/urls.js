@@ -5,7 +5,7 @@ export default {
     CONFIRM_CODE: "/confirm-signup",
     FORGOT_PASSWORD: "/forgot-password",
     SEND_RESET_CODE: "/send-reset-code",
-    REFRESH_TOKEN: "/refresh-token",
+    GET_USER: "/get-user",
   },
   API_ROOT: "https://38knpk9vq1.execute-api.us-east-2.amazonaws.com/dev/v1",
 };

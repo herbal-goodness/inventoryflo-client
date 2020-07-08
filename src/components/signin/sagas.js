@@ -45,7 +45,22 @@ function* loginWorker({ payload }) {
   }
 }
 
+function* getUserWorker() {
+  const response = yield makeApiCall("GET", API.urls.GET_USER);
+  try {
+    if (response.ok) {
+      const { data } = yield response.json();
+      console.log(data);
+      yield put(storeUser(data));
+    }
+  } catch (error) {
+    console.log(error);
+    yield put({ type: "RESET_STATE" });
+  }
+}
+
 // Signin Watcher
 export default function* loginSaga() {
   yield all([takeLatest("REQUEST_LOGIN", loginWorker)]);
+  yield all([takeLatest("GET_USER", getUserWorker)]);
 }

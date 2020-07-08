@@ -1,9 +1,9 @@
 import urls from "./urls";
 import { select } from "redux-saga/effects";
 
-export const getAccessToken = (state) => state.login.userInfo.AccessToken;
-export const getrefreshToken = (state) => state.login.userInfo.refreshToken;
-export const getIdToken = (state) => state.login.userInfo.IdToken;
+export const getAccessToken = (state) => state.userInfo.user.AccessToken;
+export const getrefreshToken = (state) => state.userInfo.user.refreshToken;
+export const getIdToken = (state) => state.userInfo.user.IdToken;
 
 /**
  * Function to make api call to the backend
@@ -20,17 +20,18 @@ export function* makeApiCall(
   headers = 1,
   useAccessToken = false
 ) {
-  payload = payload ? JSON.stringify(payload) : null;
+  const body = payload ? JSON.stringify(payload) : null;
 
   let fullUrl = urls.API_ROOT + url;
   let requestData = {
     method: method,
+    body,
   };
 
-  if (payload !== null) {
+  if (body !== null) {
     requestData = {
       ...requestData,
-      body: payload,
+      body,
       headers: {
         "Content-Type": "application/json",
       },
@@ -40,7 +41,14 @@ export function* makeApiCall(
     const token = yield useAccessToken
       ? select(getAccessToken)
       : select(getIdToken);
-    requestData.headers["Authorization"] = "Bearer " + token;
+    requestData = {
+      ...requestData,
+      body,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    };
   }
   return yield fetch(fullUrl, { ...requestData });
 }

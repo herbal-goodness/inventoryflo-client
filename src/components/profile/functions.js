@@ -1,4 +1,5 @@
 import API from "../utils/urls";
+import { storeUser } from "../signin/actions";
 
 function validateUserInput(userInput) {
   for (let i in userInput) {
@@ -84,7 +85,11 @@ export const handleSubmit = async (
       setSucess(false);
       setLoading(false);
     } else {
+      const { dispatch } = details;
       setSucess(true);
+      type === "email"
+        ? dispatch(storeUser(data.data))
+        : dispatch({ type: "GET_USER" });
       setLoading(false);
       setError(null);
     }
