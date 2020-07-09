@@ -6,6 +6,7 @@ import productsReducer from "./productsReducer";
 import errorReducer from "./errorReducer";
 import signup from "../components/signup";
 import login from "../components/signin";
+import sales from "../components/warehouse";
 import { purgeStoredState } from "redux-persist";
 import { persistConfig } from "../store";
 
@@ -20,6 +21,7 @@ const logout = (state = {}, action) => {
 };
 
 export default combineReducers({
+  sales: sales.reducer,
   logout,
   signup: signup.reducer,
   login: login.reducer,

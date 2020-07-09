@@ -17,17 +17,16 @@ const range = (len) => {
 const newPerson = () => {
   const statusChance = Math.random();
   return {
-    firstName: namor.generate({ words: 1, numbers: 0 }),
-    lastName: namor.generate({ words: 1, numbers: 0 }),
-    age: Math.floor(Math.random() * 30),
-    visits: Math.floor(Math.random() * 100),
-    progress: Math.floor(Math.random() * 100),
-    status:
-      statusChance > 0.66
-        ? "relationship"
-        : statusChance > 0.33
-        ? "complicated"
-        : "single",
+    img: namor.generate({ words: 2, numbers: 0 }),
+    name: namor.generate({ words: 1, numbers: 0 }),
+    sku: Math.floor(Math.random() * 1000),
+    condition:
+      statusChance > 0.66 ? "new" : statusChance > 0.33 ? "old" : "too old",
+    location: Math.floor(Math.random() * 100),
+    available: Math.floor(Math.random() * 100),
+    reserved: Math.floor(Math.random() * 2),
+    price: Math.floor(Math.random() * 1000),
+    lastModified: namor.generate({ words: 1, numbers: 0 }),
   };
 };
 
@@ -44,64 +43,3 @@ export function makeData(...lens) {
 
   return makeDataLevel();
 }
-
-export const TABLE_COLUMN = [
-  {
-    Header: "",
-    accessor: "img",
-  },
-  {
-    Header: "Name",
-    accessor: "name",
-    filter: "fuzzyText",
-    aggregate: "count",
-    Aggregated: ({ value }) => `${value} Names`,
-  },
-  {
-    Header: "SKU",
-    accessor: "sku",
-    // Filter: SliderColumnFilter,
-    // filter: "equals",
-    // // Aggregate the average age of visitors
-    // aggregate: "average",
-    // Aggregated: ({ value }) => `${value} (avg)`,
-  },
-  {
-    Header: "Condition",
-    accessor: "consdition",
-    Filter: SelectColumnFilter,
-    filter: "includes",
-  },
-  {
-    Header: "Location",
-    accessor: "location",
-    aggregate: "count",
-    Aggregated: ({ value }) => `${value} Names`,
-  },
-  {
-    Header: "Available",
-    accessor: "available",
-    Filter: SliderColumnFilter,
-    filter: filterGreaterThan,
-    // Use our custom roundedMedian aggregator
-    aggregate: roundedMedian,
-    Aggregated: ({ value }) => `${value} (med)`,
-  },
-  {
-    Header: "Reserved",
-    accessor: "reserved",
-  },
-  {
-    Header: "Price",
-    accessor: "price",
-    Filter: NumberRangeColumnFilter,
-    filter: "between",
-    // Aggregate the sum of all visits
-    aggregate: "sum",
-    Aggregated: ({ value }) => `${value} (total)`,
-  },
-  {
-    Header: "Last Modified",
-    accessor: "lastModified",
-  },
-];

@@ -38,6 +38,7 @@ export const handleSubmit = async (
     company,
     shopifyUrl,
     apiPassword,
+    apiKey,
     previousPassword,
     proposedPassword,
   } = details;
@@ -52,7 +53,7 @@ export const handleSubmit = async (
     }
     if (type === "shopify") {
       endPoint = "/add-shopify";
-      payLoad = { shopifyUrl, apiPassword };
+      payLoad = { shopifyUrl, apiPassword, apiKey };
     }
 
     if (type === "passowrd") {
@@ -90,6 +91,7 @@ export const handleSubmit = async (
       type === "email"
         ? dispatch(storeUser(data.data))
         : dispatch({ type: "GET_USER" });
+      dispatch({ type: "GET_PRODUCTS" });
       setLoading(false);
       setError(null);
     }
