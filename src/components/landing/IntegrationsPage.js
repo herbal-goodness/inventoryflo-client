@@ -11,7 +11,7 @@ const IntegrationsPage = () => {
 			</header>
 			<div className="">
 				<img src={shopify} alt="shopify" className="p-3" />
-				<img src={amazon} alt="amazon" className="p-3" />
+				<img src={amazon} alt="amazon" className="pt-3 pl-4" />
 			</div>
 			<div>
 				<Link className="int-links" to="/integrations">
