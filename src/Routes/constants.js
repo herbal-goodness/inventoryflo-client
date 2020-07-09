@@ -31,10 +31,6 @@ export const authRoutes = [
     path: "/signin-user",
     component: signin.Login,
   },
-  {
-    path: "/sales",
-    component: Sales,
-  },
 ];
 
 export const privateRoutes = [
@@ -45,5 +41,9 @@ export const privateRoutes = [
   {
     path: "/profile",
     component: profile.UserProfile,
+  },
+  {
+    path: "/sales",
+    component: Sales,
   },
 ];
