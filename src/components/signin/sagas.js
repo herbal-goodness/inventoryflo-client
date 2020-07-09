@@ -50,9 +50,7 @@ function* getUserWorker() {
   try {
     if (response.ok) {
       const { data } = yield response.json();
-      if (data.shopifyUrl && data.shopifySecret) {
-        yield put({ type: "GET_PRODUCTS" });
-      }
+
       yield put(storeUser(data));
     }
   } catch (error) {

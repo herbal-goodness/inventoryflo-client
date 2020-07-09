@@ -49,7 +49,8 @@ export function* makeApiCall(
         Authorization: "Bearer " + token,
       },
     };
-  } else {
+  }
+  if (headers === 1 && body === null) {
     const token = yield useAccessToken
       ? select(getAccessToken)
       : select(getIdToken);

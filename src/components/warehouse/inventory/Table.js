@@ -2,14 +2,15 @@ import React, { useEffect, useState } from "react";
 import "@progress/kendo-theme-default/dist/all.css";
 import { withState } from "./withState";
 import { GridColumn, Grid } from "@progress/kendo-react-grid";
-import { useSelector, shallowEqual } from "react-redux";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
 
 const StatefulGrid = withState(Grid);
 
 const Table = () => {
+  const dispatch = useDispatch();
   const [salesData, setData] = useState([]);
 
-  const { sales } = useSelector(
+  const { sales, hasShopifyUrl, hasShopifySecret, isSuccessful } = useSelector(
     ({ sales, userInfo }) => ({
       hasShopifyUrl: userInfo.user?.shopifyDomain.length > 3,
       hasShopifySecret: userInfo.user?.shopifySecret.length > 3,
@@ -19,7 +20,11 @@ const Table = () => {
     shallowEqual
   );
   useEffect(() => {
-    let s;
+    hasShopifyUrl &&
+      hasShopifySecret &&
+      isSuccessful &&
+      dispatch({ type: "GET_PRODUCTS" });
+    let s = [];
     if (sales) {
       s = sales.map(({ images, updated_at, variants, title, vendor }) => {
         return {
