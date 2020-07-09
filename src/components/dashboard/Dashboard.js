@@ -8,6 +8,7 @@ import UserActivities from "./UserActivities";
 import Channel from "./Channel";
 import RecentActivity from "./RecentActivity";
 import TotalListingsProductChart from "../charts/TotalListingsProductChart";
+import TopProductChart from "../charts/TopProductChart";
 
 const Dashboard = () => {
 	return (
@@ -26,6 +27,7 @@ const Dashboard = () => {
 					<SalesChart />
 					<Orders />
 					<TotalListingsProductChart />
+					<TopProductChart />
 				</div>
 			</div>
 		</div>
