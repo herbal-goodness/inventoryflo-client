@@ -57,9 +57,7 @@ const Table = () => {
     !isLoading && sales === null && setShouldSpin(false);
   }, [isLoading, shouldSpine]);
 
-  return shouldSpine ? (
-    <Spinner />
-  ) : (
+  return (
     <div>
       <StatefulGrid data={salesData} style={{ height: "600px" }}>
         <GridColumn
