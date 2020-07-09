@@ -29,6 +29,8 @@ export default (state = initialState, actions) => {
         successful: false,
         loading: false,
       };
+    case "RESET_STATE":
+      return initialState;
 
     default:
       return state;

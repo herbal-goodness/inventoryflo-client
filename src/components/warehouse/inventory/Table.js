@@ -3,19 +3,32 @@ import "@progress/kendo-theme-default/dist/all.css";
 import { withState } from "./withState";
 import { GridColumn, Grid } from "@progress/kendo-react-grid";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import { Spinner } from "../../utils/components";
 
 const StatefulGrid = withState(Grid);
 
 const Table = () => {
   const dispatch = useDispatch();
   const [salesData, setData] = useState([]);
+  const [shouldSpine, setShouldSpin] = useState(true);
 
-  const { sales, hasShopifyUrl, hasShopifySecret, isSuccessful } = useSelector(
+  const {
+    isLoading,
+    productsLoaded,
+    sales,
+    hasShopifyUrl,
+    hasShopifySecret,
+    isSuccessful,
+  } = useSelector(
     ({ sales, userInfo }) => ({
-      hasShopifyUrl: userInfo.user?.shopifyDomain.length > 3,
-      hasShopifySecret: userInfo.user?.shopifySecret.length > 3,
+      hasShopifyUrl:
+        userInfo.user.shopifyDomain && userInfo.user.shopifyDomain.length > 3,
+      hasShopifySecret:
+        userInfo.user.shopifySecret && userInfo.user.shopifySecret.length > 3,
       isSuccessful: userInfo.successful,
-      sales: sales.products,
+      sales: sales.pruoducts,
+      isLoading: sales.loading,
+      productsLoaded: sales.successful,
     }),
     shallowEqual
   );
@@ -39,7 +52,14 @@ const Table = () => {
     setData(s);
   }, []);
 
-  return (
+  useEffect(() => {
+    !isLoading && productsLoaded && setShouldSpin(false);
+    !isLoading && sales === null && setShouldSpin(false);
+  }, [isLoading, shouldSpine]);
+
+  return shouldSpine ? (
+    <Spinner />
+  ) : (
     <div>
       <StatefulGrid data={salesData} style={{ height: "600px" }}>
         <GridColumn

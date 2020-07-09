@@ -7,13 +7,14 @@ import errorReducer from "./errorReducer";
 import signup from "../components/signup";
 import login from "../components/signin";
 import sales from "../components/warehouse";
-import { purgeStoredState } from "redux-persist";
+import { purgeStoredState, PURGE } from "redux-persist";
 import { persistConfig } from "../store";
 
 const logout = (state = {}, action) => {
   if (action.type === "RESET_STATE") {
     Cookies.remove("refreshToken");
     purgeStoredState(persistConfig);
+    localStorage.clear();
     action.payload.push("/");
     return state;
   }
