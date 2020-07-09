@@ -37,7 +37,7 @@ export function* makeApiCall(
       },
     };
   }
-  if (headers === 1) {
+  if (headers === 1 && body !== null) {
     const token = yield useAccessToken
       ? select(getAccessToken)
       : select(getIdToken);
@@ -46,6 +46,16 @@ export function* makeApiCall(
       body,
       headers: {
         "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    };
+  } else {
+    const token = yield useAccessToken
+      ? select(getAccessToken)
+      : select(getIdToken);
+    requestData = {
+      ...requestData,
+      headers: {
         Authorization: "Bearer " + token,
       },
     };
