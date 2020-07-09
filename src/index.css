@@ -575,6 +575,9 @@ th a:hover {
 .data-policy {
 	background: #e0e0e0;
 }
+.policy-header h1 {
+	font-size: 3rem;
+}
 .data-policy .container-fluid {
 	padding-left: 4.9%;
 	padding-right: 4.9%;
