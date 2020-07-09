@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 const ConfirmSignUp = () => {
   const [confirmationCode, setConfirmationCode] = useState("");
   const [loading, setLoading] = useState(false);
-  const [counter, setCounter] = React.useState(30);
+  const [counter, setCounter] = React.useState(60);
   const [clickedSubmit, setclickedSubmit] = useState(false);
   const [{ isError, message }, setMessage] = useState({
     isError: false,
@@ -150,7 +150,7 @@ const ConfirmSignUp = () => {
                       <div className="mt-3">
                         <p className="text-muted d-flex justify-content-between">
                           <span className="pt-2 text-decoration-none text-green text-slim">
-                            Didn't receive any code?{" "}
+                            Didn't receive any code?
                           </span>
                           <button
                             type="button"

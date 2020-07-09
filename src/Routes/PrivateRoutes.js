@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Route, useHistory } from "react-router-dom";
-import Navbar from "../components/layout/Navbar";
+// import Navbar from "../components/layout/Navbar";
 import { isAuthenticated, refreshToken } from "../services/auth";
 import { useSelector, useDispatch } from "react-redux";
 import { Spinner } from "../components/utils/components";
 import AuthRoute from "./AuthRoute";
 import Login from "../components/signin/Login";
+import SubMenu from "../components/layout/SubMenu";
 
 const PrivateRoute = (props) => {
   const [isLoggedIn, setLogin] = useState(false);
@@ -36,7 +37,6 @@ const PrivateRoute = (props) => {
   if (isLoggedIn && successful) {
     return (
       <>
-        <Navbar />
         <Route {...props} />
       </>
     );

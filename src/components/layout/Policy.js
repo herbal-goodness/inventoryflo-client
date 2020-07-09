@@ -1,14 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import Menu from "../layout/Menu";
-import Footer from "../commons/Footer";
 
 const Policy = () => {
-  const [newComponent, setComp] = useState({ visible: true });
-  const { visible } = newComponent;
   return (
     <div className="data-policy">
-      {visible ? <Menu /> : null}
       <main className="wrapper container-fluid mx-auto py-3">
         <header className="policy-header">
           <h1>Terms of Service</h1>
