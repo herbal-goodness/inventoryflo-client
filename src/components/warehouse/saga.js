@@ -1,14 +1,30 @@
-import { put, all, takeLatest } from "redux-saga/effects";
+import { put, all, takeLatest, select } from "redux-saga/effects";
 import API from "../utils/urls";
-import { makeApiCall } from "../utils/request";
 
 function* salesWorker() {
-  const response = yield makeApiCall("GET", API.urls.GET_PRODUCTS);
+  const token = yield select((state) => state.userInfo.user.IdToken);
+
+  const response = yield fetch(API.API_ROOT + API.urls.GET_PRODUCTS, {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  });
   try {
     if (response.ok) {
       const { data } = yield response.json();
-      // console.log(data);
-      yield put({ type: "STORE_PRODUCTS", payload: data });
+      const products = data.map(
+        ({ images, updated_at, variants, title, vendor }) => {
+          return {
+            image: images && images[0],
+            updated_at,
+            ...variants[0],
+            title,
+            vendor,
+          };
+        }
+      );
+
+      yield put({ type: "STORE_PRODUCTS", payload: products });
     }
   } catch (error) {
     console.log(error);

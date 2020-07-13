@@ -26,7 +26,7 @@ const Table = () => {
       hasShopifySecret:
         userInfo.user.shopifySecret && userInfo.user.shopifySecret.length > 3,
       isSuccessful: userInfo.successful,
-      sales: sales.pruoducts,
+      sales: sales.products,
       isLoading: sales.loading,
       productsLoaded: sales.successful,
     }),
@@ -36,62 +36,49 @@ const Table = () => {
     hasShopifyUrl &&
       hasShopifySecret &&
       isSuccessful &&
+      sales === null &&
       dispatch({ type: "GET_PRODUCTS" });
-    let s = [];
-    if (sales) {
-      s = sales.map(({ images, updated_at, variants, title, vendor }) => {
-        return {
-          image: images && images[0],
-          updated_at,
-          ...variants[0],
-          title,
-          vendor,
-        };
-      });
-    }
-    setData(s);
   }, []);
 
-  useEffect(() => {
-    !isLoading && productsLoaded && setShouldSpin(false);
-    !isLoading && sales === null && setShouldSpin(false);
-  }, [isLoading, shouldSpine]);
-
-  return (
-    <div>
-      <StatefulGrid data={salesData} style={{ height: "600px" }}>
-        <GridColumn
-          field="image"
-          title={" "}
-          cell={(props) => (
-            <td colSpan={props.colSpan} style={props.style}>
-              {<img src={props.dataItem?.image} alt="" />}
-            </td>
-          )}
-          filterable={false}
-          sortable={false}
-          width={50}
-        />
-        <GridColumn
-          field="title"
-          title="Product Name"
-          width={200}
-          className="truncate"
-        />
-        <GridColumn field="sku" title="SKU" filter="numeric" />
-        <GridColumn field="inventory_management" title="Condition" />
-        <GridColumn field="fulfillment_service" title="Location" />
-        <GridColumn field="inventory_policy" title="Bin Location" />
-        <GridColumn
-          field="inventory_quantity"
-          title="Available"
-          filter="numeric"
-        />
-        <GridColumn field="vendor" title="On Hand" />
-        <GridColumn field="price" title="Price" filter="numeric" />
-        <GridColumn field="updated_at" title="Last Modified" />
-      </StatefulGrid>
-    </div>
+  return isLoading ? (
+    <Spinner />
+  ) : (
+    productsLoaded && (
+      <div>
+        <StatefulGrid data={sales} style={{ height: "600px" }}>
+          <GridColumn
+            field="image"
+            title={" "}
+            cell={(props) => (
+              <td colSpan={props.colSpan} style={props.style}>
+                {<img src={props.dataItem?.image} alt="" />}
+              </td>
+            )}
+            filterable={false}
+            sortable={false}
+            width={50}
+          />
+          <GridColumn
+            field="title"
+            title="Product Name"
+            width={200}
+            className="truncate"
+          />
+          <GridColumn field="sku" title="SKU" filter="numeric" />
+          <GridColumn field="inventory_management" title="Condition" />
+          <GridColumn field="fulfillment_service" title="Location" />
+          <GridColumn field="inventory_policy" title="Bin Location" />
+          <GridColumn
+            field="inventory_quantity"
+            title="Available"
+            filter="numeric"
+          />
+          <GridColumn field="vendor" title="On Hand" />
+          <GridColumn field="price" title="Price" filter="numeric" />
+          <GridColumn field="updated_at" title="Last Modified" />
+        </StatefulGrid>
+      </div>
+    )
   );
 };
 

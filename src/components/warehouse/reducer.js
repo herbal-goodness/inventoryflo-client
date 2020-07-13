@@ -2,7 +2,7 @@ const initialState = {
   error: false,
   loading: false,
   successful: false,
-  pruoducts: null,
+  products: null,
 };
 
 export default (state = initialState, actions) => {
@@ -12,6 +12,8 @@ export default (state = initialState, actions) => {
         ...state,
         loading: true,
         error: false,
+        successful: false,
+        products: null,
       };
     case "STORE_PRODUCTS":
       return {
@@ -25,7 +27,7 @@ export default (state = initialState, actions) => {
       return {
         ...state,
         error: true,
-        products: actions.payload,
+        products: null,
         successful: false,
         loading: false,
       };

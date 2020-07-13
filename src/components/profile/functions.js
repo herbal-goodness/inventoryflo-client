@@ -80,7 +80,6 @@ export const handleSubmit = async (
     });
 
     const data = await res.json();
-    console.log(data);
     if (res.status > 300) {
       setError(data);
       setSucess(false);
