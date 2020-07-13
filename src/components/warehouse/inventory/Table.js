@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "@progress/kendo-theme-default/dist/all.css";
-import { withState } from "./withState";
+import { withState, ColumnMenu } from "./withState";
 import { GridColumn, Grid } from "@progress/kendo-react-grid";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { Spinner } from "../../utils/components";
@@ -9,8 +9,6 @@ const StatefulGrid = withState(Grid);
 
 const Table = () => {
   const dispatch = useDispatch();
-  const [salesData, setData] = useState([]);
-  const [shouldSpine, setShouldSpin] = useState(true);
 
   const {
     isLoading,
@@ -26,7 +24,7 @@ const Table = () => {
       hasShopifySecret:
         userInfo.user.shopifySecret && userInfo.user.shopifySecret.length > 3,
       isSuccessful: userInfo.successful,
-      sales: sales.pruoducts,
+      sales: sales.products,
       isLoading: sales.loading,
       productsLoaded: sales.successful,
     }),
@@ -36,30 +34,23 @@ const Table = () => {
     hasShopifyUrl &&
       hasShopifySecret &&
       isSuccessful &&
+      sales === null &&
       dispatch({ type: "GET_PRODUCTS" });
-    let s = [];
-    if (sales) {
-      s = sales.map(({ images, updated_at, variants, title, vendor }) => {
-        return {
-          image: images && images[0],
-          updated_at,
-          ...variants[0],
-          title,
-          vendor,
-        };
-      });
-    }
-    setData(s);
   }, []);
 
-  useEffect(() => {
-    !isLoading && productsLoaded && setShouldSpin(false);
-    !isLoading && sales === null && setShouldSpin(false);
-  }, [isLoading, shouldSpine]);
+  setTimeout(() => {
+    if (isLoading) {
+      dispatch({
+        type: "PRODUCTS_ERROR",
+      });
+    }
+  }, 10000);
 
-  return (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <div>
-      <StatefulGrid data={salesData} style={{ height: "600px" }}>
+      <StatefulGrid data={sales || []} style={{ height: "600px" }}>
         <GridColumn
           field="image"
           title={" "}
@@ -78,18 +69,56 @@ const Table = () => {
           width={200}
           className="truncate"
         />
-        <GridColumn field="sku" title="SKU" filter="numeric" />
-        <GridColumn field="inventory_management" title="Condition" />
-        <GridColumn field="fulfillment_service" title="Location" />
-        <GridColumn field="inventory_policy" title="Bin Location" />
+        <GridColumn
+          field="sku"
+          title="SKU"
+          filterable={false}
+          columnMenu={ColumnMenu}
+        />
+        <GridColumn
+          field="inventory_management"
+          title="Condition"
+          filterable={false}
+          columnMenu={ColumnMenu}
+        />
+        <GridColumn
+          field="fulfillment_service"
+          title="Location"
+          filterable={false}
+          columnMenu={ColumnMenu}
+        />
+        <GridColumn
+          field="inventory_policy"
+          title="Bin Location"
+          filterable={false}
+          columnMenu={ColumnMenu}
+        />
         <GridColumn
           field="inventory_quantity"
           title="Available"
           filter="numeric"
+          filterable={false}
+          columnMenu={ColumnMenu}
         />
-        <GridColumn field="vendor" title="On Hand" />
-        <GridColumn field="price" title="Price" filter="numeric" />
-        <GridColumn field="updated_at" title="Last Modified" />
+        <GridColumn
+          field="vendor"
+          title="On Hand"
+          filterable={false}
+          columnMenu={ColumnMenu}
+        />
+        <GridColumn
+          field="price"
+          title="Price"
+          filter="numeric"
+          filterable={false}
+          columnMenu={ColumnMenu}
+        />
+        <GridColumn
+          field="updated_at"
+          title="Last Modified"
+          filterable={false}
+          columnMenu={ColumnMenu}
+        />
       </StatefulGrid>
     </div>
   );
