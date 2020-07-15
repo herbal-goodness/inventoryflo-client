@@ -46,19 +46,19 @@ export const FOOTER_CONTENT = [
 		title: "Company",
 		links: [
 			{
-				to: "/about",
+				to: "",
 				text: "About",
 			},
 			{
-				to: "/customer-service",
+				to: "",
 				text: "Customer Service",
 			},
 			{
-				to: "/product-demo",
+				to: "",
 				text: "Product demo",
 			},
 			{
-				to: "/contact-support",
+				to: "",
 				text: "Contact Supprt",
 			},
 		],
