@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SalesTable from "./Table";
 import { makeData } from "../constants";
@@ -12,7 +12,6 @@ function SalesContainer() {
 
   const {
     isLoading,
-    productsLoaded,
     sales,
     hasShopifyUrl,
     hasShopifySecret,
@@ -26,7 +25,6 @@ function SalesContainer() {
       isSuccessful: userInfo.successful,
       sales: sales.products,
       isLoading: sales.loading,
-      productsLoaded: sales.successful,
     }),
     shallowEqual
   );
@@ -36,16 +34,6 @@ function SalesContainer() {
       isSuccessful &&
       sales === null &&
       dispatch({ type: "GET_PRODUCTS" });
-  }, []);
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (isLoading) {
-        dispatch({
-          type: "PRODUCTS_ERROR",
-        });
-      }
-    }, 5000);
   }, []);
 
   const exportFile = () => {

@@ -34,7 +34,6 @@ const UserProfile = () => {
   const handleChange = (e) => {
     e.preventDefault();
     const { value, name } = e.target;
-    console.log(value);
     setDetails({ ...details, [name]: value });
   };
 

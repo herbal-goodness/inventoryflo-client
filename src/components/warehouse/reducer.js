@@ -1,11 +1,17 @@
-const initialState = {
+const salesInitialState = {
   error: false,
   loading: false,
   successful: false,
   products: null,
 };
+const ordersInitialState = {
+  error: false,
+  loading: false,
+  successful: false,
+  userOrders: null,
+};
 
-export default (state = initialState, actions) => {
+export const sales = (state = salesInitialState, actions) => {
   switch (actions.type) {
     case "GET_PRODUCTS":
       return {
@@ -32,7 +38,41 @@ export default (state = initialState, actions) => {
         loading: false,
       };
     case "RESET_STATE":
-      return initialState;
+      return salesInitialState;
+
+    default:
+      return state;
+  }
+};
+
+export const orders = (state = ordersInitialState, actions) => {
+  switch (actions.type) {
+    case "GET_ORDERS":
+      return {
+        ...state,
+        loading: true,
+        error: false,
+        successful: false,
+        userOrders: null,
+      };
+    case "STORE_ORDERS":
+      return {
+        ...state,
+        userOrders: actions.payload,
+        successful: true,
+        loading: false,
+        error: false,
+      };
+    case "ORDERS_ERROR":
+      return {
+        ...state,
+        error: true,
+        userOrders: null,
+        successful: false,
+        loading: false,
+      };
+    case "RESET_STATE":
+      return ordersInitialState;
 
     default:
       return state;

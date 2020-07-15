@@ -90,7 +90,7 @@ export const handleSubmit = async (
       type === "email"
         ? dispatch(storeUser(data.data))
         : dispatch({ type: "GET_USER" });
-      dispatch({ type: "GET_PRODUCTS" });
+      dispatch({ type: "GET_PRODUCTS" }) && dispatch({ type: "GET_ORDERS" });
       setLoading(false);
       setError(null);
     }
