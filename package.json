@@ -10,6 +10,7 @@
     "@progress/kendo-react-data-tools": "^3.15.0",
     "@progress/kendo-react-dateinputs": "^3.15.0",
     "@progress/kendo-react-dropdowns": "^3.15.0",
+    "@progress/kendo-react-excel-export": "^3.15.0",
     "@progress/kendo-react-grid": "^3.15.0",
     "@progress/kendo-react-inputs": "^3.15.0",
     "@progress/kendo-react-intl": "^3.15.0",
