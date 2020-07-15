@@ -23,13 +23,14 @@ const UserActivities = ({ data }) => {
     shallowEqual
   );
 
-  useEffect(() => {
-    setTimeout(() => {
-      if (isLoading) {
-        dispatch({ type: "ORDERS_ERROR" });
-      }
-    }, 10000);
-  }, [isLoading]);
+  //   useEffect(() => {
+  //     setTimeout(() => {
+  //       if (isLoading && !isSuccessful && ordersToMonthDate === undefined) {
+  //         dispatch({ type: "ORDERS_ERROR" });
+  //       }
+  //       clearTimeout();
+  //     }, 10000);
+  //   }, [isLoading]);
 
   return isLoading ? (
     <Spinner />

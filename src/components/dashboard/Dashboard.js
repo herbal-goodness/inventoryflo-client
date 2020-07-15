@@ -14,8 +14,6 @@ import { useSelector, useDispatch, shallowEqual } from "react-redux";
 const Dashboard = () => {
   const dispatch = useDispatch();
   const {
-    isLoading,
-    productsLoaded,
     orders,
     sales,
     hasShopifyUrl,
@@ -30,7 +28,6 @@ const Dashboard = () => {
       isSuccessful: userInfo.successful,
       sales: sales.products,
       orders: orders.userOrders,
-      isLoading: sales.loading,
       productsLoaded: sales.successful,
     }),
     shallowEqual
