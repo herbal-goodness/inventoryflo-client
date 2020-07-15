@@ -32,7 +32,43 @@ function* salesWorker() {
   }
 }
 
+function* invenoryWorker() {
+  const token = yield select((state) => state.userInfo.user.IdToken);
+
+  const response = yield fetch(API.API_ROOT + API.urls.GET_ORDERS, {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  });
+  try {
+    if (response.ok) {
+      const result = yield response.json();
+      const {
+        ordersToBeFulfilled,
+        ordersToMonthDate,
+        salesToDatePrice,
+        cancelledOrders,
+        data,
+      } = result;
+
+      yield put({
+        type: "STORE_ORDERS",
+        payload: {
+          salesToDatePrice,
+          ordersToMonthDate,
+          ordersToBeFulfilled,
+          cancelledOrders,
+          data,
+        },
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    yield put({ type: "ORDERS_ERROR" });
+  }
+}
 // Sales Watcher
 export default function* salesSaga() {
   yield all([takeLatest("GET_PRODUCTS", salesWorker)]);
+  yield all([takeLatest("GET_ORDERS", invenoryWorker)]);
 }
