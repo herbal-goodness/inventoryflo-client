@@ -9,21 +9,21 @@ const Sales = () => {
 		<section className="container-fluid sales-wrapper">
 			<div className="sales container">
 				<div className="row">
-					<div className="col-lg-6 py-4">
-						<div className="row">
+					<div className="col-lg-6 py-4 sales-img">
+						<div className="row sales-img-1 mb-2">
 							<div className="col-md-6 offset-3">
 								<img src={sales1} alt="sales" />
 							</div>
 						</div>
-						<div className="row">
-							<div className="col-md-6">
+						<div className="row sales-img-2">
+							<div className="col-md-6 mb-2">
 								<img src={sales2} alt="sales" />
 							</div>
-							<div className="col-md-6">
+							<div className="col-md-6 mb-2">
 								<img src={sales3} alt="sales" />
 							</div>
 						</div>
-						<div className="row">
+						<div className="row sales-img-3 mb-2">
 							<div className="col-md-6 offset-3">
 								<img src={sales4} alt="sales" />
 							</div>
