@@ -5,7 +5,7 @@ const Navbar = () => {
 	return (
 		<>
 			<nav className="navbar navbar-expand-lg fixed-top mb-4" id="main-menu">
-				<Link className="navbar-brand ml-5" to="/">
+				<Link className="navbar-brand ml-5 nav-logo-center" to="/">
 					<img src={logo} alt="logo" className="nav-logo" />
 				</Link>
 				<div className="container">

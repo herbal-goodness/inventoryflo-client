@@ -23,7 +23,7 @@ const Footer = () => {
 					</div>
 
 					{FOOTER_CONTENT.map(({ title, links, color }, index) => (
-						<div className="col-md-2" key={index + 1}>
+						<div className="col-md-2 footer-content-left" key={index + 1}>
 							<h2
 								key={title}
 								className={`footer-header mb-3 ${color && "text-white"}`}>

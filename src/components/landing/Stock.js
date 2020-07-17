@@ -14,9 +14,9 @@ const Stock = () => {
 						</p>
 						<p>Or some raw materials being thrown away often?</p>
 					</div>
-					<div className="col-md-5">
-						<img src={inventory} alt="inventory" className="mr-4" />
-						<img src={factory} alt="factory" />
+					<div className="col-md-5 stock-img">
+						<img src={inventory} alt="inventory" className="mr-4 mb-3" />
+						<img src={factory} alt="factory" className="mb-3" />
 					</div>
 				</div>
 				<div className="row">
