@@ -19,12 +19,13 @@ export function withState(WrappedGrid) {
     render() {
       return (
         <WrappedGrid
-          filterable={true}
+          filterable={this.props.data[0].order_number ? false : true}
           sortable={true}
           pageable={{ pageSizes: true }}
           {...this.props}
           {...this.state}
           data={process(this.props.data, this.state)}
+          resizable
           onDataStateChange={(e) => {
             this.setState(e.data);
           }}

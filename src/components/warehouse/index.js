@@ -1,5 +1,5 @@
 import { orders, sales } from "./reducer";
 import sagas from "./saga";
-import Table from "./inventory/Table";
+import ProductsTable from "./inventory/ProductsTable";
 
-export default { orders, sales, sagas, Table };
+export default { orders, sales, sagas, ProductsTable };
