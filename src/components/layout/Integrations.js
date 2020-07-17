@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import shopify from "../../images/shopify-logo.jpg";
 import amazon from "../../images/amazon-logo.jpg";
 import amazonfba from "../../images/amazon-fulfillment.jpg";

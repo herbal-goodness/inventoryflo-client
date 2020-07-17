@@ -1,29 +1,29 @@
 import React, { useEffect, useState } from "react";
-import SalesTable from "./ProductsTable";
+import SalesTable from "./OrdersTable";
 import { makeData } from "../constants";
 import InventorySidePane from "./InventorySidePane";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { Button } from "react-bootstrap";
 
-function SalesContainer() {
+function OrdersContainer() {
   const dispatch = useDispatch();
   const [exportData, setExport] = useState(null);
 
   const {
     isLoading,
-    sales,
+    orders,
     hasShopifyUrl,
     hasShopifySecret,
     isSuccessful,
   } = useSelector(
-    ({ sales, userInfo }) => ({
+    ({ orders, userInfo }) => ({
       hasShopifyUrl:
         userInfo.user.shopifyDomain && userInfo.user.shopifyDomain.length > 3,
       hasShopifySecret:
         userInfo.user.shopifySecret && userInfo.user.shopifySecret.length > 3,
       isSuccessful: userInfo.successful,
-      sales: sales.products,
-      isLoading: sales.loading,
+      orders: orders.userOrders.data,
+      isLoading: orders.loading,
     }),
     shallowEqual
   );
@@ -31,10 +31,9 @@ function SalesContainer() {
     hasShopifyUrl &&
       hasShopifySecret &&
       isSuccessful &&
-      sales === null &&
-      dispatch({ type: "GET_PRODUCTS" });
+      orders === null &&
+      dispatch({ type: "GET_ORDERS" });
   }, []);
-
   const exportFile = () => {
     exportData.save();
   };
@@ -49,7 +48,7 @@ function SalesContainer() {
         <div className="col-md-9">
           <header className="d-flex justify-content-between mb-2 dashboard-header">
             <h2>
-              <i className="fa fa-cube"></i> Sales Trend
+              <i className="fa fa-cube"></i> Orders
             </h2>
             <div>
               <Button to="" className="btn btn-outline-primary mr-3">
@@ -67,7 +66,7 @@ function SalesContainer() {
           <SalesTable
             setExport={setExport}
             isLoading={isLoading}
-            sales={sales}
+            orders={orders}
           />
         </div>
       </div>
@@ -75,4 +74,4 @@ function SalesContainer() {
   );
 }
 
-export default SalesContainer;
+export default OrdersContainer;

@@ -63,7 +63,7 @@ const SubMenu = ({ navColor }) => {
               <Link
                 className="nav-link"
                 style={isActive(history, "/sales")}
-                to="/sales"
+                to="/orders"
               >
                 Sales
               </Link>

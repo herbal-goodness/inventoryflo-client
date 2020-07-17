@@ -4,11 +4,18 @@ import { Button } from "react-bootstrap";
 import { USER_FIELDS } from "./constants";
 import { handleSubmit } from "./functions";
 import { AlertDismissible } from "../utils/components";
+import { shallowEqual, useSelector } from "react-redux";
 
 const PersonalDetails = ({ details, handleChange, tokens }) => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
+
+  const { firstName, lastName } = useSelector(({ userInfo }) => ({
+    lastName: userInfo.user?.lastName,
+    firstName: userInfo.user?.firstName,
+  }));
+
   return (
     <div className=" pt-5">
       <div style={{ maxWidth: "300px" }}>
@@ -65,6 +72,10 @@ const PersonalDetails = ({ details, handleChange, tokens }) => {
             tokens
           )
         }
+        disabled={shallowEqual(
+          { firstName: details.firstName, lastName: details.lastName },
+          { firstName, lastName }
+        )}
       >
         {loading ? "Saving..." : "Save"}
       </Button>
