@@ -3,7 +3,7 @@ import React from "react";
 const TodoSidePane = () => {
 	return (
 		<>
-			<div className="card">
+			<div className="card dashboard-todo-side-pane">
 				<div className="card-header">To Do</div>
 				<div className="card-body">
 					<div className="title">

@@ -286,7 +286,7 @@ h5 a {
 }
 
 .nav-logo {
-	width: 100px;
+	width: 75px;
 	max-width: 100%;
 }
 
@@ -620,6 +620,13 @@ th a:hover {
 	-moz-box-shadow: 10px 6px 9px -4px rgba(0, 0, 0, 0.75);
 	box-shadow: 10px 6px 9px -4px rgba(0, 0, 0, 0.75);
 }
+#mainNav .nav-link {
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 1.2rem;
+	line-height: 29px;
+}
 .policy-header h1 {
 	color: #333;
 	font-weight: bold;
@@ -908,7 +915,9 @@ th a:hover {
 }
 
 /* MEDIA QUERIES */
+
 @media (max-width: 1000px) {
+	/* Landing Page */
 	.sales-img,
 	.header-img {
 		text-align: center;
@@ -916,6 +925,8 @@ th a:hover {
 	.header-wrapper {
 		margin-top: 1.5rem;
 	}
+	/* DASHBOARD */
+	/* Todo Side pane */
 }
 @media (max-width: 400px) {
 	.header-wrapper .header,

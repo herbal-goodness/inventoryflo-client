@@ -4,17 +4,14 @@ import { Line } from "react-chartjs-2";
 export class SalesChart extends Component {
 	state = {
 		data: {
-			labels: ["January", "February", "March", "April", "May"],
+			labels: ["January", "February", "March", "April", "May", "June", "July"],
 			datasets: [
-				{
-					label: "Months",
-					backgroundColor: "rgba(247,247,247,0.75)",
-					data: [4, 5, 1, 10, 32, 12, 34],
-				},
 				{
 					label: "Sales Made",
 					backgroundColor: "rgba(131, 243, 237,0.75)",
-					data: [14, 15, 31, 0, 32, 12, 4],
+					borderColor: "#2222ff",
+					data: [74, 50, 71, 20, 62, 52, 70, 0],
+					fill: false,
 				},
 			],
 		},
