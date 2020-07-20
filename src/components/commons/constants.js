@@ -16,27 +16,27 @@ export const FOOTER_CONTENT = [
 		title: "Integration",
 		links: [
 			{
-				to: "/shopify",
+				to: "/integrations",
 				text: "Shopify",
 			},
 			{
-				to: "/amazon",
+				to: "/integrations",
 				text: "Amazon",
 			},
 			{
-				to: "/amazon-fba",
+				to: "/integrations",
 				text: "Amazon FBA",
 			},
 			{
-				to: "/efulfillment",
+				to: "/integrations",
 				text: "eFulfillment",
 			},
 			{
-				to: "/google-drive",
+				to: "/integrations",
 				text: "Google Drive",
 			},
 			{
-				to: "/slack",
+				to: "/integrations",
 				text: "Slack",
 			},
 		],
