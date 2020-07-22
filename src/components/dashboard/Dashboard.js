@@ -59,10 +59,10 @@ const Dashboard = () => {
 					{/* <SalesChart /> */}
 					<Orders />
 					<div className="row">
-						<div className="col-md-6">
+						<div className="col-md-12 col-lg-6">
 							<TotalListingsProductChart />
 						</div>
-						<div className="col-md-6">
+						<div className="col-md-12 col-lg-6">
 							<OrderStatusChart />
 						</div>
 					</div>
