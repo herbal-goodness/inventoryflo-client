@@ -38,7 +38,7 @@ const data = {
 	labels: [78, 60, 56],
 	datasets: [
 		{
-			label: "Product Listings",
+			label: "Products Status",
 			backgroundColor: [
 				"rgba(242, 201, 76, 0.9)",
 				"rgba(39, 174, 96, 0.9)",
@@ -57,8 +57,26 @@ const TotalListingsProductChart = () => {
 	return (
 		<div>
 			<div className="chart-container mb-5">
-				<h3 className="p-4">Total listings and Products</h3>
-				<HorizontalBar data={data} />
+				<h3 className="p-4">Products Status</h3>
+				<HorizontalBar
+					data={data}
+					options={{
+						responsive: true,
+						scales: {
+							yAxes: [
+								{
+									display: true,
+									scaleLabel: {
+										display: true,
+										labelString: " Shopify US",
+										fontSize: 20,
+										fontColor: "#000000",
+									},
+								},
+							],
+						},
+					}}
+				/>
 			</div>
 		</div>
 	);

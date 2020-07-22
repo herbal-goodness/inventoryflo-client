@@ -402,11 +402,11 @@ body .btn-info {
   font-family: var(--josefin);
   font-size: 14px;
 }
-.user-activities {
+.user-activities-wrapper {
   background: rgba(224, 224, 224, 0.26);
 }
 .user-activities .content {
-  padding: 50px 15px;
+  padding: 40px 15px;
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
@@ -414,11 +414,15 @@ body .btn-info {
   font-family: Lato;
   font-style: normal;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.5rem;
   line-height: 31px;
   color: #20846b;
 }
-.card-header {
+.user-activities p {
+  height: 2rem;
+}
+.card-header,
+.channel-header {
   font-size: 24px;
   font-family: var(--josefin);
   font-weight: 700;
@@ -505,7 +509,8 @@ body .btn-info {
   width: 600;
   height: 550;
 }
-.chart-container h3 {
+.chart-container h3,
+.user-activities-wrapper h3 {
   font-family: Lato sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -621,9 +626,7 @@ th a:hover {
   box-shadow: 10px 6px 9px -4px rgba(0, 0, 0, 0.75);
 }
 #mainNav .nav-link {
-  font-family: Lato;
-  font-style: normal;
-  font-weight: normal;
+  font-weight: bold;
   font-size: 1.2rem;
   line-height: 29px;
 }
@@ -926,7 +929,17 @@ th a:hover {
     margin-top: 1.5rem;
   }
   /* DASHBOARD */
-  /* Todo Side pane */
+
+  .user-activities .content {
+    padding: 10px 30px;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+  .user-activities p {
+    height: 2rem;
+    font-size: 1rem;
+  }
 }
 @media (max-width: 400px) {
   .header-wrapper .header,

@@ -32,6 +32,47 @@ const OrdersChart = ({ orders }) => {
 					},
 				],
 			}}
+			// options={{
+			// 	responsive: true,
+			// 	title: {
+			// 		display: true,
+			// 		text: "Quantity sold or $ value",
+			// 		position: "left",
+			// 	},
+			// }}
+			options={{
+				responsive: true,
+				scales: {
+					xAxes: [
+						{
+							display: true,
+							scaleLabel: {
+								display: true,
+								labelString: "Days or time of the day",
+								fontSize: 20,
+								fontColor: "#000000",
+							},
+							ticks: {
+								major: {
+									fontStyle: "bold",
+									fontColor: "#FF0000",
+								},
+							},
+						},
+					],
+					yAxes: [
+						{
+							display: true,
+							scaleLabel: {
+								display: true,
+								labelString: " Quantity sold or $ value",
+								fontSize: 20,
+								fontColor: "#000000",
+							},
+						},
+					],
+				},
+			}}
 		/>
 	) : (
 		<h2>
@@ -40,11 +81,8 @@ const OrdersChart = ({ orders }) => {
 	);
 
 	return (
-		<div
-			className="chart-container mb-5"
-			options={{
-				responsive: true,
-			}}>
+		<div className="chart-container mb-5">
+			<h3 className="p-4">Sales Trend</h3>
 			{lineChart}
 		</div>
 	);

@@ -1,30 +1,45 @@
 import React from "react";
 
 const Channel = () => {
-  return (
-    <>
-      <form className="p-2 my-5">
-        <div className="form-group">
-          <h3 className="channel mt-4">Channel</h3>
-          <input
-            type="text"
-            value="Shopify US"
-            className="form-control btn btn-outline-success mt-4 btn-block"
-            role="button"
-          />
-        </div>
-        <div className="form-group">
-          <h3 className="channel mt-4">Time Period</h3>
-          <input
-            type="text"
-            value="Last 7 days"
-            className="form-control btn btn-outline-success mt-4 btn-block"
-            role="button"
-          />
-        </div>
-      </form>
-    </>
-  );
+	return (
+		<>
+			<form className="p-2 my-5">
+				<div className="form-group">
+					<label htmlFor="select" className="channel-header">
+						Channels
+					</label>
+					<select className="form-control">
+						<option>Shopify US</option>
+						<option>FBA-Amazon Canada</option>
+					</select>
+				</div>
+				<div className="channel-header mt-4">Time Period</div>
+				<div className="form-row">
+					<div class="form-group col-md-4">
+						<input
+							type="submit"
+							value="1 day"
+							className="btn btn-outline-info mt-4"
+						/>
+					</div>
+					<div className="form-group col-md-4">
+						<input
+							type="submit"
+							value="7 days"
+							className="btn btn-outline-primary mt-4"
+						/>
+					</div>
+					<div className="form-group col-md-4">
+						<input
+							type="submit"
+							value="30 days"
+							className="btn btn-outline-primary mt-4"
+						/>
+					</div>
+				</div>
+			</form>
+		</>
+	);
 };
 
 export default Channel;
