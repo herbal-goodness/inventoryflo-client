@@ -40,15 +40,15 @@ const data = {
 		{
 			label: "Products Status",
 			backgroundColor: [
-				"rgba(242, 201, 76, 0.9)",
-				"rgba(39, 174, 96, 0.9)",
-				"rgba(247, 147, 30, 0.9)",
+				"rgba(242, 201, 76, 0.8)",
+				"rgba(39, 174, 96, 0.8)",
+				"rgba(247, 147, 30, 0.8)",
 			],
 			borderColor: "rgba(255,99,132,1)",
 			borderWidth: 1,
 			hoverBackgroundColor: "rgba(255,99,132,0.4)",
 			hoverBorderColor: "rgba(255,99,132,1)",
-			data: [65, 59, 75],
+			data: [43, 35, 29],
 		},
 	],
 };
@@ -70,6 +70,12 @@ const TotalListingsProductChart = () => {
 										display: true,
 										labelString: " Shopify US",
 										fontSize: 20,
+										fontColor: "#000000",
+									},
+									ticks: {
+										mirror: true,
+										padding: -90,
+										fontSize: 22,
 										fontColor: "#000000",
 									},
 								},

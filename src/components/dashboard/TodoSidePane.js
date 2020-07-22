@@ -6,7 +6,7 @@ const TodoSidePane = () => {
 			<div className="card dashboard-todo-side-pane">
 				<div className="card-header">To Do</div>
 				<div className="card-body">
-					<div className="title">
+					<div className="todo-title">
 						<h2>Listing</h2>
 					</div>
 					<h5 className="card-title">
@@ -21,7 +21,7 @@ const TodoSidePane = () => {
 								aria-hidden="true"></i>
 						</button>
 					</div>
-					<div className="title">
+					<div className="todo-title">
 						<h2>Inventory</h2>
 					</div>
 					<h5 className="card-title">
@@ -36,7 +36,7 @@ const TodoSidePane = () => {
 								aria-hidden="true"></i>
 						</button>
 					</div>
-					<div className="title">
+					<div className="todo-title">
 						<h2>Order</h2>
 					</div>
 					<h5 className="card-title">
