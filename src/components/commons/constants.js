@@ -3,11 +3,11 @@ export const FOOTER_CONTENT = [
 		title: "Products",
 		links: [
 			{
-				to: "/pricing",
+				to: "",
 				text: "Pricing",
 			},
 			{
-				to: "/pricing",
+				to: "",
 				text: "Features",
 			},
 		],
