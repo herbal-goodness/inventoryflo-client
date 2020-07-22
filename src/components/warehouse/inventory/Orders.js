@@ -22,7 +22,7 @@ function OrdersContainer() {
       hasShopifySecret:
         userInfo.user.shopifySecret && userInfo.user.shopifySecret.length > 3,
       isSuccessful: userInfo.successful,
-      orders: orders.userOrders.data,
+      orders: orders.userOrders,
       isLoading: orders.loading,
     }),
     shallowEqual
@@ -31,8 +31,8 @@ function OrdersContainer() {
     hasShopifyUrl &&
       hasShopifySecret &&
       isSuccessful &&
-      orders === null &&
-      dispatch({ type: "GET_ORDERS" });
+      (orders === null || orders === undefined) &&
+      dispatch({ type: "GET_ORDERS", payload: {} });
   }, []);
   const exportFile = () => {
     exportData.save();

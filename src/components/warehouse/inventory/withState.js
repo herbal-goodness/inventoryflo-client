@@ -12,14 +12,14 @@ export function withState(WrappedGrid) {
       if (props.pageable === false) {
         this.state = {};
       } else {
-        this.state = { skip: 0, take: 20 };
+        this.state = { skip: 0, take: 30 };
       }
     }
 
     render() {
       return (
         <WrappedGrid
-          filterable={this.props.data[0].order_number ? false : true}
+          filterable={this.props.data[0]?.order_number ? false : true}
           sortable={true}
           pageable={{ pageSizes: true }}
           {...this.props}

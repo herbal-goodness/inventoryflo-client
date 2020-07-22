@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
 
 import SalesChart from "../charts/SalesChart";
 import Orders from "./Orders";
@@ -9,11 +10,16 @@ import Channel from "./Channel";
 import RecentActivity from "./RecentActivity";
 import TotalListingsProductChart from "../charts/TotalListingsProductChart";
 import TopProductChart from "../charts/TopProductChart";
-import { useSelector, useDispatch, shallowEqual } from "react-redux";
+import API from "../utils/urls";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
+  const [dashBoardData, setDashboardData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setDataError] = useState(false);
+
   const {
+    token,
     orders,
     sales,
     hasShopifyUrl,
@@ -21,6 +27,7 @@ const Dashboard = () => {
     isSuccessful,
   } = useSelector(
     ({ sales, userInfo, orders }) => ({
+      token: userInfo.user.IdToken,
       hasShopifyUrl:
         userInfo.user.shopifyDomain && userInfo.user.shopifyDomain.length > 3,
       hasShopifySecret:
@@ -32,6 +39,7 @@ const Dashboard = () => {
     }),
     shallowEqual
   );
+
   useEffect(() => {
     hasShopifyUrl &&
       hasShopifySecret &&
@@ -39,7 +47,36 @@ const Dashboard = () => {
       sales === null &&
       dispatch({ type: "GET_PRODUCTS" }) &&
       orders === null &&
-      dispatch({ type: "GET_ORDERS" });
+      dispatch({
+        type: "GET_ORDERS",
+        payload: {},
+      });
+  }, []);
+
+  useEffect(() => {
+    const getDashBoardData = async () => {
+      try {
+        setIsLoading(true);
+        const res = await fetch(API.API_ROOT + "/filtered-orders", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
+        if (res.ok) {
+          const { data } = await res.json();
+          setDashboardData({ ...data });
+          setIsLoading(false);
+        } else {
+          setIsLoading(false);
+          setDataError(true);
+        }
+      } catch (error) {
+        setIsLoading(false);
+        setDataError(true);
+        console.log(error);
+      }
+    };
+    getDashBoardData();
   }, []);
 
   return (
@@ -54,7 +91,7 @@ const Dashboard = () => {
         </div>
 
         <div className="col-md-9">
-          <UserActivities />
+          <UserActivities data={{ dashBoardData, isLoading, error }} />
           <SalesChart />
           <Orders />
           <TotalListingsProductChart />
