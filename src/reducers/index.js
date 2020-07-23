@@ -22,6 +22,7 @@ const logout = (state = {}, action) => {
 };
 
 export default combineReducers({
+  dashboard: inventory.dashboard,
   sales: inventory.sales,
   orders: inventory.orders,
   logout,

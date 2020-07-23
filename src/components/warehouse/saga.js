@@ -12,7 +12,7 @@ function* salesWorker() {
     });
 
     if (response.ok) {
-      const { data } = yield response.json();
+      const { data, totalProductCount } = yield response.json();
       const products = data.map(
         ({ images, updated_at, variants, title, vendor }) => {
           return {
@@ -24,7 +24,10 @@ function* salesWorker() {
           };
         }
       );
-
+      yield put({
+        type: "STORE_DASHBOARD_DATA",
+        payload: { totalProductCount },
+      });
       yield put({ type: "STORE_PRODUCTS", payload: products });
     } else {
       yield put({ type: "PRODUCTS_ERROR" });
@@ -51,8 +54,21 @@ function* invenoryWorker({ payload }) {
     );
 
     if (response.ok) {
-      const { data } = yield response.json();
+      const {
+        data,
+        totalOpenOrderCount,
+        totalClosedOrderCount,
+        totalOrderCount,
+      } = yield response.json();
 
+      yield put({
+        type: "STORE_DASHBOARD_DATA",
+        payload: {
+          totalOpenOrderCount,
+          totalClosedOrderCount,
+          totalOrderCount,
+        },
+      });
       yield put({
         type: "STORE_ORDERS",
         payload: data,
@@ -65,8 +81,34 @@ function* invenoryWorker({ payload }) {
     yield put({ type: "ORDERS_ERROR" });
   }
 }
+function* dashboardWorker() {
+  const token = yield select((state) => state.userInfo.user.IdToken);
+
+  try {
+    const response = yield fetch(API.API_ROOT + "/filtered-orders", {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
+
+    if (response.ok) {
+      const { data } = yield response.json();
+
+      yield put({
+        type: "STORE_DASHBOARD_DATA",
+        payload: data,
+      });
+    } else {
+      yield put({ type: "DASHBOARD_DATA_ERROR" });
+    }
+  } catch (error) {
+    console.log(error);
+    yield put({ type: "DASHBOARD_DATA_ERROR" });
+  }
+}
 // Sales Watcher
 export default function* salesSaga() {
   yield all([takeLatest("GET_PRODUCTS", salesWorker)]);
   yield all([takeLatest("GET_ORDERS", invenoryWorker)]);
+  yield all([takeLatest("GET_DASHBOARD_DATA", dashboardWorker)]);
 }

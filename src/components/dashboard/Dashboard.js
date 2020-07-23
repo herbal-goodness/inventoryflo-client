@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 
 import OrderStatusChart from "../charts/OrderStatusChart";
@@ -10,24 +10,20 @@ import Channel from "./Channel";
 import RecentActivity from "./RecentActivity";
 import TotalListingsProductChart from "../charts/TotalListingsProductChart";
 import TopProductChart from "../charts/TopProductChart";
-import API from "../utils/urls";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const [dashBoardData, setDashboardData] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setDataError] = useState(false);
 
   const {
-    token,
+    dashboard,
     orders,
     sales,
     hasShopifyUrl,
     hasShopifySecret,
     isSuccessful,
   } = useSelector(
-    ({ sales, userInfo, orders }) => ({
-      token: userInfo.user.IdToken,
+    ({ sales, userInfo, orders, dashboard }) => ({
+      dashboard,
       hasShopifyUrl:
         userInfo.user.shopifyDomain && userInfo.user.shopifyDomain.length > 3,
       hasShopifySecret:
@@ -54,35 +50,16 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    const getDashBoardData = async () => {
-      try {
-        setIsLoading(true);
-        const res = await fetch(API.API_ROOT + "/filtered-orders", {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        });
-        if (res.ok) {
-          const { data } = await res.json();
-          setDashboardData({ ...data });
-          setIsLoading(false);
-        } else {
-          setIsLoading(false);
-          setDataError(true);
-        }
-      } catch (error) {
-        setIsLoading(false);
-        setDataError(true);
-        console.log(error);
-      }
-    };
-    getDashBoardData();
+    hasShopifyUrl &&
+      hasShopifySecret &&
+      isSuccessful &&
+      dashboard.data === null &&
+      dispatch({ type: "GET_DASHBOARD_DATA" });
   }, []);
 
   return (
     <div className="container-fluid mx-auto main dashboard">
       <DashboardHeader />
-
       <div className="row">
         <div className="col-md-5 col-lg-3">
           <TodoSidePane />
@@ -91,18 +68,18 @@ const Dashboard = () => {
         </div>
 
         <div className="col-md-7 col-lg-9">
-          <UserActivities data={{ dashBoardData, isLoading, error }} />
+          <UserActivities dashboardData={dashboard} />
           <Orders />
           <div className="row">
             <div className="col-md-12 col-lg-6">
-              <TotalListingsProductChart />
+              <TotalListingsProductChart data={dashboard.data} />
             </div>
             <div className="col-md-12 col-lg-6">
-              <OrderStatusChart />
+              <OrderStatusChart data={dashboard.data} />
             </div>
           </div>
 
-          <TopProductChart data={dashBoardData?.topProducts} />
+          <TopProductChart data={dashboard.data?.topProducts} />
         </div>
       </div>
     </div>

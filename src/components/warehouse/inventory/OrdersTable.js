@@ -60,8 +60,9 @@ const OrdersTable = ({ isLoading, orders, setExport }) => {
             filterable={false}
             cell={(props) => (
               <td colSpan={props.colSpan} style={props.style}>
-                {props.dataItem?.fulfillment_status !== "fulfilled" ||
-                (props.dataItem?.closed_at &&
+                {(props.dataItem?.fulfillment_status !== "fulfilled" &&
+                  props.dataItem?.financial_status === "paid") ||
+                (props.dataItem?.closed_at === "null" &&
                   props.dataItem?.financial_status === "paid") ? (
                   <span style={style}>
                     <Open />

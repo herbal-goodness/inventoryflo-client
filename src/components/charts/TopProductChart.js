@@ -3,11 +3,11 @@ import { Pie, Doughnut } from "react-chartjs-2";
 import { Button } from "react-bootstrap";
 const dataFormat = {
   labels: [
-    "Product1       $1234",
-    "Product2       $999",
-    "Product3       $888",
-    "Product5       $777",
-    "Product5       $100",
+    "Product1       $0000",
+    "Product2       $000",
+    "Product3       $000",
+    "Product5       $000",
+    "Product5       $000",
   ],
   datasets: [
     {

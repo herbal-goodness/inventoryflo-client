@@ -10,6 +10,12 @@ const ordersInitialState = {
   successful: false,
   userOrders: null,
 };
+const dashboardInitialState = {
+  error: false,
+  loading: false,
+  successful: false,
+  data: null,
+};
 
 export const sales = (state = salesInitialState, actions) => {
   switch (actions.type) {
@@ -73,6 +79,40 @@ export const orders = (state = ordersInitialState, actions) => {
       };
     case "RESET_STATE":
       return ordersInitialState;
+
+    default:
+      return state;
+  }
+};
+
+export const dashboard = (state = dashboardInitialState, actions) => {
+  switch (actions.type) {
+    case "GET_DASHBOARD_DATA":
+      return {
+        ...state,
+        loading: true,
+        error: false,
+        successful: false,
+        data: null,
+      };
+    case "STORE_DASHBOARD_DATA":
+      return {
+        ...state,
+        data: { ...state.data, ...actions.payload },
+        successful: true,
+        loading: false,
+        error: false,
+      };
+    case "DASHBOARD_DATA_ERROR":
+      return {
+        ...state,
+        error: true,
+        userOrders: null,
+        successful: false,
+        loading: false,
+      };
+    case "RESET_STATE":
+      return dashboardInitialState;
 
     default:
       return state;

@@ -1,12 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const Policy = () => {
   return (
     <div className="data-policy">
       <main className="wrapper container-fluid mx-auto py-3">
         <header className="policy-header">
-          <h1>Term of Service</h1>
+          <h1>Terms of service</h1>
         </header>
         <article className="policy-article">
           <p className="art-content">
