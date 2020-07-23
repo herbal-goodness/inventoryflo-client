@@ -427,7 +427,7 @@ body .btn-info {
   font-family: var(--josefin);
   font-weight: 700;
 }
-.title {
+.todo-title {
   background: var(--transparentGreen);
   width: 180px;
   padding: 4px 10px;
@@ -435,11 +435,11 @@ body .btn-info {
   margin-bottom: 20px;
   display: flex;
 }
-.title h2 {
+.todo-title h2 {
   font-size: 20px;
   color: #fff;
 }
-.title::after {
+.todo-title::after {
   content: "";
   border-top: 30px solid var(--transparentGreen);
   border-right: 50px solid transparent;
@@ -919,7 +919,7 @@ th a:hover {
 
 /* MEDIA QUERIES */
 
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
   /* Landing Page */
   .sales-img,
   .header-img {
@@ -932,7 +932,7 @@ th a:hover {
 
   .user-activities .content {
     padding: 10px 30px;
-    font-size: 1.5rem;
+    font-size: 0.8rem;
     line-height: 1.5;
     text-align: center;
   }
@@ -940,7 +940,32 @@ th a:hover {
     height: 2rem;
     font-size: 1rem;
   }
+  .todo-title {
+    background: var(--transparentGreen);
+    width: 140px;
+    padding: 4px 10px;
+    height: 30px;
+    margin-bottom: 20px;
+    display: flex;
+  }
+  .todo-title h2 {
+    font-size: 20px;
+    color: #fff;
+  }
+  .todo-title::after {
+    content: "";
+    border-top: 30px solid var(--transparentGreen);
+    border-right: 50px solid transparent;
+    position: absolute;
+    display: flex;
+    margin-top: -4px;
+    margin-left: 130px;
+  }
+  .dashboard-todo-side-pane h5 {
+    font-size: 0.97rem;
+  }
 }
+
 @media (max-width: 400px) {
   .header-wrapper .header,
   .process-flow-header {

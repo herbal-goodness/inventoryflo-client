@@ -92,13 +92,12 @@ const Dashboard = () => {
 
         <div className="col-md-7 col-lg-9">
           <UserActivities data={{ dashBoardData, isLoading, error }} />
-          {/* <SalesChart /> */}
           <Orders />
           <div className="row">
-            <div className="col-md-6">
+            <div className="col-md-12 col-lg-6">
               <TotalListingsProductChart />
             </div>
-            <div className="col-md-6">
+            <div className="col-md-12 col-lg-6">
               <OrderStatusChart />
             </div>
           </div>

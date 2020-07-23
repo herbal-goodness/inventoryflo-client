@@ -11,7 +11,7 @@ const Footer = () => {
 		<div className="container-fluid bg-mid-green">
 			<footer className="container footer py-5">
 				<div className="row">
-					<div className="col-md-3 ml-5">
+					<div className="col-md-3 ml-md-5 ml-lg-5">
 						<Link to="/">
 							<img src={footerlogo} alt="logo" className="mb-2" />
 						</Link>
@@ -24,7 +24,7 @@ const Footer = () => {
 
 					{FOOTER_CONTENT.map(({ title, links, color }, index) => (
 						<div
-							className="col-md-2 footer-content-left mx-sm-auto"
+							className="col-md-2 col-lg-2 col-sm-3  footer-content-left mx-sm-auto"
 							key={index + 1}>
 							<h2
 								key={title}
