@@ -46,10 +46,9 @@ const TopProductChart = ({ data }) => {
       labels,
     });
   }, [data, price]);
-  console.log(dataForChart);
 
   return (
-    <div className="chart-container mb-5">
+    <div className="chart-container mb-5 pb-5">
       <div className="d-flex justify-content-around">
         <h3 className="p-4 flex-grow">Top Products</h3>
         <div className="pt-4">
