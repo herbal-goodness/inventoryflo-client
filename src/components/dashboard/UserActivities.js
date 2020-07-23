@@ -11,6 +11,7 @@ const UserActivities = ({ data }) => {
       <div className="d-flex flex-row justify-content-between align-items-center user-activities mb-4 py-3">
         <div className="col-md-2 px-3">
           <div className="content">
+            $
             {(dashBoardData && dashBoardData.salesToDatePrice) ||
               "0" ||
               (error && "0")}{" "}

@@ -103,7 +103,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <TopProductChart />
+          <TopProductChart data={dashBoardData?.topProducts} />
         </div>
       </div>
     </div>
