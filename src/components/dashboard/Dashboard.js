@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
 
-import SalesChart from "../charts/SalesChart";
+import OrderStatusChart from "../charts/OrderStatusChart";
 import Orders from "./Orders";
 import DashboardHeader from "./DashboardHeader";
 import TodoSidePane from "./TodoSidePane";
@@ -9,69 +10,103 @@ import Channel from "./Channel";
 import RecentActivity from "./RecentActivity";
 import TotalListingsProductChart from "../charts/TotalListingsProductChart";
 import TopProductChart from "../charts/TopProductChart";
-import { useSelector, useDispatch, shallowEqual } from "react-redux";
-import OrderStatusChart from "../charts/OrderStatusChart";
+import API from "../utils/urls";
 
 const Dashboard = () => {
-	const dispatch = useDispatch();
-	const {
-		orders,
-		sales,
-		hasShopifyUrl,
-		hasShopifySecret,
-		isSuccessful,
-	} = useSelector(
-		({ sales, userInfo, orders }) => ({
-			hasShopifyUrl:
-				userInfo.user.shopifyDomain && userInfo.user.shopifyDomain.length > 3,
-			hasShopifySecret:
-				userInfo.user.shopifySecret && userInfo.user.shopifySecret.length > 3,
-			isSuccessful: userInfo.successful,
-			sales: sales.products,
-			orders: orders.userOrders,
-			productsLoaded: sales.successful,
-		}),
-		shallowEqual
-	);
-	useEffect(() => {
-		hasShopifyUrl &&
-			hasShopifySecret &&
-			isSuccessful &&
-			sales === null &&
-			dispatch({ type: "GET_PRODUCTS" }) &&
-			orders === null &&
-			dispatch({ type: "GET_ORDERS" });
-	}, []);
+  const dispatch = useDispatch();
+  const [dashBoardData, setDashboardData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setDataError] = useState(false);
 
-	return (
-		<div className="container-fluid mx-auto main dashboard">
-			<DashboardHeader />
+  const {
+    token,
+    orders,
+    sales,
+    hasShopifyUrl,
+    hasShopifySecret,
+    isSuccessful,
+  } = useSelector(
+    ({ sales, userInfo, orders }) => ({
+      token: userInfo.user.IdToken,
+      hasShopifyUrl:
+        userInfo.user.shopifyDomain && userInfo.user.shopifyDomain.length > 3,
+      hasShopifySecret:
+        userInfo.user.shopifySecret && userInfo.user.shopifySecret.length > 3,
+      isSuccessful: userInfo.successful,
+      sales: sales.products,
+      orders: orders.userOrders,
+      productsLoaded: sales.successful,
+    }),
+    shallowEqual
+  );
 
-			<div className="row">
-				<div className="col-md-5 col-lg-3">
-					<TodoSidePane />
-					<Channel />
-					<RecentActivity />
-				</div>
+  useEffect(() => {
+    hasShopifyUrl &&
+      hasShopifySecret &&
+      isSuccessful &&
+      sales === null &&
+      dispatch({ type: "GET_PRODUCTS" }) &&
+      orders === null &&
+      dispatch({
+        type: "GET_ORDERS",
+        payload: {},
+      });
+  }, []);
 
-				<div className="col-md-7 col-lg-9">
-					<UserActivities />
-					{/* <SalesChart /> */}
-					<Orders />
-					<div className="row">
-						<div className="col-md-12 col-lg-6">
-							<TotalListingsProductChart />
-						</div>
-						<div className="col-md-12 col-lg-6">
-							<OrderStatusChart />
-						</div>
-					</div>
+  useEffect(() => {
+    const getDashBoardData = async () => {
+      try {
+        setIsLoading(true);
+        const res = await fetch(API.API_ROOT + "/filtered-orders", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        });
+        if (res.ok) {
+          const { data } = await res.json();
+          setDashboardData({ ...data });
+          setIsLoading(false);
+        } else {
+          setIsLoading(false);
+          setDataError(true);
+        }
+      } catch (error) {
+        setIsLoading(false);
+        setDataError(true);
+        console.log(error);
+      }
+    };
+    getDashBoardData();
+  }, []);
 
-					<TopProductChart />
-				</div>
-			</div>
-		</div>
-	);
+  return (
+    <div className="container-fluid mx-auto main dashboard">
+      <DashboardHeader />
+
+      <div className="row">
+        <div className="col-md-5 col-lg-3">
+          <TodoSidePane />
+          <Channel />
+          <RecentActivity />
+        </div>
+
+        <div className="col-md-7 col-lg-9">
+          <UserActivities data={{ dashBoardData, isLoading, error }} />
+          <Orders />
+          <div className="row">
+            <div className="col-md-12 col-lg-6">
+              <TotalListingsProductChart />
+            </div>
+            <div className="col-md-12 col-lg-6">
+              <OrderStatusChart />
+            </div>
+          </div>
+
+          <TopProductChart data={dashBoardData?.topProducts} />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Dashboard;

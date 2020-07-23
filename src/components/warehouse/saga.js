@@ -35,35 +35,27 @@ function* salesWorker() {
   }
 }
 
-function* invenoryWorker() {
+function* invenoryWorker({ payload }) {
   const token = yield select((state) => state.userInfo.user.IdToken);
-
+  const { createdAtMin, createdAtMax } = payload;
   try {
-    const response = yield fetch(API.API_ROOT + API.urls.GET_ORDERS, {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    });
+    const response = yield fetch(
+      `${
+        API.API_ROOT + API.urls.GET_ORDERS
+      }?createdAtMin=${createdAtMin}&createdAtMax=${createdAtMax}`,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
 
     if (response.ok) {
-      const result = yield response.json();
-      const {
-        ordersToBeFulfilled,
-        ordersToMonthDate,
-        salesToDatePrice,
-        cancelledOrders,
-        data,
-      } = result;
+      const { data } = yield response.json();
 
       yield put({
         type: "STORE_ORDERS",
-        payload: {
-          salesToDatePrice,
-          ordersToMonthDate,
-          ordersToBeFulfilled,
-          cancelledOrders,
-          data,
-        },
+        payload: data,
       });
     } else {
       yield put({ type: "ORDERS_ERROR" });
