@@ -5,7 +5,7 @@ const Policy = () => {
     <div className="data-policy">
       <main className="wrapper container-fluid mx-auto py-3">
         <header className="policy-header">
-          <h1>Terms of service</h1>
+          <h1>Terms of Service</h1>
         </header>
         <article className="policy-article">
           <p className="art-content">

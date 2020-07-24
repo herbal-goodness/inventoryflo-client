@@ -59,7 +59,7 @@ export const FOOTER_CONTENT = [
       },
       {
         to: "",
-        text: "Contact Supprt",
+        text: "Contact Support",
       },
     ],
   },
