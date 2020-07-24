@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
-const InventorySidePane = () => {
+const InventorySidePane = ({ handleSearch }) => {
   const dispatch = useDispatch();
   const [to, setTo] = useState("");
   const [from, setFrom] = useState("");
@@ -27,6 +27,7 @@ const InventorySidePane = () => {
           </span>
         </div>
         <input
+          onChange={handleSearch}
           className="form-control my-0 py-1"
           type="text"
           placeholder="Search"

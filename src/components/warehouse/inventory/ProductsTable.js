@@ -19,7 +19,6 @@ const Table = ({ isLoading, sales, setExport }) => {
             title={" "}
             cell={(props) => (
               <td colSpan={props.colSpan} style={props.style}>
-                {console.log(props.dataItem)}
                 {
                   <img
                     src={props.dataItem?.image.src}
@@ -48,6 +47,11 @@ const Table = ({ isLoading, sales, setExport }) => {
           <GridColumn
             field="inventory_management"
             title="Condition"
+            cell={(props) => (
+              <td colSpan={props.colSpan} style={props.style}>
+                <span>New</span>
+              </td>
+            )}
             filterable={false}
             columnMenu={ColumnMenu}
           />
@@ -58,21 +62,9 @@ const Table = ({ isLoading, sales, setExport }) => {
             columnMenu={ColumnMenu}
           />
           <GridColumn
-            field="inventory_policy"
-            title="Bin Location"
-            filterable={false}
-            columnMenu={ColumnMenu}
-          />
-          <GridColumn
             field="inventory_quantity"
             title="Available"
             filter="numeric"
-            filterable={false}
-            columnMenu={ColumnMenu}
-          />
-          <GridColumn
-            field="vendor"
-            title="On Hand"
             filterable={false}
             columnMenu={ColumnMenu}
           />
@@ -86,6 +78,13 @@ const Table = ({ isLoading, sales, setExport }) => {
           <GridColumn
             field="updated_at"
             title="Last Modified"
+            cell={(props) => (
+              <td colSpan={props.colSpan} style={props.style}>
+                <span>
+                  {new Date(props.dataItem.updated_at).toLocaleDateString()}
+                </span>
+              </td>
+            )}
             filterable={false}
             columnMenu={ColumnMenu}
           />

@@ -8,6 +8,7 @@ import { Button } from "react-bootstrap";
 function SalesContainer() {
   const dispatch = useDispatch();
   const [exportData, setExport] = useState(null);
+  const [foundResult, setFoundResult] = useState([]);
 
   const {
     isLoading,
@@ -39,12 +40,28 @@ function SalesContainer() {
     exportData.save();
   };
 
+  //TODO: WORK ON SEARCH
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const { value } = e.target;
+    if (value?.length > 5) {
+      const foundItems = sales.filter(({ title }) => {
+        console.log(value, title);
+        const queryLowCase = value.toLocaleLowerCase();
+        const titleNameLow = title.toLocaleLowerCase();
+        return titleNameLow.match(`${queryLowCase}`);
+      });
+
+      // foundItems.length > 0 && setFoundResult(foundItems);
+    }
+  };
+
   return (
     <div className="container-fluid mx-auto main">
       <div className="row">
         <div className="col-md-3">
           <h2 className="filter-inv-header">filter inventory</h2>
-          <InventorySidePane products={makeData(100)} />
+          <InventorySidePane handleSearch={handleSearch} />
         </div>
         <div className="col-md-9">
           <header className="d-flex justify-content-between mb-2 dashboard-header">
@@ -67,7 +84,7 @@ function SalesContainer() {
           <SalesTable
             setExport={setExport}
             isLoading={isLoading}
-            sales={sales}
+            sales={foundResult.length > 0 ? foundResult : sales}
           />
         </div>
       </div>

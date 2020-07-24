@@ -57,6 +57,9 @@ const OrderStatusChart = ({ data }) => {
               yAxes: [
                 {
                   display: true,
+                  gridLines: {
+                    display: false,
+                  },
                   scaleLabel: {
                     display: true,
                     labelString: " Shopify US",
@@ -68,6 +71,13 @@ const OrderStatusChart = ({ data }) => {
                     padding: -90,
                     fontSize: 22,
                     fontColor: "#000000",
+                  },
+                },
+              ],
+              xAxes: [
+                {
+                  gridLines: {
+                    display: false,
                   },
                 },
               ],

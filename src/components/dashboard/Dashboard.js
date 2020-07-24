@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 
 import OrderStatusChart from "../charts/OrderStatusChart";
-import Orders from "./Orders";
+import Orders from "../charts/OrdersChart";
 import DashboardHeader from "./DashboardHeader";
 import TodoSidePane from "./TodoSidePane";
 import UserActivities from "./UserActivities";
@@ -69,7 +69,7 @@ const Dashboard = () => {
 
         <div className="col-md-7 col-lg-9">
           <UserActivities dashboardData={dashboard} />
-          <Orders />
+          <Orders orders={orders} />
           <div className="row">
             <div className="col-md-12 col-lg-6">
               <TotalListingsProductChart data={dashboard.data} />

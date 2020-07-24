@@ -64,6 +64,9 @@ const TotalListingsProductChart = ({ data }) => {
             scales: {
               yAxes: [
                 {
+                  gridLines: {
+                    display: false,
+                  },
                   display: true,
                   scaleLabel: {
                     display: true,
@@ -76,6 +79,13 @@ const TotalListingsProductChart = ({ data }) => {
                     padding: -90,
                     fontSize: 22,
                     fontColor: "#000000",
+                  },
+                },
+              ],
+              xAxes: [
+                {
+                  gridLines: {
+                    display: false,
                   },
                 },
               ],
