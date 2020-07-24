@@ -906,7 +906,6 @@ th a:hover {
   color: var(--mainWhite);
   font-weight: bold;
   font-size: 1.3rem;
-  text-transform: capitalize;
 }
 
 .footer-nav a {

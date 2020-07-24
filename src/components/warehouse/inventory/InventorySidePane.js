@@ -36,11 +36,15 @@ const InventorySidePane = () => {
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="tags">Tags</label>
-          <input type="text" class="form-control" placeholder="Search Tags" />
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Search Tags"
+          />
         </div>
         <div className="form-group">
           <label htmlFor="select">Conditions</label>
-          <select class="form-control">
+          <select className="form-control">
             <option>All Conditions</option>
             <option>New</option>
             <option>Used</option>
@@ -61,7 +65,7 @@ const InventorySidePane = () => {
 
         <div className="form-group">
           <label htmlFor="select">Channels</label>
-          <select class="form-control">
+          <select className="form-control">
             <option>Shopify US</option>
             <option>FBA-Amazon Canada</option>
             <option>Used</option>
@@ -133,7 +137,7 @@ const InventorySidePane = () => {
         </div>
 
         <div className="form-row">
-          <div class="form-group col-md-6">
+          <div className="form-group col-md-6">
             <input
               type="submit"
               value="Apply filter"
