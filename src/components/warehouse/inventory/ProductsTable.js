@@ -19,7 +19,13 @@ const Table = ({ isLoading, sales, setExport }) => {
             title={" "}
             cell={(props) => (
               <td colSpan={props.colSpan} style={props.style}>
-                {<img src={props.dataItem?.image} alt="" />}
+                {console.log(props.dataItem)}
+                {
+                  <img
+                    src={props.dataItem?.image.src}
+                    alt={props.dataItem?.image.alt}
+                  />
+                }
               </td>
             )}
             filterable={false}
@@ -30,6 +36,7 @@ const Table = ({ isLoading, sales, setExport }) => {
             field="title"
             title="Product Name"
             width={200}
+            filterable={false}
             className="truncate"
           />
           <GridColumn

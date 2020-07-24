@@ -19,7 +19,7 @@ export function withState(WrappedGrid) {
     render() {
       return (
         <WrappedGrid
-          filterable={this.props.data[0]?.order_number ? false : true}
+          filterable={false}
           sortable={true}
           pageable={{ pageSizes: true }}
           {...this.props}

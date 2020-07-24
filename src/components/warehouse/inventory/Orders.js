@@ -48,7 +48,7 @@ function OrdersContainer() {
         <div className="col-md-9">
           <header className="d-flex justify-content-between mb-2 dashboard-header">
             <h2>
-              <i className="fa fa-cube"></i> Orders
+              <i className="fa fa-cube"></i> Track the orders from channels
             </h2>
             <div>
               <Button to="" className="btn btn-outline-primary mr-3">
