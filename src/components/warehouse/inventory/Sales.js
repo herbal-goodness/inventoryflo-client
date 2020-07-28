@@ -7,9 +7,7 @@ import { Button } from "react-bootstrap";
 function SalesContainer() {
   const dispatch = useDispatch();
   const [exportData, setExport] = useState(null);
-  const [foundResult, setFoundResult] = useState([]);
   const [query, setQuery] = useState("");
-  const [searching, setSearch] = useState(false);
 
   const {
     isLoading,
@@ -34,7 +32,6 @@ function SalesContainer() {
     exportData.save();
   };
 
-  //TODO: WORK ON SEARCH
   const handleSearch = (e) => {
     e.preventDefault();
     const { value } = e.target;
@@ -50,13 +47,13 @@ function SalesContainer() {
   }, []);
 
   return (
-    <div className="container-fluid mx-auto main">
+    <div className="container-fluid mx-auto">
       <div className="row">
-        <div className="col-md-2">
-          <h2 className="filter-inv-header">filter inventory</h2>
+        <div className="col-md-3 inv-side-wrapper pt-5 inv-col-1">
+          <h2 className="filter-inv-header">filter products</h2>
           <InventorySidePane handleSearch={handleSearch} />
         </div>
-        <div className="col-md-10">
+        <div className="col-md-9 inv-col-2">
           <header className="d-flex justify-content-between mb-2 dashboard-header">
             <h2>
               <i className="fa fa-cube"></i> Products
