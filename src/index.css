@@ -256,7 +256,7 @@ h5 a {
 .form-group input,
 .form-group select,
 .form-group button {
-	border: 2px solid #20846b;
+	border: 1px solid #20846b;
 }
 
 .more-info {
@@ -380,7 +380,8 @@ body .btn-info {
 /* DASHBOARD */
 .main,
 .register,
-.login {
+.login,
+.inv-col-2 {
 	margin-top: 100px;
 }
 .dashboard form,
@@ -434,7 +435,7 @@ body .btn-info {
 .inv-input-header {
 	font-size: 1.3rem;
 	font-family: var(--josefin);
-	font-weight: 700;
+	font-weight: 800;
 }
 .todo-title {
 	background: var(--transparentGreen);
@@ -584,6 +585,13 @@ th a:hover {
 }
 .apply-filter:hover {
 	background-color: #2e8474 !important;
+}
+.inv-side-wrapper {
+	background: rgba(224, 224, 224, 0.26);
+	box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.05);
+}
+.inv-col-1 {
+	margin-top: 66px;
 }
 
 /* Spinner */
