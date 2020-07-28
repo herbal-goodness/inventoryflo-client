@@ -84,7 +84,7 @@ const InventorySidePane = ({ handleSearch }) => {
               onChange={({ currentTarget }) =>
                 setFrom(new Date(currentTarget.valueAsDate).toJSON())
               }
-              class="form-control"
+              className="form-control"
             />
           </div>
           <div className="form-group col-md-6">
@@ -106,9 +106,9 @@ const InventorySidePane = ({ handleSearch }) => {
             name="exampleRadios"
             id="exampleRadios1"
             value="option1"
-            checked
+            // checked
           />
-          <label className="form-check-label" for="exampleRadios1">
+          <label className="form-check-label" htmlFor="exampleRadios1">
             Available
           </label>
         </div>
@@ -120,7 +120,7 @@ const InventorySidePane = ({ handleSearch }) => {
             id="exampleRadios2"
             value="option2"
           />
-          <label className="form-check-label" for="exampleRadios2">
+          <label className="form-check-label" htmlFor="exampleRadios2">
             Reserved
           </label>
         </div>
@@ -132,7 +132,7 @@ const InventorySidePane = ({ handleSearch }) => {
             id="exampleRadios3"
             value="option3"
           />
-          <label className="form-check-label" for="exampleRadios3">
+          <label className="form-check-label" htmlFor="exampleRadios3">
             On Hand
           </label>
         </div>

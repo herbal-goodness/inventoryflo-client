@@ -13,17 +13,26 @@ function* salesWorker() {
 
     if (response.ok) {
       const { data, totalProductCount } = yield response.json();
-      const products = data.map(
-        ({ images, updated_at, variants, title, vendor }) => {
-          return {
-            image: images && images[0],
-            updated_at,
-            ...variants[0],
-            title,
-            vendor,
-          };
-        }
-      );
+
+      const products = data.map(({ images, variants, title, vendor }) => {
+        let totalQuantity = 0;
+        let totalPrice = 0;
+
+        variants.forEach(({ inventory_quantity, price }) => {
+          totalQuantity += inventory_quantity;
+          totalPrice += +price;
+        });
+
+        return {
+          image: images && images[0],
+          totalQuantity,
+          NoOfVariants: variants.length,
+          totalPrice: totalPrice.toFixed(2),
+          variants,
+          title,
+          vendor,
+        };
+      });
       yield put({
         type: "STORE_DASHBOARD_DATA",
         payload: { totalProductCount },

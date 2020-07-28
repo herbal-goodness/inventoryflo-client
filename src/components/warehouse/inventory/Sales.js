@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import SalesTable from "./ProductsTable";
-import { makeData } from "../constants";
 import InventorySidePane from "./InventorySidePane";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { Button } from "react-bootstrap";
@@ -9,6 +8,8 @@ function SalesContainer() {
   const dispatch = useDispatch();
   const [exportData, setExport] = useState(null);
   const [foundResult, setFoundResult] = useState([]);
+  const [query, setQuery] = useState("");
+  const [searching, setSearch] = useState(false);
 
   const {
     isLoading,
@@ -28,13 +29,6 @@ function SalesContainer() {
     }),
     shallowEqual
   );
-  useEffect(() => {
-    hasShopifyUrl &&
-      hasShopifySecret &&
-      isSuccessful &&
-      sales === null &&
-      dispatch({ type: "GET_PRODUCTS" });
-  }, []);
 
   const exportFile = () => {
     exportData.save();
@@ -44,26 +38,25 @@ function SalesContainer() {
   const handleSearch = (e) => {
     e.preventDefault();
     const { value } = e.target;
-    if (value?.length > 5) {
-      const foundItems = sales.filter(({ title }) => {
-        console.log(value, title);
-        const queryLowCase = value.toLocaleLowerCase();
-        const titleNameLow = title.toLocaleLowerCase();
-        return titleNameLow.match(`${queryLowCase}`);
-      });
-
-      // foundItems.length > 0 && setFoundResult(foundItems);
-    }
+    setQuery(value);
   };
+
+  useEffect(() => {
+    hasShopifyUrl &&
+      hasShopifySecret &&
+      isSuccessful &&
+      sales === null &&
+      dispatch({ type: "GET_PRODUCTS" });
+  }, []);
 
   return (
     <div className="container-fluid mx-auto main">
       <div className="row">
-        <div className="col-md-3">
+        <div className="col-md-2">
           <h2 className="filter-inv-header">filter inventory</h2>
           <InventorySidePane handleSearch={handleSearch} />
         </div>
-        <div className="col-md-9">
+        <div className="col-md-10">
           <header className="d-flex justify-content-between mb-2 dashboard-header">
             <h2>
               <i className="fa fa-cube"></i> Products
@@ -84,7 +77,8 @@ function SalesContainer() {
           <SalesTable
             setExport={setExport}
             isLoading={isLoading}
-            sales={foundResult.length > 0 ? foundResult : sales}
+            sales={sales}
+            query={query}
           />
         </div>
       </div>
