@@ -69,15 +69,17 @@ function SalesContainer() {
 							<i className="fa fa-cube"></i> Products
 						</h2>
 						<div>
-							<Button to="" className="btn btn-outline-primary mr-3">
+							<button to="" className="btn btn-info apply-filter mr-3">
 								<i className="fa fa-sign-out fa-fw mr-1" aria-hidden="true"></i>
 								Import from CSV
-							</Button>
+							</button>
 
-							<Button onClick={exportFile} className="btn btn-outline-primary">
+							<button
+								onClick={exportFile}
+								className="btn btn-info apply-filter">
 								<i className="fa fa-sign-out fa-fw mr-1" aria-hidden="true"></i>
 								Export
-							</Button>
+							</button>
 						</div>
 					</header>
 

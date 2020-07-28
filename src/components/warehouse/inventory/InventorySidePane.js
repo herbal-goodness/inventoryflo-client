@@ -50,11 +50,11 @@ const InventorySidePane = ({ handleSearch }) => {
 						Channels
 					</label>
 					<select className="form-control">
-						<option>Shopify US</option>
+						<option className="hover-col">Shopify US</option>
 						<option>FBA-Amazon Canada</option>
 					</select>
 				</div>
-				<h6 className="h4">Inventory</h6>
+				<h6 className="inv-date-header">Inventory</h6>
 				<div className="form-row">
 					<div className="form-group col-md-6">
 						<label htmlFor="date1" className="inv-input-header">
