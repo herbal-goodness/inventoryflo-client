@@ -995,6 +995,29 @@ th a:hover {
 	}
 }
 
+.product-image {
+  transition: transform 0.5s ease-in-out;
+}
+/* tr.k-master-row.k-alt,
+tr.k-master-row {
+  background-color: white !important;
+  border: thick !important;
+  border-bottom: 3px solid #000 !important;
+} */
+
+.product-image:hover {
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  overflow: visible;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  position: relative;
+  left: 100%;
+  top: 100%;
+  transform: scale(1.5);
+}
+
 @media (max-width: 400px) {
 	.header-wrapper .header,
 	.process-flow-header {

@@ -21,6 +21,7 @@ export function withState(WrappedGrid) {
         <WrappedGrid
           filterable={false}
           sortable={true}
+          expandField="expanded"
           pageable={{ pageSizes: true }}
           {...this.props}
           {...this.state}
