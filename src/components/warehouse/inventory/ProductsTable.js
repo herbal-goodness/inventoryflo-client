@@ -119,7 +119,7 @@ const Table = ({ isLoading, sales, setExport, query }) => {
           data={filterBy(sales || [], filter)}
           filter={filter}
           detail={DetailComponent}
-          style={{ height: "500px" }}
+          style={{ height: "600px" }}
           expandField="expanded"
         >
           {/* <GridToolbar>
