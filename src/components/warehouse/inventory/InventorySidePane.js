@@ -19,7 +19,6 @@ const InventorySidePane = ({ handleSearch }) => {
   };
   return (
     <div>
-      <h5>inventory SKUs found</h5>
       <div className="input-group md-form form-sm form-1 pl-0 mb-2">
         <div className="input-group-prepend">
           <span className="input-group-text purple lighten-3" id="basic-text1">

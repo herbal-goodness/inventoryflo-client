@@ -3,16 +3,10 @@
 import React, { useState } from "react";
 import "@progress/kendo-theme-default/dist/all.css";
 import { withState, ColumnMenu } from "./withState";
-import {
-  GridColumn,
-  Grid,
-  GridDetailRow,
-  GridToolbar,
-} from "@progress/kendo-react-grid";
+import { GridColumn, Grid, GridDetailRow } from "@progress/kendo-react-grid";
 import { ExcelExport } from "@progress/kendo-react-excel-export";
 import { Spinner } from "../../utils/components";
 import { filterBy } from "@progress/kendo-data-query";
-import { Checkbox } from "@progress/kendo-react-inputs";
 import { Button } from "react-bootstrap";
 
 class DetailComponent extends GridDetailRow {
@@ -128,7 +122,7 @@ const Table = ({ isLoading, sales, setExport, query }) => {
           style={{ height: "500px" }}
           expandField="expanded"
         >
-          <GridToolbar>
+          {/* <GridToolbar>
             <Button
               title="Add sku"
               className="k-button k-secondary"
@@ -143,14 +137,14 @@ const Table = ({ isLoading, sales, setExport, query }) => {
             >
               {cwth === 0 ? "Add Categories" : "Hide Categories"}
             </Button>
-          </GridToolbar>
+          </GridToolbar> */}
           <GridColumn
             field="image"
             title={" "}
             cell={DetailColumnCell}
             width="80px"
           />
-          <GridColumn
+          {/* <GridColumn
             field=""
             width={wth}
             title="SKU"
@@ -173,7 +167,7 @@ const Table = ({ isLoading, sales, setExport, query }) => {
             )}
             filterable={false}
             columnMenu={ColumnMenu}
-          />
+          /> */}
           <GridColumn
             headerCell={(props) => (
               <h6 {...props}>
@@ -189,9 +183,10 @@ const Table = ({ isLoading, sales, setExport, query }) => {
           <GridColumn
             field="NoOfVariants"
             title="No. of variants"
+            width={110}
             headerCell={(props) => (
               <h6 {...props}>
-                <strong>No. of variants </strong>
+                <strong>Variants </strong>
               </h6>
             )}
             filterable={false}
@@ -233,8 +228,20 @@ const Table = ({ isLoading, sales, setExport, query }) => {
             columnMenu={ColumnMenu}
           />
           <GridColumn
+            field="product_type"
+            title="Categories"
+            width={120}
+            headerCell={(props) => (
+              <h6 {...props}>
+                <strong>Categories</strong>
+              </h6>
+            )}
+            filterable={false}
+            columnMenu={ColumnMenu}
+          />
+          <GridColumn
             field="channel-listed"
-            width={150}
+            width={120}
             cell={(props) => (
               <td colSpan={props.colSpan}>
                 <img
@@ -245,7 +252,7 @@ const Table = ({ isLoading, sales, setExport, query }) => {
             )}
             headerCell={(props) => (
               <h6 {...props}>
-                <strong>Channels Listed</strong>
+                <strong>Channels</strong>
               </h6>
             )}
             filterable={false}
@@ -254,7 +261,7 @@ const Table = ({ isLoading, sales, setExport, query }) => {
           <GridColumn
             field=""
             title=""
-            width={150}
+            width={120}
             headerCell={(props) => (
               <h6 {...props}>
                 <strong>Warehouses</strong>
