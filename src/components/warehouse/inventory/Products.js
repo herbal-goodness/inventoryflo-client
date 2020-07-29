@@ -4,6 +4,9 @@ import InventorySidePane from "./InventorySidePane";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { Button } from "react-bootstrap";
 
+/**
+ * Products compoinent, renders the products table
+ */
 function SalesContainer() {
   const dispatch = useDispatch();
   const [exportData, setExport] = useState(null);

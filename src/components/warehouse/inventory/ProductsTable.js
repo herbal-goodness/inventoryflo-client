@@ -7,8 +7,11 @@ import { GridColumn, Grid, GridDetailRow } from "@progress/kendo-react-grid";
 import { ExcelExport } from "@progress/kendo-react-excel-export";
 import { Spinner } from "../../utils/components";
 import { filterBy } from "@progress/kendo-data-query";
-import { Button } from "react-bootstrap";
 
+/**
+ * Component that creates the details for each row on the table
+ *
+ */
 class DetailComponent extends GridDetailRow {
   render() {
     const variants = this.props.dataItem?.variants;
@@ -43,6 +46,10 @@ class DetailComponent extends GridDetailRow {
   }
 }
 
+/**
+ * Component that toggles the dropdown and passes appropriate data
+ * @param {Object} props
+ */
 const DetailColumnCell = (props) => {
   const expandChange = (dataItem) => {
     dataItem.expanded = !dataItem.expanded;
@@ -84,10 +91,11 @@ const DetailColumnCell = (props) => {
 };
 
 const StatefulGrid = withState(Grid);
+/**
+ * Table component
+ * @param {object} param0
+ */
 const Table = ({ isLoading, sales, setExport, query }) => {
-  const [wth, setWidth] = useState(0);
-  const [cwth, setCat] = useState(0);
-  const [toggle, setToggle] = useState(false);
   const filter = {
     logic: "or",
     filters: [
@@ -95,19 +103,6 @@ const Table = ({ isLoading, sales, setExport, query }) => {
       { field: "totalQuantity", operator: "contains", value: query },
       { field: "totalPrice", operator: "contains", value: query },
     ],
-  };
-  const addNew = (event) => {
-    event.preventDefault();
-    setToggle(!toggle);
-    toggle && setWidth(100);
-    !toggle && setWidth(0);
-  };
-
-  const addCat = (event) => {
-    event.preventDefault();
-    setToggle(!toggle);
-    toggle && setCat(150);
-    !toggle && setCat(0);
   };
 
   return isLoading ? (
@@ -122,57 +117,17 @@ const Table = ({ isLoading, sales, setExport, query }) => {
           style={{ height: "600px" }}
           expandField="expanded"
         >
-          {/* <GridToolbar>
-            <Button
-              title="Add sku"
-              className="k-button k-secondary"
-              onClick={addNew}
-            >
-              {wth === 0 ? "Add SKU" : "Hide SKU"}
-            </Button>
-            <Button
-              title="Add sku"
-              className="k-button k-secondary"
-              onClick={addCat}
-            >
-              {cwth === 0 ? "Add Categories" : "Hide Categories"}
-            </Button>
-          </GridToolbar> */}
           <GridColumn
             field="image"
             title={" "}
             cell={DetailColumnCell}
             width="80px"
           />
-          {/* <GridColumn
-            field=""
-            width={wth}
-            title="SKU"
-            headerCell={(props) => (
-              <h6 {...props}>
-                <strong>SKU </strong>
-              </h6>
-            )}
-            filterable={false}
-            columnMenu={ColumnMenu}
-          />
-          <GridColumn
-            field=""
-            width={cwth}
-            title="SKU"
-            headerCell={(props) => (
-              <h6 {...props}>
-                <strong>Categories </strong>
-              </h6>
-            )}
-            filterable={false}
-            columnMenu={ColumnMenu}
-          /> */}
           <GridColumn
             headerCell={(props) => (
-              <h6 {...props}>
+              <h5 {...props}>
                 <strong>Product </strong>
-              </h6>
+              </h5>
             )}
             field="title"
             title="Product"
@@ -185,9 +140,9 @@ const Table = ({ isLoading, sales, setExport, query }) => {
             title="No. of variants"
             width={110}
             headerCell={(props) => (
-              <h6 {...props}>
+              <h5 {...props}>
                 <strong>Variants </strong>
-              </h6>
+              </h5>
             )}
             filterable={false}
             columnMenu={ColumnMenu}
@@ -206,9 +161,9 @@ const Table = ({ isLoading, sales, setExport, query }) => {
             )}
             width={100}
             headerCell={(props) => (
-              <h6 {...props}>
+              <h5 {...props}>
                 <strong>Available</strong>
-              </h6>
+              </h5>
             )}
             filterable={false}
             columnMenu={ColumnMenu}
@@ -220,9 +175,9 @@ const Table = ({ isLoading, sales, setExport, query }) => {
             filter="numeric"
             width={100}
             headerCell={(props) => (
-              <h6 {...props}>
+              <h5 {...props}>
                 <strong>Price</strong>
-              </h6>
+              </h5>
             )}
             filterable={false}
             columnMenu={ColumnMenu}
@@ -232,9 +187,9 @@ const Table = ({ isLoading, sales, setExport, query }) => {
             title="Categories"
             width={120}
             headerCell={(props) => (
-              <h6 {...props}>
+              <h5 {...props}>
                 <strong>Categories</strong>
-              </h6>
+              </h5>
             )}
             filterable={false}
             columnMenu={ColumnMenu}
@@ -251,9 +206,9 @@ const Table = ({ isLoading, sales, setExport, query }) => {
               </td>
             )}
             headerCell={(props) => (
-              <h6 {...props}>
+              <h5 {...props}>
                 <strong>Channels</strong>
-              </h6>
+              </h5>
             )}
             filterable={false}
             columnMenu={ColumnMenu}
@@ -263,9 +218,9 @@ const Table = ({ isLoading, sales, setExport, query }) => {
             title=""
             width={120}
             headerCell={(props) => (
-              <h6 {...props}>
+              <h5 {...props}>
                 <strong>Warehouses</strong>
-              </h6>
+              </h5>
             )}
             cell={(props) => (
               <td>
