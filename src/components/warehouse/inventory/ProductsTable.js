@@ -118,15 +118,17 @@ const Table = ({ isLoading, sales, setExport, query }) => {
           expandField="expanded"
         >
           <GridColumn
+            className="products-td"
             field="image"
             title={" "}
             cell={DetailColumnCell}
             width="80px"
           />
           <GridColumn
+            className="products-td"
             headerCell={(props) => (
-              <h5 {...props}>
-                <strong>Product </strong>
+              <h5 {...props} className="products-header">
+                Product
               </h5>
             )}
             field="title"
@@ -139,9 +141,10 @@ const Table = ({ isLoading, sales, setExport, query }) => {
             field="NoOfVariants"
             title="No. of variants"
             width={110}
+            className="products-td"
             headerCell={(props) => (
-              <h5 {...props}>
-                <strong>Variants </strong>
+              <h5 {...props} className="products-header">
+                Variants
               </h5>
             )}
             filterable={false}
@@ -152,8 +155,13 @@ const Table = ({ isLoading, sales, setExport, query }) => {
             field="totalQuantity"
             title="Available"
             filter="numeric"
+            className="products-td"
             cell={(props) => (
-              <td colSpan={props.colSpan} style={props.style}>
+              <td
+                colSpan={props.colSpan}
+                className={props.className}
+                style={props.style}
+              >
                 {(props.dataItem.totalQuantity &&
                   props.dataItem.totalQuantity) ||
                   "Out of stock"}
@@ -161,8 +169,8 @@ const Table = ({ isLoading, sales, setExport, query }) => {
             )}
             width={100}
             headerCell={(props) => (
-              <h5 {...props}>
-                <strong>Available</strong>
+              <h5 {...props} className="products-header">
+                Available
               </h5>
             )}
             filterable={false}
@@ -173,10 +181,11 @@ const Table = ({ isLoading, sales, setExport, query }) => {
             field="totalPrice"
             title="Price"
             filter="numeric"
+            className="products-td "
             width={100}
             headerCell={(props) => (
-              <h5 {...props}>
-                <strong>Price</strong>
+              <h5 {...props} className="products-header">
+                Price
               </h5>
             )}
             filterable={false}
@@ -185,10 +194,11 @@ const Table = ({ isLoading, sales, setExport, query }) => {
           <GridColumn
             field="product_type"
             title="Categories"
+            className="products-td "
             width={120}
             headerCell={(props) => (
-              <h5 {...props}>
-                <strong>Categories</strong>
+              <h5 {...props} className="products-header">
+                Categories
               </h5>
             )}
             filterable={false}
@@ -196,6 +206,7 @@ const Table = ({ isLoading, sales, setExport, query }) => {
           />
           <GridColumn
             field="channel-listed"
+            className="products-td "
             width={120}
             cell={(props) => (
               <td colSpan={props.colSpan}>
@@ -206,8 +217,8 @@ const Table = ({ isLoading, sales, setExport, query }) => {
               </td>
             )}
             headerCell={(props) => (
-              <h5 {...props}>
-                <strong>Channels</strong>
+              <h5 {...props} className="products-header">
+                Channels
               </h5>
             )}
             filterable={false}
@@ -217,13 +228,14 @@ const Table = ({ isLoading, sales, setExport, query }) => {
             field=""
             title=""
             width={120}
+            className="products-td"
             headerCell={(props) => (
-              <h5 {...props}>
-                <strong>Warehouses</strong>
+              <h5 {...props} className="products-header">
+                Warehouses
               </h5>
             )}
             cell={(props) => (
-              <td>
+              <td className={props.className}>
                 <h4>EFS</h4>
               </td>
             )}
