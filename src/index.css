@@ -197,6 +197,7 @@ html {
 body {
 	background-color: #fff;
 	overflow: hidden;
+	font-family: Lato sans-serif;
 }
 
 h2 {
@@ -277,9 +278,9 @@ h5 a {
 	background-color: #20846b;
 }
 .card {
-	-webkit-box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
-	-moz-box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
-	box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
+	-webkit-box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.2);
+	-moz-box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.2);
+	box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.2);
 }
 
 .main-logo {
@@ -398,8 +399,14 @@ body .btn-info {
 	color: #000000;
 }
 .dashboard-header h2 {
-	font-family: var(--roboto);
 	text-transform: capitalize;
+	font-family: Lato;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 35px;
+	line-height: 42px;
+
+	color: rgba(0, 0, 0, 0.79);
 }
 .dashboard-header h4 {
 	font-family: var(--josefin);
@@ -432,11 +439,18 @@ body .btn-info {
 	font-family: var(--josefin);
 	font-weight: 700;
 }
-.inv-input-header {
+.inv-input-header,
+.inv-date-header {
 	font-size: 1.3rem;
 	font-family: var(--josefin);
-	font-weight: 800;
+	font-weight: normal;
+	line-height: 24px;
 }
+/* option {
+	background-color: #20846b !important;
+	color: #fff;
+} */
+
 .todo-title {
 	background: var(--transparentGreen);
 	width: 180px;
