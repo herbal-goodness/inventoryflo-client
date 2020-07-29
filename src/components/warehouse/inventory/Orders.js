@@ -39,16 +39,21 @@ function OrdersContainer() {
 	};
 
 	return (
-		<div className="container-fluid mx-auto main">
+		<div className="container-fluid mx-auto">
 			<div className="row">
-				<div className="col-md-3">
+				<div className="col-md-3 inv-side-wrapper pt-5 inv-col-1">
 					<h2 className="filter-inv-header">filter orders</h2>
 					<OrdersSidePane products={makeData(100)} title="Orders" />
 				</div>
-				<div className="col-md-9">
+				<div className="col-md-9 inv-col-2">
 					<header className="d-flex justify-content-between mb-2 dashboard-header">
 						<div>
-							<h2>Orders</h2>
+							<h2>
+								<i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>
+								Orders
+							</h2>
+						</div>
+						<div>
 							<span className="mr-2">
 								<i className="fa fa-download fa-fw" aria-hidden="true"></i>
 							</span>
