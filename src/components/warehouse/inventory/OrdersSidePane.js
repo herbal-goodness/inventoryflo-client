@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
-const InventorySidePane = ({ handleSearch, title }) => {
+const OrdersSidePane = ({ handleSearch, title }) => {
 	const dispatch = useDispatch();
 	const [to, setTo] = useState("");
 	const [from, setFrom] = useState("");
@@ -17,14 +17,7 @@ const InventorySidePane = ({ handleSearch, title }) => {
 	};
 	return (
 		<div>
-			{/* <h5>inventory SKUs found</h5> */}
 			<div className="input-group md-form form-sm form-1 pl-0 my-3 has-search form-group">
-				{/* <div className="input-group-prepend">
-					<span className="input-group-text purple lighten-3" id="basic-text1">
-						<i className="fas fa-search text-white" aria-hidden="true"></i>
-					</span>
-				</div> */}
-
 				<span className="fa fa-search form-control-feedback"></span>
 				<input
 					onChange={handleSearch}
@@ -36,12 +29,11 @@ const InventorySidePane = ({ handleSearch, title }) => {
 			</div>
 			<form onSubmit={handleSubmit}>
 				<div className="form-group has-search">
-					{/* <label htmlFor="tags">Tags</label> */}
 					<span className="fa fa-search form-control-feedback"></span>
 					<input
 						type="text"
 						className="form-control"
-						placeholder="Search Tags"
+						placeholder="Search orders"
 					/>
 				</div>
 				<div className="form-group">
@@ -96,27 +88,19 @@ const InventorySidePane = ({ handleSearch, title }) => {
 				</div>
 				<div className="form-group">
 					<label htmlFor="select" className="inv-input-header">
-						Conditions
+						Status
 					</label>
 					<select className="form-control">
-						<option>All Conditions</option>
-						<option>New</option>
-						<option>Used</option>
-						<option>Reconditioned</option>
-						<option>Damaged</option>
+						<option>All status</option>
 					</select>
 				</div>
-				<div className="form-row inv-btn">
-					<div className="form-group col-md-6">
-						<button type="button" className="btn btn-block">
-							Available
-						</button>
-					</div>
-					<div className="form-group col-md-6">
-						<button type="button" className="btn btn-block">
-							Out of stock
-						</button>
-					</div>
+				<div className="form-group">
+					<label htmlFor="select" className="inv-input-header">
+						Ships from
+					</label>
+					<select className="form-control">
+						<option>All locations</option>
+					</select>
 				</div>
 
 				<div className="form-row">
@@ -138,4 +122,4 @@ const InventorySidePane = ({ handleSearch, title }) => {
 	);
 };
 
-export default InventorySidePane;
+export default OrdersSidePane;

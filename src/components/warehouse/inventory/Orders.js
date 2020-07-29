@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import SalesTable from "./OrdersTable";
 import { makeData } from "../constants";
-import InventorySidePane from "./InventorySidePane";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { Button } from "react-bootstrap";
+import OrdersSidePane from "./OrdersSidePane";
 
 function OrdersContainer() {
 	const dispatch = useDispatch();
@@ -42,27 +42,29 @@ function OrdersContainer() {
 		<div className="container-fluid mx-auto main">
 			<div className="row">
 				<div className="col-md-3">
-					<h2 className="filter-inv-header">filter inventory</h2>
-					<InventorySidePane products={makeData(100)} />
+					<h2 className="filter-inv-header">filter orders</h2>
+					<OrdersSidePane products={makeData(100)} title="Orders" />
 				</div>
 				<div className="col-md-9">
 					<header className="d-flex justify-content-between mb-2 dashboard-header">
-						<h2>
-							<i className="fa fa-cube"></i> Track the orders from channels
-						</h2>
 						<div>
-							<Button to="" className="btn btn-outline-primary mr-3">
-								<i className="fa fa-sign-out fa-fw mr-1" aria-hidden="true"></i>
-								Import from CSV
-							</Button>
-
-							<Button onClick={exportFile} className="btn btn-outline-primary">
-								<i className="fa fa-sign-out fa-fw mr-1" aria-hidden="true"></i>
-								Export
-							</Button>
+							<h2>Orders</h2>
+							<span className="mr-2">
+								<i className="fa fa-download fa-fw" aria-hidden="true"></i>
+							</span>
+							<span className="mr-4 text-muted font-slim elem-pointer">
+								Import Data
+							</span>
+							<span>
+								<i className="fa fa-upload fa-fw mr-2" aria-hidden="true"></i>
+							</span>
+							<span
+								onClick={exportFile}
+								className="text-muted font-slim elem-pointer">
+								Export Data
+							</span>
 						</div>
 					</header>
-
 					<SalesTable
 						setExport={setExport}
 						isLoading={isLoading}
