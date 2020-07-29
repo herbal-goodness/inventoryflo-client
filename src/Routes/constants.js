@@ -3,7 +3,7 @@ import register from "../components/signup";
 import signin from "../components/signin";
 import ConfirmSignUp from "../components/signup/ConfirmSignUp";
 import profile from "../components/profile";
-import Inventory from "../components/warehouse/inventory/Sales";
+import Inventory from "../components/warehouse/inventory/Products";
 import Orders from "../components/warehouse/inventory/Orders";
 const Dashboard = lazy(() => import("../components/dashboard/Dashboard"));
 
