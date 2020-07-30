@@ -266,7 +266,15 @@ h5 a {
   line-height: 1.4;
   color: #666;
 }
-
+.font-slim {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+}
+.elem-pointer {
+  cursor: pointer;
+}
 .font-icons {
   color: var(--transparentGreen);
 }

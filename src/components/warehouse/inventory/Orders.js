@@ -3,6 +3,7 @@ import SalesTable from "./OrdersTable";
 import InventorySidePane from "./InventorySidePane";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { Button } from "react-bootstrap";
+import OrdersSidePane from "./OrdersSidePane";
 
 function OrdersContainer() {
   const dispatch = useDispatch();

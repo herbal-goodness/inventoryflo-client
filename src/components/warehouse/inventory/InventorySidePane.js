@@ -119,21 +119,6 @@ const InventorySidePane = ({
           </select>
         </div>
 
-        {/* <div className="form-group">
-          <label htmlFor="select" className="inv-input-header">
-            Status
-          </label>
-          <select
-            className="form-control"
-            name="status"
-            onChange={type === "product" ? handleStatus : () => {}}
-          >
-            <option className="hover-col" value="Out of stock">
-              Out of stock
-            </option>
-            <option value={2}>Available</option>
-          </select>
-        </div> */}
         <div className="form-row inv-btn">
           <div className="form-group col-md-6">
             <button
