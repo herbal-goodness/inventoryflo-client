@@ -10,6 +10,8 @@ function SalesContainer() {
   const dispatch = useDispatch();
   const [exportData, setExport] = useState(null);
   const [query, setQuery] = useState("");
+  const [status, setStatus] = useState([]);
+  const [filterChannel, setFilter] = useState({});
 
   const {
     isLoading,
@@ -30,14 +32,37 @@ function SalesContainer() {
     shallowEqual
   );
 
+  const clearFilter = (e) => {
+    e.preventDefault();
+    dispatch({ type: "GET_PRODUCTS", payload: {} });
+    setStatus([]);
+  };
+
   const exportFile = () => {
     exportData.save();
+  };
+
+  const handleStatus = (val) => {
+    const result = sales.filter(
+      ({ totalQuantity }) =>
+        totalQuantity === val ||
+        (typeof totalQuantity === "number" &&
+          totalQuantity >= val &&
+          typeof totalQuantity !== "string")
+    );
+    setStatus(result);
   };
 
   const handleSearch = (e) => {
     e.preventDefault();
     const { value } = e.target;
     setQuery(value);
+  };
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    const { value, name } = e.target;
+    setFilter({ ...filterChannel, [name]: value });
   };
 
   useEffect(() => {
@@ -53,7 +78,13 @@ function SalesContainer() {
       <div className="row">
         <div className="col-md-3 inv-side-wrapper pt-5 inv-col-1">
           <h2 className="filter-inv-header">filter products</h2>
-          <InventorySidePane handleSearch={handleSearch} />
+          <InventorySidePane
+            clearFilter={clearFilter}
+            handleStatus={handleStatus}
+            handleChange={handleChange}
+            handleSearch={handleSearch}
+            type="product"
+          />
         </div>
         <div className="col-md-9 inv-col-2">
           <header className="d-flex justify-content-between mb-2 dashboard-header">
@@ -79,8 +110,10 @@ function SalesContainer() {
           <SalesTable
             setExport={setExport}
             isLoading={isLoading}
-            sales={sales}
+            sales={(status.length > 0 && status) || sales}
             query={query}
+            status={status}
+            filterChannel={filterChannel}
           />
         </div>
       </div>

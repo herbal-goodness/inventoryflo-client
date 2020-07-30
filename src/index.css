@@ -408,13 +408,20 @@ body .btn-info {
 
   color: rgba(0, 0, 0, 0.79);
 }
+.products-sub-header {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+}
 .products-header {
   text-transform: capitalize;
   font-family: Lato;
   font-style: normal;
   font-weight: 600;
-  font-size: 1.3em;
-  color: rgba(0, 0, 0, 0.79);
+  font-size: 20px;
+  color: rgb(0, 0, 0);
 }
 .products-td {
   font-family: Lato;
@@ -1026,12 +1033,15 @@ th a:hover {
 .product-image {
   transition: transform 0.5s ease-in-out;
 }
-/* tr.k-master-row.k-alt,
-tr.k-master-row {
-  background-color: white !important;
-  border: thick !important;
-  border-bottom: 3px solid #000 !important;
-} */
+.popover-body {
+  width: 450px;
+  background-color: white;
+}
+
+.price::before {
+  content: "$";
+  font-weight: 600;
+}
 
 .product-image:hover {
   -ms-transform: scale(1.5); /* IE 9 */
