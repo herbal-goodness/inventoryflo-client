@@ -56,7 +56,7 @@ function SalesContainer() {
 					<InventorySidePane handleSearch={handleSearch} title="Inventory" />
 				</div>
 				<div className="col-md-9 inv-col-2">
-					<header className="d-flex justify-content-between mb-2 dashboard-header">
+					<header className="d-flex justify-content-between mb-2 dashboard-header flex-wrap">
 						<h2>
 							<i className="fa fa-cube"></i> Products
 						</h2>

@@ -46,7 +46,7 @@ function OrdersContainer() {
 					<OrdersSidePane products={makeData(100)} title="Orders" />
 				</div>
 				<div className="col-md-9 inv-col-2">
-					<header className="d-flex justify-content-between mb-2 dashboard-header">
+					<header className="d-flex justify-content-between mb-2 dashboard-header flex-wrap">
 						<div>
 							<h2>
 								<i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>
@@ -54,7 +54,20 @@ function OrdersContainer() {
 							</h2>
 						</div>
 						<div>
-							<span className="mr-2">
+							<button
+								to=""
+								className="btn btn-info apply-filter mr-3 btn-block-sm">
+								<i className="fa fa-sign-out fa-fw mr-1" aria-hidden="true"></i>
+								Import from CSV
+							</button>
+
+							<button
+								onClick={exportFile}
+								className="btn btn-info apply-filter">
+								<i className="fa fa-sign-out fa-fw mr-1" aria-hidden="true"></i>
+								Export
+							</button>
+							{/* <span className="mr-2">
 								<i className="fa fa-download fa-fw" aria-hidden="true"></i>
 							</span>
 							<span className="mr-4 text-muted font-slim elem-pointer">
@@ -67,7 +80,7 @@ function OrdersContainer() {
 								onClick={exportFile}
 								className="text-muted font-slim elem-pointer">
 								Export Data
-							</span>
+							</span> */}
 						</div>
 					</header>
 					<SalesTable
