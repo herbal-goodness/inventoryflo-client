@@ -4,6 +4,8 @@ import { withState } from "./withState";
 import { GridColumn, Grid } from "@progress/kendo-react-grid";
 import { ExcelExport } from "@progress/kendo-react-excel-export";
 import { Spinner } from "../../utils/components";
+import { Popover, OverlayTrigger } from "react-bootstrap";
+import { filterBy } from "@progress/kendo-data-query";
 
 const StatefulGrid = withState(Grid);
 const Closed = () => (
@@ -26,99 +28,239 @@ const Open = () => (
     }}
   />
 );
+const Canceled = () => (
+  <div
+    style={{
+      width: "10px",
+      height: "10px",
+      borderRadius: " 50%",
+      backgroundColor: "#003",
+    }}
+  />
+);
 const style = {
   display: "flex",
   justifyContent: "space-around",
   alignItems: "center",
 };
 
-const OrdersTable = ({ isLoading, orders, setExport }) => {
+const OrdersTable = ({
+  isLoading,
+  orders,
+  setExport,
+  query,
+  filterChannel,
+}) => {
+  const filter = {
+    logic: "or",
+    filters: [
+      { field: "title", operator: "contains", value: query },
+      { field: "order_number", operator: "contains", value: query },
+      { field: "status", operator: "eq", value: query },
+      { field: "created_at", operator: "contains", value: query },
+      { field: "shipping_lines", operator: "contains", value: query },
+      { field: "total_price", operator: "eq", value: query },
+      { field: "customer", operator: "contains", value: query },
+    ],
+  };
+
   return isLoading ? (
     <Spinner />
   ) : (
     <div>
       <ExcelExport data={orders} ref={(exporter) => setExport(exporter)}>
-        <StatefulGrid data={orders || []} style={{ height: "600px" }}>
+        <StatefulGrid
+          data={
+            filterChannel.channel && filterChannel.channel !== "shopify"
+              ? []
+              : filterBy(orders || [], filter)
+          }
+          filter={filter}
+          style={{ height: "600px" }}
+        >
           <GridColumn
             field="order_number"
+            headerClassName="products-header"
             title={"Order #"}
+            width={100}
             filterable={false}
           />
           <GridColumn
             field="created_at"
             title="Order Date"
+            width={100}
+            headerClassName="products-header"
             filterable={false}
-            cell={(props) => (
-              <td colSpan={props.colSpan} style={props.style}>
-                {new Date(props.dataItem?.created_at).toLocaleDateString()}
-              </td>
-            )}
           />
           <GridColumn
-            field="fulfillment_status"
+            field="status"
             title="Staus"
+            width={100}
+            headerClassName="products-header"
             filterable={false}
             cell={(props) => (
               <td colSpan={props.colSpan} style={props.style}>
-                {(props.dataItem?.fulfillment_status !== "fulfilled" &&
-                  props.dataItem?.financial_status === "paid") ||
-                (props.dataItem?.closed_at === "null" &&
-                  props.dataItem?.financial_status === "paid") ? (
+                {props.dataItem?.status === "Open" ? (
                   <span style={style}>
                     <Open />
                     Open
                   </span>
-                ) : (
+                ) : props.dataItem?.status === "Closed" ? (
                   <span style={style}>
                     <Closed /> Closed
+                  </span>
+                ) : (
+                  <span style={style}>
+                    <Canceled /> Canceled
                   </span>
                 )}
               </td>
             )}
           />
           <GridColumn
-            field="line_items"
+            headerClassName="products-header"
+            width={300}
             cell={(props) => (
               <td colSpan={props.colSpan} style={props.style}>
-                {props.dataItem?.line_items.map(({ sku }) => (
-                  <span>{sku}</span>
-                ))}
+                {props.dataItem?.line_items.length > 1 ? (
+                  <OverlayTrigger
+                    style={{ width: "500px" }}
+                    trigger="click"
+                    placement="right"
+                    overlay={
+                      <Popover
+                        id="popover-basic"
+                        color="#fff"
+                        style={{ width: "500px" }}
+                      >
+                        <Popover.Content as="div">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Title</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">SKU</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {props.dataItem?.line_items.map(
+                                ({ title, quantity, price, sku }, i) => (
+                                  <tr key={i}>
+                                    <td>{title.substr(0, 10)}...</td>
+                                    <td>{quantity}</td>
+                                    <td>{price}</td>
+                                    <td>{sku}</td>
+                                  </tr>
+                                )
+                              )}
+                            </tbody>
+                          </table>
+                        </Popover.Content>
+                      </Popover>
+                    }
+                  >
+                    <span>(multiple items)</span>
+                  </OverlayTrigger>
+                ) : (
+                  <OverlayTrigger
+                    style={{ width: "500px" }}
+                    trigger="click"
+                    placement="right"
+                    overlay={
+                      <Popover
+                        id="popover-basic"
+                        color="#fff"
+                        style={{ width: "450px" }}
+                      >
+                        <Popover.Content as="div">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Title</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">SKU</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {props.dataItem?.line_items.map(
+                                ({ title, quantity, price, sku }, i) => (
+                                  <tr key={i}>
+                                    <td>{title.substr(0, 10)}...</td>
+                                    <td>{quantity}</td>
+                                    <td>{price}</td>
+                                    <td>{sku}</td>
+                                  </tr>
+                                )
+                              )}
+                            </tbody>
+                          </table>
+                        </Popover.Content>
+                      </Popover>
+                    }
+                  >
+                    <span>
+                      {props.dataItem?.line_items.map(({ title }) => title)}
+                    </span>
+                  </OverlayTrigger>
+                )}
               </td>
             )}
-            title="SKU"
-            filterable={false}
-          />
-          <GridColumn
-            cell={(props) => (
-              <td colSpan={props.colSpan} style={props.style}>
-                {props.dataItem?.line_items.map(({ title }) => (
-                  <span>{title.substr(0, 15)}</span>
-                ))}
-              </td>
-            )}
-            title="Item Purchased"
-            filterable={false}
-          />
-          <GridColumn
-            field="customer.first_name"
-            title="Buyer"
+            title="Item"
             filterable={false}
           />
           <GridColumn
             field="shipping_lines"
+            width={150}
+            headerClassName="products-header"
             cell={(props) => (
               <td colSpan={props.colSpan} style={props.style}>
                 {props.dataItem?.shipping_lines.map(({ source }) => (
-                  <span>{source}</span>
+                  <>
+                    {source === "shopify" && (
+                      <img
+                        src="https://cdn.shopify.com/assets/images/logos/shopify-bag.png?1341928631"
+                        alt=""
+                      />
+                    )}
+
+                    {source === "Walmart" && (
+                      <img
+                        src=" https://www.freepnglogos.com/uploads/walmart-logo-24.jpg"
+                        alt=""
+                      />
+                    )}
+
+                    <span>{source}</span>
+                  </>
                 ))}
               </td>
             )}
-            title="Ship Method"
+            title="Channel"
+            filterable={false}
+          />
+
+          <GridColumn
+            field="total_price"
+            width={100}
+            filterable={false}
+            headerClassName="products-header"
+            filter="numeric"
+            title="Total"
+          />
+          <GridColumn
+            field="customer"
+            width={100}
+            headerClassName="products-header"
+            title="Buyer"
             filterable={false}
           />
           <GridColumn
             field="processing_method"
-            title="Shipped From"
+            width={100}
+            title="Shipped Method"
+            headerClassName="products-header"
             cell={(props) => (
               <td colSpan={props.colSpan} style={props.style}>
                 {props.dataItem?.shipping_lines.map(({ title }) => (
@@ -126,22 +268,6 @@ const OrdersTable = ({ isLoading, orders, setExport }) => {
                 ))}
               </td>
             )}
-            filterable={false}
-          />
-          <GridColumn
-            field="total_price"
-            filterable={false}
-            filter="numeric"
-            title="Total"
-          />
-          <GridColumn
-            field="updated_at"
-            cell={(props) => (
-              <td colSpan={props.colSpan} style={props.style}>
-                {new Date(props.dataItem?.updated_at).toLocaleDateString()}
-              </td>
-            )}
-            title="Last Update"
             filterable={false}
           />
         </StatefulGrid>

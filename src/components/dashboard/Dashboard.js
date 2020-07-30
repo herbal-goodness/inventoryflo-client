@@ -41,7 +41,7 @@ const Dashboard = () => {
       hasShopifySecret &&
       isSuccessful &&
       sales === null &&
-      dispatch({ type: "GET_PRODUCTS" }) &&
+      dispatch({ type: "GET_PRODUCTS", payload: {} }) &&
       orders === null &&
       dispatch({
         type: "GET_ORDERS",
