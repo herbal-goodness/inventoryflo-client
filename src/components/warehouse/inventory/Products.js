@@ -53,11 +53,13 @@ function SalesContainer() {
     setStatus(result);
   };
 
+
   const handleSearch = (e) => {
     e.preventDefault();
     const { value } = e.target;
     setQuery(value);
   };
+
 
   const handleChange = (e) => {
     e.preventDefault();
