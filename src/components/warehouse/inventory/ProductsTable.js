@@ -17,10 +17,11 @@ class DetailComponent extends GridDetailRow {
     const variants = this.props.dataItem?.variants;
     return (
       <>
-        <Grid data={variants || []} scrollable="none">
-          <GridColumn field="title" />
+        <Grid resizable data={variants || []} scrollable="none">
+          <GridColumn field="title" headerClassName="products-sub-header" />
           <GridColumn
             field="sku"
+            headerClassName="products-sub-header"
             title={"SKU"}
             cell={(props) => (
               <td colSpan={props.colSpan} style={props.style}>
@@ -30,6 +31,7 @@ class DetailComponent extends GridDetailRow {
           />
           <GridColumn
             field="inventory_quantity"
+            headerClassName="products-sub-header"
             cell={(props) => (
               <td colSpan={props.colSpan} style={props.style}>
                 {(props.dataItem.inventory_quantity !== 0 &&
@@ -39,7 +41,11 @@ class DetailComponent extends GridDetailRow {
             )}
             title="Available"
           />
-          <GridColumn field="price" title="Price" />
+          <GridColumn
+            headerClassName="products-sub-header"
+            field="price"
+            title="Price"
+          />
         </Grid>
       </>
     );
@@ -95,13 +101,26 @@ const StatefulGrid = withState(Grid);
  * Table component
  * @param {object} param0
  */
-const Table = ({ isLoading, sales, setExport, query }) => {
+const Table = ({
+  isLoading,
+  sales,
+  setExport,
+  query,
+  status,
+  filterChannel,
+}) => {
   const filter = {
     logic: "or",
     filters: [
-      { field: "title", operator: "contains", value: query },
-      { field: "totalQuantity", operator: "contains", value: query },
-      { field: "totalPrice", operator: "contains", value: query },
+      { field: "totalPrice", operator: "eq", value: query },
+
+      {
+        field: "totalQuantity",
+        operator: "contains",
+        value: query,
+      },
+      { field: "title", operator: "contains", value: query.query },
+      { field: "product_type", operator: "contains", value: query },
     ],
   };
 
@@ -111,7 +130,11 @@ const Table = ({ isLoading, sales, setExport, query }) => {
     <div>
       <ExcelExport data={sales} ref={(exporter) => setExport(exporter)}>
         <StatefulGrid
-          data={filterBy(sales || [], filter)}
+          data={
+            filterChannel.channel && filterChannel.channel !== "shopify"
+              ? []
+              : filterBy((status.length > 0 && status) || sales, filter)
+          }
           filter={filter}
           detail={DetailComponent}
           style={{ height: "600px" }}
@@ -122,91 +145,63 @@ const Table = ({ isLoading, sales, setExport, query }) => {
             field="image"
             title={" "}
             cell={DetailColumnCell}
+            filterable={false}
             width="80px"
           />
           <GridColumn
             className="products-td"
-            headerCell={(props) => (
-              <h5 {...props} className="products-header">
-                Product
-              </h5>
-            )}
+            headerClassName="products-sub-header"
             field="title"
             title="Product"
             width="350px"
-            columnMenu={ColumnMenu}
+            // columnMenu={ColumnMenu}
             filterable={false}
           />
           <GridColumn
             field="NoOfVariants"
-            title="No. of variants"
+            title="Variants"
             width={110}
-            className="products-td"
-            headerCell={(props) => (
-              <h5 {...props} className="products-header">
-                Variants
-              </h5>
-            )}
+            className="products-td text-right"
+            headerClassName="products-sub-header"
             filterable={false}
-            columnMenu={ColumnMenu}
+            // columnMenu={ColumnMenu}
           />
 
           <GridColumn
             field="totalQuantity"
             title="Available"
             filter="numeric"
-            className="products-td"
-            cell={(props) => (
-              <td
-                colSpan={props.colSpan}
-                className={props.className}
-                style={props.style}
-              >
-                {(props.dataItem.totalQuantity &&
-                  props.dataItem.totalQuantity) ||
-                  "Out of stock"}
-              </td>
-            )}
+            headerClassName="products-sub-header"
+            className="products-td text-right"
             width={100}
-            headerCell={(props) => (
-              <h5 {...props} className="products-header">
-                Available
-              </h5>
-            )}
             filterable={false}
-            columnMenu={ColumnMenu}
+            // columnMenu={ColumnMenu}
           />
 
           <GridColumn
             field="totalPrice"
             title="Price"
             filter="numeric"
-            className="products-td "
+            className="products-td price text-right"
+            headerClassName="products-sub-header"
             width={100}
-            headerCell={(props) => (
-              <h5 {...props} className="products-header">
-                Price
-              </h5>
-            )}
             filterable={false}
-            columnMenu={ColumnMenu}
+            // columnMenu={ColumnMenu}
           />
           <GridColumn
             field="product_type"
-            title="Categories"
-            className="products-td "
+            title="Category"
+            className="products-td"
+            headerClassName="products-sub-header"
             width={120}
-            headerCell={(props) => (
-              <h5 {...props} className="products-header">
-                Categories
-              </h5>
-            )}
             filterable={false}
-            columnMenu={ColumnMenu}
+            // columnMenu={ColumnMenu}
           />
           <GridColumn
             field="channel-listed"
             className="products-td "
+            headerClassName="products-sub-header"
+            title="Channels"
             width={120}
             cell={(props) => (
               <td colSpan={props.colSpan}>
@@ -216,31 +211,22 @@ const Table = ({ isLoading, sales, setExport, query }) => {
                 />
               </td>
             )}
-            headerCell={(props) => (
-              <h5 {...props} className="products-header">
-                Channels
-              </h5>
-            )}
             filterable={false}
-            columnMenu={ColumnMenu}
+            // columnMenu={ColumnMenu}
           />
           <GridColumn
             field=""
-            title=""
+            title="Warehouses"
             width={120}
             className="products-td"
-            headerCell={(props) => (
-              <h5 {...props} className="products-header">
-                Warehouses
-              </h5>
-            )}
+            headerClassName="products-sub-header"
             cell={(props) => (
               <td className={props.className}>
                 <h4>EFS</h4>
               </td>
             )}
             filterable={false}
-            columnMenu={ColumnMenu}
+            // columnMenu={ColumnMenu}
           />
         </StatefulGrid>
       </ExcelExport>
