@@ -219,23 +219,14 @@ const OrdersTable = ({
               <td colSpan={props.colSpan} style={props.style}>
                 {props.dataItem?.shipping_lines.map(({ source }, i) => (
                   <>
-                    {source === "shopify" && (
+                    {
                       <img
                         key={i}
                         src="https://cdn.shopify.com/assets/images/logos/shopify-bag.png?1341928631"
                         alt=""
                       />
-                    )}
-
-                    {source === "Walmart" && (
-                      <img
-                        key={i}
-                        src=" https://www.freepnglogos.com/uploads/walmart-logo-24.jpg"
-                        alt=""
-                      />
-                    )}
-
-                    <span>{source}</span>
+                    }
+                    <span>{"Shopify"}</span>
                   </>
                 ))}
               </td>
