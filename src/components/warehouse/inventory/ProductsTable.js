@@ -119,7 +119,7 @@ const Table = ({
         operator: "contains",
         value: query,
       },
-      { field: "title", operator: "contains", value: query.query },
+      { field: "title", operator: "contains", value: query },
       { field: "product_type", operator: "contains", value: query },
     ],
   };
