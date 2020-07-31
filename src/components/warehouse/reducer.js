@@ -30,7 +30,8 @@ export const sales = (state = salesInitialState, actions) => {
     case "STORE_PRODUCTS":
       return {
         ...state,
-        products: actions.payload,
+        products: actions.payload.products,
+        categories: actions.payload.categories,
         successful: true,
         loading: false,
         error: false,
@@ -64,7 +65,8 @@ export const orders = (state = ordersInitialState, actions) => {
     case "STORE_ORDERS":
       return {
         ...state,
-        userOrders: actions.payload,
+        userOrders: actions.payload.orders,
+        allStatus: actions.payload.allStatus,
         successful: true,
         loading: false,
         error: false,

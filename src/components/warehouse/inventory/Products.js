@@ -16,11 +16,13 @@ function SalesContainer() {
   const {
     isLoading,
     sales,
+    categories,
     hasShopifyUrl,
     hasShopifySecret,
     isSuccessful,
   } = useSelector(
     ({ sales, userInfo }) => ({
+      categories: sales.categories,
       hasShopifyUrl:
         userInfo.user.shopifyDomain && userInfo.user.shopifyDomain.length > 3,
       hasShopifySecret:
@@ -53,13 +55,19 @@ function SalesContainer() {
     setStatus(result);
   };
 
+  const handleCategoryFilter = (e) => {
+    e.preventDefault();
+    const result = sales.filter(
+      ({ product_type }) => product_type === e.target.value
+    );
+    setStatus(result);
+  };
 
   const handleSearch = (e) => {
     e.preventDefault();
     const { value } = e.target;
     setQuery(value);
   };
-
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -81,10 +89,12 @@ function SalesContainer() {
         <div className="col-md-3 inv-side-wrapper pt-5 inv-col-1">
           <h2 className="filter-inv-header">filter products</h2>
           <InventorySidePane
+            category={(sales && categories) || []}
             clearFilter={clearFilter}
             handleStatus={handleStatus}
             handleChange={handleChange}
             handleSearch={handleSearch}
+            handleCategoryFilter={handleCategoryFilter}
             type="product"
           />
         </div>

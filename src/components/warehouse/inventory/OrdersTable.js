@@ -49,6 +49,7 @@ const OrdersTable = ({
   orders,
   setExport,
   query,
+  status,
   filterChannel,
 }) => {
   const filter = {
@@ -73,7 +74,7 @@ const OrdersTable = ({
           data={
             filterChannel.channel && filterChannel.channel !== "shopify"
               ? []
-              : filterBy(orders || [], filter)
+              : filterBy((status.length > 0 && status) || orders, filter)
           }
           filter={filter}
           style={{ height: "600px" }}
@@ -216,10 +217,11 @@ const OrdersTable = ({
             headerClassName="products-header"
             cell={(props) => (
               <td colSpan={props.colSpan} style={props.style}>
-                {props.dataItem?.shipping_lines.map(({ source }) => (
+                {props.dataItem?.shipping_lines.map(({ source }, i) => (
                   <>
                     {source === "shopify" && (
                       <img
+                        key={i}
                         src="https://cdn.shopify.com/assets/images/logos/shopify-bag.png?1341928631"
                         alt=""
                       />
@@ -227,6 +229,7 @@ const OrdersTable = ({
 
                     {source === "Walmart" && (
                       <img
+                        key={i}
                         src=" https://www.freepnglogos.com/uploads/walmart-logo-24.jpg"
                         alt=""
                       />
@@ -263,8 +266,8 @@ const OrdersTable = ({
             headerClassName="products-header"
             cell={(props) => (
               <td colSpan={props.colSpan} style={props.style}>
-                {props.dataItem?.shipping_lines.map(({ title }) => (
-                  <span>{title}</span>
+                {props.dataItem?.shipping_lines.map(({ title }, i) => (
+                  <span key={i}>{title}</span>
                 ))}
               </td>
             )}
