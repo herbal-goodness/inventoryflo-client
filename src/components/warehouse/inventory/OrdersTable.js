@@ -150,7 +150,7 @@ const OrdersTable = ({
                                   <tr key={i}>
                                     <td>{title.substr(0, 10)}...</td>
                                     <td>{quantity}</td>
-                                    <td>{price}</td>
+                                    <td className="price">{price}</td>
                                     <td>{sku}</td>
                                   </tr>
                                 )
@@ -190,7 +190,7 @@ const OrdersTable = ({
                                   <tr key={i}>
                                     <td>{title.substr(0, 10)}...</td>
                                     <td>{quantity}</td>
-                                    <td>{price}</td>
+                                    <td className="price">{price}</td>
                                     <td>{sku}</td>
                                   </tr>
                                 )
@@ -240,6 +240,7 @@ const OrdersTable = ({
             width={100}
             filterable={false}
             headerClassName="products-header"
+            className="price text-right"
             filter="numeric"
             title="Total"
           />
