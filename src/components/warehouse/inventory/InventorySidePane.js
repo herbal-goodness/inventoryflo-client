@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import OrderSide from "./OrdersSidePane";
+import ProductSide from "./ProductsSidePane";
 
 const InventorySidePane = ({
   handleChange,
@@ -7,6 +9,8 @@ const InventorySidePane = ({
   type,
   handleStatus,
   clearFilter,
+  category,
+  handleCategoryFilter,
 }) => {
   const dispatch = useDispatch();
   const [to, setTo] = useState("");
@@ -35,13 +39,12 @@ const InventorySidePane = ({
           onChange={handleSearch}
           className="form-control my-0 py-1"
           type="text"
-          placeholder="Search products"
+          placeholder="Search items"
           aria-label="Search"
         />
       </div>
       <form onSubmit={handleSubmit}>
         <div className="form-group has-search">
-          {/* <label htmlFor="tags">Tags</label> */}
           <span className="fa fa-search form-control-feedback"></span>
           <input
             onChange={handleSearch}
@@ -62,10 +65,9 @@ const InventorySidePane = ({
             <option className="hover-col" value="shopify">
               Shopify US
             </option>
-            <option value="fba-amazon">FBA-Amazon Canada</option>
+            <option value="fba-amazon">Amazon</option>
           </select>
         </div>
-        <h6 className="inv-date-header">Inventory</h6>
         <div className="form-row">
           <div className="form-group col-md-6">
             <label htmlFor="date1" className="inv-input-header">
@@ -77,7 +79,7 @@ const InventorySidePane = ({
               onChange={({ currentTarget }) =>
                 setFrom(new Date(currentTarget.valueAsDate).toJSON())
               }
-              class="form-control"
+              className="form-control"
             />
           </div>
           <div className="form-group col-md-6">
@@ -94,56 +96,20 @@ const InventorySidePane = ({
             />
           </div>
         </div>
-        <div className="form-group">
-          <label htmlFor="select" className="inv-input-header">
-            Categories
-          </label>
-          <select disabled className="form-control">
-            <option>All Categories</option>
-            <option>New</option>
-            <option>Used</option>
-            <option>Reconditioned</option>
-            <option>Damaged</option>
-          </select>
-        </div>
-        <div className="form-group">
-          <label htmlFor="select" className="inv-input-header">
-            Conditions
-          </label>
-          <select disabled className="form-control">
-            <option>All Conditions</option>
-            <option>New</option>
-            <option>Used</option>
-            <option>Reconditioned</option>
-            <option>Damaged</option>
-          </select>
-        </div>
 
-        <div className="form-row inv-btn">
-          <div className="form-group col-md-6">
-            <button
-              onClick={type === "product" ? () => handleStatus(2) : () => {}}
-              type="button"
-              className="btn btn-block"
-            >
-              Available
-            </button>
-          </div>
-          <div className="form-group col-md-6">
-            <button
-              onClick={
-                type === "product"
-                  ? () => handleStatus("Out of stock")
-                  : () => {}
-              }
-              type="button"
-              className="btn btn-block"
-            >
-              Out of stock
-            </button>
-          </div>
-        </div>
-
+        {(type === "product" && (
+          <ProductSide
+            handleStatus={handleStatus}
+            category={category}
+            handleCategoryFilter={handleCategoryFilter}
+          />
+        )) ||
+          (type === "order" && (
+            <OrderSide
+              status={category}
+              handleCategoryFilter={handleCategoryFilter}
+            />
+          ))}
         <div className="form-row">
           <div className="form-group col-md-6">
             <button

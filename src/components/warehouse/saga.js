@@ -18,6 +18,7 @@ function* productsWorker({ payload }) {
 
     if (response.ok) {
       const { data, totalProductCount } = yield response.json();
+      const categories = [];
 
       const products = data.map(
         ({ images, variants, title, vendor, product_type }) => {
@@ -29,6 +30,9 @@ function* productsWorker({ payload }) {
             totalPrice += +price;
           });
 
+          if (!categories.includes(product_type)) {
+            categories.push(product_type);
+          }
           return {
             image: images && images[0],
             totalQuantity: totalQuantity === 0 ? "Out of stock" : totalQuantity,
@@ -45,7 +49,7 @@ function* productsWorker({ payload }) {
         type: "STORE_DASHBOARD_DATA",
         payload: { totalProductCount },
       });
-      yield put({ type: "STORE_PRODUCTS", payload: products });
+      yield put({ type: "STORE_PRODUCTS", payload: { products, categories } });
     } else {
       yield put({ type: "PRODUCTS_ERROR" });
     }
@@ -86,6 +90,19 @@ function* ordersWorker({ payload }) {
           totalOrderCount,
         },
       });
+      function getStatus(financial_status, fulfillment_status, cancelled_at) {
+        if (cancelled_at !== null) {
+          return "Canceled";
+        } else if (
+          financial_status === "paid" &&
+          fulfillment_status === "fulfilled"
+        ) {
+          return "Closed";
+        } else {
+          return "Open";
+        }
+      }
+      const allStatus = [];
 
       const orders = data.map(
         ({
@@ -102,24 +119,21 @@ function* ordersWorker({ payload }) {
           cancelled_at,
           customer,
         }) => {
-          function getStatus() {
-            if (cancelled_at !== null) {
-              return "Canceled";
-            } else if (
-              financial_status === "paid" &&
-              fulfillment_status === "fulfilled"
-            ) {
-              return "Closed";
-            } else {
-              return "Open";
-            }
+          const status = getStatus(
+            financial_status,
+            fulfillment_status,
+            cancelled_at
+          );
+
+          if (!allStatus.includes(status)) {
+            allStatus.push(status);
           }
 
           return {
             closed_at,
             created_at: new Date(created_at).toDateString().substr(4).trim(),
             total_price,
-            status: getStatus(),
+            status,
             name,
             processed_at,
             cancelled_at,
@@ -133,7 +147,7 @@ function* ordersWorker({ payload }) {
       );
       yield put({
         type: "STORE_ORDERS",
-        payload: orders,
+        payload: { orders, allStatus },
       });
     } else {
       yield put({ type: "ORDERS_ERROR" });

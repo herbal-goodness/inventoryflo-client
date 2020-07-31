@@ -2,18 +2,18 @@ import React, { useEffect, useState } from "react";
 import SalesTable from "./OrdersTable";
 import InventorySidePane from "./InventorySidePane";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { Button } from "react-bootstrap";
-import OrdersSidePane from "./OrdersSidePane";
 
 function OrdersContainer() {
   const dispatch = useDispatch();
   const [exportData, setExport] = useState(null);
   const [query, setQuery] = useState("");
+  const [status, setStatus] = useState([]);
   const [filterChannel, setFilter] = useState({});
 
   const {
     isLoading,
     orders,
+    allStatus,
     hasShopifyUrl,
     hasShopifySecret,
     isSuccessful,
@@ -25,6 +25,7 @@ function OrdersContainer() {
         userInfo.user.shopifySecret && userInfo.user.shopifySecret.length > 3,
       isSuccessful: userInfo.successful,
       orders: orders.userOrders,
+      allStatus: orders.allStatus,
       isLoading: orders.loading,
     }),
     shallowEqual
@@ -34,8 +35,11 @@ function OrdersContainer() {
     const { value } = e.target;
     setQuery(value);
   };
-
-
+  const handleCategoryFilter = (e) => {
+    e.preventDefault();
+    const result = orders.filter(({ status }) => status === e.target.value);
+    setStatus(result);
+  };
   const handleChange = (e) => {
     e.preventDefault();
     const { value, name } = e.target;
@@ -64,57 +68,47 @@ function OrdersContainer() {
       <div className="row">
         <div className="col-md-3 inv-side-wrapper pt-5 inv-col-1">
           <h2 className="filter-inv-header">filter inventory</h2>
-          <OrdersSidePane
+          <InventorySidePane
+            category={(orders && allStatus) || []}
+            handleCategoryFilter={handleCategoryFilter}
             handleChange={handleChange}
             handleSearch={handleSearch}
             type="order"
-            title="Orders"
           />
         </div>
         <div className="col-md-9 inv-col-2">
           <header className="d-flex justify-content-between mb-2 dashboard-header flex-wrap">
-						<div>
-							<h2>
-								<i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>
-								Orders
-							</h2>
-						</div>
-						<div>
-							<button
-								to=""
-								className="btn btn-info apply-filter mr-3 btn-block-sm">
-								<i className="fa fa-sign-out fa-fw mr-1" aria-hidden="true"></i>
-								Import from CSV
-							</button>
+            <div>
+              <h2>
+                <i className="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>
+                Orders
+              </h2>
+            </div>
+            <div>
+              <button
+                to=""
+                className="btn btn-info apply-filter mr-3 btn-block-sm"
+              >
+                <i className="fa fa-sign-out fa-fw mr-1" aria-hidden="true"></i>
+                Import from CSV
+              </button>
 
-							<button
-								onClick={exportFile}
-								className="btn btn-info apply-filter">
-								<i className="fa fa-sign-out fa-fw mr-1" aria-hidden="true"></i>
-								Export
-							</button>
-							{/* <span className="mr-2">
-								<i className="fa fa-download fa-fw" aria-hidden="true"></i>
-							</span>
-							<span className="mr-4 text-muted font-slim elem-pointer">
-								Import Data
-							</span>
-							<span>
-								<i className="fa fa-upload fa-fw mr-2" aria-hidden="true"></i>
-							</span>
-							<span
-								onClick={exportFile}
-								className="text-muted font-slim elem-pointer">
-								Export Data
-							</span> */}
-						</div>
-					</header>
+              <button
+                onClick={exportFile}
+                className="btn btn-info apply-filter"
+              >
+                <i className="fa fa-sign-out fa-fw mr-1" aria-hidden="true"></i>
+                Export
+              </button>
+            </div>
+          </header>
 
           <SalesTable
             setExport={setExport}
             isLoading={isLoading}
             orders={orders}
             query={query}
+            status={status}
             clearFilter={clearFilter}
             filterChannel={filterChannel}
           />
@@ -122,7 +116,6 @@ function OrdersContainer() {
       </div>
     </div>
   );
-
 }
 
 export default OrdersContainer;

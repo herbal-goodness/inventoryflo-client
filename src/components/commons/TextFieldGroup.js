@@ -2,21 +2,25 @@ import React from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 
-const TextFieldGroup = ({
-  name,
-  type,
-  placeholder,
-  value,
-  label,
-  error,
-  info,
-  onChange,
-  disabled,
-  className,
-}) => {
+const TextFieldGroup = (
+  {
+    name,
+    type,
+    placeholder,
+    value,
+    label,
+    error,
+    info,
+    onChange,
+    disabled,
+    className,
+  },
+  props
+) => {
   return (
     <div className={`form-group ${className}`}>
       <input
+        {...props}
         type={type}
         className={classnames("form-control form-control-lg", {
           "is-invalid": error,
