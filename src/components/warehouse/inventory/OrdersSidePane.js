@@ -20,6 +20,9 @@ const OrderSide = ({ status, handleCategoryFilter }) => {
           Status
         </label>
         <select className="form-control" onChange={handleCategoryFilter}>
+          <option selected value={"all"}>
+            All Status
+          </option>
           {status.map((item, i) => (
             <option value={item} key={i}>
               {item}

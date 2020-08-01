@@ -7,7 +7,11 @@ const ProductSide = ({ handleStatus, handleCategoryFilter, category }) => {
         <label htmlFor="select" className="inv-input-header">
           Categories
         </label>
+
         <select onChange={handleCategoryFilter} className="form-control">
+          <option selected value={"all"}>
+            All Categories
+          </option>
           {category.map((item, i) => (
             <option value={item} key={i}>
               {item}

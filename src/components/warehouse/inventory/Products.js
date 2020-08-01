@@ -34,8 +34,9 @@ function SalesContainer() {
     shallowEqual
   );
 
-  const clearFilter = (e) => {
-    e.preventDefault();
+  const clearFilter = (date1, date2) => {
+    date1.current.value = "";
+    date2.current.value = "";
     dispatch({ type: "GET_PRODUCTS", payload: {} });
     setStatus([]);
   };
@@ -56,6 +57,10 @@ function SalesContainer() {
   };
 
   const handleCategoryFilter = (e) => {
+    e.preventDefault();
+    if (e.target.value === "all") {
+      setStatus(sales);
+    }
     e.preventDefault();
     const result = sales.filter(
       ({ product_type }) => product_type === e.target.value

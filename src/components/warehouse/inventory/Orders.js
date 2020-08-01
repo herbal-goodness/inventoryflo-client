@@ -32,11 +32,17 @@ function OrdersContainer() {
   );
   const handleSearch = (e) => {
     e.preventDefault();
+    if (e.target.value === "") {
+      setStatus(orders);
+    }
     const { value } = e.target;
     setQuery(value);
   };
   const handleCategoryFilter = (e) => {
     e.preventDefault();
+    if (e.target.value === "all") {
+      setStatus(orders);
+    }
     const result = orders.filter(({ status }) => status === e.target.value);
     setStatus(result);
   };
@@ -59,8 +65,11 @@ function OrdersContainer() {
     exportData.save();
   };
 
-  const clearFilter = () => {
+  const clearFilter = (date1, date2) => {
+    date1.current.value = "";
+    date2.current.value = "";
     dispatch({ type: "GET_ORDERS", payload: {} });
+    setStatus([]);
   };
 
   return (
@@ -73,6 +82,7 @@ function OrdersContainer() {
             handleCategoryFilter={handleCategoryFilter}
             handleChange={handleChange}
             handleSearch={handleSearch}
+            clearFilter={clearFilter}
             type="order"
           />
         </div>
@@ -109,7 +119,6 @@ function OrdersContainer() {
             orders={orders}
             query={query}
             status={status}
-            clearFilter={clearFilter}
             filterChannel={filterChannel}
           />
         </div>
