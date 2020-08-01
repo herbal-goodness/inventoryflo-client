@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import OrderSide from "./OrdersSidePane";
 import ProductSide from "./ProductsSidePane";
@@ -15,6 +15,8 @@ const InventorySidePane = ({
   const dispatch = useDispatch();
   const [to, setTo] = useState("");
   const [from, setFrom] = useState("");
+  const dateField1 = useRef();
+  const dateField2 = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -74,6 +76,7 @@ const InventorySidePane = ({
               From
             </label>
             <input
+              ref={dateField1}
               type="date"
               id="date2"
               onChange={({ currentTarget }) =>
@@ -87,6 +90,7 @@ const InventorySidePane = ({
               To
             </label>
             <input
+              ref={dateField2}
               type="date"
               id="date2"
               onChange={({ currentTarget }) =>
@@ -121,7 +125,7 @@ const InventorySidePane = ({
           </div>
           <div className="form-group col-md-6">
             <button
-              onClick={clearFilter}
+              onClick={() => clearFilter(dateField2, dateField1)}
               type="clear"
               className="btn btn-link btn-block text-dark"
             >
