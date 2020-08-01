@@ -19,10 +19,12 @@ const OrderSide = ({ status, handleCategoryFilter }) => {
         <label htmlFor="select" className="inv-input-header">
           Status
         </label>
-        <select className="form-control" onChange={handleCategoryFilter}>
-          <option selected value={"all"}>
-            All Status
-          </option>
+        <select
+          defaultValue={"all"}
+          className="form-control"
+          onChange={handleCategoryFilter}
+        >
+          <option value={"all"}>All Status</option>
           {status.map((item, i) => (
             <option value={item} key={i}>
               {item}

@@ -125,7 +125,11 @@ const InventorySidePane = ({
           </div>
           <div className="form-group col-md-6">
             <button
-              onClick={() => clearFilter(dateField2, dateField1)}
+              onClick={() => {
+                setFrom("");
+                setTo("");
+                clearFilter(dateField2, dateField1);
+              }}
               type="clear"
               className="btn btn-link btn-block text-dark"
             >
