@@ -65,8 +65,11 @@ function OrdersContainer() {
     exportData.save();
   };
 
-  const clearFilter = () => {
+  const clearFilter = (date1, date2) => {
+    date1.current.value = "";
+    date2.current.value = "";
     dispatch({ type: "GET_ORDERS", payload: {} });
+    setStatus([]);
   };
 
   return (
