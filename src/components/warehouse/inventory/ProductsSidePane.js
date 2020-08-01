@@ -8,10 +8,12 @@ const ProductSide = ({ handleStatus, handleCategoryFilter, category }) => {
           Categories
         </label>
 
-        <select onChange={handleCategoryFilter} className="form-control">
-          <option selected value={"all"}>
-            All Categories
-          </option>
+        <select
+          defaultValue={"all"}
+          onChange={handleCategoryFilter}
+          className="form-control"
+        >
+          <option value={"all"}>All Categories</option>
           {category.map((item, i) => (
             <option value={item} key={i}>
               {item}
