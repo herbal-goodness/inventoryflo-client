@@ -34,17 +34,29 @@ function SalesContainer() {
     shallowEqual
   );
 
+  /**
+   * Function clears the all the products table filters and pulls default data
+   * @param {object} date1 "From" date element
+   * @param {object} date2 "To" date element
+   */
   const clearFilter = (date1, date2) => {
+    setStatus([]);
     date1.current.value = "";
     date2.current.value = "";
     dispatch({ type: "GET_PRODUCTS", payload: {} });
-    setStatus([]);
   };
 
+  /**
+   * Function exports file to CSV for download
+   */
   const exportFile = () => {
     exportData.save();
   };
 
+  /**
+   * Function filters out of stock and available products
+   * @param {String} val the value to filter with
+   */
   const handleStatus = (val) => {
     const result = sales.filter(
       ({ totalQuantity }) =>
@@ -56,6 +68,10 @@ function SalesContainer() {
     setStatus(result);
   };
 
+  /**
+   * Filters products based on the category selected
+   * @param {object} e event object from select input element
+   */
   const handleCategoryFilter = (e) => {
     e.preventDefault();
     if (e.target.value === "all") {
@@ -68,13 +84,21 @@ function SalesContainer() {
     setStatus(result);
   };
 
+  /**
+   * Sets the search query to be used by the kendo grid table
+   * @param {object} e event object from search input
+   */
   const handleSearch = (e) => {
     e.preventDefault();
     const { value } = e.target;
     setQuery(value);
   };
 
-  const handleChange = (e) => {
+  /**
+   * Changes the current channel displayed in the table
+   * @param {object} e event object from the select channel input
+   */
+  const handleChannelSelection = (e) => {
     e.preventDefault();
     const { value, name } = e.target;
     setFilter({ ...filterChannel, [name]: value });
@@ -93,11 +117,13 @@ function SalesContainer() {
       <div className="row">
         <div className="col-md-3 inv-side-wrapper pt-5 inv-col-1">
           <h2 className="filter-inv-header">filter products</h2>
+
+          {/* Side Nav bar for that aggregates all the filter fields */}
           <InventorySidePane
             category={(sales && categories) || []}
             clearFilter={clearFilter}
             handleStatus={handleStatus}
-            handleChange={handleChange}
+            handleChange={handleChannelSelection}
             handleSearch={handleSearch}
             handleCategoryFilter={handleCategoryFilter}
             type="product"
@@ -123,7 +149,7 @@ function SalesContainer() {
               </button>
             </div>
           </header>
-
+          {/* Table component for the product screen */}
           <SalesTable
             setExport={setExport}
             isLoading={isLoading}
