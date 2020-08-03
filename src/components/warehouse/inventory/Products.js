@@ -108,7 +108,7 @@ function SalesContainer() {
     hasShopifyUrl &&
       hasShopifySecret &&
       isSuccessful &&
-      sales === null &&
+      sales.length < 1 &&
       dispatch({ type: "GET_PRODUCTS" });
   }, []);
 

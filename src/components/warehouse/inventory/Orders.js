@@ -56,7 +56,7 @@ function OrdersContainer() {
     hasShopifyUrl &&
       hasShopifySecret &&
       isSuccessful &&
-      (orders === null || orders.length < 40) &&
+      (orders.length < 1 || orders.length < 40) &&
       dispatch({ type: "GET_ORDERS", payload: {} });
   }, []);
 
