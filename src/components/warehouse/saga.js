@@ -15,8 +15,9 @@ function* productsWorker({ payload }) {
         },
       }
     );
-
-    if (response.ok) {
+    if (response.status > 300) {
+      yield put({ type: "PRODUCTS_ERROR" });
+    } else if (response.ok) {
       const { data, totalProductCount } = yield response.json();
       const categories = [];
 
@@ -74,7 +75,9 @@ function* ordersWorker({ payload }) {
       }
     );
 
-    if (response.ok) {
+    if (response.status > 300) {
+      yield put({ type: "ORDERS_ERROR" });
+    } else if (response.ok) {
       const {
         data,
         totalOpenOrderCount,

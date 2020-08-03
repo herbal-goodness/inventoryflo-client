@@ -40,9 +40,13 @@ const Dashboard = () => {
     hasShopifyUrl &&
       hasShopifySecret &&
       isSuccessful &&
-      sales === null &&
-      dispatch({ type: "GET_PRODUCTS", payload: {} }) &&
-      orders === null &&
+      sales.length < 1 &&
+      dispatch({ type: "GET_PRODUCTS", payload: {} });
+
+    hasShopifyUrl &&
+      hasShopifySecret &&
+      isSuccessful &&
+      orders.length < 1 &&
       dispatch({
         type: "GET_ORDERS",
         payload: {},

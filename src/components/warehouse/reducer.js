@@ -2,13 +2,13 @@ const salesInitialState = {
   error: false,
   loading: false,
   successful: false,
-  products: null,
+  products: [],
 };
 const ordersInitialState = {
   error: false,
   loading: false,
   successful: false,
-  userOrders: null,
+  userOrders: [],
 };
 const dashboardInitialState = {
   error: false,
@@ -25,7 +25,7 @@ export const sales = (state = salesInitialState, actions) => {
         loading: true,
         error: false,
         successful: false,
-        products: null,
+        products: [],
       };
     case "STORE_PRODUCTS":
       return {
@@ -40,7 +40,7 @@ export const sales = (state = salesInitialState, actions) => {
       return {
         ...state,
         error: true,
-        products: null,
+        products: [],
         successful: false,
         loading: false,
       };
@@ -60,7 +60,7 @@ export const orders = (state = ordersInitialState, actions) => {
         loading: true,
         error: false,
         successful: false,
-        userOrders: null,
+        userOrders: [],
       };
     case "STORE_ORDERS":
       return {
@@ -75,7 +75,7 @@ export const orders = (state = ordersInitialState, actions) => {
       return {
         ...state,
         error: true,
-        userOrders: null,
+        userOrders: [],
         successful: false,
         loading: false,
       };

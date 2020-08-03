@@ -95,7 +95,7 @@ const OrdersTable = ({
           />
           <GridColumn
             field="status"
-            title="Staus"
+            title="Status"
             width={100}
             headerClassName="products-header"
             filterable={false}
