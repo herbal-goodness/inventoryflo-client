@@ -18,10 +18,16 @@ const InventorySidePane = ({
   const dateField1 = useRef();
   const dateField2 = useRef();
 
+  const currentDateSelected = new Date(from || new Date());
+  const fromSelectedDate = new Date(currentDateSelected)
+    .toISOString()
+    .substring(0, 10);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (to.length > 4 && from.length > 4) {
       if (type === "order") {
+        console.log(to, from);
         dispatch({
           type: "GET_ORDERS",
           payload: { createdAtMin: from, createdAtMax: to },
@@ -80,6 +86,7 @@ const InventorySidePane = ({
             <input
               ref={dateField1}
               type="date"
+              max={new Date().toISOString().substring(0, 10)}
               id="date2"
               onChange={({ currentTarget }) =>
                 setFrom(new Date(currentTarget.valueAsDate).toJSON())
@@ -94,6 +101,8 @@ const InventorySidePane = ({
             <input
               ref={dateField2}
               type="date"
+              min={fromSelectedDate}
+              max={new Date().toISOString().substring(0, 10)}
               id="date2"
               onChange={({ currentTarget }) =>
                 setTo(new Date(currentTarget.valueAsDate).toJSON())
