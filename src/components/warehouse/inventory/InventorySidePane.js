@@ -63,6 +63,9 @@ const InventorySidePane = ({
 						name="channel"
 						onChange={handleChange}>
 						<option className="hover-col" value="shopify">
+							All Channels
+						</option>
+						<option className="hover-col" value="shopify">
 							Shopify US
 						</option>
 						<option value="fba-amazon">Amazon</option>
@@ -80,7 +83,7 @@ const InventorySidePane = ({
 							onChange={({ currentTarget }) =>
 								setFrom(new Date(currentTarget.valueAsDate).toJSON())
 							}
-							className="form-control"
+							className="form-control p-1"
 						/>
 					</div>
 					<div className="form-group col-md-6">
@@ -94,7 +97,7 @@ const InventorySidePane = ({
 							onChange={({ currentTarget }) =>
 								setTo(new Date(currentTarget.valueAsDate).toJSON())
 							}
-							className="form-control"
+							className="form-control p-1"
 						/>
 					</div>
 				</div>
