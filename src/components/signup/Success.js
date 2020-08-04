@@ -14,7 +14,7 @@ const Success = () => {
           className="align-self-center"
         />
         <h3 className="pt-5 lg">
-          Successfully verified, please <Link to={"/"}>login</Link>
+          Successfully verified, please <Link to={"/signin-user"}>login</Link>
         </h3>
       </div>
     </div>

@@ -4,19 +4,20 @@ import OrderSide from "./OrdersSidePane";
 import ProductSide from "./ProductsSidePane";
 
 const InventorySidePane = ({
-  handleChange,
-  handleSearch,
-  type,
-  handleStatus,
-  clearFilter,
-  category,
-  handleCategoryFilter,
+	handleChange,
+	handleSearch,
+	type,
+	handleStatus,
+	clearFilter,
+	category,
+	handleCategoryFilter,
 }) => {
-  const dispatch = useDispatch();
-  const [to, setTo] = useState("");
-  const [from, setFrom] = useState("");
-  const dateField1 = useRef();
-  const dateField2 = useRef();
+	const dispatch = useDispatch();
+	const [to, setTo] = useState("");
+	const [from, setFrom] = useState("");
+	const dateField1 = useRef();
+	const dateField2 = useRef();
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -84,7 +85,7 @@ const InventorySidePane = ({
               onChange={({ currentTarget }) =>
                 setFrom(new Date(currentTarget.valueAsDate).toJSON())
               }
-              className="form-control"
+              className="form-control p-1"
             />
           </div>
           <div className="form-group col-md-6">
@@ -98,50 +99,49 @@ const InventorySidePane = ({
               onChange={({ currentTarget }) =>
                 setTo(new Date(currentTarget.valueAsDate).toJSON())
               }
-              className="form-control"
+              className="form-control p-1"
             />
           </div>
         </div>
 
-        {(type === "product" && (
-          <ProductSide
-            handleStatus={handleStatus}
-            category={category}
-            handleCategoryFilter={handleCategoryFilter}
-          />
-        )) ||
-          (type === "order" && (
-            <OrderSide
-              status={category}
-              handleCategoryFilter={handleCategoryFilter}
-            />
-          ))}
-        <div className="form-row">
-          <div className="form-group col-md-6">
-            <button
-              type="submit"
-              className="btn btn-info btn-block apply-filter"
-            >
-              Apply filter
-            </button>
-          </div>
-          <div className="form-group col-md-6">
-            <button
-              onClick={() => {
-                setFrom("");
-                setTo("");
-                clearFilter(dateField2, dateField1);
-              }}
-              type="clear"
-              className="btn btn-link btn-block text-dark"
-            >
-              Clear filter
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
-  );
+
+				{(type === "product" && (
+					<ProductSide
+						handleStatus={handleStatus}
+						category={category}
+						handleCategoryFilter={handleCategoryFilter}
+					/>
+				)) ||
+					(type === "order" && (
+						<OrderSide
+							status={category}
+							handleCategoryFilter={handleCategoryFilter}
+						/>
+					))}
+				<div className="form-row">
+					<div className="form-group col-md-6">
+						<button
+							type="submit"
+							className="btn btn-info btn-block apply-filter">
+							Apply filter
+						</button>
+					</div>
+					<div className="form-group col-md-6">
+						<button
+							onClick={() => {
+								setFrom("");
+								setTo("");
+								clearFilter(dateField2, dateField1);
+							}}
+							type="clear"
+							className="btn btn-link btn-block text-dark">
+							Clear filter
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	);
 };
 
 export default InventorySidePane;

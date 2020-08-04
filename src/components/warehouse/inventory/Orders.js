@@ -4,11 +4,12 @@ import InventorySidePane from "./InventorySidePane";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 
 function OrdersContainer() {
-  const dispatch = useDispatch();
-  const [exportData, setExport] = useState(null);
-  const [query, setQuery] = useState("");
-  const [status, setStatus] = useState([]);
-  const [filterChannel, setFilter] = useState({});
+	const dispatch = useDispatch();
+	const [exportData, setExport] = useState(null);
+	const [query, setQuery] = useState("");
+	const [status, setStatus] = useState([]);
+	const [filterChannel, setFilter] = useState({});
+
 
   const {
     isLoading,
@@ -88,7 +89,7 @@ function OrdersContainer() {
     <div className="container-fluid mx-auto">
       <div className="row">
         <div className="col-md-3 inv-side-wrapper pt-5 inv-col-1">
-          <h2 className="filter-inv-header">filter inventory</h2>
+          <h2 className="filter-inv-header">filter orders</h2>
           <InventorySidePane
             category={(orders && allStatus) || []}
             handleCategoryFilter={handleCategoryFilter}
@@ -115,15 +116,14 @@ function OrdersContainer() {
                 Import from CSV
               </button>
 
-              <button
-                onClick={exportFile}
-                className="btn btn-info apply-filter"
-              >
-                <i className="fa fa-sign-out fa-fw mr-1" aria-hidden="true"></i>
-                Export
-              </button>
-            </div>
-          </header>
+							<button
+								onClick={exportFile}
+								className="btn btn-info apply-filter">
+								<i className="fa fa-sign-out fa-fw mr-1" aria-hidden="true"></i>
+								Export
+							</button>
+						</div>
+					</header>
 
           <SalesTable
             setExport={setExport}

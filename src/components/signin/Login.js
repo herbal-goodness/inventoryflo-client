@@ -29,6 +29,20 @@ const Login = () => {
     setLoginInfo({ ...loginInfo, [target.name]: target.value });
   };
 
+  //Check when enter button is clicked to submit
+  useEffect(() => {
+    const listener = (e) => {
+      if (!loginInfo.email || !loginInfo.password) return;
+      if (e.code === "Enter" || e.code === "NumpadEnter") {
+        handleSubmit(e);
+      }
+    };
+    document.addEventListener("keydown", listener);
+    return () => {
+      document.removeEventListener("keydown", listener);
+    };
+  }, [loginInfo]);
+
   /** dispatch action to submit login details */
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -61,7 +75,7 @@ const Login = () => {
               </Link>
             </header>
             <div className="card">
-              <div className="card-header text-center">Log In</div>
+              <div className="card-header text-center text-green">Log In</div>
               {loading ? (
                 Spinner()
               ) : (
