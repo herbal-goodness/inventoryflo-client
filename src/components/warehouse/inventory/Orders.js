@@ -88,7 +88,7 @@ function OrdersContainer() {
     <div className="container-fluid mx-auto">
       <div className="row">
         <div className="col-md-3 inv-side-wrapper pt-5 inv-col-1">
-          <h2 className="filter-inv-header">filter inventory</h2>
+          <h2 className="filter-inv-header">filter orders</h2>
           <InventorySidePane
             category={(orders && allStatus) || []}
             handleCategoryFilter={handleCategoryFilter}

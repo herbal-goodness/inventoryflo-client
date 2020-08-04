@@ -113,7 +113,7 @@ export const ForgotPassword = () => {
               </Link>
             </header>
             <div className="card">
-              <div className="card-header text-center">
+              <div className="card-header text-center text-green">
                 Create a new password
               </div>
               <div className="card-body">
