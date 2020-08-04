@@ -69,12 +69,12 @@ const OrdersTable = ({
     <Spinner />
   ) : (
     <div>
-      <ExcelExport data={orders} ref={(exporter) => setExport(exporter)}>
+      <ExcelExport data={status} ref={(exporter) => setExport(exporter)}>
         <StatefulGrid
           data={
             filterChannel.channel && filterChannel.channel !== "shopify"
               ? []
-              : filterBy((status.length > 0 && status) || orders, filter)
+              : filterBy(status, filter)
           }
           filter={filter}
           style={{ height: "600px" }}
@@ -126,7 +126,7 @@ const OrdersTable = ({
                 {props.dataItem?.line_items.length > 1 ? (
                   <OverlayTrigger
                     style={{ width: "500px" }}
-                    trigger="click"
+                    trigger="hover"
                     placement="right"
                     overlay={
                       <Popover
@@ -166,7 +166,7 @@ const OrdersTable = ({
                 ) : (
                   <OverlayTrigger
                     style={{ width: "500px" }}
-                    trigger="click"
+                    trigger="hover"
                     placement="right"
                     overlay={
                       <Popover

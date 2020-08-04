@@ -25,6 +25,9 @@ const OrderSide = ({ status, handleCategoryFilter }) => {
           onChange={handleCategoryFilter}
         >
           <option value={"all"}>All Status</option>
+          {!status.includes("Canceled") && (
+            <option value={"Canceled"}>Canceled</option>
+          )}
           {status.map((item, i) => (
             <option value={item} key={i}>
               {item}

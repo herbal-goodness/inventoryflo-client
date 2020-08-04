@@ -21,16 +21,18 @@ const InventorySidePane = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (to.length > 4 && from.length > 4) {
-      type === "order" &&
+      if (type === "order") {
         dispatch({
           type: "GET_ORDERS",
           payload: { createdAtMin: from, createdAtMax: to },
         });
-      type === "product" &&
+      }
+      if (type === "product") {
         dispatch({
           type: "GET_PRODUCTS",
           payload: { createdAtMin: from, createdAtMax: to },
         });
+      }
     }
   };
   return (
