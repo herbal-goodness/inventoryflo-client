@@ -626,7 +626,8 @@ th a:hover {
 .btn-link {
 	border: 0 !important;
 }
-.apply-filter:hover {
+.apply-filter:hover,
+.acct-info-btn:hover {
 	background-color: #2e8474 !important;
 }
 .inv-side-wrapper {

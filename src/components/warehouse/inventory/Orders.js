@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SalesTable from "./OrdersTable";
 import InventorySidePane from "./InventorySidePane";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import { AlertDismissible } from "../../utils/components";
 
 function OrdersContainer() {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ function OrdersContainer() {
     hasShopifyUrl,
     hasShopifySecret,
     isSuccessful,
+    error,
   } = useSelector(
     ({ orders, userInfo }) => ({
       hasShopifyUrl:
@@ -25,6 +27,7 @@ function OrdersContainer() {
         userInfo.user.shopifySecret && userInfo.user.shopifySecret.length > 3,
       isSuccessful: userInfo.successful,
       orders: orders.userOrders,
+      error: orders.error,
       allStatus: orders.allStatus,
       isLoading: orders.loading,
     }),
@@ -42,9 +45,10 @@ function OrdersContainer() {
     e.preventDefault();
     if (e.target.value === "all") {
       setStatus(orders);
+    } else {
+      const result = orders.filter(({ status }) => status === e.target.value);
+      setStatus(result);
     }
-    const result = orders.filter(({ status }) => status === e.target.value);
-    setStatus(result);
   };
   const handleChange = (e) => {
     e.preventDefault();
@@ -56,9 +60,17 @@ function OrdersContainer() {
     hasShopifyUrl &&
       hasShopifySecret &&
       isSuccessful &&
-      (orders.length < 1 || orders.length < 40) &&
+      orders.length < 1 &&
       dispatch({ type: "GET_ORDERS", payload: {} });
+    setStatus(orders);
   }, []);
+
+  useEffect(() => {
+    if (!isLoading) {
+      setStatus(orders);
+    }
+    setStatus(orders);
+  }, [isLoading]);
 
   const exportFile = () => {
     setFilter({});
@@ -69,14 +81,14 @@ function OrdersContainer() {
     date1.current.value = "";
     date2.current.value = "";
     dispatch({ type: "GET_ORDERS", payload: {} });
-    setStatus([]);
+    setStatus(orders);
   };
 
   return (
     <div className="container-fluid mx-auto">
       <div className="row">
         <div className="col-md-3 inv-side-wrapper pt-5 inv-col-1">
-          <h2 className="filter-inv-header">filter inventory</h2>
+          <h2 className="filter-inv-header">filter orders</h2>
           <InventorySidePane
             category={(orders && allStatus) || []}
             handleCategoryFilter={handleCategoryFilter}
@@ -112,15 +124,21 @@ function OrdersContainer() {
               </button>
             </div>
           </header>
-
-          <SalesTable
-            setExport={setExport}
-            isLoading={isLoading}
-            orders={orders}
-            query={query}
-            status={status}
-            filterChannel={filterChannel}
-          />
+          {error ? (
+            <AlertDismissible
+              variant={"danger"}
+              message={"An error occured, try to refresh the page"}
+              header={"Error"}
+            />
+          ) : (
+            <SalesTable
+              setExport={setExport}
+              isLoading={isLoading}
+              query={query}
+              status={status}
+              filterChannel={filterChannel}
+            />
+          )}
         </div>
       </div>
     </div>

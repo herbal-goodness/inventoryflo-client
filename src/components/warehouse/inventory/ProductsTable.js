@@ -136,7 +136,7 @@ const DetailColumnCell = (props) => {
 const StatefulGrid = withState(Grid);
 /**
  * Table component
- * @param {object} param0
+ * @param {object} props
  */
 const Table = ({
   isLoading,
@@ -149,7 +149,7 @@ const Table = ({
   const filter = {
     logic: "or",
     filters: [
-      { field: "totalPrice", operator: "eq", value: query },
+      { field: "totalPrice", operator: "contains", value: query },
 
       {
         field: "totalQuantity",
