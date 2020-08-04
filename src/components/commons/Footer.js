@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import footerlogo from "../../images/footer-logo-1.png";
 import { FOOTER_CONTENT } from "./constants";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 const Footer = () => {
+  const { pathname } = useLocation();
   const { successful } = useSelector(({ userInfo }) => ({
     successful: userInfo.successful,
   }));
@@ -12,7 +14,7 @@ const Footer = () => {
       <footer className="container footer py-5">
         <div className="row">
           <div className="col-md-3">
-            <Link to="/">
+            <Link to={pathname}>
               <img src={footerlogo} alt="logo" className="mb-2" />
             </Link>
             <p className="text-white">
