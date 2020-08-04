@@ -4,31 +4,30 @@ import OrderSide from "./OrdersSidePane";
 import ProductSide from "./ProductsSidePane";
 
 const InventorySidePane = ({
-	handleChange,
-	handleSearch,
-	type,
-	handleStatus,
-	clearFilter,
-	category,
-	handleCategoryFilter,
+  handleChange,
+  handleSearch,
+  type,
+  handleStatus,
+  clearFilter,
+  category,
+  handleCategoryFilter,
 }) => {
-	const dispatch = useDispatch();
-	const [to, setTo] = useState("");
-	const [from, setFrom] = useState("");
-	const dateField1 = useRef();
-	const dateField2 = useRef();
+  const dispatch = useDispatch();
+  const [to, setTo] = useState("");
+  const [from, setFrom] = useState("");
+  const dateField1 = useRef();
+  const dateField2 = useRef();
 
-
-  const currentDateSelected = new Date(from || new Date());
-  const fromSelectedDate = new Date(currentDateSelected)
-    .toISOString()
-    .substring(0, 10);
+  const currentDateSelected = from.length > 4 ? new Date(from) : "";
+  const fromSelectedDate =
+    from.length > 4
+      ? new Date(currentDateSelected).toISOString().substring(0, 10)
+      : "";
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (to.length > 4 && from.length > 4) {
       if (type === "order") {
-        console.log(to, from);
         dispatch({
           type: "GET_ORDERS",
           payload: { createdAtMin: from, createdAtMax: to },
@@ -102,7 +101,9 @@ const InventorySidePane = ({
             <input
               ref={dateField2}
               type="date"
-              min={fromSelectedDate}
+              min={
+                new Date(fromSelectedDate).getMonth() ? fromSelectedDate : ""
+              }
               max={new Date().toISOString().substring(0, 10)}
               id="date2"
               onChange={({ currentTarget }) =>
@@ -113,44 +114,45 @@ const InventorySidePane = ({
           </div>
         </div>
 
-
-				{(type === "product" && (
-					<ProductSide
-						handleStatus={handleStatus}
-						category={category}
-						handleCategoryFilter={handleCategoryFilter}
-					/>
-				)) ||
-					(type === "order" && (
-						<OrderSide
-							status={category}
-							handleCategoryFilter={handleCategoryFilter}
-						/>
-					))}
-				<div className="form-row">
-					<div className="form-group col-md-6">
-						<button
-							type="submit"
-							className="btn btn-info btn-block apply-filter">
-							Apply filter
-						</button>
-					</div>
-					<div className="form-group col-md-6">
-						<button
-							onClick={() => {
-								setFrom("");
-								setTo("");
-								clearFilter(dateField2, dateField1);
-							}}
-							type="clear"
-							className="btn btn-link btn-block text-dark">
-							Clear filter
-						</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	);
+        {(type === "product" && (
+          <ProductSide
+            handleStatus={handleStatus}
+            category={category}
+            handleCategoryFilter={handleCategoryFilter}
+          />
+        )) ||
+          (type === "order" && (
+            <OrderSide
+              status={category}
+              handleCategoryFilter={handleCategoryFilter}
+            />
+          ))}
+        <div className="form-row">
+          <div className="form-group col-md-6">
+            <button
+              type="submit"
+              className="btn btn-info btn-block apply-filter"
+            >
+              Apply filter
+            </button>
+          </div>
+          <div className="form-group col-md-6">
+            <button
+              onClick={() => {
+                setFrom("");
+                setTo("");
+                clearFilter(dateField2, dateField1);
+              }}
+              type="clear"
+              className="btn btn-link btn-block text-dark"
+            >
+              Clear filter
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  );
 };
 
 export default InventorySidePane;
