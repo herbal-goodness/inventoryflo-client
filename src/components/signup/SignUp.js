@@ -32,6 +32,19 @@ const SignUp = () => {
     loginSuccessful: userInfo.successful,
   }));
 
+  //checking when enter button it click to submit
+  useEffect(() => {
+    const listener = (e) => {
+      if (e.code === "Enter" || e.code === "NumpadEnter") {
+        handleSubmit(e);
+      }
+    };
+    document.addEventListener("keydown", listener);
+    return () => {
+      document.removeEventListener("keydown", listener);
+    };
+  });
+
   const handleChange = (e) => {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
   };

@@ -602,15 +602,14 @@ th a:hover {
 }
 .has-search .form-control {
 	padding-left: 2.375rem;
-	font-size: 1.2rem;
+	font-size: 1.1rem;
 }
 .has-search .fa-search {
-	font-size: 1.5rem;
-	color: black !important;
+	font-size: 1rem;
 }
 .has-search .form-control-feedback {
 	position: absolute;
-	z-index: 2;
+	z-index: 4;
 	display: block;
 	width: 2.375rem;
 	height: 2.375rem;
@@ -619,6 +618,7 @@ th a:hover {
 	pointer-events: none;
 	color: #aaa;
 }
+
 .inv-btn button:hover {
 	background-color: #2e8474;
 	color: var(--mainWhite);
