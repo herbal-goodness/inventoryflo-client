@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import SalesTable from "./OrdersTable";
 import InventorySidePane from "./InventorySidePane";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import { AlertDismissible } from "../../utils/components";
 
 function OrdersContainer() {
-	const dispatch = useDispatch();
-	const [exportData, setExport] = useState(null);
-	const [query, setQuery] = useState("");
-	const [status, setStatus] = useState([]);
-	const [filterChannel, setFilter] = useState({});
-
+  const dispatch = useDispatch();
+  const [exportData, setExport] = useState(null);
+  const [query, setQuery] = useState("");
+  const [status, setStatus] = useState([]);
+  const [filterChannel, setFilter] = useState({});
 
   const {
     isLoading,
@@ -18,6 +18,7 @@ function OrdersContainer() {
     hasShopifyUrl,
     hasShopifySecret,
     isSuccessful,
+    error,
   } = useSelector(
     ({ orders, userInfo }) => ({
       hasShopifyUrl:
@@ -26,6 +27,7 @@ function OrdersContainer() {
         userInfo.user.shopifySecret && userInfo.user.shopifySecret.length > 3,
       isSuccessful: userInfo.successful,
       orders: orders.userOrders,
+      error: orders.error,
       allStatus: orders.allStatus,
       isLoading: orders.loading,
     }),
@@ -39,7 +41,7 @@ function OrdersContainer() {
     const { value } = e.target;
     setQuery(value);
   };
-  const handleCategoryFilter = (e, rootFilter) => {
+  const handleCategoryFilter = (e) => {
     e.preventDefault();
     if (e.target.value === "all") {
       setStatus(orders);
@@ -82,9 +84,6 @@ function OrdersContainer() {
     setStatus(orders);
   };
 
-  // useEffect(() => {
-  //   setStatus(orders);
-  // }, []);
   return (
     <div className="container-fluid mx-auto">
       <div className="row">
@@ -116,23 +115,30 @@ function OrdersContainer() {
                 Import from CSV
               </button>
 
-							<button
-								onClick={exportFile}
-								className="btn btn-info apply-filter">
-								<i className="fa fa-sign-out fa-fw mr-1" aria-hidden="true"></i>
-								Export
-							</button>
-						</div>
-					</header>
-
-          <SalesTable
-            setExport={setExport}
-            isLoading={isLoading}
-            // orders={orders}
-            query={query}
-            status={status}
-            filterChannel={filterChannel}
-          />
+              <button
+                onClick={exportFile}
+                className="btn btn-info apply-filter"
+              >
+                <i className="fa fa-sign-out fa-fw mr-1" aria-hidden="true"></i>
+                Export
+              </button>
+            </div>
+          </header>
+          {error ? (
+            <AlertDismissible
+              variant={"danger"}
+              message={"An error occured, try to refresh the page"}
+              header={"Error"}
+            />
+          ) : (
+            <SalesTable
+              setExport={setExport}
+              isLoading={isLoading}
+              query={query}
+              status={status}
+              filterChannel={filterChannel}
+            />
+          )}
         </div>
       </div>
     </div>
