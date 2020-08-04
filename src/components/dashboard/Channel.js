@@ -5,10 +5,10 @@ const Channel = () => {
     <>
       <form className="p-2 my-5">
         <div className="form-group">
-          <label htmlFor="select" className="channel-header">
+          <label htmlFor="select" className="channel-header cvv">
             Channels
           </label>
-          <select className="form-control">
+          <select className="form-control vvv">
             <option>Shopify US</option>
             <option>FBA-Amazon Canada</option>
           </select>
