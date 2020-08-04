@@ -136,7 +136,7 @@ const DetailColumnCell = (props) => {
 const StatefulGrid = withState(Grid);
 /**
  * Table component
- * @param {object} param0
+ * @param {object} props
  */
 const Table = ({
   isLoading,
