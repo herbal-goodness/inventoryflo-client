@@ -74,6 +74,9 @@ const InventorySidePane = ({
             onChange={handleChange}
           >
             <option className="hover-col" value="shopify">
+							All Channels
+						</option>
+            <option className="hover-col" value="shopify">
               Shopify US
             </option>
             <option value="fba-amazon">Amazon</option>
@@ -112,7 +115,6 @@ const InventorySidePane = ({
             />
           </div>
         </div>
-
 
 				{(type === "product" && (
 					<ProductSide
