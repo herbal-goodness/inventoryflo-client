@@ -61,7 +61,7 @@ const Login = () => {
     <div className="login mb-5">
       <div className="container">
         <div className="row">
-          <div className="col-md-4 m-auto">
+          <div className="col-sm-8 col-md-6 col-lg-4 m-auto">
             {isError && (
               <AlertDismissible
                 header={"Error"}
