@@ -626,14 +626,9 @@ th a:hover {
 .btn-link {
   border: 0 !important;
 }
-<<<<<<< HEAD
-.apply-filter:hover {
-  background-color: #2e8474 !important;
-=======
 .apply-filter:hover,
 .acct-info-btn:hover {
-	background-color: #2e8474 !important;
->>>>>>> 3ab5100484612d97b7a5f55c366415b3a0de4907
+  background-color: #2e8474 !important;
 }
 .inv-side-wrapper {
   background: rgba(224, 224, 224, 0.26);
