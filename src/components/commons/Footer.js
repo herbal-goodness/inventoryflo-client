@@ -5,7 +5,9 @@ import { FOOTER_CONTENT } from "./constants";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 const Footer = () => {
+
   const { pathname } = useLocation();
+
   const { successful } = useSelector(({ userInfo }) => ({
     successful: userInfo.successful,
   }));
@@ -13,8 +15,9 @@ const Footer = () => {
     <div className="container-fluid bg-mid-green">
       <footer className="container footer py-5">
         <div className="row">
-          <div className="col-md-3">
+          <div className="col-12 col-md-3">
             <Link to={pathname}>
+
               <img src={footerlogo} alt="logo" className="mb-2" />
             </Link>
             <p className="text-white">
@@ -26,7 +29,9 @@ const Footer = () => {
 
           {FOOTER_CONTENT.map(({ title, links, color }, index) => (
             <div
-              className="col-md-2 col-lg-2 col-sm-3  footer-content-left mx-sm-auto"
+
+              className="col-6 col-md-2 col-lg-2 col-sm-3  footer-content-left mx-sm-auto"
+
               key={index + 1}
             >
               <h2
