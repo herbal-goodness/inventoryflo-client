@@ -55,12 +55,13 @@ const OrdersTable = ({
   const filter = {
     logic: "or",
     filters: [
-      { field: "title", operator: "contains", value: query },
+      // { field: "title", operator: "contains", value: query },
+      { field: "line_items", operator: "contains", value: query },
       { field: "order_number", operator: "contains", value: query },
-      { field: "status", operator: "eq", value: query },
+      { field: "status", operator: "contains", value: query },
       { field: "created_at", operator: "contains", value: query },
       { field: "shipping_lines", operator: "contains", value: query },
-      { field: "total_price", operator: "eq", value: query },
+      { field: "total_price", operator: "contains", value: query },
       { field: "customer", operator: "contains", value: query },
     ],
   };
@@ -69,12 +70,12 @@ const OrdersTable = ({
     <Spinner />
   ) : (
     <div>
-      <ExcelExport data={orders} ref={(exporter) => setExport(exporter)}>
+      <ExcelExport data={status} ref={(exporter) => setExport(exporter)}>
         <StatefulGrid
           data={
             filterChannel.channel && filterChannel.channel !== "shopify"
               ? []
-              : filterBy((status.length > 0 && status) || orders, filter)
+              : filterBy(status, filter)
           }
           filter={filter}
           style={{ height: "600px" }}
@@ -120,13 +121,14 @@ const OrdersTable = ({
           />
           <GridColumn
             headerClassName="products-header"
+            field={"line_items"}
             width={300}
             cell={(props) => (
               <td colSpan={props.colSpan} style={props.style}>
                 {props.dataItem?.line_items.length > 1 ? (
                   <OverlayTrigger
                     style={{ width: "500px" }}
-                    trigger="click"
+                    trigger="hover"
                     placement="right"
                     overlay={
                       <Popover
@@ -166,7 +168,7 @@ const OrdersTable = ({
                 ) : (
                   <OverlayTrigger
                     style={{ width: "500px" }}
-                    trigger="click"
+                    trigger="hover"
                     placement="right"
                     overlay={
                       <Popover

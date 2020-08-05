@@ -2,25 +2,7 @@ import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import OrderSide from "./OrdersSidePane";
 import ProductSide from "./ProductsSidePane";
-import Select from "react-select";
 import "./index.css";
-
-const colourOptions = [
-  { value: "red", label: "Red" },
-  { value: "green", label: "Green" },
-  { value: "blue", label: "Blue" },
-];
-
-const selectTheme = (theme) => ({
-  ...theme,
-  borderRadius: 5,
-  borderColor: "red",
-  colors: {
-    ...theme.colors,
-    primary25: "#20846B",
-    primary: "#20846B",
-  },
-});
 
 const InventorySidePane = ({
   handleChange,
@@ -37,19 +19,27 @@ const InventorySidePane = ({
   const dateField1 = useRef();
   const dateField2 = useRef();
 
+  const currentDateSelected = from.length > 4 ? new Date(from) : "";
+  const fromSelectedDate =
+    from.length > 4
+      ? new Date(currentDateSelected).toISOString().substring(0, 10)
+      : "";
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (to.length > 4 && from.length > 4) {
-      type === "order" &&
+      if (type === "order") {
         dispatch({
           type: "GET_ORDERS",
           payload: { createdAtMin: from, createdAtMax: to },
         });
-      type === "product" &&
+      }
+      if (type === "product") {
         dispatch({
           type: "GET_PRODUCTS",
           payload: { createdAtMin: from, createdAtMax: to },
         });
+      }
     }
   };
   return (
@@ -61,6 +51,7 @@ const InventorySidePane = ({
           className="form-control my-0 py-1"
           type="text"
           placeholder="Search items"
+          aria-label="Search"
         />
       </div>
       <form onSubmit={handleSubmit}>
@@ -73,14 +64,6 @@ const InventorySidePane = ({
             placeholder="Search Tags"
           />
         </div>
-        <div>
-          <Select
-            label="Single select"
-            options={colourOptions}
-            className="mb-3"
-            theme={selectTheme}
-          />
-        </div>
         <div className="form-group">
           <label htmlFor="select" className="inv-input-header">
             Channels
@@ -90,6 +73,9 @@ const InventorySidePane = ({
             name="channel"
             onChange={handleChange}
           >
+            <option className="hover-col" value="shopify">
+              All Channels
+            </option>
             <option className="hover-col" value="shopify">
               Shopify US
             </option>
@@ -104,11 +90,12 @@ const InventorySidePane = ({
             <input
               ref={dateField1}
               type="date"
+              max={new Date().toISOString().substring(0, 10)}
               id="date2"
               onChange={({ currentTarget }) =>
                 setFrom(new Date(currentTarget.valueAsDate).toJSON())
               }
-              className="form-control"
+              className="form-control p-1"
             />
           </div>
           <div className="form-group col-md-6">
@@ -118,11 +105,15 @@ const InventorySidePane = ({
             <input
               ref={dateField2}
               type="date"
+              min={
+                new Date(fromSelectedDate).getMonth() ? fromSelectedDate : ""
+              }
+              max={new Date().toISOString().substring(0, 10)}
               id="date2"
               onChange={({ currentTarget }) =>
                 setTo(new Date(currentTarget.valueAsDate).toJSON())
               }
-              className="form-control"
+              className="form-control p-1"
             />
           </div>
         </div>
