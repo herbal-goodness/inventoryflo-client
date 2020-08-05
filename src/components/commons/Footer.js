@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 const Footer = () => {
   const { pathname } = useLocation();
+
   const { successful } = useSelector(({ userInfo }) => ({
     successful: userInfo.successful,
   }));
