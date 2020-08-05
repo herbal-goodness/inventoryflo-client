@@ -85,7 +85,7 @@ export const RequestCode = () => {
               </Link>
             </header>
             <div className="card">
-              <div className="card-header text-center">
+              <div className="card-header text-center text-green">
                 Send reset password code
               </div>
               <div className="card-body">

@@ -17,9 +17,39 @@ class DetailComponent extends GridDetailRow {
     const variants = this.props.dataItem?.variants;
     return (
       <>
-        <Grid resizable data={variants || []} scrollable="none">
-          <GridColumn field="title" headerClassName="products-sub-header" />
+        <table style={{ width: 400 }} class="table">
+          <tbody>
+            {variants.map(({ title, inventory_quantity, price, sku }, i) => (
+              <tr key={i}>
+                <td title={title} width={337}>
+                  {title}
+                </td>
+                <td title={sku} width={110}>
+                  {sku || "No SKU found"}
+                </td>
+                <td
+                  className="text-right"
+                  title={inventory_quantity}
+                  width={100}
+                >
+                  {inventory_quantity}
+                </td>
+                <td title={price} width={100} className="price text-right">
+                  {price}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        {/* <Grid resizable data={variants || []} scrollable="none">
           <GridColumn
+            width={337}
+            title="Variant name"
+            field="title"
+            headerClassName="products-sub-header"
+          />
+          <GridColumn
+            width={110}
             field="sku"
             headerClassName="products-sub-header"
             title={"SKU"}
@@ -30,10 +60,15 @@ class DetailComponent extends GridDetailRow {
             )}
           />
           <GridColumn
+            width={105}
             field="inventory_quantity"
             headerClassName="products-sub-header"
             cell={(props) => (
-              <td colSpan={props.colSpan} style={props.style}>
+              <td
+                className="text-right"
+                colSpan={props.colSpan}
+                style={props.style}
+              >
                 {(props.dataItem.inventory_quantity !== 0 &&
                   props.dataItem.inventory_quantity) ||
                   "Out of stock"}
@@ -42,11 +77,13 @@ class DetailComponent extends GridDetailRow {
             title="Available"
           />
           <GridColumn
+            width={105}
             headerClassName="products-sub-header"
+            className="price text-right"
             field="price"
             title="Price"
           />
-        </Grid>
+        </Grid> */}
       </>
     );
   }
@@ -99,7 +136,7 @@ const DetailColumnCell = (props) => {
 const StatefulGrid = withState(Grid);
 /**
  * Table component
- * @param {object} param0
+ * @param {object} props
  */
 const Table = ({
   isLoading,
@@ -112,14 +149,14 @@ const Table = ({
   const filter = {
     logic: "or",
     filters: [
-      { field: "totalPrice", operator: "eq", value: query },
+      { field: "totalPrice", operator: "contains", value: query },
 
       {
         field: "totalQuantity",
         operator: "contains",
         value: query,
       },
-      { field: "title", operator: "contains", value: query.query },
+      { field: "title", operator: "contains", value: query },
       { field: "product_type", operator: "contains", value: query },
     ],
   };

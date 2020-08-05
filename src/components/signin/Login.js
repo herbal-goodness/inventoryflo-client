@@ -75,7 +75,7 @@ const Login = () => {
               </Link>
             </header>
             <div className="card">
-              <div className="card-header text-center">Log In</div>
+              <div className="card-header text-center text-green">Log In</div>
               {loading ? (
                 Spinner()
               ) : (
