@@ -1,4 +1,6 @@
 import React from "react";
+import "react-app-polyfill/ie11";
+import "react-app-polyfill/stable";
 import ReactDOM from "react-dom";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -8,8 +10,6 @@ import * as serviceWorker from "./serviceWorker";
 import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
 import { store, persistor } from "./store";
-import "react-app-polyfill/ie11";
-import "react-app-polyfill/stable";
 
 ReactDOM.render(
   <Provider store={store}>
