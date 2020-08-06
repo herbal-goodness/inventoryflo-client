@@ -4,7 +4,7 @@ import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import OrderStatusChart from "../charts/OrderStatusChart";
 import Orders from "../charts/OrdersChart";
 import DashboardHeader from "./DashboardHeader";
-import TodoSidePane from "./TodoSidePane";
+// import TodoSidePane from "./TodoSidePane";
 import UserActivities from "./UserActivities";
 import Channel from "./Channel";
 import RecentActivity from "./RecentActivity";
@@ -14,6 +14,7 @@ import SalesAndOrdersParams from "./SalesAndOrdersParams";
 import DashboardSubHeaders from "./DashboardSubHeaders";
 import SalesAndOrdersParamTwo from "./SalesAndOrdersParamTwo";
 import SalesAndOrdersParamThree from "./SalesAndOrdersParamThree";
+import GetStartedSidePane from "./GetStartedSidePane";
 
 const Dashboard = () => {
 	const dispatch = useDispatch();
@@ -66,18 +67,12 @@ const Dashboard = () => {
 	}, []);
 
 	return (
-		<div className="container-fluid mx-auto main dashboard">
+		<div className="container-fluid mx-auto dashboard">
 			<DashboardHeader />
 			<div className="row">
-				<div className="col-md-5 col-lg-3">
-					<TodoSidePane />
-					<Channel />
-					<RecentActivity />
-				</div>
-
 				<div className="col-md-7 col-lg-9">
-					<UserActivities dashboardData={dashboard} />
-					<div className="chart-container">
+					{/* <UserActivities dashboardData={dashboard} /> */}
+					<div className="chart-container py-4 px-3 mb-4">
 						<DashboardSubHeaders title="Sales and Orders" />
 						<div className="row">
 							<div className="col-md-12 col-lg-8">
@@ -123,6 +118,12 @@ const Dashboard = () => {
 					</div>
 
 					<TopProductChart data={dashboard.data?.topProducts} />
+				</div>
+				<div className="col-md-5 col-lg-3">
+					{/* <TodoSidePane /> */}
+					<GetStartedSidePane />
+					{/* <Channel /> */}
+					<RecentActivity />
 				</div>
 			</div>
 		</div>
