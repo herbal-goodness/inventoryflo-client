@@ -137,7 +137,7 @@ const OrdersTable = ({
                         style={{ width: "500px" }}
                       >
                         <Popover.Content as="div">
-                          <table class="table">
+                          <table className="table">
                             <thead>
                               <tr>
                                 <th scope="col">Title</th>
