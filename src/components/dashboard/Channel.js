@@ -19,21 +19,21 @@ const Channel = () => {
             <input
               type="submit"
               value="1 day"
-              className="btn btn-outline-info mt-4"
+              className="btn btn-outline-success mt-4"
             />
           </div>
           <div className="form-group col-md-4">
             <input
               type="submit"
               value="7 days"
-              className="btn btn-outline-primary mt-4"
+              className="btn btn-outline-success mt-4"
             />
           </div>
           <div className="form-group col-md-4">
             <input
               type="submit"
               value="30 days"
-              className="btn btn-outline-primary mt-4"
+              className="btn btn-outline-success mt-4"
             />
           </div>
         </div>
