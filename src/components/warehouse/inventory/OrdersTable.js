@@ -150,9 +150,13 @@ const OrdersTable = ({
                               {props.dataItem?.line_items.map(
                                 ({ title, quantity, price, sku }, i) => (
                                   <tr key={i}>
-                                    <td>{title.substr(0, 10)}...</td>
-                                    <td>{quantity}</td>
-                                    <td className="price">{price}</td>
+                                    <td title={title}>
+                                      {title.substr(0, 10)}...
+                                    </td>
+                                    <td className="text-center">{quantity}</td>
+                                    <td className="price text-center">
+                                      {price}
+                                    </td>
                                     <td>{sku}</td>
                                   </tr>
                                 )
@@ -191,8 +195,10 @@ const OrdersTable = ({
                                 ({ title, quantity, price, sku }, i) => (
                                   <tr key={i}>
                                     <td>{title.substr(0, 10)}...</td>
-                                    <td>{quantity}</td>
-                                    <td className="price">{price}</td>
+                                    <td className="text-center">{quantity}</td>
+                                    <td className="price text-center">
+                                      {price}
+                                    </td>
                                     <td>{sku}</td>
                                   </tr>
                                 )
