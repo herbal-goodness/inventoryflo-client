@@ -1,0 +1,20 @@
+import React from "react";
+
+const SalesAndOrdersParamThree = ({ title, figure, percentage }) => {
+	return (
+		<div className="sales-data-wrapper-2 text-center p-2">
+			<div>
+				<span className="text-green sales-data mr-2">{figure}</span>
+				<span>
+					<i
+						className="fa fa-arrow-down text-red sales-data mr-1"
+						aria-hidden="true"></i>
+				</span>
+				<span className="text-slim">{percentage}</span>
+			</div>
+			<h2 className="text-capitalize">{title}</h2>
+		</div>
+	);
+};
+
+export default SalesAndOrdersParamThree;
