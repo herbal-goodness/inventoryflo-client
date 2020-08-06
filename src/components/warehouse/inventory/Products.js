@@ -98,11 +98,15 @@ function SalesContainer() {
    * Changes the current channel displayed in the table
    * @param {object} e event object from the select channel input
    */
-  const handleChannelSelection = (e) => {
-    e.preventDefault();
-    const { value, name } = e.target;
+  const handleChannelSelection = ({ value, name }) => {
+    if (value === "channels") value = "shopify";
     setFilter({ ...filterChannel, [name]: value });
   };
+  // const handleChannelSelection = (e) => {
+  //   e.preventDefault();
+  //   const { value, name } = e.target;
+  //   setFilter({ ...filterChannel, [name]: value });
+  // };
 
   useEffect(() => {
     hasShopifyUrl &&

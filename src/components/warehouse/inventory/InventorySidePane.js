@@ -2,17 +2,41 @@ import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import OrderSide from "./OrdersSidePane";
 import ProductSide from "./ProductsSidePane";
+import Select from "react-select";
 import "./index.css";
 
 const InventorySidePane = ({
-  handleChange,
   handleSearch,
+  handleChange,
   type,
   handleStatus,
   clearFilter,
   category,
   handleCategoryFilter,
 }) => {
+  const handleChanges = (value) => {
+    handleChange({ ...value, name: "channel" });
+  };
+  const shopOptions = [
+    { value: "channels", label: "All Channels" },
+    { value: "shopify", label: "Shopify US" },
+    { value: "fba-amazon", label: "Amazon" },
+  ];
+
+  const selectTheme = (theme) => ({
+    ...theme,
+    borderRadius: 5,
+    colors: {
+      ...theme.colors,
+      primary: "#20846B",
+      primary25: "#f7931e",
+    },
+    spacing: {
+      ...theme.spacing,
+      menuGutter: 3,
+    },
+  });
+
   const dispatch = useDispatch();
   const [to, setTo] = useState("");
   const [from, setFrom] = useState("");
@@ -42,6 +66,7 @@ const InventorySidePane = ({
       }
     }
   };
+
   return (
     <div>
       <div className="input-group md-form form-sm form-1 pl-0 my-3 has-search form-group">
@@ -64,24 +89,20 @@ const InventorySidePane = ({
             placeholder="Search Tags"
           />
         </div>
-        <div className="form-group">
+        <div>
           <label htmlFor="select" className="inv-input-header">
             Channels
           </label>
-          <select
-            className="form-control"
-            name="channel"
-            onChange={handleChange}
-          >
-            <option className="hover-col" value="shopify">
-              All Channels
-            </option>
-            <option className="hover-col" value="shopify">
-              Shopify US
-            </option>
-            <option value="fba-amazon">Amazon</option>
-          </select>
+          <Select
+            theme={selectTheme}
+            label="Single select"
+            options={shopOptions}
+            className="mb-3"
+            placeholder="All Channels"
+            onChange={handleChanges}
+          />
         </div>
+
         <div className="form-row">
           <div className="form-group col-md-6">
             <label htmlFor="date1" className="inv-input-header">
