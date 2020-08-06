@@ -1,4 +1,6 @@
 import React from "react";
+import "react-app-polyfill/ie11";
+import "react-app-polyfill/stable";
 import ReactDOM from "react-dom";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -10,13 +12,11 @@ import { Provider } from "react-redux";
 import { store, persistor } from "./store";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <Routes />
-      </PersistGate>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <Routes />
+    </PersistGate>
+  </Provider>,
   document.getElementById("root")
 );
 
