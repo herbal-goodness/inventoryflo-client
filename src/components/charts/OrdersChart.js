@@ -108,7 +108,7 @@ const OrdersChart = ({ orders }) => {
 						className="fa fa-arrow-up text-green sales-data mr-1"
 						aria-hidden="true"></i>
 				</span>
-				<span className="text-slim">2.5%</span>
+				<span className="text-slim text-dark">2.5%</span>
 			</h3>
 			{lineChart}
 		</div>
