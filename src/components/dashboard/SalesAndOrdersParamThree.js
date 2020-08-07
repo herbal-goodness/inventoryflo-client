@@ -2,7 +2,7 @@ import React from "react";
 
 const SalesAndOrdersParamThree = ({ title, figure, percentage }) => {
 	return (
-		<div className="sales-data-wrapper-2 text-center p-2">
+		<div className="sales-data-wrapper-2 text-center p-2 mb-4">
 			<div>
 				<span className="text-green sales-data mr-2">{figure}</span>
 				<span>

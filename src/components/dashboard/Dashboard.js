@@ -80,7 +80,7 @@ const Dashboard = () => {
 							</div>
 							<div className="col-md-12 col-lg-4">
 								<SalesAndOrdersParams />
-								<div className="d-flex justify-content-between mb-2 justify-items-center">
+								<div className="d-flex flex-wrap justify-content-between mb-2 justify-items-center">
 									<SalesAndOrdersParamTwo
 										title="orders fulfilled"
 										figure="32"
@@ -92,7 +92,7 @@ const Dashboard = () => {
 										percentage="2.5%"
 									/>
 								</div>
-								<div className="d-flex justify-content-between mb-2 justify-items-center">
+								<div className="d-flex flex-wrap justify-content-between mb-2 justify-items-center">
 									<SalesAndOrdersParamThree
 										title="cancelled orders"
 										figure="10"
