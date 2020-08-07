@@ -6,6 +6,7 @@ import profile from "../components/profile";
 import Inventory from "../components/warehouse/inventory/Products";
 import Orders from "../components/warehouse/inventory/Orders";
 const Dashboard = lazy(() => import("../components/dashboard/Dashboard"));
+const Dashb = lazy(() => import("../components/dashb/Dashb"));
 
 export const authRoutes = [
   {
@@ -38,6 +39,10 @@ export const privateRoutes = [
   {
     path: "/dashboard",
     component: Dashboard,
+  },
+  {
+    path: "/dashb",
+    component: Dashb,
   },
   {
     path: "/profile",

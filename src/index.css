@@ -248,6 +248,10 @@ h5 a {
 .text-green {
   color: #20846b;
 }
+
+.text-red {
+  color: #d00103;
+}
 .text-gray {
   color: #828282;
 }
@@ -286,9 +290,9 @@ h5 a {
   background-color: #20846b;
 }
 .card {
-  -webkit-box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.2);
-  -moz-box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.2);
-  box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.2);
+  -webkit-box-shadow: 0 5px 10px 0 rgba(97, 111, 57, 0.2);
+  -moz-box-shadow: 0 5px 10px 0 rgba(97, 111, 57, 0.2);
+  box-shadow: 0 5px 10px 0 rgba(97, 111, 57, 0.2);
 }
 
 .main-logo {
@@ -393,6 +397,12 @@ body .btn-info {
 .inv-col-2 {
   margin-top: 100px;
 }
+
+.dashboad-bg {
+  padding-top: 100px;
+  background-color: #f2f2f2;
+}
+
 .dashboard form,
 .chart-container {
   background: rgba(224, 224, 224, 0.26);
@@ -1096,4 +1106,56 @@ th a:hover {
   .footer-content-left {
     text-align: center;
   }
+}
+
+.dashboard-sales {
+  font-size: 23px;
+}
+.bg-white {
+  background-color: white;
+  border-radius: 2px;
+}
+.box-1 {
+  border: 1px solid #ccc;
+}
+.total-order-0 {
+  font-size: 16px;
+}
+
+.total-order-1 {
+  font-size: 20px;
+}
+.total-order-2 {
+  font-size: 23px;
+}
+.total-order-3 {
+  font-size: 26px;
+}
+.get-started-b {
+  background-color: #ccc;
+  font-size: 23px;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 400;
+}
+.get-started-w {
+  background-color: #fff;
+  border: solid 1px #ccc;
+}
+.sales-01 {
+  font-size: 19px;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 400;
+  margin-bottom: 25px;
+}
+
+.circle-bar {
+  height: 170px;
+}
+.circle-bar-1 {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background-color: rosybrown;
 }
