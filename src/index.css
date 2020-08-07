@@ -8,7 +8,7 @@
   --BlueSignUp: #007aff;
   --BlueSignUpHover: #076bd8;
   --textGraySignUpLinks: #feffeb;
-  --BlueSignUpLinksHover: #f7352a;
+  --textRed: #f7352a;
   --textGray: #1833c4;
   --darkBlue: #0e1a35;
   --lightBlue: #5584ff;
@@ -251,6 +251,9 @@ h5 a {
 .text-gray {
   color: #828282;
 }
+.text-red {
+  color: var(--textRed);
+}
 .text-orange {
   color: #f7931e !important;
 }
@@ -276,7 +279,7 @@ h5 a {
   cursor: pointer;
 }
 .font-icons {
-  color: var(--transparentGreen);
+  color: var(--mainBlack);
 }
 
 .border-btm {
@@ -393,10 +396,17 @@ body .btn-info {
 .inv-col-2 {
   margin-top: 100px;
 }
-.dashboard form,
-.chart-container {
+.dashboard {
+  background: #f7f7f7;
+  padding-top: 100px;
+}
+.dashboard form {
   background: rgba(224, 224, 224, 0.26);
 }
+.chart-container {
+  background-color: #fff;
+}
+
 .dashboard form h3 {
   font-family: Lato;
   font-style: normal;
@@ -416,6 +426,39 @@ body .btn-info {
 
   color: rgba(0, 0, 0, 0.79);
 }
+.dashboard-sub-header h2 {
+  font-size: 1.5rem;
+  color: #333;
+}
+.dashboard-sub-header h5 {
+  font-size: 1rem;
+  color: #333;
+}
+.sales-and-orders-params {
+  border: 1px solid #aaa;
+  box-sizing: border-box;
+  line-height: 22px;
+}
+.sales-and-orders-params h2 {
+  font-size: 1.3rem;
+  color: #333;
+}
+
+.sales-and-orders-params .sales-data,
+.sales-data-wrapper-2 .sales-data {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.sales-data-wrapper-2 {
+  border: 1px solid #aaa;
+  box-sizing: border-box;
+  line-height: 22px;
+}
+.sales-data-wrapper-2 h2 {
+  font-size: 1rem;
+  color: #333;
+}
+
 .products-sub-header {
   font-family: Lato;
   font-style: normal;
@@ -1034,8 +1077,9 @@ th a:hover {
     margin-top: -4px;
     margin-left: 130px;
   }
-  .dashboard-todo-side-pane h5 {
-    font-size: 0.97rem;
+  .dashboard-todo-side-pane .card-title,
+  .dashboard-get-started-side-pane .card-title {
+    font-size: 0.8rem;
   }
 }
 
