@@ -43,7 +43,7 @@ const ProductStatus = ({ data }) => {
                   ticks: {
                     mirror: true,
                     padding: -90,
-                    fontSize: 22,
+                    fontSize: 15,
                     fontColor: "#000000",
                   },
                 },
