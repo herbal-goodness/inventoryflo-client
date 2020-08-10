@@ -117,12 +117,12 @@ const Dashboard = () => {
               <OrderStatusChart data={dashboard.data} />
             </div>
 
-            <div className="col-md-12 col-md-12">
+            <div className="col-md-12">
               <TopProductChart data={dashboard.data?.topProducts} />
             </div>
 
-            <div className="col-md-12 col-md-12">
-              <InventoryAnalysis />
+            <div className="col-md-12">
+              <InventoryAnalysis data={dashboard.data} />
             </div>
           </div>
         </div>
