@@ -3,6 +3,7 @@ import { useSelector, useDispatch, shallowEqual } from "react-redux";
 
 import OrderStatusChart from "../charts/OrderStatusChart";
 import Orders from "../charts/OrdersChart";
+import InventoryAnalysis from "../charts/InventoryAnalysis";
 import DashboardHeader from "./DashboardHeader";
 // import TodoSidePane from "./TodoSidePane";
 import UserActivities from "./UserActivities";
@@ -115,9 +116,15 @@ const Dashboard = () => {
             <div className="col-md-12 col-lg-6">
               <OrderStatusChart data={dashboard.data} />
             </div>
-          </div>
 
-          <TopProductChart data={dashboard.data?.topProducts} />
+            <div className="col-md-12 col-md-12">
+              <TopProductChart data={dashboard.data?.topProducts} />
+            </div>
+
+            <div className="col-md-12 col-md-12">
+              <InventoryAnalysis />
+            </div>
+          </div>
         </div>
         <div className="col-md-5 col-lg-3">
           {/* <TodoSidePane /> */}
