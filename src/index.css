@@ -1141,3 +1141,13 @@ th a:hover {
     text-align: center;
   }
 }
+.dashboard-sales {
+  font-size: 23px;
+}
+.sales-01 {
+  font-size: 19px;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 400;
+  margin-bottom: 25px;
+}
