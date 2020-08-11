@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ProductStatus from "../charts/ProductStatus";
+import WarehouseStatus from "../charts/WarehouseStatus";
 
 const InventoryAnalysis = ({ data }) => {
   return (
@@ -27,7 +28,7 @@ const InventoryAnalysis = ({ data }) => {
       <div className="col-12  mb-3">
         <hr className="mt-1 mb-0 pb-0" />
       </div>
-      <div className="col-12 col-sm-6">
+      <div className="col-12 col-sm-12 col-md-6">
         <div className="row">
           <div className="col-12 col-sm-12 sales-01 text-center text-green">
             Product Status
@@ -38,13 +39,13 @@ const InventoryAnalysis = ({ data }) => {
         </div>
       </div>
 
-      <div className="col-12 col-sm-6">
+      <div className="col-12 col-sm-12 col-md-6">
         <div className="row">
           <div className="col-12 col-sm-12 sales-01 text-center text-green">
             Warehouse Status
           </div>
           <div className="col-12 col-sm-12 sales-01 text-center text-green">
-            <ProductStatus data={data} />
+            <WarehouseStatus />
           </div>
         </div>
       </div>
