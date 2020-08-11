@@ -9,9 +9,12 @@ const OrdersChart = ({ orders }) => {
 		) : (
 			<Line
 				data={{
-					labels: orders.map((order) => {
-						return new Date(order.created_at).toLocaleDateString();
-					}),
+					// labels: orders.map((order) => {
+					// 	return new Date(order.created_at).toLocaleDateString();
+					// }),
+
+					labels: ["", "July 6", "July 13", "July 20", "July 30"],
+
 					datasets: [
 						// {
 						// 	data: orders.map((order) => {
@@ -25,9 +28,10 @@ const OrdersChart = ({ orders }) => {
 						// 	fill: true,
 						// },
 						{
-							data: orders.map((order) => {
-								return order.total_price;
-							}),
+							// data: orders.map((order) => {
+							// 	return order.total_price;
+							// }),
+							data: [0, 2000, 5000, 2000, 3500, 2600],
 							// label: "Price",
 							backgroundColor: "rgba(131, 243, 237,0.75)",
 							borderColor: "#2222ff",
