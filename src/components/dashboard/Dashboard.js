@@ -121,20 +121,22 @@ const Dashboard = () => {
 							<TopProductChart data={dashboard.data?.topProducts} />
 						</div>
 
-						<div className="col-md-12">
-							<InventoryAnalysis data={dashboard.data} />
-						</div>
-					</div>
-				</div>
-				<div className="col-md-5 col-lg-3">
-					{/* <TodoSidePane /> */}
-					<GetStartedSidePane />
-					{/* <Channel /> */}
-					<RecentActivity />
-				</div>
-			</div>
-		</div>
-	);
+
+            <div className="col-md-12">
+              <InventoryAnalysis data={dashboard.data} />
+            </div>
+          </div>
+        </div>
+        <div className="col-sm-12 col-md-5 col-lg-3 mb-5">
+          {/* <TodoSidePane /> */}
+          <GetStartedSidePane />
+          {/* <Channel /> */}
+          <RecentActivity />
+        </div>
+      </div>
+    </div>
+  );
+
 };
 
 export default Dashboard;

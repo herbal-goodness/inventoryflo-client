@@ -1112,6 +1112,13 @@ th a:hover {
 	transform: scale(1.5);
 }
 
+@media (max-width: 1050px) and (min-width: 765px) {
+  .d-size {
+    min-width: 400px;
+    width: 100%;
+  }
+}
+
 @media (max-width: 400px) {
 	.header-wrapper .header,
 	.process-flow-header {
