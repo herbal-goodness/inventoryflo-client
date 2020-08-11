@@ -28,7 +28,7 @@ const InventoryAnalysis = ({ data }) => {
       <div className="col-12  mb-3">
         <hr className="mt-1 mb-0 pb-0" />
       </div>
-      <div className="col-12 col-sm-12 col-md-6">
+      <div className="col-12 col-sm-12 col-md-6 d-size">
         <div className="row">
           <div className="col-12 col-sm-12 sales-01 text-center text-green">
             Product Status
@@ -39,7 +39,7 @@ const InventoryAnalysis = ({ data }) => {
         </div>
       </div>
 
-      <div className="col-12 col-sm-12 col-md-6">
+      <div className="col-12 col-sm-12 col-md-6 d-size">
         <div className="row">
           <div className="col-12 col-sm-12 sales-01 text-center text-green">
             Warehouse Status

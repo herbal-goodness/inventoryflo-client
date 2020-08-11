@@ -126,7 +126,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <div className="col-md-5 col-lg-3">
+        <div className="col-sm-12 col-md-5 col-lg-3 mb-5">
           {/* <TodoSidePane /> */}
           <GetStartedSidePane />
           {/* <Channel /> */}
