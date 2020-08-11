@@ -58,7 +58,7 @@ export const FOOTER_CONTENT = [
         text: "Product Demo",
       },
       {
-        to: "",
+        to: "mailto:email@example.com?subject=Mail from our Website",
         text: "Contact Support",
       },
     ],

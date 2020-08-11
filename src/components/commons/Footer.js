@@ -42,9 +42,15 @@ const Footer = () => {
                   if (!successful) {
                     return (
                       <li key={i + 10}>
-                        <Link className={color ? color : ""} to={to}>
-                          {text}
-                        </Link>
+                        {text === "Contact Support" ? (
+                          <a className={color ? color : ""} href={to}>
+                            {text}
+                          </a>
+                        ) : (
+                          <Link className={color ? color : ""} to={to}>
+                            {text}
+                          </Link>
+                        )}
                       </li>
                     );
                   } else {
@@ -53,9 +59,15 @@ const Footer = () => {
                       (to !== "/signup-user")
                     ) ? (
                       <li key={i + 10}>
-                        <Link className={color ? color : ""} to={to}>
-                          {text}
-                        </Link>
+                        {text === "Contact Support" ? (
+                          <a className={color ? color : ""} href={to}>
+                            {text}
+                          </a>
+                        ) : (
+                          <Link className={color ? color : ""} to={to}>
+                            {text}
+                          </Link>
+                        )}
                       </li>
                     ) : (
                       ""
