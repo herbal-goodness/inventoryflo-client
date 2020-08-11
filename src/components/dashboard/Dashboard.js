@@ -16,6 +16,7 @@ import DashboardSubHeaders from "./DashboardSubHeaders";
 import SalesAndOrdersParamTwo from "./SalesAndOrdersParamTwo";
 import SalesAndOrdersParamThree from "./SalesAndOrdersParamThree";
 import GetStartedSidePane from "./GetStartedSidePane";
+import SalesByChannel from "../charts/SalesByChannel";
 
 const Dashboard = () => {
 	const dispatch = useDispatch();
@@ -104,6 +105,22 @@ const Dashboard = () => {
 										figure="$104"
 										percentage="1%"
 									/>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					{/* Sales Drivers */}
+					<div className="chart-container py-2 px-3 mb-4">
+						<DashboardSubHeaders title="Sales and Orders" />
+						<div className="row">
+							<div className="col-lg-12 col-md-12 col-sm-12">
+								<div className="d-flex flex-wrap justify-content-between mb-2 justify-items-center">
+									<div>
+										<SalesByChannel />
+									</div>
+
+									<SalesByChannel />
 								</div>
 							</div>
 						</div>
