@@ -36,6 +36,7 @@ const OrdersChart = ({ orders }) => {
 							backgroundColor: "rgba(131, 243, 237,0.75)",
 							borderColor: "#2222ff",
 							fill: false,
+							lineTension: 0,
 						},
 					],
 				}}

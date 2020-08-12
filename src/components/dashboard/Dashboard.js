@@ -17,6 +17,8 @@ import SalesAndOrdersParamTwo from "./SalesAndOrdersParamTwo";
 import SalesAndOrdersParamThree from "./SalesAndOrdersParamThree";
 import GetStartedSidePane from "./GetStartedSidePane";
 import SalesByChannel from "../charts/SalesByChannel";
+import SalesByProducts from "../charts/SalesByProducts";
+import ProductsWithNoSales from "./ProductsWithNoSales";
 
 const Dashboard = () => {
 	const dispatch = useDispatch();
@@ -120,7 +122,12 @@ const Dashboard = () => {
 										<SalesByChannel />
 									</div>
 
-									<SalesByChannel />
+									<div>
+										<SalesByProducts />
+									</div>
+									<div>
+										<ProductsWithNoSales />
+									</div>
 								</div>
 							</div>
 						</div>
