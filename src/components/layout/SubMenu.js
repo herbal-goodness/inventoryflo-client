@@ -25,7 +25,7 @@ const SubMenu = ({ navColor }) => {
         id="mainNav"
       >
         <Link
-          className="navbar-brand ml-lg-5 pl-lg-5 ml-md-5 pl-md-5 nav-logo-center"
+          className="navbar-brand pl-lg-5 pl-md-5 nav-logo-center"
           to="/dashboard"
         >
           <img src={logo} alt="logo" className="nav-logo" />

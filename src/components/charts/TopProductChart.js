@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Pie, Doughnut } from "react-chartjs-2";
+import DashboardSubHeaders from "../dashboard/DashboardSubHeaders";
 import { Button } from "react-bootstrap";
 const dataFormat = {
   labels: [
@@ -48,20 +49,22 @@ const TopProductChart = ({ data }) => {
   }, [data, price]);
 
   return (
-    <div className="chart-container mb-5 pb-5">
-      <div className="d-flex justify-content-around">
-        <h3 className="p-4 flex-grow">Top Products</h3>
-        <div className="pt-4">
-          <Button onClick={() => setPrice(true)} className="btn mr-3">
-            $Sold
-          </Button>
-          <Button onClick={() => setPrice(false)} className="btn">
-            #Sold
-          </Button>
+    <div className="row pb-3 mx-2 mb-4 bg-white">
+      <DashboardSubHeaders title="Inventory Analysis" />
+      <div className="chart-container mb-5 pb-5">
+        <div className="d-flex justify-content-around">
+          <h3 className="p-4 flex-grow">Top Products</h3>
+          <div className="pt-4">
+            <Button onClick={() => setPrice(true)} className="btn mr-3">
+              $Sold
+            </Button>
+            <Button onClick={() => setPrice(false)} className="btn">
+              #Sold
+            </Button>
+          </div>
         </div>
-      </div>
 
-      {/* <Pie
+        {/* <Pie
 				data={data}
 				options={{
 					title: {
@@ -75,20 +78,21 @@ const TopProductChart = ({ data }) => {
 					},
 				}}
 			/> */}
-      <Doughnut
-        data={dataForChart}
-        options={{
-          title: {
-            display: true,
-            // text: "Products",
-            fontSize: 50,
-          },
-          legend: {
-            display: true,
-            position: "right",
-          },
-        }}
-      />
+        <Doughnut
+          data={dataForChart}
+          options={{
+            title: {
+              display: true,
+              // text: "Products",
+              fontSize: 50,
+            },
+            legend: {
+              display: true,
+              position: "right",
+            },
+          }}
+        />
+      </div>
     </div>
   );
 };
