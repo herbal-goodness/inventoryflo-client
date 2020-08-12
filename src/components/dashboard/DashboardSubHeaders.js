@@ -1,67 +1,33 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const DashboardSubHeaders = ({ title }) => {
-	return (
-		<>
-			<header className="d-flex justify-content-between mb-2 dashboard-sub-header">
-				<h2>{title}</h2>
-				<div className="d-flex justify-content-between">
-					{/* <h5 className="text-capitalize mr-4">all channels</h5> */}
-					<h5
-						className="text-capitalize mr-4 dropdown-toggle"
-						data-toggle="dropdown"
-						aria-haspopup="true"
-						aria-expanded="false">
-						all channels
-					</h5>
-					<div className="dropdown-menu">
-						<a className="dropdown-item" href="#">
-							All channels
-						</a>
-						<a className="dropdown-item" href="#">
-							Shopify
-						</a>
-						<a className="dropdown-item" href="#">
-							Amazon
-						</a>
-						<a className="dropdown-item" href="#">
-							Walmart
-						</a>
-					</div>
-					<div>
-						<h5
-							className="text-capitalize dropdown-toggle"
-							data-toggle="dropdown"
-							aria-haspopup="true"
-							aria-expanded="false">
-							<i className="fa fa-calendar mr-2" aria-hidden="true"></i>this
-							month
-						</h5>
-						<div className="dropdown-menu">
-							<a className="dropdown-item" href="#">
-								This month
-							</a>
-							<a className="dropdown-item" href="#">
-								This week
-							</a>
-							<a className="dropdown-item" href="#">
-								Today
-							</a>
-							<a className="dropdown-item" href="#">
-								Yesterday
-							</a>
-							<a className="dropdown-item" href="#">
-								Last 7 days
-							</a>
-							<a className="dropdown-item" href="#">
-								Last 30 days
-							</a>
-						</div>
-					</div>
-				</div>
-			</header>
-		</>
-	);
+  return (
+    <>
+      <div className="col-sm-6 col-md-5 p-0">
+        <div className="card-body pt-2 pb-0">
+          <span className="dashboard-sales"> {title}</span>
+        </div>
+      </div>
+      <div className="col-sm-6 col-md-7 p-0">
+        <div className="card-body pt-2 pb-0">
+          <span className="float-right">
+            <Link to="/" className="text-decoration-none text-dark">
+              <i className="fa fa-calendar fa-lg"></i> This Month
+            </Link>
+          </span>
+          <span className="float-right mr-4">
+            <Link to="/" className="text-decoration-none text-dark">
+              All Channels
+            </Link>
+          </span>
+        </div>
+      </div>
+      <div className="col-12  mb-3">
+        <hr className="mt-1 mb-0 pb-0" />
+      </div>
+    </>
+  );
 };
 
 export default DashboardSubHeaders;
