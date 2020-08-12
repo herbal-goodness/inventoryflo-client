@@ -1166,17 +1166,23 @@ th a:hover {
 .bg-white {
   background-color: white;
   border-radius: 2px;
+  font-family: Lato;
+  font-style: normal;
 }
 
 .total-order-1 {
   font-size: 20px;
+  font-family: Lato;
 }
 .total-order-2 {
   font-size: 23px;
+  font-family: Lato;
 }
 .total-order-3 {
   font-size: 26px;
+  font-family: Lato;
 }
 .box-1 {
   border: 1px solid #ccc;
+  font-family: Lato;
 }
