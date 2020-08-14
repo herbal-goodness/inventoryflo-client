@@ -12,11 +12,14 @@ import GetStartedSidePane from "./GetStartedSidePane";
 
 import SalesByChannel from "../charts/SalesByChannel";
 import SalesByProducts from "../charts/SalesByProducts";
-import ProductsWithNoSales from "./ProductsWithNoSales";
+import SalesDriversParams from "./SalesDriversParams";
 import SalesAndOrders from "./SalesAndOrders";
 import DashboardSubHeaders from "./DashboardSubHeaders";
 import UserActivities from "./UserActivities";
 import SlowMovingProd from "./SlowMovingProd";
+import TopCustByOrders from "./TopCustByOrders";
+import SalesShareChart from "../charts/SalesShareChart";
+import LargestOrders from "./LargestOrders";
 
 const Dashboard = () => {
 	const dispatch = useDispatch();
@@ -91,7 +94,24 @@ const Dashboard = () => {
 									</div>
 									<div>
 										<SlowMovingProd />
-										<ProductsWithNoSales />
+										<SalesDriversParams
+											title="Products with no sales"
+											fig="23"
+										/>
+									</div>
+								</div>
+								<div className="d-flex flex-wrap justify-content-between mb-2 justify-items-center">
+									<div>
+										<TopCustByOrders />
+										<SalesDriversParams title="Unique customers" fig="30" />
+									</div>
+									<div>
+										<SalesShareChart />
+									</div>
+
+									<div>
+										<LargestOrders />
+										<SalesDriversParams title="July 4th campaign" fig="$230" />
 									</div>
 								</div>
 							</div>
