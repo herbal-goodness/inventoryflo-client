@@ -41,7 +41,7 @@ const SalesByChannel = () => {
 	const [dataForPieChart, setDataForPieChart] = useState(pieData);
 
 	return (
-		<div className="mb-5">
+		<div className="mb-3">
 			{/* <h3 className="text-center flex-grow">Top Products</h3> */}
 
 			<Pie

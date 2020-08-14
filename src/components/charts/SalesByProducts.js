@@ -39,13 +39,13 @@ const SalesByProducts = () => {
 	const [dataForChart, setDataForChart] = useState(dataFormat);
 
 	return (
-		<div className="mb-5">
+		<div className="mb-3">
 			{/* <h3 className="text-center flex-grow">Top Products</h3> */}
 
 			<Doughnut
 				data={dataForChart}
 				height={240}
-				width={350}
+				width={300}
 				options={{
 					responsive: true,
 					maintainAspectRatio: false,
