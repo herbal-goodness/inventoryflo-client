@@ -244,6 +244,12 @@ h5 a {
 .text-slim {
 	font-size: 0.9rem;
 }
+.text-slim-1 {
+	font-size: 0.8rem;
+}
+.text-slim-2 {
+	font-size: 0.7rem;
+}
 .text-medium {
 	font-size: 1.2rem;
 }
@@ -635,6 +641,35 @@ body .btn-info {
 	position: absolute;
 	right: -8px;
 	bottom: 13px;
+}
+/* V-ARROW-2 */
+
+.v-arrow-2 {
+	border-left: 5px solid #20846b;
+	height: 164px;
+	position: relative;
+}
+.v-arrow-2:after {
+	content: "";
+	display: inline-block;
+	width: 40px;
+	height: 4px;
+	background-color: #20846b;
+	transform: rotate(-120deg);
+	position: absolute;
+	left: -13px;
+	top: 13px;
+}
+.v-arrow-2:before {
+	content: "";
+	display: inline-block;
+	width: 40px;
+	height: 4px;
+	background-color: #20846b;
+	transform: rotate(120deg);
+	position: absolute;
+	right: -8px;
+	top: 13px;
 }
 
 /* CHARTS */
