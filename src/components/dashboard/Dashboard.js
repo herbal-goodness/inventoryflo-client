@@ -4,8 +4,8 @@ import OrderStatusChart from "../charts/OrderStatusChart";
 import InventoryAnalysis from "../charts/InventoryAnalysis";
 import DashboardHeader from "./DashboardHeader";
 // import TodoSidePane from "./TodoSidePane";
-import UserActivities from "./UserActivities";
-import Channel from "./Channel";
+// import UserActivities from "./UserActivities";
+// import Channel from "./Channel";
 import RecentActivity from "./RecentActivity";
 import TopProductChart from "../charts/TopProductChart";
 import GetStartedSidePane from "./GetStartedSidePane";
@@ -14,6 +14,8 @@ import SalesByChannel from "../charts/SalesByChannel";
 import SalesByProducts from "../charts/SalesByProducts";
 import ProductsWithNoSales from "./ProductsWithNoSales";
 import SalesAndOrders from "./SalesAndOrders";
+import DashboardSubHeaders from "./DashboardSubHeaders";
+import UserActivities from "./UserActivities";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -64,7 +66,7 @@ const Dashboard = () => {
       dashboard.data === null &&
       dispatch({ type: "GET_DASHBOARD_DATA" });
   }, []);
-				
+
   return (
     <div className="container-fluid mx-auto dashboard">
       <DashboardHeader />
@@ -73,49 +75,50 @@ const Dashboard = () => {
           {/* <UserActivities dashboardData={dashboard} /> */}
           <SalesAndOrders />
 
-	{/* Sales Drivers */}
-					<div className="chart-container py-2 px-3 mb-4">
-						<DashboardSubHeaders title="Sales and Orders" />
-						<div className="row">
-							<div className="col-lg-12 col-md-12 col-sm-12">
-								<div className="d-flex flex-wrap justify-content-between mb-2 justify-items-center">
-									<div>
-										<SalesByChannel />
-									</div>
+          {/* Sales Drivers */}
+          <div className="chart-container py-2 px-3 mb-4">
+            <DashboardSubHeaders title="Sales and Orders" />
+            <div className="row">
+              <div className="col-lg-12 col-md-12 col-sm-12">
+                <div className="d-flex flex-wrap justify-content-between mb-2 justify-items-center">
+                  <div>
+                    <SalesByChannel />
+                  </div>
 
-									<div>
-										<SalesByProducts />
-									</div>
-									<div>
-										<ProductsWithNoSales />
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div className="row">
-						<div className="col-md-12 col-lg-6">
-							<TotalListingsProductChart data={dashboard.data} />
-						</div>
-						<div className="col-md-12 col-lg-6">
-							<OrderStatusChart data={dashboard.data} />
-						</div>
-          <div className="row">
-            <div className="col-md-12">
-              <TopProductChart data={dashboard.data?.topProducts} />
-            </div>
-
-            <div className="col-md-12">
-              <InventoryAnalysis data={dashboard.data} />
+                  <div>
+                    <SalesByProducts />
+                  </div>
+                  <div>
+                    <ProductsWithNoSales />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="col-sm-12 col-md-3 mb-5">
-          {/* <TodoSidePane /> */}
-          <GetStartedSidePane />
-          {/* <Channel /> */}
-          <RecentActivity />
+
+          <div className="row">
+            <div className="col-md-12 col-lg-6">
+              {/* <TotalListingsProductChart data={dashboard.data} /> */}
+            </div>
+            <div className="col-md-12 col-lg-6">
+              <OrderStatusChart data={dashboard.data} />
+            </div>
+            <div className="row">
+              <div className="col-md-12">
+                <TopProductChart data={dashboard.data?.topProducts} />
+              </div>
+
+              <div className="col-md-12">
+                <InventoryAnalysis data={dashboard.data} />
+              </div>
+            </div>
+          </div>
+          <div className="col-sm-12 col-md-3 mb-5">
+            {/* <TodoSidePane /> */}
+            <GetStartedSidePane />
+            {/* <Channel /> */}
+            <RecentActivity />
+          </div>
         </div>
       </div>
     </div>
