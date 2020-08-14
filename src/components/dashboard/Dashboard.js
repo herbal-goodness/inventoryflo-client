@@ -16,6 +16,7 @@ import ProductsWithNoSales from "./ProductsWithNoSales";
 import SalesAndOrders from "./SalesAndOrders";
 import DashboardSubHeaders from "./DashboardSubHeaders";
 import UserActivities from "./UserActivities";
+import SlowMovingProd from "./SlowMovingProd";
 
 const Dashboard = () => {
 	const dispatch = useDispatch();
@@ -89,6 +90,7 @@ const Dashboard = () => {
 										<SalesByProducts />
 									</div>
 									<div>
+										<SlowMovingProd />
 										<ProductsWithNoSales />
 									</div>
 								</div>
