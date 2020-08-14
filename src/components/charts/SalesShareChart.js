@@ -3,7 +3,7 @@ import { Pie } from "react-chartjs-2";
 import "chartjs-plugin-labels";
 
 const pieData = {
-	labels: ["Shopify", "Amazon", "Walmart"],
+	labels: ["City 1", "City 2", "City 3", "City 4", "City 5", "Others"],
 	datasets: [
 		{
 			label: "Rainfall",
