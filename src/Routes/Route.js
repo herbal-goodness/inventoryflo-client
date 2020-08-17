@@ -9,7 +9,7 @@ import Landing from "../components/landing/Landing";
 import AuthRoute from "./AuthRoute";
 import PrivateRoute from "./PrivateRoutes";
 import { authRoutes, privateRoutes } from "./constants";
-import WorkInProgress from "../components/landing/WorkInProgress";
+import ComingSoon from "../components/landing/ComingSoon";
 
 function Inventoryflo() {
   return (
@@ -32,7 +32,7 @@ function Inventoryflo() {
             <Route exact path="/" component={Landing} />
             <Route exact path="/privacy-policy" component={Policy} />
             <Route exact path="/integrations" component={Integrations} />
-            <Route exact path="/wip" component={WorkInProgress} />
+            <Route exact path="/coming-soon" component={ComingSoon} />
             <Route exact path="*" component={NotFound} />
           </Switch>
         </Suspense>
