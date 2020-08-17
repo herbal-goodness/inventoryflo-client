@@ -105,7 +105,7 @@ const OrdersChart = ({ orders }) => {
 		);
 
 	return (
-		<div className="mb-5">
+		<div className="mb-1">
 			<h3 className="text-right">
 				$135,364.98{" "}
 				<span>

@@ -3,7 +3,7 @@ import React from "react";
 const TopCustByOrders = () => {
 	return (
 		<>
-			<h2 className="text-medium-1 text-green text-center mt-1 mb-3 text-transform-bold text-capitalize">
+			<h2 className="text-medium-1 text-green text-center mt-1 mb-3 font-weight-bold text-capitalize">
 				top customers by orders
 			</h2>
 			<div className="d-flex justify-content-between justify-items-center arrow-container  mb-4">

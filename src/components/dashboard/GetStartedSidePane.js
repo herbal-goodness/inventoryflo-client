@@ -15,7 +15,9 @@ const GetStartedSidePane = () => {
 						</span>
 					</h5>
 					<h5 className="card-title d-flex justify-content-between">
-						<span className="small font-italic font-weight-bold">sync your Inventory</span>
+						<span className="small font-italic font-weight-bold text-capitalize">
+							sync your Inventory
+						</span>
 						<span>
 							<i className="fa fa-refresh font-icons" aria-hidden="true"></i>
 						</span>
