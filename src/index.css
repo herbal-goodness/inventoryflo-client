@@ -1268,3 +1268,16 @@ th a:hover {
   border: none !important;
   box-shadow: none !important;
 }
+/* pricing */
+.wip-header {
+  margin-top: 110px;
+  padding-bottom: 80px;
+}
+
+.grad-wip {
+  background-image: linear-gradient(white, #8fc1b4);
+}
+.wip-text {
+  min-height: 200px;
+  padding-top: 180px;
+}
