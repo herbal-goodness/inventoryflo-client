@@ -10,7 +10,8 @@ const WorkInProgress = () => {
         </div>
         <div className="col-md-6 wip-text">
           <h1 className="text-center wip-color">
-            "We are still building this software. Coming soon..."
+            "We are still building this
+            <br /> software. Coming soon..."
           </h1>
         </div>
       </div>
