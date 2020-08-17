@@ -7,12 +7,8 @@ const ProductStatus = ({ data }) => {
     datasets: [
       {
         label: "Products Status",
-        backgroundColor: [
-          "rgba(242, 201, 76, 0.8)",
-          "rgba(39, 174, 96, 0.8)",
-          "rgba(247, 147, 30, 0.8)",
-        ],
-        borderColor: "rgba(39, 174, 96,0.4)",
+        backgroundColor: ["#20846B", "#F7931E", "#6FCF97"],
+        borderColor: "green",
         borderWidth: 1,
         hoverBackgroundColor: "rgba(39, 174, 96,0.4)",
         hoverBorderColor: "rgba(39, 174, 96,0.8)",

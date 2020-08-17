@@ -12,14 +12,41 @@ const DashboardSubHeaders = ({ title }) => {
       <div className="col-sm-6 col-md-7 p-0">
         <div className="card-body pt-2 pb-0">
           <span className="float-right">
-            <Link to="/" className="text-decoration-none text-dark">
-              <i className="fa fa-calendar fa-lg"></i> This Month
-            </Link>
+            <div className="input-group">
+              <div className="input-group-prepend s-calendar bg-calendar">
+                <label
+                  className="input-group-text input-group-sm mr-0 px-0 bg-calendar"
+                  for="inputGroupSelect01"
+                >
+                  <i className="fa fa-calendar"></i>
+                </label>
+              </div>
+              <select
+                className="custom-select pl-1 bg-calendar"
+                id="inputGroupSelect01"
+              >
+                <option selected>This Month</option>
+                <option value="1">This week</option>
+                <option value="2">Today</option>
+                <option value="3">Yesterday</option>
+                <option value="1">Last 7 days</option>
+                <option value="2">Last 30 days</option>
+              </select>
+            </div>
           </span>
+
           <span className="float-right mr-4">
-            <Link to="/" className="text-decoration-none text-dark">
-              All Channels
-            </Link>
+            <div className="input-group">
+              <select
+                className="custom-select bg-calendar"
+                id="inputGroupSelect01"
+              >
+                <option selected>All Channels</option>
+                <option value="1">Shopify</option>
+                <option value="2">Amazon</option>
+                <option value="3">Walmart</option>
+              </select>
+            </div>
           </span>
         </div>
       </div>
