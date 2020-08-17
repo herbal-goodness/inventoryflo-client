@@ -7,7 +7,7 @@ export const FOOTER_CONTENT = [
         text: "Pricing",
       },
       {
-        to: "",
+        to: "/coming-soon",
         text: "Features",
       },
     ],
@@ -46,15 +46,15 @@ export const FOOTER_CONTENT = [
     title: "Company",
     links: [
       {
-        to: "",
+        to: "/coming-soon",
         text: "About",
       },
       {
-        to: "",
+        to: "/coming-soon",
         text: "Customer Service",
       },
       {
-        to: "",
+        to: "/coming-soon",
         text: "Product Demo",
       },
       {
