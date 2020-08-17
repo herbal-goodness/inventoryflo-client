@@ -9,7 +9,7 @@ const WorkInProgress = () => {
           <img class="img-fluid mx-auto" src={wip} alt="WIP" />
         </div>
         <div className="col-md-6 wip-text">
-          <h1 className="text-green text-center">
+          <h1 className="text-center wip-color">
             "We are still building this software. Coming soon..."
           </h1>
         </div>
