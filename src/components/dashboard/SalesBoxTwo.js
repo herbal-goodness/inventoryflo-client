@@ -8,9 +8,9 @@ const SalesBoxTwo = ({ title, value, centage }) => {
           <span className="total-order-0">
             <i className="fa fa-arrow-down text-red fa-lg"></i>
           </span>
-          <sub>{centage}%</sub>
+          <sub className="centage">{centage}%</sub>
         </div>
-        <small className="my-1">{title}</small>
+        <div className="cancel-order">{title}</div>
       </div>
     </div>
   );
