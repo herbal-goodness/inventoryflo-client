@@ -1290,8 +1290,9 @@ th a:hover {
   margin-bottom: auto;
 }
 .cancel-order {
-  font-size: 13px;
+  font-size: 14px;
   padding-top: 15px;
+  font-family: Lato;
 }
 .centage {
   font-size: 13px;
