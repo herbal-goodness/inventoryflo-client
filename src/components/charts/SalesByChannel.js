@@ -54,8 +54,9 @@ const SalesByChannel = () => {
 					title: {
 						display: true,
 						text: "Sales By Channel",
-						fontSize: 20,
+						fontSize: 22,
 						fontColor: "#20846B",
+						fontFamily: "Lato",
 					},
 					legend: {
 						display: true,

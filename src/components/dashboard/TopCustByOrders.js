@@ -6,7 +6,7 @@ const TopCustByOrders = () => {
 			<h2 className="text-medium-1 text-green text-center mt-1 mb-3 font-weight-bold text-capitalize">
 				top customers by orders
 			</h2>
-			<div className="d-flex justify-content-between justify-items-center arrow-container  mb-4">
+			<div className="d-flex justify-content-between justify-items-center arrow-container  mb-1">
 				<div className="text-right">
 					<h2 className="text-large mb-3 text-dark">23</h2>
 					<h2 className="text-medium mb-3 text-dark">20</h2>

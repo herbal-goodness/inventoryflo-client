@@ -52,8 +52,9 @@ const SalesByProducts = () => {
 					title: {
 						display: true,
 						text: "Sales By Products",
-						fontSize: 20,
+						fontSize: 22,
 						fontColor: "#20846B",
+						fontFamily: "Lato",
 					},
 					legend: {
 						display: true,

@@ -45,8 +45,9 @@ const SalesShareChart = () => {
 					title: {
 						display: true,
 						text: "Sales Share By Cities",
-						fontSize: 20,
+						fontSize: 22,
 						fontColor: "#20846B",
+						fontFamily: "Lato",
 					},
 					legend: {
 						display: true,
