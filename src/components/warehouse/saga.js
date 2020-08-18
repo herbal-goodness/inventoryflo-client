@@ -186,9 +186,35 @@ function* dashboardWorker() {
     yield put({ type: "DASHBOARD_DATA_ERROR" });
   }
 }
+function* salesAndOrdersWorker() {
+  const token = yield select((state) => state.userInfo.user.IdToken);
+
+  try {
+    const response = yield fetch(API.API_ROOT + "/order-by-dates", {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
+
+    if (response.ok) {
+      const data = yield response.json();
+      console.log(data);
+      yield put({
+        type: "STORE_SALES_AND_ORDER",
+        payload: data,
+      });
+    } else {
+      yield put({ type: "SALES_AND_ORDER_ERROR" });
+    }
+  } catch (error) {
+    console.log(error);
+    yield put({ type: "SALES_AND_ORDER_ERROR" });
+  }
+}
 // Sales Watcher
 export default function* salesSaga() {
   yield all([takeLatest("GET_PRODUCTS", productsWorker)]);
   yield all([takeLatest("GET_ORDERS", ordersWorker)]);
   yield all([takeLatest("GET_DASHBOARD_DATA", dashboardWorker)]);
+  yield all([takeLatest("GET_SALES_AND_ORDER", salesAndOrdersWorker)]);
 }

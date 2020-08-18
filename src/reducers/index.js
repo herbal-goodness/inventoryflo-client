@@ -25,6 +25,7 @@ export default combineReducers({
   dashboard: inventory.dashboard,
   sales: inventory.sales,
   orders: inventory.orders,
+  salesAndOrders: inventory.salesAndOrders,
   logout,
   signup: signup.reducer,
   login: login.reducer,

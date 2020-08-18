@@ -17,6 +17,13 @@ const dashboardInitialState = {
   data: null,
 };
 
+const salesAndOrdersInitialState = {
+  error: false,
+  loading: false,
+  successful: false,
+  salesAndOrders: [],
+};
+
 export const sales = (state = salesInitialState, actions) => {
   switch (actions.type) {
     case "GET_PRODUCTS":
@@ -115,6 +122,40 @@ export const dashboard = (state = dashboardInitialState, actions) => {
       };
     case "RESET_STATE":
       return dashboardInitialState;
+
+    default:
+      return state;
+  }
+};
+
+export const salesAndOrders = (state = salesAndOrdersInitialState, actions) => {
+  switch (actions.type) {
+    case "GET_SALES_AND_ORDER":
+      return {
+        ...state,
+        loading: true,
+        error: false,
+        successful: false,
+        salesAndOrders: [],
+      };
+    case "STORE_SALES_AND_ORDER":
+      return {
+        ...state,
+        salesAndOrders: actions.payload,
+        successful: true,
+        loading: false,
+        error: false,
+      };
+    case "SALES_AND_ORDER_ERROR":
+      return {
+        ...state,
+        error: true,
+        products: [],
+        successful: false,
+        loading: false,
+      };
+    case "RESET_STATE":
+      return salesAndOrdersInitialState;
 
     default:
       return state;

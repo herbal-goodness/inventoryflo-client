@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Orders from "../charts/OrdersChart";
 import DashboardSubHeaders from "./DashboardSubHeaders";
 import SalesBoxOne from "./SalesBoxOne";
@@ -6,19 +6,74 @@ import SalesBoxTwo from "./SalesBoxTwo";
 import { useSelector, shallowEqual } from "react-redux";
 
 const SalesAndOrders = () => {
-  const { orders } = useSelector(
-    ({ orders }) => ({
-      orders: orders.userOrders,
+  const [info, setDuration] = useState({ duration: [], type: "" });
+  const { salesAndOrders } = useSelector(
+    ({ salesAndOrders }) => ({
+      salesAndOrders: salesAndOrders.salesAndOrders,
     }),
     shallowEqual
   );
 
+  useEffect(() => {
+    setDuration({
+      duration: salesAndOrders.filterBy30Days,
+      type: "last30days",
+    });
+  }, []);
+
+  const handleChange = (e) => {
+    switch (e.target.value) {
+      case "thisWeek":
+        setDuration({
+          duration: salesAndOrders.filterBythisWeek,
+          type: "thisWeek",
+        });
+        break;
+      case "thisMonth":
+        setDuration({
+          duration: salesAndOrders.filterByMonthDate,
+          type: "thisMonth",
+        });
+        break;
+      case "today":
+        setDuration({ duration: salesAndOrders.filterByToDay, type: "today" });
+        break;
+      case "yesterday":
+        setDuration({
+          duration: salesAndOrders.filterByYesterday,
+          type: "yesterday",
+        });
+        break;
+      case "last7days":
+        setDuration({
+          duration: salesAndOrders.filterByLast7Days,
+          type: "last7days",
+        });
+        break;
+      case "last30days":
+        setDuration({
+          duration: salesAndOrders.filterBy30Days,
+          type: "last30days",
+        });
+        break;
+
+      default:
+        setDuration({
+          duration: salesAndOrders.filterBy30Days,
+          type: "last30days",
+        });
+        break;
+    }
+  };
   return (
     <div className="row mx-2 pb-3 mb-4 bg-white">
-      <DashboardSubHeaders title="Sales and Order" />
+      <DashboardSubHeaders
+        handleChange={handleChange}
+        title="Sales and Order"
+      />
       <div className="col-md-8 d-size">
         <div className="card-body">
-          <Orders orders={orders} />
+          <Orders salesAndOrders={info.duration} type={info.type} />
         </div>
       </div>
 
