@@ -16,10 +16,29 @@ const Pricing = () => {
           </h5>
         </div>
       </div>
-      <div className="row table-padding mx-md-5 text-center">
-        <PricingLeftBar />
+      <div className="table-padding mx-md-5 text-center">
+        {/* <PricingLeftBar />
         <PricingCenterBar />
-        <PricingRightBar />
+        <PricingRightBar /> */}
+        <table class="table table-borderless font-weight-bold">
+          <tbody>
+            <tr style={{ paddingTop: "20px" }}>
+              <td></td>
+              <td className="p1-border">Doe</td>
+              <td></td>
+            </tr>
+            <tr className="p1-border ">
+              <td>Mary</td>
+              <td>Moe</td>
+              <td>mary@example.com</td>
+            </tr>
+            <tr className="p1-border ">
+              <td>July</td>
+              <td>Dooley</td>
+              <td>july@example.com</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   );

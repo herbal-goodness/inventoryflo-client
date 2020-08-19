@@ -1312,8 +1312,6 @@ th a:hover {
 }
 .p1-border {
   border: 1px solid #ccc;
-  padding-top: 50px;
-  padding-bottom: 20px;
 }
 .p2-border {
   background-color: #f0f7f5;
@@ -1333,7 +1331,12 @@ th a:hover {
 .table-body-text {
   font-family: Lato;
   color: #555;
-  font-size: 16px;
+  font-size: 1.3vw;
+}
+@media (max-width: 1220px) and (min-width: 765px) {
+  .table-body-text {
+    background-color: ;
+  }
 }
 .p-left-table {
   padding-top: 360px;
