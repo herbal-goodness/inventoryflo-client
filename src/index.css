@@ -250,9 +250,6 @@ h5 a {
 .text-slim-2 {
   font-size: 0.7rem;
 }
-.text-medium-alpha {
-  font-size: 1rem;
-}
 .text-medium {
   font-size: 1.2rem;
 }
@@ -1195,6 +1192,13 @@ th a:hover {
   }
 }
 
+@media (max-width: 765px) {
+  .table-padding {
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+}
+
 @media (max-width: 400px) {
   .header-wrapper .header,
   .process-flow-header {
@@ -1282,19 +1286,58 @@ th a:hover {
 }
 .wip-text {
   min-height: 200px;
+  padding-top: 180px;
+}
+.wip-color {
   color: #07473c;
   font-family: Lato;
   font-weight: bold;
-  font-size: 40px;
-  margin-top: auto;
-  margin-bottom: auto;
 }
-.cancel-order {
-  font-size: 14px;
-  padding-top: 15px;
+
+.price-header {
+  margin-top: 110px;
+  margin-bottom: 80px;
+}
+
+.pricing-title {
   font-family: Lato;
+  font-weight: 900;
+  font-size: 75px;
+  color: #000;
 }
-.centage {
-  font-size: 13px;
-  display: inline;
+.text-dark {
+  font-family: Lato;
+  font-weight: 900;
+  font-size: 22px;
+}
+.p1-border {
+  border: 1px solid #ccc;
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+.p2-border {
+  background-color: #f0f7f5;
+  border: 1px solid #20846b;
+  padding-top: 60px;
+  padding-bottom: 30px;
+  -webkit-box-shadow: inset 0px 10px 5px -5px #20846b;
+  -moz-box-shadow: inset 0px 10px 5px -5px #20846b;
+  box-shadow: inset 0px 7px 7px -6px #20846b;
+}
+.table-header-text {
+  font-family: Lato;
+  color: #555;
+  font-size: 16px;
+  background-color: #eee;
+}
+.table-body-text {
+  font-family: Lato;
+  color: #555;
+  font-size: 16px;
+}
+.p-left-table {
+  padding-top: 360px;
+}
+.btn-radius {
+  border-radius: 0;
 }
