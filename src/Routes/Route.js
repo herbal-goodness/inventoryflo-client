@@ -5,6 +5,7 @@ import Layout from "../components/layout/Layout";
 import { Spinner } from "../components/utils/components";
 import Policy from "../components/layout/Policy";
 import Integrations from "../components/layout/Integrations";
+import Pricing from "../components/Pricing/Pricing";
 import Landing from "../components/landing/Landing";
 import AuthRoute from "./AuthRoute";
 import PrivateRoute from "./PrivateRoutes";
@@ -33,6 +34,7 @@ function Inventoryflo() {
             <Route exact path="/privacy-policy" component={Policy} />
             <Route exact path="/integrations" component={Integrations} />
             <Route exact path="/coming-soon" component={ComingSoon} />
+            <Route exact path="/pricing" component={Pricing} />
             <Route exact path="*" component={NotFound} />
           </Switch>
         </Suspense>
