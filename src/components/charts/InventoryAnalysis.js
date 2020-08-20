@@ -5,7 +5,7 @@ import DashboardSubHeaders from "../dashboard/DashboardSubHeaders";
 
 const InventoryAnalysis = ({ data }) => {
 	return (
-		<div className="row pb-3 mx-2 mb-4 bg-white">
+		<div className="row pb-3 mb-4 bg-white">
 			<DashboardSubHeaders title="Inventory Analysis" />
 			<div className="col-12 col-sm-12 col-md-6 d-size">
 				<div className="row">

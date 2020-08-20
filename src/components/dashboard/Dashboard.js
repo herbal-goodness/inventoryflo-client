@@ -78,9 +78,8 @@ const Dashboard = () => {
 				<div className="col-sm-12 col-md-9">
 					{/* <UserActivities dashboardData={dashboard} /> */}
 					<SalesAndOrders />
-
 					{/* Sales Drivers */}
-					<div className="chart-container py-2 px-3 mb-4">
+					<div className="chart-container py-2 px-3 mb-4 mx-2">
 						<div className="row">
 							<DashboardSubHeaders title="Sales Drivers" />
 							<div className="col-lg-12 col-md-12 col-sm-12">
@@ -118,7 +117,7 @@ const Dashboard = () => {
 						</div>
 					</div>
 
-					<div className="row">
+					<div className="row mx-4">
 						{/* <div className="col-md-12 col-lg-6">
 							<TotalListingsProductChart data={dashboard.data} />
 						</div>
