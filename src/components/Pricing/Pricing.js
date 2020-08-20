@@ -22,7 +22,7 @@ const Pricing = () => {
         <PricingRightBar /> */}
         <table class="table table-borderless font-weight-bold">
           <tbody>
-            <tr style={{ paddingTop: "20px" }}>
+            <tr style={{ paddingTop: "20px", border: "1px solid black" }}>
               <td></td>
               <td className="p1-border">Doe</td>
               <td></td>
