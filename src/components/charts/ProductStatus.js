@@ -55,6 +55,19 @@ const ProductStatus = ({ data }) => {
 							},
 						],
 					},
+					tooltips: {
+						callbacks: {
+							title: function (tooltipItem, data) {
+								return data["labels"][tooltipItem[0]["index"]];
+							},
+							label: function (tooltipItem, data) {
+								return data["datasets"][0]["data"][tooltipItem["index"]];
+							},
+							afterLabel: function (tooltipItem, data) {
+								var dataset = data["datasets"][0];
+							},
+						},
+					},
 					legend: {
 						display: false,
 					},
