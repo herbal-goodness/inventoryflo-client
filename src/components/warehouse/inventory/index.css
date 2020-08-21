@@ -1,0 +1,8 @@
+.form-control:focus {
+  border-color: #007b5e;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 8px rgba(0, 123, 94, 0.6);
+}
+.form-select:focus {
+  border-color: #007b5e;
+}

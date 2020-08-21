@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import OrderSide from "./OrdersSidePane";
 import ProductSide from "./ProductsSidePane";
+import "./index.css";
 
 const InventorySidePane = ({
   handleChange,

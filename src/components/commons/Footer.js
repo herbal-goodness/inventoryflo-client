@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 const Footer = () => {
   const { pathname } = useLocation();
+
   const { successful } = useSelector(({ userInfo }) => ({
     successful: userInfo.successful,
   }));
@@ -13,7 +14,7 @@ const Footer = () => {
     <div className="container-fluid bg-mid-green">
       <footer className="container footer py-5">
         <div className="row">
-          <div className="col-md-3">
+          <div className="col-12 col-md-3">
             <Link to={pathname}>
               <img src={footerlogo} alt="logo" className="mb-2" />
             </Link>
@@ -26,7 +27,7 @@ const Footer = () => {
 
           {FOOTER_CONTENT.map(({ title, links, color }, index) => (
             <div
-              className="col-md-2 col-lg-2 col-sm-3  footer-content-left mx-sm-auto"
+              className="col-6 col-md-2 col-lg-2 col-sm-3  footer-content-left mx-sm-auto"
               key={index + 1}
             >
               <h2
@@ -41,9 +42,15 @@ const Footer = () => {
                   if (!successful) {
                     return (
                       <li key={i + 10}>
-                        <Link className={color ? color : ""} to={to}>
-                          {text}
-                        </Link>
+                        {text === "Contact Support" ? (
+                          <a className={color ? color : ""} href={to}>
+                            {text}
+                          </a>
+                        ) : (
+                          <Link className={color ? color : ""} to={to}>
+                            {text}
+                          </Link>
+                        )}
                       </li>
                     );
                   } else {
@@ -52,9 +59,15 @@ const Footer = () => {
                       (to !== "/signup-user")
                     ) ? (
                       <li key={i + 10}>
-                        <Link className={color ? color : ""} to={to}>
-                          {text}
-                        </Link>
+                        {text === "Contact Support" ? (
+                          <a className={color ? color : ""} href={to}>
+                            {text}
+                          </a>
+                        ) : (
+                          <Link className={color ? color : ""} to={to}>
+                            {text}
+                          </Link>
+                        )}
                       </li>
                     ) : (
                       ""
