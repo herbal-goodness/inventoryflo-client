@@ -1299,11 +1299,163 @@ th a:hover {
   margin-bottom: 80px;
 }
 
+.price-s-header {
+  margin-top: 70px;
+  background-color: #f0f7f5;
+}
+
 .pricing-title {
   font-family: Lato;
   font-weight: 900;
   font-size: 75px;
   color: #000;
+}
+
+.pricing-s-title {
+  font-family: Lato;
+  font-weight: 900;
+  font-size: 65px;
+  color: #000;
+}
+
+.over-price {
+  font-family: Lato;
+  font-size: 16px;
+  color: #444;
+}
+
+.price-card-1 {
+  font-family: Lato;
+  background-color: #f0f7f5;
+  padding-top: 28px;
+  padding-bottom: 100px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  -webkit-box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
+  -moz-box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
+  box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
+}
+
+.price-card-pro-1 {
+  font-family: Lato;
+  background-color: #f0f7f5;
+  padding-top: 28px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  -webkit-box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
+  -moz-box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
+  box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
+}
+
+.price-card-2 {
+  font-family: Lato;
+  background-color: #ddece8;
+  padding-top: 43px;
+  padding-bottom: 100px;
+  border: 1px solid #20846b;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
+  -moz-box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
+  box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
+}
+
+.price-card-pro-2 {
+  font-family: Lato;
+  background-color: #ddece8;
+  padding-top: 43px;
+  border: 1px solid #20846b;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
+  -moz-box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
+  box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
+}
+
+.price-card-3 {
+  font-family: Lato;
+  background-color: #f0f7f5;
+  padding-top: 28px;
+  padding-bottom: 100px;
+  z-index: 1;
+  border: 1px solid #ccc;
+  border-radius: 0 5px 0 5px;
+  -webkit-box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
+  -moz-box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
+  box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
+}
+
+.price-card-pro-3 {
+  font-family: Lato;
+  background-color: #f0f7f5;
+  padding-top: 28px;
+  z-index: 1;
+  border: 1px solid #ccc;
+  border-radius: 0 5px 0 5px;
+  -webkit-box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
+  -moz-box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
+  box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
+}
+
+.price-card-4 {
+  font-family: Lato;
+  margin-left: -3px;
+  background-color: #f0f7f5;
+  padding-top: 28px;
+  padding-bottom: 100px;
+  border: 1px solid #ccc;
+  border-radius: 0 5px 0 5px;
+  -webkit-box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
+  -moz-box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
+  box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
+}
+
+.price-card-pro-4 {
+  font-family: Lato;
+  margin-left: -3px;
+  background-color: #f0f7f5;
+  padding-top: 28px;
+  border: 1px solid #ccc;
+  border-radius: 0 5px 0 5px;
+  -webkit-box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
+  -moz-box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
+  box-shadow: 0 10px 20px 0 rgba(97, 111, 57, 0.5);
+}
+
+.order-line {
+  /* text-decoration-line: underline;
+  text-decoration-style: dashed; */
+  border-bottom: 1px dashed #20846b;
+}
+
+.forever-free {
+  font-size: 20px;
+}
+
+.price-label {
+  font-family: Lato;
+  font-size: 16px;
+}
+.price-text-small {
+  font-size: 13px;
+  padding-top: 30px;
+}
+.price-text-smaller {
+  font-family: Lato;
+  font-size: 14px;
+}
+.price-text-smallest {
+  font-size: 13px;
+}
+.price-fade {
+  color: #555;
+}
+
+.price-tag-1 {
+  font-size: 55px;
+  font-weight: bold;
+}
+
+.price-tag-2 {
+  font-size: 24px;
 }
 .text-dark {
   font-family: Lato;
@@ -1312,6 +1464,11 @@ th a:hover {
 }
 .p1-border {
   border: 1px solid #ccc;
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+.empty-box {
+  margin-top: 40px;
 }
 .p2-border {
   background-color: #f0f7f5;
@@ -1322,25 +1479,125 @@ th a:hover {
   -moz-box-shadow: inset 0px 10px 5px -5px #20846b;
   box-shadow: inset 0px 7px 7px -6px #20846b;
 }
+
+.table-body-text {
+  font-family: Lato;
+  color: #555;
+  font-size: 16px;
+  line-height: 20px;
+}
+
 .table-header-text {
   font-family: Lato;
   color: #555;
   font-size: 16px;
   background-color: #eee;
 }
-.table-body-text {
-  font-family: Lato;
-  color: #555;
-  font-size: 1.3vw;
+
+.p-left-table {
+  padding-top: 412px;
 }
-@media (max-width: 1220px) and (min-width: 765px) {
+
+.pricing-btn {
+  background-color: #2e8474;
+  border-radius: 0;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* pricing media responsive
+///////////////////////////// */
+
+@media (max-width: 1070px) {
   .table-body-text {
-    background-color: ;
+    font-family: Lato;
+    color: #555;
+    font-size: 14px;
   }
 }
-.p-left-table {
-  padding-top: 360px;
+
+@media (max-width: 1070px) {
+  .table-body-text {
+    font-family: Lato;
+    color: #555;
+    font-size: 12.5px;
+  }
+  .table-header-text {
+    font-family: Lato;
+    color: #555;
+    font-size: 13px;
+    background-color: #eee;
+  }
 }
-.btn-radius {
-  border-radius: 0;
+
+/* Master of Inventory & Locations break */
+@media (max-width: 676px) {
+  .empty-box {
+    margin-top: 40px;
+  }
+  .p-left-table {
+    background: red;
+    padding-top: 412px;
+  }
+
+  .price-check-1 {
+    line-height: 40px;
+  }
+  .price-check-2 {
+    line-height: 13px;
+  }
+}
+
+@media (max-width: 276px) {
+  .empty-box {
+    margin-top: 40px;
+  }
+  .p-left-table {
+    background: green;
+    padding-top: 412px;
+  }
+
+  .price-check-1 {
+    line-height: 40px;
+  }
+  .price-check-2 {
+    line-height: 29px;
+  }
+}
+
+@media (max-width: 664px) {
+  .empty-box {
+    margin-top: 40px;
+  }
+  .p-left-table {
+    padding-top: 435px;
+  }
+
+  .table-header-text {
+    font-family: Lato;
+    color: #555;
+    font-size: 13px;
+    background-color: #eee;
+  }
+}
+
+@media (max-width: 647px) {
+  .empty-box {
+    margin-top: 20px;
+  }
+  .p-left-table {
+    padding-top: 435px;
+  }
+}
+
+@media (max-width: 544px) {
+  .empty-box {
+    margin-top: 60px;
+  }
+  .p-left-table {
+    padding-top: 475px;
+  }
+  .pricing-r-box {
+    margin-bottom: 20px;
+  }
 }

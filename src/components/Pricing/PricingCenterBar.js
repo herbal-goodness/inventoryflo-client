@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../../images/pricing.png";
+import { Link } from "react-router-dom";
 
 const PricingCenterBar = () => {
   return (
@@ -9,111 +10,121 @@ const PricingCenterBar = () => {
         <table class="table table-borderless font-weight-bold text-center">
           <tbody>
             <tr>
-              <td class="table-body-text py-4 px-5">
-                Your all-in-one multi-channel management solution
+              <td class="table-body-text py-4">
+                Your all-in-one multi-channel
+                <br /> management solution
               </td>
             </tr>
             <tr>
-              <td class="table-body-text py-3"></td>
+              <td class="table-body-text">
+                <p className="empty-box" />
+              </td>
             </tr>
             <tr>
-              <td class="table-body-text pb-4">Plans start FREE!</td>
+              <td class="table-body-text pb-3">Plans start FREE!</td>
             </tr>
             <tr>
-              <td class="table-body-text py-3 px-5">
-                <button className="btn btn-success btn-block btn-radius">
+              <td class="table-body-text py-4 px-5">
+                <Link to="/pricing-pro" className="btn btn-block pricing-btn">
                   View Plans
-                </button>
+                </Link>
               </td>
             </tr>
             <tr>
               <td class="table-header-text py-4 text-light">-</td>
             </tr>
             <tr>
-              <td class="table-body-text py-4">Sellbrite</td>
+              <td class="table-body-text price-check  price-check-1 py-4">
+                Sellbrite
+              </td>
             </tr>
             <tr>
-              <td class="table-body-text py-4">Sellbrite</td>
+              <td class="table-body-text  price-check py-4">Sellbrite</td>
             </tr>
             <tr>
-              <td class="table-body-text py-4">Sellbrite</td>
+              <td class="table-body-text  price-check py-4">Sellbrite</td>
             </tr>
             <tr>
-              <td class="table-header-text text-light py-4">-</td>
+              <td class="table-header-text  price-check-2 text-light py-4">
+                -
+              </td>
             </tr>
             <tr>
-              <td class="table-body-text py-4">
+              <td class="table-body-text  price-check py-4">
                 <i class="fa fa-check text-green fa-lg" aria-hidden="true"></i>
               </td>
             </tr>
             <tr>
-              <td class="table-body-text py-4">
+              <td class="table-body-text  price-check py-4">
                 <i class="fa fa-check text-green fa-lg" aria-hidden="true"></i>
               </td>
             </tr>
             <tr>
-              <td class="table-body-text py-4">
+              <td class="table-body-text  price-check py-4">
                 <i class="fa fa-check text-green fa-lg" aria-hidden="true"></i>
               </td>
             </tr>
             <tr>
-              <td class="table-header-text text-light py-4">-</td>
+              <td class="table-header-text  price-check text-light py-4">-</td>
             </tr>
             <tr>
-              <td class="table-body-text py-4">
+              <td class="table-body-text  price-check py-4">
                 <i class="fa fa-check text-green fa-lg" aria-hidden="true"></i>
               </td>
             </tr>
             <tr>
-              <td class="table-body-text py-4">
+              <td class="table-body-text  price-check py-4">
                 <i class="fa fa-check text-green fa-lg" aria-hidden="true"></i>
               </td>
             </tr>
             <tr>
-              <td class="table-body-text py-4">
+              <td class="table-body-text  price-check py-4">
                 <i class="fa fa-check text-green fa-lg" aria-hidden="true"></i>
               </td>
             </tr>
             <tr>
-              <td class="table-body-text py-4">
+              <td class="table-body-text  price-check py-4">
                 <i class="fa fa-check text-green fa-lg" aria-hidden="true"></i>
               </td>
             </tr>
             <tr>
-              <td class="table-body-text py-4">
+              <td class="table-body-text  price-check py-4">
                 <i class="fa fa-check text-green fa-lg" aria-hidden="true"></i>
               </td>
             </tr>
             <tr>
-              <td class="table-header-text text-light py-4">-</td>
+              <td class="table-header-text  price-check text-light py-4">-</td>
             </tr>
             <tr>
-              <td class="table-body-text py-4">
+              <td class="table-body-text  price-check py-4">
+                <i
+                  class="fa fa-check  price-check text-green fa-lg"
+                  aria-hidden="true"
+                ></i>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-body-text  price-check py-4">
                 <i class="fa fa-check text-green fa-lg" aria-hidden="true"></i>
               </td>
             </tr>
             <tr>
-              <td class="table-body-text py-4">
+              <td class="table-body-text  price-check py-4">
                 <i class="fa fa-check text-green fa-lg" aria-hidden="true"></i>
               </td>
             </tr>
             <tr>
-              <td class="table-body-text py-4">
+              <td class="table-body-text  price-check py-4">
                 <i class="fa fa-check text-green fa-lg" aria-hidden="true"></i>
               </td>
             </tr>
             <tr>
-              <td class="table-body-text py-4">
+              <td class="table-body-text  price-check py-4">
                 <i class="fa fa-check text-green fa-lg" aria-hidden="true"></i>
               </td>
             </tr>
             <tr>
-              <td class="table-body-text py-4">
-                <i class="fa fa-check text-green fa-lg" aria-hidden="true"></i>
-              </td>
-            </tr>
-            <tr>
-              <td class="table-body-text pt-4">
+              <td class="table-body-text  price-check pt-4">
                 <i class="fa fa-check text-green fa-lg" aria-hidden="true"></i>
               </td>
             </tr>

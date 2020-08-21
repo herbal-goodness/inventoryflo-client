@@ -11,6 +11,8 @@ import AuthRoute from "./AuthRoute";
 import PrivateRoute from "./PrivateRoutes";
 import { authRoutes, privateRoutes } from "./constants";
 import ComingSoon from "../components/landing/ComingSoon";
+import PricingPro from "../components/Pricing/PricingPro";
+import PricingShopifyPro from "../components/Pricing/PricingShopifyPro";
 
 function Inventoryflo() {
   return (
@@ -35,6 +37,12 @@ function Inventoryflo() {
             <Route exact path="/integrations" component={Integrations} />
             <Route exact path="/coming-soon" component={ComingSoon} />
             <Route exact path="/pricing" component={Pricing} />
+            <Route exact path="/pricing-pro" component={PricingPro} />
+            <Route
+              exact
+              path="/pricing-sfs-pro"
+              component={PricingShopifyPro}
+            />
             <Route exact path="*" component={NotFound} />
           </Switch>
         </Suspense>

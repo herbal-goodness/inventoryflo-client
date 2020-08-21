@@ -10,8 +10,9 @@ const PricingRightBar = () => {
         <table class="table table-borderless font-weight-bold text-center">
           <tbody>
             <tr>
-              <td class="table-body-text py-4 px-5">
-                A powerful marketplace management tool for Shopify stores
+              <td class="table-body-text py-4 text-center">
+                A powerful marketplace <br /> management tool <br /> for Shopify
+                stores
               </td>
             </tr>
             <tr>
@@ -22,20 +23,25 @@ const PricingRightBar = () => {
               </td>
             </tr>
             <tr>
-              <td class="table-body-text pb-2">Plans start FREE!</td>
+              <td class="table-body-text pb-2">
+                <div className="pricing-r-box">Plans start FREE!</div>
+              </td>
             </tr>
             <tr>
-              <td class="table-body-text py-3 px-5">
-                <button className="btn btn-success btn-block btn-radius">
+              <td class="table-body-text py-4 px-5">
+                <Link
+                  to="./pricing-sfs-pro"
+                  className="btn pricing-btn btn-block"
+                >
                   View Plans
-                </button>
+                </Link>
               </td>
             </tr>
             <tr>
               <td class="table-header-text py-4 text-light">-</td>
             </tr>
             <tr>
-              <td class="table-body-text py-4">Shopify</td>
+              <td class="table-body-text price-check-1 py-4">Shopify</td>
             </tr>
             <tr>
               <td class="table-body-text py-4">Shopify</td>
@@ -44,7 +50,9 @@ const PricingRightBar = () => {
               <td class="table-body-text py-4">Shopify</td>
             </tr>
             <tr>
-              <td class="table-header-text text-light py-4">-</td>
+              <td class="table-header-text   price-check-2 text-light py-4">
+                -
+              </td>
             </tr>
             <tr>
               <td class="table-body-text py-4">
