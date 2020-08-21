@@ -3,20 +3,19 @@ import { Line } from "react-chartjs-2";
 import { Spinner } from "../utils/components";
 
 function lastFiveDays(data) {
-  const lastIndex = data && data.length - 1;
-  const lastFiveDays = [];
-  for (let i = lastIndex; i >= 0; i--) {
-    if (lastFiveDays.length < 5) {
-      lastFiveDays.push(data[i]);
-    } else {
-      break;
-    }
-  }
-  console.log("===", lastFiveDays, data);
+  //   const lastIndex = data && data.length - 1;
+  //   const lastFiveDays = [];
+  //   for (let i = lastIndex; i >= 0; i--) {
+  //     if (lastFiveDays.length < 5) {
+  //       lastFiveDays.push(data[i]);
+  //     } else {
+  //       break;
+  //     }
+  //   }
   return data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 }
 
-const OrdersChart = ({ salesAndOrders, type }) => {
+const OrdersChart = ({ salesAndOrders, type, totalPrice }) => {
   const [chartData, setChartData] = useState([]);
   const months = [
     "January",
@@ -34,23 +33,22 @@ const OrdersChart = ({ salesAndOrders, type }) => {
   ];
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  //TODO: Build filters for each type;
-  const filtererd =
-    type === "last30days" || type === "thisMonth"
-      ? salesAndOrders
-          .filter(({ created_at }) => {
-            const d = new Date((created_at && created_at) || "");
-            const dayName = days[d.getDay()];
-            //   const monthName = months[d.getMonth()];
-            return dayName === "Fri";
-          })
-          .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
-      : lastFiveDays(salesAndOrders);
-
   useEffect(() => {
+    //TODO: Build filters for each type;
+    const filtererd =
+      type === "last30days" || type === "thisMonth"
+        ? salesAndOrders
+            ?.filter(({ created_at }) => {
+              const d = new Date((created_at && created_at) || "");
+              const dayName = days[d.getDay()];
+              return dayName === "Fri";
+            })
+            .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+        : lastFiveDays(salesAndOrders);
+
     const allFridaysTotal = {};
     let counter = 0;
-    if (filtererd.length > 0) {
+    if (filtererd?.length > 0) {
       for (let i = 0; i < filtererd.length - 1; i++) {
         const currentItemD =
           filtererd[i].created_at !== undefined &&
@@ -70,7 +68,9 @@ const OrdersChart = ({ salesAndOrders, type }) => {
               allFridaysTotal[counter].push(filtererd[i]);
             }
           } else {
-            allFridaysTotal[counter].push(filtererd[i]);
+            allFridaysTotal[counter] === undefined
+              ? (allFridaysTotal[counter] = [filtererd[i]])
+              : allFridaysTotal[counter].push(filtererd[i]);
             counter++;
           }
         }
@@ -96,14 +96,14 @@ const OrdersChart = ({ salesAndOrders, type }) => {
   return (
     <div className="mb-5">
       <h3 className="text-right">
-        $135,364.98{" "}
+        ${totalPrice && totalPrice.toFixed(2)}
         <span>
           <i
             className="fa fa-arrow-up text-green sales-data mr-1"
             aria-hidden="true"
           ></i>
         </span>
-        <span className="text-slim text-dark">2.5%</span>
+        <span className="text-slim text-dark">XX%</span>
       </h3>
       {salesAndOrders === undefined ? (
         <Spinner />

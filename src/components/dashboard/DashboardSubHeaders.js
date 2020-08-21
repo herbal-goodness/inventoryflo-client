@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const DashboardSubHeaders = ({ title, handleChange }) => {
+const DashboardSubHeaders = ({ title, handleChange, handleChannelChange }) => {
   return (
     <>
       <div className="col-sm-6 col-md-5 p-0">
@@ -43,11 +43,12 @@ const DashboardSubHeaders = ({ title, handleChange }) => {
               <select
                 className="custom-select bg-calendar"
                 id="inputGroupSelect01"
+                onChange={handleChannelChange}
               >
                 <option selected>All Channels</option>
-                <option value="1">Shopify</option>
-                <option value="2">Amazon</option>
-                <option value="3">Walmart</option>
+                <option value="shopify">Shopify</option>
+                <option value="amazon">Amazon</option>
+                <option value="walmart">Walmart</option>
               </select>
             </div>
           </span>

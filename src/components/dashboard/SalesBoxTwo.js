@@ -1,14 +1,20 @@
 import React from "react";
-const SalesBoxTwo = ({ title, value, centage }) => {
+const SalesBoxTwo = ({ title, value, changeRate, isNegative }) => {
   return (
     <div className="col-6">
       <div className="box-1 mt-3  py-3 text-center">
         <div>
           <span className="total-order-2 py-3 text-green">{value} </span>
           <span className="total-order-0">
-            <i className="fa fa-arrow-down text-red fa-lg"></i>
+            <i
+              className={
+                isNegative(changeRate)
+                  ? "fa fa-arrow-down text-red fa-lg"
+                  : "fa fa-arrow-up text-green fa-lg"
+              }
+            ></i>
           </span>
-          <sub>{centage}%</sub>
+          <sub>{changeRate}</sub>
         </div>
         <small className="my-1">{title}</small>
       </div>

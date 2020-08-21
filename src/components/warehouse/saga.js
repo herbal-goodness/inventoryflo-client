@@ -93,6 +93,7 @@ function* ordersWorker({ payload }) {
           totalOrderCount,
         },
       });
+
       function getStatus(financial_status, fulfillment_status, cancelled_at) {
         if (cancelled_at !== null) {
           return "Canceled";
