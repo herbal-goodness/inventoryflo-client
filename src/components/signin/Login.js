@@ -53,7 +53,10 @@ const Login = () => {
 
   useEffect(() => {
     setErrors({ isError: false, errorMessage: "" });
-    if (successful) return history.push("/dashboard");
+    if (successful) {
+      dispatch({ type: "GET_SALES_AND_ORDER" });
+      return history.push("/dashboard");
+    }
     if (error) setErrors({ isError: true, errorMessage: error.error });
   }, [loading, successful]);
 
