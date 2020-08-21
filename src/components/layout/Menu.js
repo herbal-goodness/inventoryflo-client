@@ -28,7 +28,7 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="collapsibleNavId">
           <ul className="navbar-nav mr-auto text-muted">
             <li className="nav-item px-lg-4 px-md-4">
-              <Link className="nav-link" to="">
+              <Link className="nav-link" to="/coming-soon">
                 Features
               </Link>
             </li>
@@ -38,7 +38,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item px-lg-4 px-md-4">
-              <Link className="nav-link" to="">
+              <Link className="nav-link" to="/pricing">
                 Pricing
               </Link>
             </li>
