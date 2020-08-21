@@ -27,7 +27,7 @@ const PricingShopifyPro = () => {
       </div>
 
       <div className="container">
-        <div className="row mx-5">
+        <div className="row mx-3 mx-sm-2 mx-md-3 mx-lg-5">
           <PriceCardOne />
           <PriceCardTwo />
           <PriceCardThree />
@@ -36,12 +36,12 @@ const PricingShopifyPro = () => {
         <div className="row mx-5 mt-5 text-center">
           <div className="col-12 over-price">
             Over 2k orders per month?{" "}
-            <Link to="/" className="text-green">
+            <Link to="/pricing-sfs-pro" className="text-green">
               See our High Volume plans
             </Link>
           </div>
           <div className="col-12 mt-5">
-            <Link to="/pricing-pro" className="btn btn-lg pricing-btn">
+            <Link to="/signup-user" className="btn btn-lg pricing-btn">
               Start for FREE
             </Link>
           </div>

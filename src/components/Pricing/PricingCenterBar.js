@@ -6,7 +6,7 @@ const PricingCenterBar = () => {
   return (
     <div className="col-4 p2-border px-0">
       <img class="img-fluid mx-auto" src={logo} alt="logo-1" />
-      <div class="table-responsive">
+      <div class="">
         <table class="table table-borderless font-weight-bold text-center">
           <tbody>
             <tr>

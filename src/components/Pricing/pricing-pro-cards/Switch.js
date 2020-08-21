@@ -13,7 +13,7 @@ const Switch = () => {
       </div>
       <div className="col-4">
         <Form>
-          <Form.Check type="switch" id="custom-switch" label="" />
+          <Form.Check type="switch" isValid id="custom-switch" label="" />
         </Form>
       </div>
     </div>

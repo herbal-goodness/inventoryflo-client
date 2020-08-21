@@ -2,7 +2,7 @@ import React from "react";
 
 const PriceCardOne = () => {
   return (
-    <div className="col-md-3 price-card-pro-1 my-3 text-center">
+    <div className="col-md-3 col-sm-6 col-12 price-card-pro-1 my-3 text-center">
       <div className="forever-free">
         <span className="price-fade">FOREVER</span>{" "}
         <strong className="font-weight-bold">FREE</strong>

@@ -1536,7 +1536,6 @@ th a:hover {
     margin-top: 40px;
   }
   .p-left-table {
-    background: red;
     padding-top: 412px;
   }
 
@@ -1548,12 +1547,11 @@ th a:hover {
   }
 }
 
-@media (max-width: 276px) {
+@media (max-width: 476px) {
   .empty-box {
     margin-top: 40px;
   }
   .p-left-table {
-    background: green;
     padding-top: 412px;
   }
 

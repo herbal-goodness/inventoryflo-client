@@ -6,7 +6,7 @@ const PricingRightBar = () => {
   return (
     <div className="col-4 p1-border mt-4 px-0">
       <img class="img-fluid mx-auto" src={logoShopify} alt="logo-1" />
-      <div class="table-responsive">
+      <div>
         <table class="table table-borderless font-weight-bold text-center">
           <tbody>
             <tr>
