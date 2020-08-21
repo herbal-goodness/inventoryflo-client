@@ -250,6 +250,9 @@ h5 a {
 .text-slim-2 {
   font-size: 0.7rem;
 }
+.text-medium-alpha {
+  font-size: 1rem;
+}
 .text-medium {
   font-size: 1.2rem;
 }
@@ -1279,10 +1282,19 @@ th a:hover {
 }
 .wip-text {
   min-height: 200px;
-  padding-top: 180px;
-}
-.wip-color {
   color: #07473c;
   font-family: Lato;
   font-weight: bold;
+  font-size: 40px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.cancel-order {
+  font-size: 14px;
+  padding-top: 15px;
+  font-family: Lato;
+}
+.centage {
+  font-size: 13px;
+  display: inline;
 }

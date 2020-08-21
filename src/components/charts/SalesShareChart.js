@@ -32,12 +32,12 @@ const SalesShareChart = () => {
 	const [dataForPieChart, setDataForPieChart] = useState(pieData);
 
 	return (
-		<div className="mb-3">
+		<div className="mb-3 text-center">
 			{/* <h3 className="text-center flex-grow">Top Products</h3> */}
 
 			<Pie
 				data={dataForPieChart}
-				height={250}
+				height={240}
 				width={300}
 				options={{
 					responsive: true,
@@ -45,8 +45,9 @@ const SalesShareChart = () => {
 					title: {
 						display: true,
 						text: "Sales Share By Cities",
-						fontSize: 20,
+						fontSize: 22,
 						fontColor: "#20846B",
+						fontFamily: "Lato",
 					},
 					legend: {
 						display: true,

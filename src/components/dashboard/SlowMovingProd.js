@@ -3,7 +3,7 @@ import React from "react";
 const SlowMovingProd = () => {
 	return (
 		<>
-			<h2 className="text-medium-1 text-green text-center mt-1 mb-3 text-transform-bold">
+			<h2 className="text-medium-1 text-green text-center mt-1 mb-3 font-weight-bold text-capitalize">
 				Slow moving products
 			</h2>
 			<div className="d-flex justify-content-between justify-items-center arrow-container  mb-4">

@@ -16,7 +16,7 @@ const SalesBoxOne = ({ title, value, changeRate, isNegative }) => {
           </span>
           <sub>{changeRate}</sub>
         </div>
-        <small className="my-1 ">{title}</small>
+        <div className="cancel-order">{title}</div>
       </div>
     </div>
   );
