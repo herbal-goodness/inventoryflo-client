@@ -63,134 +63,138 @@ const SalesAndOrders = () => {
   }, [salesAndOrders]);
 
   const handleChannelChange = (event) => {
-    if (event.target.value !== "shopify") {
-      setEmpty(true);
+    const { value } = event.target;
+    if (value !== "shopify") {
+      value !== "all" ? setEmpty(true) : setEmpty(false);
     } else {
       setEmpty(false);
     }
   };
 
-  const handleChange = (e) => {
-    switch (e.target.value) {
-      case "thisWeek":
-        setDuration({
-          duration: salesAndOrders.filterBythisWeek,
-          metaData: {
-            totalPrice: getTotalPrice(salesAndOrders.filterBythisWeek),
-            refundedChange: ordersRefunds.thisweekRefundedChange,
-            refunded: ordersRefunds.thisweekRefunded,
-            fulFillChange: ordersFulFilleds.thisweekFulFillChange,
-            fulFilled: ordersFulFilleds.thisweekFulFilled,
-            open: ordersOpens.thisweekOpen,
-            openChange: ordersOpens.thisweekOpenChange,
-          },
-          type: "thisWeek",
-        });
-        break;
-      case "thisMonth":
-        setDuration({
-          duration: salesAndOrders.filterByMonthDate,
-          metaData: {
-            totalPrice: getTotalPrice(salesAndOrders.filterByMonthDate),
-            refundedChange: ordersRefunds.monthToDateRefundedChange,
-            refunded: ordersRefunds.monthToDateRefunded,
-            fulFilled: ordersFulFilleds.monthToDateFulFilled,
-            fulFillChange: ordersFulFilleds.monthToDateFulFillChange,
-            open: ordersOpens.monthToDateOpen,
-            openChange: ordersOpens.monthToDateOpenChange,
-          },
-          type: "thisMonth",
-        });
-        break;
-      case "today":
-        setDuration({
-          duration: salesAndOrders.filterByToDay,
-          metaData: {
-            totalPrice: getTotalPrice(salesAndOrders.filterByToDay),
-            refundedChange: ordersRefunds.todayRefundedChange,
-            refunded: ordersRefunds.todayRefunded,
-            open: ordersOpens.todayOpen,
-            openChange: ordersOpens.todayOpenChange,
-            fulFillChange: ordersFulFilleds.todayFulFillChange,
-            fulFilled: ordersFulFilleds.todayFulFilled,
-          },
-          type: "today",
-        });
-        break;
-      case "yesterday":
-        setDuration({
-          duration: salesAndOrders.filterByYesterday,
-          metaData: {
-            totalPrice: getTotalPrice(salesAndOrders.filterByYesterday),
-            refundedChange: ordersRefunds.ydayRefundedChange,
-            refunded: ordersRefunds.ydayRefunded,
-            openChange: ordersOpens.ydayOpenChange,
-            open: ordersOpens.ydayOpen,
-            fulFillChange: ordersFulFilleds.ydayFulFillChange,
-            fulFilled: ordersFulFilleds.ydayFulFilled,
-          },
-          type: "yesterday",
-        });
-        break;
-      case "last7days":
-        setDuration({
-          duration: salesAndOrders.filterByLast7Days,
-          metaData: {
-            totalPrice: getTotalPrice(salesAndOrders.filterByLast7Days),
-            refunded: ordersRefunds.last7DaysRefunded,
-            refundedChange: ordersRefunds.last7DaysRefundedChange,
-            openChange: ordersOpens.last7DaysOpenChange,
-            open: ordersOpens.last7DaysOpen,
-            fulFillChange: ordersFulFilleds.last7DaysFulFillChange,
-            fulFilled: ordersFulFilleds.last7DaysFulFilled,
-          },
-          type: "last7days",
-        });
-        break;
-      case "last30days":
-        setDuration({
-          duration: salesAndOrders.filterBy30Days,
-          metaData: {
-            totalPrice: getTotalPrice(salesAndOrders.filterBy30Days),
-            refundedChange: ordersRefunds.last30DaysRefundedChange,
-            refunded: ordersRefunds.last30DaysRefunded,
-            openChange: ordersOpens.last30DaysOpenChange,
-            fulFilled: ordersFulFilleds.last30DaysFulFilled,
-            open: ordersOpens.last30DaysOpen,
-            fulFillChange: ordersFulFilleds.last30DaysFulFillChange,
-          },
-          type: "last30days",
-        });
-        break;
+  const handleChange = (e, type) => {
+    if (type === "S&O")
+      switch (e.target.value) {
+        case "thisWeek":
+          setDuration({
+            duration: salesAndOrders.filterBythisWeek,
+            metaData: {
+              totalPrice: getTotalPrice(salesAndOrders.filterBythisWeek),
+              refundedChange: ordersRefunds.thisweekRefundedChange,
+              refunded: ordersRefunds.thisweekRefunded,
+              fulFillChange: ordersFulFilleds.thisweekFulFillChange,
+              fulFilled: ordersFulFilleds.thisweekFulFilled,
+              open: ordersOpens.thisweekOpen,
+              openChange: ordersOpens.thisweekOpenChange,
+            },
+            type: "thisWeek",
+          });
+          break;
+        case "thisMonth":
+          setDuration({
+            duration: salesAndOrders.filterByMonthDate,
+            metaData: {
+              totalPrice: getTotalPrice(salesAndOrders.filterByMonthDate),
+              refundedChange: ordersRefunds.monthToDateRefundedChange,
+              refunded: ordersRefunds.monthToDateRefunded,
+              fulFilled: ordersFulFilleds.monthToDateFulFilled,
+              fulFillChange: ordersFulFilleds.monthToDateFulFillChange,
+              open: ordersOpens.monthToDateOpen,
+              openChange: ordersOpens.monthToDateOpenChange,
+            },
+            type: "thisMonth",
+          });
+          break;
+        case "today":
+          setDuration({
+            duration: salesAndOrders.filterByToDay,
+            metaData: {
+              totalPrice: getTotalPrice(salesAndOrders.filterByToDay),
+              refundedChange: ordersRefunds.todayRefundedChange,
+              refunded: ordersRefunds.todayRefunded,
+              open: ordersOpens.todayOpen,
+              openChange: ordersOpens.todayOpenChange,
+              fulFillChange: ordersFulFilleds.todayFulFillChange,
+              fulFilled: ordersFulFilleds.todayFulFilled,
+            },
+            type: "today",
+          });
+          break;
+        case "yesterday":
+          setDuration({
+            duration: salesAndOrders.filterByYesterday,
+            metaData: {
+              totalPrice: getTotalPrice(salesAndOrders.filterByYesterday),
+              refundedChange: ordersRefunds.ydayRefundedChange,
+              refunded: ordersRefunds.ydayRefunded,
+              openChange: ordersOpens.ydayOpenChange,
+              open: ordersOpens.ydayOpen,
+              fulFillChange: ordersFulFilleds.ydayFulFillChange,
+              fulFilled: ordersFulFilleds.ydayFulFilled,
+            },
+            type: "yesterday",
+          });
+          break;
+        case "last7days":
+          setDuration({
+            duration: salesAndOrders.filterByLast7Days,
+            metaData: {
+              totalPrice: getTotalPrice(salesAndOrders.filterByLast7Days),
+              refunded: ordersRefunds.last7DaysRefunded,
+              refundedChange: ordersRefunds.last7DaysRefundedChange,
+              openChange: ordersOpens.last7DaysOpenChange,
+              open: ordersOpens.last7DaysOpen,
+              fulFillChange: ordersFulFilleds.last7DaysFulFillChange,
+              fulFilled: ordersFulFilleds.last7DaysFulFilled,
+            },
+            type: "last7days",
+          });
+          break;
+        case "last30days":
+          setDuration({
+            duration: salesAndOrders.filterBy30Days,
+            metaData: {
+              totalPrice: getTotalPrice(salesAndOrders.filterBy30Days),
+              refundedChange: ordersRefunds.last30DaysRefundedChange,
+              refunded: ordersRefunds.last30DaysRefunded,
+              openChange: ordersOpens.last30DaysOpenChange,
+              fulFilled: ordersFulFilleds.last30DaysFulFilled,
+              open: ordersOpens.last30DaysOpen,
+              fulFillChange: ordersFulFilleds.last30DaysFulFillChange,
+            },
+            type: "last30days",
+          });
+          break;
 
-      default:
-        setDuration({
-          duration: salesAndOrders.filterBy30Days,
-          metaData: {
-            totalPrice: getTotalPrice(salesAndOrders.filterBy30Days),
-            refundedChange: ordersRefunds.last30DaysRefundedChange,
-            refunded: ordersRefunds.last30DaysRefunded,
-            openChange: ordersOpens.last30DaysOpenChange,
-            fulFilled: ordersFulFilleds.last30DaysFulFilled,
-            open: ordersOpens.last30DaysOpen,
-            fulFillChange: ordersFulFilleds.last30DaysFulFillChange,
-          },
-          type: "last30days",
-        });
-        break;
-    }
+        default:
+          setDuration({
+            duration: salesAndOrders.filterBy30Days,
+            metaData: {
+              totalPrice: getTotalPrice(salesAndOrders.filterBy30Days),
+              refundedChange: ordersRefunds.last30DaysRefundedChange,
+              refunded: ordersRefunds.last30DaysRefunded,
+              openChange: ordersOpens.last30DaysOpenChange,
+              fulFilled: ordersFulFilleds.last30DaysFulFilled,
+              open: ordersOpens.last30DaysOpen,
+              fulFillChange: ordersFulFilleds.last30DaysFulFillChange,
+            },
+            type: "last30days",
+          });
+          break;
+      }
   };
 
   return (
     <div className="row mx-2 pb-3 mb-4 bg-white">
       <DashboardSubHeaders
+        type={"S&O"}
         handleChange={handleChange}
+        handleChannelChange={handleChannelChange}
         title="Sales and Order"
       />
       <div className="col-md-8 d-size">
         <div className="card-body">
           <Orders
-            totalPrice={empty ? "XX" : info.metaData?.totalPrice}
+            totalPrice={empty ? 0 : info.metaData?.totalPrice}
             salesAndOrders={empty ? [] : info.duration}
             type={info.type}
           />

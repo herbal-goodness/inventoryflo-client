@@ -36,7 +36,7 @@ const OrdersChart = ({ salesAndOrders, type, totalPrice }) => {
   useEffect(() => {
     //TODO: Build filters for each type;
     const filtererd =
-      type === "last30days" || type === "thisMonth"
+      type === "last30days"
         ? salesAndOrders
             ?.filter(({ created_at }) => {
               const d = new Date((created_at && created_at) || "");

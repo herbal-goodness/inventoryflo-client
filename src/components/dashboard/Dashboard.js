@@ -80,43 +80,7 @@ const Dashboard = () => {
           <SalesAndOrders />
 
           {/* Sales Drivers */}
-          <div className="chart-container py-2 px-3 mb-4">
-            <div className="row">
-              <DashboardSubHeaders title="Sales Drivers" />
-              <div className="col-lg-12 col-md-12 col-sm-12">
-                <div className="d-flex flex-wrap justify-content-between mb-2 justify-items-center">
-                  <div>
-                    <SalesByChannel />
-                  </div>
-
-                  <div>
-                    <SalesByProducts />
-                  </div>
-                  <div>
-                    <SlowMovingProd />
-                    <SalesDriversParams
-                      title="Products with no sales"
-                      fig="23"
-                    />
-                  </div>
-                </div>
-                <div className="d-flex flex-wrap justify-content-between mb-2 justify-items-center">
-                  <div>
-                    <TopCustByOrders />
-                    <SalesDriversParams title="Unique customers" fig="30" />
-                  </div>
-                  <div>
-                    <SalesShareChart />
-                  </div>
-
-                  <div>
-                    <LargestOrders />
-                    <SalesDriversParams title="July 4th campaign" fig="$230" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <SalesDrivers />
 
           <div className="row">
             {/* <div className="col-md-12 col-lg-6">
@@ -149,3 +113,42 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+const SalesDrivers = () => {
+  return (
+    <div className="chart-container py-2 px-3 mb-4">
+      <div className="row">
+        <DashboardSubHeaders type={"S&D"} title="Sales Drivers" />
+        <div className="col-lg-12 col-md-12 col-sm-12">
+          <div className="d-flex flex-wrap justify-content-between mb-2 justify-items-center">
+            <div>
+              <SalesByChannel />
+            </div>
+
+            <div>
+              <SalesByProducts />
+            </div>
+            <div>
+              <SlowMovingProd />
+              <SalesDriversParams title="Products with no sales" fig="23" />
+            </div>
+          </div>
+          <div className="d-flex flex-wrap justify-content-between mb-2 justify-items-center">
+            <div>
+              <TopCustByOrders />
+              <SalesDriversParams title="Unique customers" fig="30" />
+            </div>
+            <div>
+              <SalesShareChart />
+            </div>
+
+            <div>
+              <LargestOrders />
+              <SalesDriversParams title="July 4th campaign" fig="$230" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
