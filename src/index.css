@@ -1275,7 +1275,7 @@ th a:hover {
   border: none !important;
   box-shadow: none !important;
 }
-/* pricing */
+/* coming soon */
 .wip-header {
   margin-top: 110px;
   padding-bottom: 80px;
@@ -1287,8 +1287,7 @@ th a:hover {
 .wip-text {
   min-height: 200px;
   padding-top: 180px;
-}
-.wip-color {
+  font-size: 48px;
   color: #07473c;
   font-family: Lato;
   font-weight: bold;
