@@ -13,7 +13,7 @@ const Switch = ({ checked }) => {
           FBA Integration{" "}
           <i className="fa fa-info-circle price-text-smallest"></i>
         </p>
-        <p>Add $16/mo</p>
+        <p>Add $19/mo</p>
       </div>
       <div className="col-4">
         <label className="switch">
