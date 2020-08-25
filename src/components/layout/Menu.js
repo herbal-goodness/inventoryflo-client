@@ -1,14 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../../images/inventoryflo-logo-2.png";
 
 const Navbar = () => {
+  const { pathname } = useLocation();
   return (
     <>
       <nav className="navbar navbar-expand-lg fixed-top mb-4" id="main-menu">
         <Link
           className="navbar-brand pl-lg-5 pl-md-5 nav-logo-center"
-          to="/dashboard"
+          to={pathname}
         >
           <img src={logo} alt="logo" className="nav-logo" />
         </Link>
