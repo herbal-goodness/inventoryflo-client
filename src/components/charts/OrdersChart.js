@@ -117,7 +117,6 @@ const OrdersChart = ({ salesAndOrders, type, totalPrice }) => {
 export default OrdersChart;
 
 function LinChart({ chartData }) {
-  console.log(chartData);
   return (
     <Line
       data={{

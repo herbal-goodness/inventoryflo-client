@@ -110,6 +110,7 @@ function* ordersWorker({ payload }) {
 
       const orders = data.map(
         ({
+          id,
           closed_at,
           created_at,
           total_price,
@@ -119,6 +120,7 @@ function* ordersWorker({ payload }) {
           order_number,
           fulfillment_status,
           line_items,
+          shipping_address,
           shipping_lines,
           cancelled_at,
           customer,
@@ -134,6 +136,7 @@ function* ordersWorker({ payload }) {
           }
 
           return {
+            id,
             closed_at,
             created_at: new Date(created_at).toDateString().substr(4).trim(),
             total_price,
@@ -146,9 +149,12 @@ function* ordersWorker({ payload }) {
             line_items,
             shipping_lines,
             customer: customer.first_name,
+            customer_city: shipping_address.city,
           };
         }
       );
+
+      console.log(orders, "----------------");
       yield put({
         type: "STORE_ORDERS",
         payload: { orders, allStatus },
@@ -199,7 +205,6 @@ function* salesAndOrdersWorker() {
 
     if (response.ok) {
       const data = yield response.json();
-      console.log(data);
       yield put({
         type: "STORE_SALES_AND_ORDER",
         payload: data,

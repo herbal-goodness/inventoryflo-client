@@ -4,6 +4,15 @@ import DashboardSubHeaders from "./DashboardSubHeaders";
 import SalesBoxOne from "./SalesBoxOne";
 import SalesBoxTwo from "./SalesBoxTwo";
 import { useSelector, shallowEqual } from "react-redux";
+import { getTotalPrice } from "./functions";
+
+function getCanceledOrder(order) {
+  if (order) {
+    return order.filter(({ cancelled_at }) => {
+      return cancelled_at !== null;
+    });
+  }
+}
 
 const SalesAndOrders = () => {
   const [info, setDuration] = useState({ duration: [], type: "" });
@@ -46,6 +55,7 @@ const SalesAndOrders = () => {
           totalPrice: getTotalPrice(salesAndOrders.filterBy30Days),
           refundedChange: ordersRefund.last30DaysRefundedChange,
           refunded: ordersRefund.last30DaysRefunded,
+          canceledAt: getCanceledOrder(salesAndOrders.filterBy30Days).length,
           openChange: ordersOpen.last30DaysOpenChange,
           fulFilled: ordersFulFilled.last30DaysFulFilled,
           open: ordersOpen.last30DaysOpen,
@@ -82,6 +92,8 @@ const SalesAndOrders = () => {
               refundedChange: ordersRefunds.thisweekRefundedChange,
               refunded: ordersRefunds.thisweekRefunded,
               fulFillChange: ordersFulFilleds.thisweekFulFillChange,
+              canceledAt: getCanceledOrder(salesAndOrders.filterBythisWeek)
+                .length,
               fulFilled: ordersFulFilleds.thisweekFulFilled,
               open: ordersOpens.thisweekOpen,
               openChange: ordersOpens.thisweekOpenChange,
@@ -95,6 +107,8 @@ const SalesAndOrders = () => {
             metaData: {
               totalPrice: getTotalPrice(salesAndOrders.filterByMonthDate),
               refundedChange: ordersRefunds.monthToDateRefundedChange,
+              canceledAt: getCanceledOrder(salesAndOrders.filterByMonthDate)
+                .length,
               refunded: ordersRefunds.monthToDateRefunded,
               fulFilled: ordersFulFilleds.monthToDateFulFilled,
               fulFillChange: ordersFulFilleds.monthToDateFulFillChange,
@@ -110,6 +124,7 @@ const SalesAndOrders = () => {
             metaData: {
               totalPrice: getTotalPrice(salesAndOrders.filterByToDay),
               refundedChange: ordersRefunds.todayRefundedChange,
+              canceledAt: getCanceledOrder(salesAndOrders.filterByToDay).length,
               refunded: ordersRefunds.todayRefunded,
               open: ordersOpens.todayOpen,
               openChange: ordersOpens.todayOpenChange,
@@ -125,6 +140,8 @@ const SalesAndOrders = () => {
             metaData: {
               totalPrice: getTotalPrice(salesAndOrders.filterByYesterday),
               refundedChange: ordersRefunds.ydayRefundedChange,
+              canceledAt: getCanceledOrder(salesAndOrders.filterByYesterday)
+                .length,
               refunded: ordersRefunds.ydayRefunded,
               openChange: ordersOpens.ydayOpenChange,
               open: ordersOpens.ydayOpen,
@@ -140,6 +157,8 @@ const SalesAndOrders = () => {
             metaData: {
               totalPrice: getTotalPrice(salesAndOrders.filterByLast7Days),
               refunded: ordersRefunds.last7DaysRefunded,
+              canceledAt: getCanceledOrder(salesAndOrders.filterByLast7Days)
+                .length,
               refundedChange: ordersRefunds.last7DaysRefundedChange,
               openChange: ordersOpens.last7DaysOpenChange,
               open: ordersOpens.last7DaysOpen,
@@ -155,6 +174,8 @@ const SalesAndOrders = () => {
             metaData: {
               totalPrice: getTotalPrice(salesAndOrders.filterBy30Days),
               refundedChange: ordersRefunds.last30DaysRefundedChange,
+              canceledAt: getCanceledOrder(salesAndOrders.filterBy30Days)
+                .length,
               refunded: ordersRefunds.last30DaysRefunded,
               openChange: ordersOpens.last30DaysOpenChange,
               fulFilled: ordersFulFilleds.last30DaysFulFilled,
@@ -171,6 +192,8 @@ const SalesAndOrders = () => {
             metaData: {
               totalPrice: getTotalPrice(salesAndOrders.filterBy30Days),
               refundedChange: ordersRefunds.last30DaysRefundedChange,
+              canceledAt: getCanceledOrder(salesAndOrders.filterBy30Days)
+                .length,
               refunded: ordersRefunds.last30DaysRefunded,
               openChange: ordersOpens.last30DaysOpenChange,
               fulFilled: ordersFulFilleds.last30DaysFulFilled,
@@ -239,7 +262,7 @@ const SalesAndOrders = () => {
           <SalesBoxTwo
             isNegative={isNegative}
             title="Cancelled Orders"
-            value="XX"
+            value={empty ? "XX" : info.metaData?.canceledAt - 1}
             centage="XX"
           />
           <SalesBoxTwo
@@ -253,14 +276,5 @@ const SalesAndOrders = () => {
     </div>
   );
 };
-
-function getTotalPrice(list) {
-  const total = list.reduce((a, b) => {
-    return {
-      total_price: (+a.total_price || 0) + +b.total_price,
-    };
-  });
-  return total.total_price;
-}
 
 export default SalesAndOrders;
