@@ -7,7 +7,6 @@ import PriceCardFour from "./pricing-pro-cards/PriceCardFour";
 
 const PricingPro = () => {
   const [price, setPrice] = useState({});
-
   const monthly = {
     type: "monthly",
     pro100: 29,
@@ -43,20 +42,35 @@ const PricingPro = () => {
             </h5>
           </div>
           <div className="col-md-12 text-center mb-5">
-            <button
-              className="btn btn-outline-dark"
-              onClick={() => setPrice(monthly)}
-            >
-              Monthly Billing
-            </button>
+            {price.type === "monthly" ? (
+              <button
+                className="btn btn-dark"
+                onClick={() => setPrice(monthly)}
+              >
+                Monthly Billing
+              </button>
+            ) : (
+              <button
+                className="btn btn-outline-dark"
+                onClick={() => setPrice(monthly)}
+              >
+                Monthly Billing
+              </button>
+            )}
             <span className="price-label mx-2">or</span>
             {""}
-            <button
-              className="btn btn-outline-dark"
-              onClick={() => setPrice(annual)}
-            >
-              Annual Billing
-            </button>
+            {price.type === "annual" ? (
+              <button className="btn btn-dark" onClick={() => setPrice(annual)}>
+                Annual Billing
+              </button>
+            ) : (
+              <button
+                className="btn btn-outline-dark"
+                onClick={() => setPrice(annual)}
+              >
+                Annual Billing
+              </button>
+            )}
           </div>
         </div>
       </div>
