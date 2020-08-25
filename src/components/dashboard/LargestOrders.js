@@ -4,7 +4,7 @@ const LargestOrders = () => {
 	return (
 		<div className="text-center mb-4">
 			<h2 className="text-medium-1 text-green text-center mt-1 mb-3 font-weight-bold text-capitalize">
-				largest orders <span>&gt; $200</span>
+				largest orders
 			</h2>
 			<table className="table table-borderless">
 				<thead>
@@ -33,9 +33,9 @@ const LargestOrders = () => {
 					</tr>
 				</tbody>
 			</table>
-			<h2 className="text-medium-alpha text-green text-center mt-1 mb-3 font-weight-bold text-capitalize">
+			{/* <h2 className="text-medium-alpha text-green text-center mt-1 mb-3 font-weight-bold text-capitalize">
 				promotion with high sales <span>&gt; $200</span>
-			</h2>
+			</h2> */}
 		</div>
 	);
 };
