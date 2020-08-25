@@ -8,8 +8,24 @@ import PriceCardFour from "./pricing-pro-cards/PriceCardFour";
 const PricingPro = () => {
   const [price, setPrice] = useState({});
 
-  const monthly = { type: "monthly", pro100: 29, pro500: 79, pro2k: 179 };
-  const annual = { type: "annual", pro100: 24, pro500: 66, pro2k: 149 };
+  const monthly = {
+    type: "monthly",
+    pro100: 29,
+    pro500: 79,
+    pro2k: 179,
+    adsPro100: 48,
+    adsPro500: 98,
+    adsPro2k: 198,
+  };
+  const annual = {
+    type: "annual",
+    pro100: 24,
+    pro500: 66,
+    pro2k: 149,
+    adsPro100: 40,
+    adsPro500: 82,
+    adsPro2k: 165,
+  };
 
   useEffect(() => {
     setPrice(monthly);

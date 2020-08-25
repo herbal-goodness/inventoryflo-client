@@ -1,7 +1,11 @@
-import React from "react";
-import Form from "react-bootstrap/Form";
+import React, { useState } from "react";
 
-const Switch = () => {
+const Switch = ({ checked }) => {
+  const [ischecked, setChecked] = useState({ checked: false });
+  const checkedHandle = () => {
+    setChecked({ ...ischecked, checked: !ischecked.checked });
+    checked(!ischecked.checked);
+  };
   return (
     <div className="row my-3">
       <div className="col-8 text-left price-text-smallest">
@@ -12,9 +16,10 @@ const Switch = () => {
         <p>Add $16/mo</p>
       </div>
       <div className="col-4">
-        <Form>
-          <Form.Check type="switch" isValid id="custom-switch" label="" />
-        </Form>
+        <label className="switch">
+          <input onChange={checkedHandle} type="checkbox" {...ischecked} />
+          <span className="slider round"></span>
+        </label>
       </div>
     </div>
   );

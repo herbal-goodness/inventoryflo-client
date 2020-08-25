@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Switch from "./Switch";
 
-const PriceCardFour = ({ price: { type, pro2k } }) => {
+const PriceCardFour = ({ price }) => {
+  const [checked, setChecked] = useState({ isChecked: false });
   return (
     <div className="col-md-3 col-sm-5 col-12 price-card-pro-4 my-3 text-center">
       <div className="forever-free">
@@ -10,11 +11,22 @@ const PriceCardFour = ({ price: { type, pro2k } }) => {
         <strong className="font-weight-bold"> 2K</strong>
       </div>
       <div className="mt-3 mb-4">
-        <span className="price-tag-1">${pro2k}</span>
+        {!checked.isChecked && price.type === "monthly" && (
+          <span className="price-tag-1">${price.pro2k}</span>
+        )}
+        {checked.isChecked && price.type === "monthly" && (
+          <span className="price-tag-1">${price.adsPro2k}</span>
+        )}
+        {!checked.isChecked && price.type === "annual" && (
+          <span className="price-tag-1">${price.pro2k}</span>
+        )}
+        {checked.isChecked && price.type === "annual" && (
+          <span className="price-tag-1">${price.adsPro2k}</span>
+        )}
         <sub className="price-tag-2">/mo</sub>
       </div>
 
-      {type === "annual" && (
+      {price.type === "annual" && (
         <div className="mt-3 mb-4 price-fade">(billed annually)</div>
       )}
 
@@ -35,7 +47,7 @@ const PriceCardFour = ({ price: { type, pro2k } }) => {
         <hr />
       </div>
       <div className="price-text-smaller font-weight-bold">ADD-ONS</div>
-      <Switch />
+      <Switch checked={(checked) => setChecked({ isChecked: checked })} />
     </div>
   );
 };
