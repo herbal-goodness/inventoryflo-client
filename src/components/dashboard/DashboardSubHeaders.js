@@ -31,14 +31,14 @@ const DashboardSubHeaders = ({
                 id="inputGroupSelect01"
                 onChange={(e) => handleChange(e, type)}
               >
-                <option selected value={"thisMonth"}>
-                  This Month
-                </option>
+                <option value={"thisMonth"}>This Month</option>
                 <option value="thisWeek">This week</option>
                 <option value="today">Today</option>
                 <option value="yesterday">Yesterday</option>
                 <option value="last7days">Last 7 days</option>
-                <option value="last30days">Last 30 days</option>
+                <option selected value="last30days">
+                  Last 30 days
+                </option>
               </select>
             </div>
           </span>
