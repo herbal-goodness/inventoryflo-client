@@ -35,14 +35,14 @@ const PricingCenterBar = () => {
             </tr>
             <tr>
               <td class="table-body-text price-check  price-check-1 py-4">
-                Sellbrite
+                INVENTORY FLO
               </td>
             </tr>
             <tr>
-              <td class="table-body-text  price-check py-4">Sellbrite</td>
+              <td class="table-body-text  price-check py-4">INVENTORY FLO</td>
             </tr>
             <tr>
-              <td class="table-body-text  price-check py-4">Sellbrite</td>
+              <td class="table-body-text  price-check py-4">INVENTORY FLO</td>
             </tr>
             <tr>
               <td class="table-header-text  price-check-2 text-light py-4">

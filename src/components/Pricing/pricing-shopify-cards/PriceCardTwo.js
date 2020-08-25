@@ -4,7 +4,7 @@ const PriceCardTwo = () => {
   return (
     <div className="col-md-3 price-card-2 text-center">
       <div className="pb-3 font-italic price-fade price-label">
-        Sellbrite for Shopify
+        <span className="font-weight-bold">INVENTORY FLO</span> for Shopify
       </div>
       <div className="forever-free">
         <span className="price-fade">PRO</span>{" "}
