@@ -51,17 +51,18 @@ const OrdersChart = ({ salesAndOrders, type, totalPrice }) => {
             if (allFridaysTotal[counter] === undefined) {
               allFridaysTotal[counter] = [filtererd[i]];
             } else {
-              allFridaysTotal[counter].push(filtererd[i]);
+              allFridaysTotal[counter].push(filtererd[i + 1]);
             }
           } else {
             allFridaysTotal[counter] === undefined
               ? (allFridaysTotal[counter] = [filtererd[i]])
-              : allFridaysTotal[counter].push(filtererd[i]);
+              : allFridaysTotal[counter].push(filtererd[i + 1]);
             counter++;
           }
         }
       }
     }
+
     const data = Object.values(allFridaysTotal).map((arr) => {
       const price = arr.reduce((a, b) => {
         return {
@@ -72,7 +73,7 @@ const OrdersChart = ({ salesAndOrders, type, totalPrice }) => {
       const date = new Date(arr[0].created_at).getDate();
       const mont = months[new Date(arr[0].created_at).getMonth()];
       return {
-        total: Math.round(price.total_price),
+        total: Math.floor(price.total_price),
         label: `${date}-${mont}`,
       };
     });
@@ -163,7 +164,7 @@ function LinChart({ chartData }) {
         tooltips: {
           callbacks: {
             label: function (tooltipItem) {
-              return "Sales: $ " + tooltipItem.yLabel;
+              return "Sales: $ " + tooltipItem.value;
             },
             labelColor: function (tooltipItem, chart) {
               return {
