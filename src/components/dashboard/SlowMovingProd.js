@@ -67,17 +67,17 @@ const SlowMovingProd = ({ data, allSales, isEmpty }) => {
         <div className="text-left">
           <h2 className="text-large mb-3 ml-3 text-dark">
             {allSlowProducts[0] !== "undefined"
-              ? `${allSlowProducts[0]?.orderCount || ""} Orders`
+              ? `${allSlowProducts[0]?.orderCount || ""}`
               : ""}
           </h2>
           <h2 className="text-medium mb-3 ml-3 text-dark">
             {allSlowProducts[1] !== "undefined"
-              ? `${allSlowProducts[1]?.orderCount || ""} Orders`
+              ? `${allSlowProducts[1]?.orderCount || ""}`
               : ""}
           </h2>
           <h2 className="text-slim mb-3 ml-3 text-dark">
             {allSlowProducts[2] !== "undefined"
-              ? `${allSlowProducts[2]?.orderCount || ""} Orders`
+              ? `${allSlowProducts[2]?.orderCount || ""}`
               : ""}
           </h2>
         </div>
