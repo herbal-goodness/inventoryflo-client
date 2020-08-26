@@ -36,13 +36,14 @@ const dataFormat = {
   ],
 };
 
-const SalesByProducts = ({ data, allSales, setTopProducts }) => {
+const SalesByProducts = ({ data, allSales, setTopProducts, isEmpty }) => {
   const [dataForChart, setDataForChart] = useState(dataFormat);
   //   const [price, setPrice] = useState(true);
 
   useEffect(() => {
     const others = [];
     const topProductIds = [];
+    const ordersWithCustNameIds = [];
 
     if (data !== undefined) {
       const sorted = data.sort((a, b) => {
@@ -50,6 +51,7 @@ const SalesByProducts = ({ data, allSales, setTopProducts }) => {
       });
 
       sorted.forEach((el, i) => {
+        el.total_price !== undefined && ordersWithCustNameIds.push(el.id);
         if (i < 6 && el.total_price !== undefined) {
           topProductIds.push(el.id);
         } else {
@@ -57,25 +59,30 @@ const SalesByProducts = ({ data, allSales, setTopProducts }) => {
         }
       });
 
-      const topProductsSales = topProductIds.map((id) => {
+      const topProducts = topProductIds.map((id) => {
+        const foundItems = allSales.filter((item) => id === item.id);
+        return foundItems.length > 0 ? foundItems[0] : "";
+      });
+      const ordersWithCustName = ordersWithCustNameIds.map((id) => {
         const foundItems = allSales.filter((item) => id === item.id);
         return foundItems.length > 0 ? foundItems[0] : "";
       });
 
-      const othersTotal = others.length > 0 && getTotalPrice(others);
+      const othersTotal =
+        others.length > 0 && getTotalPrice(others)?.toFixed(2);
       const labels = [
-        ...topProductsSales.map(({ line_items }) =>
+        ...topProducts.map(({ line_items }) =>
           line_items ? line_items[0].name.substr(0, 11) : ""
         ),
         "others",
       ];
 
-      setTopProducts(topProductsSales);
+      setTopProducts({ topProducts, ordersWithCustName });
 
       setDataForChart({
         ...dataForChart,
         ...(dataForChart.datasets[0].data = [
-          ...topProductsSales.map(({ total_price }) => +total_price),
+          ...topProducts.map(({ total_price }) => +total_price),
           othersTotal,
         ]),
         labels,
@@ -90,7 +97,7 @@ const SalesByProducts = ({ data, allSales, setTopProducts }) => {
       {/* <h3 className="text-center flex-grow">Top Products</h3> */}
 
       <Doughnut
-        data={dataForChart}
+        data={isEmpty ? [] : dataForChart}
         height={240}
         width={300}
         options={{

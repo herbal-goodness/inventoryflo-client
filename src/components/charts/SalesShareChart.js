@@ -28,7 +28,7 @@ const pieData = {
   ],
 };
 
-const SalesShareChart = ({ topProducts }) => {
+const SalesShareChart = ({ topProducts, isEmpty }) => {
   const [dataForPieChart, setDataForPieChart] = useState(pieData);
 
   useEffect(() => {
@@ -48,7 +48,7 @@ const SalesShareChart = ({ topProducts }) => {
       {/* <h3 className="text-center flex-grow">Top Products</h3> */}
 
       <Pie
-        data={dataForPieChart}
+        data={isEmpty ? [] : dataForPieChart}
         height={240}
         width={300}
         options={{
