@@ -149,12 +149,11 @@ function* ordersWorker({ payload }) {
             line_items,
             shipping_lines,
             customer: customer.first_name,
+            customer_lastName: customer.last_name,
             customer_city: shipping_address.city,
           };
         }
       );
-
-      console.log(orders, "----------------");
       yield put({
         type: "STORE_ORDERS",
         payload: { orders, allStatus },
@@ -168,31 +167,31 @@ function* ordersWorker({ payload }) {
   }
 }
 
-function* dashboardWorker() {
-  const token = yield select((state) => state.userInfo.user.IdToken);
+// function* dashboardWorker() {
+//   const token = yield select((state) => state.userInfo.user.IdToken);
 
-  try {
-    const response = yield fetch(API.API_ROOT + "/filtered-orders", {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    });
+//   try {
+//     const response = yield fetch(API.API_ROOT + "/filtered-orders", {
+//       headers: {
+//         Authorization: "Bearer " + token,
+//       },
+//     });
 
-    if (response.ok) {
-      const { data } = yield response.json();
+//     if (response.ok) {
+//       const { data } = yield response.json();
 
-      yield put({
-        type: "STORE_DASHBOARD_DATA",
-        payload: data,
-      });
-    } else {
-      yield put({ type: "DASHBOARD_DATA_ERROR" });
-    }
-  } catch (error) {
-    console.log(error);
-    yield put({ type: "DASHBOARD_DATA_ERROR" });
-  }
-}
+//       yield put({
+//         type: "STORE_DASHBOARD_DATA",
+//         payload: data,
+//       });
+//     } else {
+//       yield put({ type: "DASHBOARD_DATA_ERROR" });
+//     }
+//   } catch (error) {
+//     console.log(error);
+//     yield put({ type: "DASHBOARD_DATA_ERROR" });
+//   }
+// }
 function* salesAndOrdersWorker() {
   const token = yield select((state) => state.userInfo.user.IdToken);
 
@@ -221,6 +220,6 @@ function* salesAndOrdersWorker() {
 export default function* salesSaga() {
   yield all([takeLatest("GET_PRODUCTS", productsWorker)]);
   yield all([takeLatest("GET_ORDERS", ordersWorker)]);
-  yield all([takeLatest("GET_DASHBOARD_DATA", dashboardWorker)]);
+  // yield all([takeLatest("GET_DASHBOARD_DATA", dashboardWorker)]);
   yield all([takeLatest("GET_SALES_AND_ORDER", salesAndOrdersWorker)]);
 }
