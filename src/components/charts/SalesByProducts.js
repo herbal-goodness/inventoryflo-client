@@ -77,7 +77,7 @@ const SalesByProducts = ({ data, allSales, setTopProducts, isEmpty }) => {
         "others",
       ];
 
-      setTopProducts({ topProducts, ordersWithCustName });
+      setTopProducts({ topProducts, ordersWithCustName, othersTotal });
 
       setDataForChart({
         ...dataForChart,

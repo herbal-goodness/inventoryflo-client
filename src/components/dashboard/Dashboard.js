@@ -126,9 +126,13 @@ export default Dashboard;
 
 const SalesDrivers = ({ orders }) => {
   const [info, setDuration] = useState({ duration: [], type: "" });
-  const [{ topProducts, ordersWithCustName }, setTopProducts] = useState({
+  const [
+    { topProducts, ordersWithCustName, othersTotal },
+    setTopProducts,
+  ] = useState({
     topProducts: [],
     ordersWithCustName: [],
+    othersTotal: 0,
   });
   const [isEmpty, setEmpty] = useState(false);
 
@@ -256,7 +260,11 @@ const SalesDrivers = ({ orders }) => {
               />
             </div>
             <div>
-              <SalesShareChart isEmpty={isEmpty} topProducts={topProducts} />
+              <SalesShareChart
+                isEmpty={isEmpty}
+                topProducts={topProducts}
+                othersTotal={othersTotal}
+              />
             </div>
             <div>
               <LargestOrders isEmpty={isEmpty} data={info.duration} />

@@ -28,7 +28,7 @@ const pieData = {
   ],
 };
 
-const SalesShareChart = ({ topProducts, isEmpty }) => {
+const SalesShareChart = ({ topProducts, isEmpty, othersTotal }) => {
   const [dataForPieChart, setDataForPieChart] = useState(pieData);
 
   useEffect(() => {
@@ -37,8 +37,12 @@ const SalesShareChart = ({ topProducts, isEmpty }) => {
         ...dataForPieChart,
         ...(dataForPieChart.datasets[0].data = [
           ...topProducts.map(({ total_price }) => total_price),
+          othersTotal,
         ]),
-        labels: topProducts.map(({ customer_city }) => customer_city),
+        labels: [
+          ...topProducts.map(({ customer_city }) => customer_city),
+          "others",
+        ],
       });
     }
   }, [topProducts]);
