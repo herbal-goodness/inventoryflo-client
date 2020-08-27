@@ -22,7 +22,7 @@ const OrdersChart = ({ salesAndOrders, type, totalPrice }) => {
   useEffect(() => {
     //TODO: Build filters for each type;
     const filtererd =
-      type === "last30days"
+      type === "today"
         ? salesAndOrders
             ?.filter(({ created_at }) => {
               const d = new Date((created_at && created_at) || "");
@@ -62,8 +62,8 @@ const OrdersChart = ({ salesAndOrders, type, totalPrice }) => {
         }
       }
     }
-
-    const data = Object.values(allFridaysTotal).map((arr) => {
+    const len = Object.values(allFridaysTotal).length;
+    const data = Object.values(allFridaysTotal).map((arr, i) => {
       const price = arr.reduce((a, b) => {
         return {
           total_price: (+a.total_price || 0) + +b.total_price,
@@ -72,9 +72,17 @@ const OrdersChart = ({ salesAndOrders, type, totalPrice }) => {
 
       const date = new Date(arr[0].created_at).getDate();
       const mont = months[new Date(arr[0].created_at).getMonth()];
+      let label = "";
+
+      if (len < 8) {
+        label = `${date}-${mont}`;
+      } else if (i % 2 !== 0) {
+        label = `${date}-${mont}`;
+      }
+
       return {
         total: Math.floor(price.total_price),
-        label: `${date}-${mont}`,
+        label,
       };
     });
     setChartData(data);
