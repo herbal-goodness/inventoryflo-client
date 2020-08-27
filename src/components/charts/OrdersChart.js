@@ -32,7 +32,7 @@ const OrdersChart = ({ salesAndOrders, type, totalPrice }) => {
             .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
         : lastFiveDays(salesAndOrders);
 
-    const allFridaysTotal = {};
+    const dailySumTotal = {};
     let counter = 0;
     if (filtererd?.length > 0) {
       for (let i = 0; i < filtererd.length - 1; i++) {
@@ -48,22 +48,22 @@ const OrdersChart = ({ salesAndOrders, type, totalPrice }) => {
             new Date(currentItemD.toDateString()).getTime() ===
             new Date(nextItemD.toDateString()).getTime()
           ) {
-            if (allFridaysTotal[counter] === undefined) {
-              allFridaysTotal[counter] = [filtererd[i]];
+            if (dailySumTotal[counter] === undefined) {
+              dailySumTotal[counter] = [filtererd[i]];
             } else {
-              allFridaysTotal[counter].push(filtererd[i + 1]);
+              dailySumTotal[counter].push(filtererd[i + 1]);
             }
           } else {
-            allFridaysTotal[counter] === undefined
-              ? (allFridaysTotal[counter] = [filtererd[i]])
-              : allFridaysTotal[counter].push(filtererd[i + 1]);
+            dailySumTotal[counter] === undefined
+              ? (dailySumTotal[counter] = [filtererd[i]])
+              : dailySumTotal[counter].push(filtererd[i + 1]);
             counter++;
           }
         }
       }
     }
-    const len = Object.values(allFridaysTotal).length;
-    const data = Object.values(allFridaysTotal).map((arr, i) => {
+    const len = Object.values(dailySumTotal).length;
+    const data = Object.values(dailySumTotal).map((arr, i) => {
       const price = arr.reduce((a, b) => {
         return {
           total_price: (+a.total_price || 0) + +b.total_price,
