@@ -3,7 +3,7 @@ export const FOOTER_CONTENT = [
     title: "Products",
     links: [
       {
-        to: "",
+        to: "/pricing",
         text: "Pricing",
       },
       {

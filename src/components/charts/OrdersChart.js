@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import { Spinner } from "../utils/components";
+import { months, days } from "./constants";
 
 function lastFiveDays(data) {
   //   const lastIndex = data && data.length - 1;
@@ -17,21 +18,6 @@ function lastFiveDays(data) {
 
 const OrdersChart = ({ salesAndOrders, type, totalPrice }) => {
   const [chartData, setChartData] = useState([]);
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   useEffect(() => {
     //TODO: Build filters for each type;
@@ -65,17 +51,18 @@ const OrdersChart = ({ salesAndOrders, type, totalPrice }) => {
             if (allFridaysTotal[counter] === undefined) {
               allFridaysTotal[counter] = [filtererd[i]];
             } else {
-              allFridaysTotal[counter].push(filtererd[i]);
+              allFridaysTotal[counter].push(filtererd[i + 1]);
             }
           } else {
             allFridaysTotal[counter] === undefined
               ? (allFridaysTotal[counter] = [filtererd[i]])
-              : allFridaysTotal[counter].push(filtererd[i]);
+              : allFridaysTotal[counter].push(filtererd[i + 1]);
             counter++;
           }
         }
       }
     }
+
     const data = Object.values(allFridaysTotal).map((arr) => {
       const price = arr.reduce((a, b) => {
         return {
@@ -86,7 +73,7 @@ const OrdersChart = ({ salesAndOrders, type, totalPrice }) => {
       const date = new Date(arr[0].created_at).getDate();
       const mont = months[new Date(arr[0].created_at).getMonth()];
       return {
-        total: Math.round(price.total_price),
+        total: Math.floor(price.total_price),
         label: `${date}-${mont}`,
       };
     });
@@ -117,7 +104,6 @@ const OrdersChart = ({ salesAndOrders, type, totalPrice }) => {
 export default OrdersChart;
 
 function LinChart({ chartData }) {
-  console.log(chartData);
   return (
     <Line
       data={{
@@ -178,9 +164,21 @@ function LinChart({ chartData }) {
         tooltips: {
           callbacks: {
             label: function (tooltipItem) {
-              return tooltipItem.yLabel;
+              return "Sales: $ " + tooltipItem.value;
+            },
+            labelColor: function (tooltipItem, chart) {
+              return {
+                backgroundColor: "#000000",
+              };
+            },
+            labelTextColor: function (tooltipItem, chart) {
+              return "#000000";
             },
           },
+          backgroundColor: "rgb(255, 255, 255)",
+          borderColor: "#000000",
+          borderWidth: 1,
+          titleFontColor: "#000000",
         },
       }}
     />

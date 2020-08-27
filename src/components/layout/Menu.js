@@ -1,14 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../../images/inventoryflo-logo-2.png";
 
 const Navbar = () => {
+  const { pathname } = useLocation();
   return (
     <>
       <nav className="navbar navbar-expand-lg fixed-top mb-4" id="main-menu">
         <Link
           className="navbar-brand pl-lg-5 pl-md-5 nav-logo-center"
-          to="/dashboard"
+          to={pathname}
         >
           <img src={logo} alt="logo" className="nav-logo" />
         </Link>
@@ -28,7 +29,7 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="collapsibleNavId">
           <ul className="navbar-nav mr-auto text-muted">
             <li className="nav-item px-lg-4 px-md-4">
-              <Link className="nav-link" to="">
+              <Link className="nav-link" to="/coming-soon">
                 Features
               </Link>
             </li>
@@ -38,7 +39,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item px-lg-4 px-md-4">
-              <Link className="nav-link" to="">
+              <Link className="nav-link" to="/pricing">
                 Pricing
               </Link>
             </li>

@@ -9,8 +9,14 @@ const WorkInProgress = () => {
           <img class="img-fluid mx-auto" src={wip} alt="WIP" />
         </div>
         <div className="col-md-6 wip-text text-center pt-5">
-          "We are still building this
-          <br /> software. Coming soon..."
+          <div class="row h-100">
+            <div class="col-sm-12 my-auto">
+              <div class=" card-block w-100">
+                "We are still building this
+                <br /> software. Coming soon..."
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

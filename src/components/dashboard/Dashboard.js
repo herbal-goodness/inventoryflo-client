@@ -1,13 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
-import OrderStatusChart from "../charts/OrderStatusChart";
 import InventoryAnalysis from "../charts/InventoryAnalysis";
 import DashboardHeader from "./DashboardHeader";
-// import TodoSidePane from "./TodoSidePane";
-// import UserActivities from "./UserActivities";
-// import Channel from "./Channel";
 import RecentActivity from "./RecentActivity";
-import TopProductChart from "../charts/TopProductChart";
 import GetStartedSidePane from "./GetStartedSidePane";
 
 import SalesByChannel from "../charts/SalesByChannel";
@@ -15,14 +10,15 @@ import SalesByProducts from "../charts/SalesByProducts";
 import SalesDriversParams from "./SalesDriversParams";
 import SalesAndOrders from "./SalesAndOrders";
 import DashboardSubHeaders from "./DashboardSubHeaders";
-import UserActivities from "./UserActivities";
 import SlowMovingProd from "./SlowMovingProd";
 import TopCustByOrders from "./TopCustByOrders";
 import SalesShareChart from "../charts/SalesShareChart";
 import LargestOrders from "./LargestOrders";
+import { AlertDismissible } from "../utils/components";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
+  const [alertUser, setAlert] = useState(false);
 
   const {
     dashboard,
@@ -31,13 +27,18 @@ const Dashboard = () => {
     hasShopifyUrl,
     hasShopifySecret,
     isSuccessful,
+    name,
+    successfulSalesAndOrders,
   } = useSelector(
-    ({ sales, userInfo, orders, dashboard }) => ({
+    ({ sales, userInfo, orders, dashboard, salesAndOrders }) => ({
       dashboard,
+      loadingSalesAndOrders: salesAndOrders.loading,
+      successfulSalesAndOrders: salesAndOrders.successful,
       hasShopifyUrl:
         userInfo.user.shopifyDomain && userInfo.user.shopifyDomain.length > 3,
       hasShopifySecret:
         userInfo.user.shopifySecret && userInfo.user.shopifySecret.length > 3,
+      name: userInfo.user.firstName,
       isSuccessful: userInfo.successful,
       sales: sales.products,
       orders: orders.userOrders,
@@ -64,6 +65,19 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
+    if (!localStorage.getItem("exists")) {
+      setAlert(true);
+      localStorage.setItem("exists", true);
+    } else {
+      setTimeout(() => {
+        successfulSalesAndOrders
+          ? setAlert(false)
+          : dispatch({ type: "GET_SALES_AND_ORDER" });
+      }, 10000);
+    }
+  }, [alertUser]);
+
+  useEffect(() => {
     hasShopifyUrl &&
       hasShopifySecret &&
       isSuccessful &&
@@ -73,27 +87,25 @@ const Dashboard = () => {
 
   return (
     <div className="container-fluid mx-auto dashboard">
+      {alertUser ? (
+        <AlertDismissible
+          header={`Hey, ${name}`}
+          message="We are building your dashboard data for the first time, please allow the system, This will happen only once. Refresh after about 40 secs"
+          variant="info"
+        />
+      ) : (
+        ""
+      )}
+
       <DashboardHeader />
       <div className="row">
         <div className="col-sm-12 col-md-9">
-          {/* <UserActivities dashboardData={dashboard} /> */}
           <SalesAndOrders />
 
           {/* Sales Drivers */}
-          <SalesDrivers />
-
+          <SalesDrivers orders={orders} />
           <div className="row">
-            {/* <div className="col-md-12 col-lg-6">
-							<TotalListingsProductChart data={dashboard.data} />
-						</div>
-						<div className="col-md-12 col-lg-6">
-							<OrderStatusChart data={dashboard.data} />
-						</div> */}
             <div className="row">
-              {/* <div className="col-md-12">
-								<TopProductChart data={dashboard.data?.topProducts} />
-							</div> */}
-
               <div className="col-md-12">
                 <InventoryAnalysis data={dashboard.data} />
               </div>
@@ -102,9 +114,7 @@ const Dashboard = () => {
         </div>
 
         <div className="col-sm-12 col-md-3 mb-5">
-          {/* <TodoSidePane /> */}
           <GetStartedSidePane />
-          {/* <Channel /> */}
           <RecentActivity />
         </div>
       </div>
@@ -114,37 +124,142 @@ const Dashboard = () => {
 
 export default Dashboard;
 
-const SalesDrivers = () => {
+const SalesDrivers = ({ orders }) => {
+  const [info, setDuration] = useState({ duration: [], type: "" });
+  const [{ topProducts, ordersWithCustName }, setTopProducts] = useState({
+    topProducts: [],
+    ordersWithCustName: [],
+  });
+  const [isEmpty, setEmpty] = useState(false);
+
+  const {
+    salesDrivers,
+    loadingSalesAndOrders,
+    successfulSalesAndOrders,
+    errorSalesAndOrders,
+  } = useSelector(
+    ({ salesAndOrders }) => ({
+      salesDrivers: salesAndOrders.salesAndOrders,
+      loadingSalesAndOrders: salesAndOrders.loading,
+      errorSalesAndOrders: salesAndOrders.error,
+      successfulSalesAndOrders: salesAndOrders.successful,
+    }),
+    shallowEqual
+  );
+
+  const isNegative = (value) => {
+    const ex = new RegExp("^-");
+    return ex.test(value);
+  };
+
+  useEffect(() => {
+    if (!loadingSalesAndOrders && successfulSalesAndOrders) {
+      setDuration({
+        duration: salesDrivers.filterBy30Days,
+        type: "last30days",
+      });
+    }
+  }, [salesDrivers]);
+
+  const handleChange = (e, type) => {
+    if (type === "S&D")
+      switch (e.target.value) {
+        case "thisWeek":
+          setDuration({
+            duration: salesDrivers.filterBythisWeek,
+          });
+          break;
+        case "thisMonth":
+          setDuration({
+            duration: salesDrivers.filterByMonthDate,
+          });
+          break;
+        case "today":
+          setDuration({
+            duration: salesDrivers.filterByToDay,
+          });
+
+          break;
+        case "yesterday":
+          setDuration({
+            duration: salesDrivers.filterByYesterday,
+          });
+
+          break;
+        case "last7days":
+          setDuration({
+            duration: salesDrivers.filterByLast7Days,
+          });
+
+          break;
+        case "last30days":
+          setDuration({
+            duration: salesDrivers.filterBy30Days,
+          });
+          break;
+
+        default:
+          setDuration({
+            duration: salesDrivers.filterBy30Days,
+          });
+          break;
+      }
+  };
+  const handleChannelChange = (event) => {
+    const { value } = event.target;
+    if (value !== "shopify") {
+      value !== "all" ? setEmpty(true) : setEmpty(false);
+    } else {
+      setEmpty(false);
+    }
+  };
   return (
     <div className="chart-container py-2 px-3 mb-4">
       <div className="row">
-        <DashboardSubHeaders type={"S&D"} title="Sales Drivers" />
+        <DashboardSubHeaders
+          type={"S&D"}
+          title="Sales Drivers"
+          handleChange={handleChange}
+          handleChannelChange={handleChannelChange}
+        />
         <div className="col-lg-12 col-md-12 col-sm-12">
           <div className="d-flex flex-wrap justify-content-between mb-2 justify-items-center">
             <div>
-              <SalesByChannel />
+              {/* Add data to sales by channel once we pull more API from other sources */}
+              <SalesByChannel isEmpty={isEmpty} data={info.duration} />
             </div>
 
             <div>
-              <SalesByProducts />
+              <SalesByProducts
+                isEmpty={isEmpty}
+                data={info.duration}
+                allSales={orders}
+                setTopProducts={setTopProducts}
+              />
             </div>
             <div>
-              <SlowMovingProd />
-              <SalesDriversParams title="Products with no sales" fig="23" />
+              <SlowMovingProd
+                isEmpty={isEmpty}
+                data={info.duration}
+                allSales={orders}
+              />
             </div>
           </div>
           <div className="d-flex flex-wrap justify-content-between mb-2 justify-items-center">
             <div>
-              <TopCustByOrders />
-              <SalesDriversParams title="Unique customers" fig="30" />
+              <TopCustByOrders isEmpty={isEmpty} topProducts={topProducts} />
+              <SalesDriversParams
+                isEmpty={isEmpty}
+                data={ordersWithCustName}
+                title="Unique customers"
+                fig="30"
+              />
             </div>
             <div>
-              <SalesShareChart />
+              <SalesShareChart isEmpty={isEmpty} topProducts={topProducts} />
             </div>
-
             <div>
-              <LargestOrders />
-              <SalesDriversParams title="July 4th campaign" fig="$230" />
+              <LargestOrders isEmpty={isEmpty} data={info.duration} />
             </div>
           </div>
         </div>
