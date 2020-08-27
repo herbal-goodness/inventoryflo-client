@@ -23,7 +23,8 @@ const WarehouseStatus = () => {
 	});
 
 	return (
-		<div>
+		<div className="warehouse-content">
+			<h1 className="warehouse-ribbon">Coming Soon!</h1>
 			<Bar
 				data={state}
 				options={{
