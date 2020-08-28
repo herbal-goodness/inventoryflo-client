@@ -1559,11 +1559,11 @@ th a:hover {
   }
 }
 
-@media (max-width: 1070px) {
+@media (max-width: 1050px) {
   .table-body-text {
     font-family: Lato;
     color: #555;
-    font-size: 12.5px;
+    font-size: 13px;
   }
   .table-header-text {
     font-family: Lato;
@@ -1573,47 +1573,12 @@ th a:hover {
   }
 }
 
-/* Master of Inventory & Locations break */
-@media (max-width: 676px) {
-  .empty-box {
-    margin-top: 40px;
+@media (max-width: 826px) {
+  .table-body-text {
+    font-family: Lato;
+    color: #555;
+    font-size: 12.5px;
   }
-  .p-left-table {
-    padding-top: 412px;
-  }
-
-  .price-check-1 {
-    line-height: 40px;
-  }
-  .price-check-2 {
-    line-height: 13px;
-  }
-}
-
-@media (max-width: 476px) {
-  .empty-box {
-    margin-top: 40px;
-  }
-  .p-left-table {
-    padding-top: 412px;
-  }
-
-  .price-check-1 {
-    line-height: 40px;
-  }
-  .price-check-2 {
-    line-height: 29px;
-  }
-}
-
-@media (max-width: 664px) {
-  .empty-box {
-    margin-top: 40px;
-  }
-  .p-left-table {
-    padding-top: 435px;
-  }
-
   .table-header-text {
     font-family: Lato;
     color: #555;
@@ -1631,6 +1596,36 @@ th a:hover {
   }
 }
 
+@media (max-width: 663px) {
+  .table-body-text {
+    font-family: Lato;
+    color: #555;
+    font-size: 12.5px;
+  }
+  .table-header-text {
+    font-family: Lato;
+    color: #555;
+    font-size: 13px;
+    background-color: #eee;
+  }
+  .p-left-table {
+    padding-top: 412px;
+  }
+
+  .price-check-2 {
+    line-height: 60px;
+  }
+  .price-check-3 {
+    font-size: 11.5px;
+  }
+  .cvs-pricing {
+    font-size: 11px;
+  }
+  .multi-channel {
+    line-height: 40px;
+  }
+}
+
 @media (max-width: 544px) {
   .empty-box {
     margin-top: 60px;
@@ -1640,6 +1635,58 @@ th a:hover {
   }
   .pricing-r-box {
     margin-bottom: 20px;
+  }
+  .xs-pricing-title {
+    font-size: 26px;
+  }
+  .pricing-title {
+    font-family: Lato;
+    font-weight: 900;
+    font-size: 45px;
+    color: #000;
+  }
+}
+
+@media (max-width: 476px) {
+  .empty-box {
+    margin-top: 45px;
+  }
+  .p-left-table {
+    padding-top: 444px;
+  }
+
+  .price-check-1 {
+    line-height: 40px;
+  }
+  .price-check-2 {
+    line-height: 29px;
+  }
+
+  .table-body-text {
+    word-break: break-word;
+    font-family: Lato;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .table-header-text {
+    font-family: Lato;
+    color: #555;
+    font-size: 12px;
+    background-color: #eee;
+  }
+
+  .xs-tb-text {
+    margin-left: 0;
+  }
+  .price-check-1 {
+    line-height: 40px;
+  }
+  .price-check-2 {
+    line-height: 61px;
+  }
+  .price-check-3 {
+    line-height: 20px;
   }
 }
 

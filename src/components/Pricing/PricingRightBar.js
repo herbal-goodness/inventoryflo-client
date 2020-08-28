@@ -28,7 +28,7 @@ const PricingRightBar = () => {
               </td>
             </tr>
             <tr>
-              <td class="table-body-text py-4 px-5">
+              <td class="table-body-text py-4  px-2 px-sm-4">
                 <Link
                   to="./pricing-sfs-pro"
                   className="btn pricing-btn btn-block"
@@ -41,16 +41,18 @@ const PricingRightBar = () => {
               <td class="table-header-text py-4 text-light">-</td>
             </tr>
             <tr>
+              <td class="table-body-text price-check-2 price-check-1 py-4">
+                Shopify
+              </td>
+            </tr>
+            <tr>
               <td class="table-body-text price-check-1 py-4">Shopify</td>
             </tr>
             <tr>
-              <td class="table-body-text py-4">Shopify</td>
+              <td class="table-body-text price-check-1 py-4">Shopify</td>
             </tr>
             <tr>
-              <td class="table-body-text py-4">Shopify</td>
-            </tr>
-            <tr>
-              <td class="table-header-text   price-check-2 text-light py-4">
+              <td class="table-header-text  price-check-1 text-light py-4">
                 -
               </td>
             </tr>
@@ -66,67 +68,70 @@ const PricingRightBar = () => {
             </tr>
             <tr>
               <td class="table-body-text py-4">
+                <i
+                  class="fa fa-check text-green price-check-1 fa-lg"
+                  aria-hidden="true"
+                ></i>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-header-text price-check-1 text-light py-4">-</td>
+            </tr>
+            <tr>
+              <td class="table-body-text price-check-1 py-4 multi-channel">
                 <i class="fa fa-check text-green fa-lg" aria-hidden="true"></i>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-body-text price-check-1 py-4">
+                <i class="fa fa-check text-green fa-lg" aria-hidden="true"></i>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-body-text price-check-1 py-4">
+                <i class="fa fa-check text-green fa-lg" aria-hidden="true"></i>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-body-text price-check-1 py-4">
+                <i class="fa fa-minus  fa-lg" aria-hidden="true"></i>
+              </td>
+            </tr>
+            <tr>
+              <td class="table-body-text price-check-1 py-4">
+                <i class="fa fa-minus fa-lg" aria-hidden="true"></i>
               </td>
             </tr>
             <tr>
               <td class="table-header-text text-light py-4">-</td>
             </tr>
             <tr>
-              <td class="table-body-text py-4">
+              <td class="table-body-text price-check-2 py-4">
                 <i class="fa fa-check text-green fa-lg" aria-hidden="true"></i>
               </td>
             </tr>
             <tr>
-              <td class="table-body-text py-4">
-                <i class="fa fa-check text-green fa-lg" aria-hidden="true"></i>
+              <td class="table-body-text price-check-1 py-4">
+                <i class="fa fa-minus fa-lg" aria-hidden="true"></i>
               </td>
             </tr>
             <tr>
-              <td class="table-body-text py-4">
-                <i class="fa fa-check text-green fa-lg" aria-hidden="true"></i>
+              <td class="table-body-text price-check-1 py-4">
+                <i class="fa fa-minus fa-lg" aria-hidden="true"></i>
               </td>
             </tr>
             <tr>
-              <td class="table-body-text py-4">
+              <td class="table-body-text price-check-1 py-4">
                 <i class="fa fa-minus  fa-lg" aria-hidden="true"></i>
               </td>
             </tr>
             <tr>
-              <td class="table-body-text py-4">
+              <td class="table-body-text price-check-1 py-4">
                 <i class="fa fa-minus fa-lg" aria-hidden="true"></i>
               </td>
             </tr>
             <tr>
-              <td class="table-header-text text-light py-4">-</td>
-            </tr>
-            <tr>
-              <td class="table-body-text py-4">
-                <i class="fa fa-check text-green fa-lg" aria-hidden="true"></i>
-              </td>
-            </tr>
-            <tr>
-              <td class="table-body-text py-4">
-                <i class="fa fa-minus fa-lg" aria-hidden="true"></i>
-              </td>
-            </tr>
-            <tr>
-              <td class="table-body-text py-4">
-                <i class="fa fa-minus fa-lg" aria-hidden="true"></i>
-              </td>
-            </tr>
-            <tr>
-              <td class="table-body-text py-4">
-                <i class="fa fa-minus  fa-lg" aria-hidden="true"></i>
-              </td>
-            </tr>
-            <tr>
-              <td class="table-body-text py-4">
-                <i class="fa fa-minus fa-lg" aria-hidden="true"></i>
-              </td>
-            </tr>
-            <tr>
-              <td class="table-body-text pt-4">
+              <td class="table-body-text price-check-1 pt-4">
                 <i class="fa fa-minus fa-lg" aria-hidden="true"></i>
               </td>
             </tr>
