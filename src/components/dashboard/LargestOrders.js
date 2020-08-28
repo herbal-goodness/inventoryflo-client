@@ -28,7 +28,7 @@ const LargestOrders = ({ isEmpty, data }) => {
                 ?.sort((a, b) => +b.total_price - +a.total_price)
                 .map(({ total_price, created_at, order_number }, index) => {
                   return (
-                    index < 3 &&
+                    index < 6 &&
                     total_price !== undefined && (
                       <tr>
                         <td>{order_number}</td>

@@ -1,19 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import { Spinner } from "../utils/components";
-import { months, days } from "./constants";
+import { months } from "./constants";
 
-function lastFiveDays(data) {
-  //   const lastIndex = data && data.length - 1;
-  //   const lastFiveDays = [];
-  //   for (let i = lastIndex; i >= 0; i--) {
-  //     if (lastFiveDays.length < 5) {
-  //       lastFiveDays.push(data[i]);
-  //     } else {
-  //       break;
-  //     }
-  //   }
-  return data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+function spreadDataByTime(data) {
+  const dailySumTotal = {};
+  let counter = 0;
+  if (data?.length > 0) {
+    for (let i = 0; i < data.length - 1; i++) {
+      const currentItemTime =
+        data[i].created_at !== undefined && new Date(data[i].created_at);
+      const nextItemTime =
+        data[i + 1].created_at !== undefined
+          ? new Date(data[i + 1].created_at)
+          : false;
+      if (currentItemTime) {
+        if (currentItemTime.getHours() === nextItemTime.getHours()) {
+          if (dailySumTotal[counter] === undefined) {
+            dailySumTotal[counter] = [data[i]];
+          } else {
+            dailySumTotal[counter].push(data[i + 1]);
+          }
+        } else {
+          dailySumTotal[counter] === undefined
+            ? (dailySumTotal[counter] = [data[i]])
+            : dailySumTotal[counter].push(data[i + 1]);
+          counter++;
+        }
+      }
+    }
+  }
+  return dailySumTotal;
 }
 
 const OrdersChart = ({ salesAndOrders, type, totalPrice }) => {
@@ -22,19 +39,15 @@ const OrdersChart = ({ salesAndOrders, type, totalPrice }) => {
   useEffect(() => {
     //TODO: Build filters for each type;
     const filtererd =
-      type === "last30days"
-        ? salesAndOrders
-            ?.filter(({ created_at }) => {
-              const d = new Date((created_at && created_at) || "");
-              const dayName = days[d.getDay()];
-              return dayName === "Fri";
-            })
-            .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
-        : lastFiveDays(salesAndOrders);
+      type !== "today" &&
+      salesAndOrders.sort(
+        (a, b) => new Date(b.created_at) - new Date(a.created_at)
+      );
 
-    const allFridaysTotal = {};
+    const dailySumTotal =
+      type === "today" ? spreadDataByTime(salesAndOrders) : {};
     let counter = 0;
-    if (filtererd?.length > 0) {
+    if (type !== "today" && filtererd?.length > 0) {
       for (let i = 0; i < filtererd.length - 1; i++) {
         const currentItemD =
           filtererd[i].created_at !== undefined &&
@@ -48,22 +61,22 @@ const OrdersChart = ({ salesAndOrders, type, totalPrice }) => {
             new Date(currentItemD.toDateString()).getTime() ===
             new Date(nextItemD.toDateString()).getTime()
           ) {
-            if (allFridaysTotal[counter] === undefined) {
-              allFridaysTotal[counter] = [filtererd[i]];
+            if (dailySumTotal[counter] === undefined) {
+              dailySumTotal[counter] = [filtererd[i]];
             } else {
-              allFridaysTotal[counter].push(filtererd[i + 1]);
+              dailySumTotal[counter].push(filtererd[i + 1]);
             }
           } else {
-            allFridaysTotal[counter] === undefined
-              ? (allFridaysTotal[counter] = [filtererd[i]])
-              : allFridaysTotal[counter].push(filtererd[i + 1]);
+            dailySumTotal[counter] === undefined
+              ? (dailySumTotal[counter] = [filtererd[i]])
+              : dailySumTotal[counter].push(filtererd[i + 1]);
             counter++;
           }
         }
       }
     }
-
-    const data = Object.values(allFridaysTotal).map((arr) => {
+    const len = Object.values(dailySumTotal).length;
+    const data = Object.values(dailySumTotal).map((arr, i) => {
       const price = arr.reduce((a, b) => {
         return {
           total_price: (+a.total_price || 0) + +b.total_price,
@@ -72,9 +85,22 @@ const OrdersChart = ({ salesAndOrders, type, totalPrice }) => {
 
       const date = new Date(arr[0].created_at).getDate();
       const mont = months[new Date(arr[0].created_at).getMonth()];
+      let label = "";
+
+      if (len < 15) {
+        label = `${date}-${mont}`;
+      } else if (i % 2 === 0) {
+        label = `${date}-${mont}`;
+      } else if (i % 2 === 1) {
+        label = "";
+      }
+      // ,
       return {
         total: Math.floor(price.total_price),
-        label: `${date}-${mont}`,
+        label:
+          type !== "today"
+            ? label
+            : new Date(arr[0].created_at).toLocaleTimeString(),
       };
     });
     setChartData(data);
