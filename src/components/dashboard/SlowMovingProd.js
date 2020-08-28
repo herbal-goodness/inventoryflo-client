@@ -46,17 +46,26 @@ const SlowMovingProd = ({ data, allSales, isEmpty }) => {
       </h2>
       <div className="d-flex justify-content-between justify-items-center arrow-container  mb-4">
         <div className="text-right">
-          <h2 className="text-large mb-3 mr-3 text-dark">
+          <h2
+            title={allSlowProducts[0]?.name}
+            className="text-large mb-3 mr-3 text-dark"
+          >
             {allSlowProducts[0] !== "undefined"
               ? allSlowProducts[0]?.name.substr(0, 11)
               : ""}
           </h2>
-          <h2 className="text-medium mb-3 mr-3 text-dark">
+          <h2
+            title={allSlowProducts[1]?.name}
+            className="text-medium mb-3 mr-3 text-dark"
+          >
             {allSlowProducts[1] !== "undefined"
               ? allSlowProducts[1]?.name.substr(0, 11)
               : ""}
           </h2>
-          <h2 className="text-slim mb-3 mr-3 text-dark">
+          <h2
+            title={allSlowProducts[2]?.name}
+            className="text-slim mb-3 mr-3 text-dark"
+          >
             {allSlowProducts[2] !== "undefined"
               ? allSlowProducts[2]?.name.substr(0, 11)
               : ""}
