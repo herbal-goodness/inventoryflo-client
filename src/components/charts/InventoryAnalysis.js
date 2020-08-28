@@ -5,6 +5,7 @@ import DashboardSubHeaders from "../dashboard/DashboardSubHeaders";
 
 const InventoryAnalysis = ({ data }) => {
   const [info, setDuration] = useState({ duration: [] });
+  const [empty, setEmpty] = useState(false);
 
   useEffect(() => {
     setDuration({
@@ -53,7 +54,14 @@ const InventoryAnalysis = ({ data }) => {
           break;
       }
   };
-  const handleChannelChange = () => {};
+  const handleChannelChange = (event) => {
+    const { value } = event.target;
+    if (value !== "shopify") {
+      value !== "all" ? setEmpty(true) : setEmpty(false);
+    } else {
+      setEmpty(false);
+    }
+  };
 
   return (
     <div className="row pb-3 mb-4 bg-white">
@@ -69,7 +77,7 @@ const InventoryAnalysis = ({ data }) => {
             Product Status
           </h2>
           <div className="col-12 col-sm-12 sales-01 text-center text-green">
-            <ProductStatus data={info.duration} />
+            <ProductStatus data={!empty ? info.duration : []} />
           </div>
         </div>
       </div>

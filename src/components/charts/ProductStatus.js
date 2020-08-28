@@ -7,6 +7,7 @@ const getOutOfStocks = (products) => {
     ({ totalQuantity }) => totalQuantity === "Out of stock"
   );
 };
+
 const ProductStatus = ({ data }) => {
   const chartData = {
     labels: ["Total Products", "Active Products", "Out of stock"],
