@@ -8,13 +8,15 @@ const InventoryAnalysis = ({ data }) => {
   const [empty, setEmpty] = useState(false);
 
   useEffect(() => {
-    setDuration({
-      duration: data.filterByLast30Days,
-    });
+    if (data !== undefined) {
+      setDuration({
+        duration: data.filterByLast30Days,
+      });
+    }
   }, [data]);
 
   const handleChange = (e, type) => {
-    if (type === "I&A")
+    if (type === "I&A" && data !== undefined)
       switch (e.target.value) {
         case "thisWeek":
           setDuration({

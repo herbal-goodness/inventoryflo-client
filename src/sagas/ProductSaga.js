@@ -6,7 +6,6 @@ import api from "../services";
 // Worker saga
 export function* getAllProducts() {
   const products = yield call(api.getProducts);
-  console.log(products.products);
 
   yield put(actions.receiveProducts(products.products)); //dispatches product to the store
 }

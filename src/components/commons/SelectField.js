@@ -4,7 +4,6 @@ const SelectField = ({ categories }) => {
   let catArray = new Set();
   categories.map((category) => {
     catArray.add(category.toJS().product_type);
-    console.log(catArray);
   });
 
   return catArray.map((cat, index) => (

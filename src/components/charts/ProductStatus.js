@@ -2,7 +2,6 @@ import React from "react";
 import { HorizontalBar } from "react-chartjs-2";
 
 const getOutOfStocks = (products) => {
-  console.log(products);
   return products.filter(
     ({ totalQuantity }) => totalQuantity === "Out of stock"
   );
