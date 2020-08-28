@@ -10,7 +10,7 @@ const InventoryAnalysis = ({ data }) => {
     setDuration({
       duration: data.filterByLast30Days,
     });
-  }, []);
+  }, [data]);
 
   const handleChange = (e, type) => {
     if (type === "I&A")
