@@ -1,45 +1,32 @@
-import namor from "namor";
-import {
-  filterGreaterThan,
-  SelectColumnFilter,
-  SliderColumnFilter,
-  roundedMedian,
-  NumberRangeColumnFilter,
-} from "./inventory/functions";
-const range = (len) => {
-  const arr = [];
-  for (let i = 0; i < len; i++) {
-    arr.push(i);
-  }
-  return arr;
-};
+const today = new Date();
+const priorDate = new Date().setDate(today.getDate() - 30);
+const otherPriorDate = new Date().setDate(today.getDate() - 60);
+exports.last30Days = new Date(priorDate).toJSON();
+exports.lastOther30Days = new Date(otherPriorDate).toJSON();
+exports.last7Days = new Date(new Date().setDate(today.getDate() - 7)).toJSON();
+exports.lastOther7Days = new Date(
+  new Date().setDate(today.getDate() - 14)
+).toJSON();
+exports.yesterday = new Date(
+  new Date().getTime() - 24 * 60 * 60 * 1000
+).toJSON();
+exports.dayB4yesterday = new Date(
+  new Date().getTime() - 48 * 60 * 60 * 1000
+).toJSON();
+exports.currentDay = new Date(
+  new Date().getTime() - new Date().getHours() * 60 * 60 * 1000
+).toJSON();
+exports.thisWeek = new Date(
+  new Date() - new Date().getDay() * 24 * 60 * 60 * 1000
+).toJSON();
 
-const newPerson = () => {
-  const statusChance = Math.random();
-  return {
-    img: namor.generate({ words: 2, numbers: 0 }),
-    name: namor.generate({ words: 1, numbers: 0 }),
-    sku: Math.floor(Math.random() * 1000),
-    condition:
-      statusChance > 0.66 ? "new" : statusChance > 0.33 ? "old" : "too old",
-    location: Math.floor(Math.random() * 100),
-    available: Math.floor(Math.random() * 100),
-    reserved: Math.floor(Math.random() * 2),
-    price: Math.floor(Math.random() * 1000),
-    lastModified: namor.generate({ words: 1, numbers: 0 }),
-  };
-};
-
-export function makeData(...lens) {
-  const makeDataLevel = (depth = 0) => {
-    const len = lens[depth];
-    return range(len).map((d) => {
-      return {
-        ...newPerson(),
-        subRows: lens[depth + 1] ? makeDataLevel(depth + 1) : undefined,
-      };
-    });
-  };
-
-  return makeDataLevel();
-}
+const dateWithCurrentYearAndthisMonth = new Date(
+  new Date("2019-01-01T00:00:00.000Z").setMonth(new Date().getMonth())
+).setFullYear(new Date().getFullYear());
+const dateWithCurrentYearAndLastMonth = new Date(
+  new Date("2019-01-01T00:00:00.000Z").setMonth(new Date().getMonth() - 1)
+).setFullYear(new Date().getFullYear());
+exports.beginningOfmonth = new Date(dateWithCurrentYearAndthisMonth).toJSON();
+exports.beginningOflastMonth = new Date(
+  dateWithCurrentYearAndLastMonth
+).toJSON();

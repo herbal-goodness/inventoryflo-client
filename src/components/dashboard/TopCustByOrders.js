@@ -1,7 +1,6 @@
 import React from "react";
 
 const TopCustByOrders = ({ topProducts, isEmpty }) => {
-  console.log(topProducts);
   return (
     <>
       <h2 className="text-medium-1 text-green text-center mt-1 mb-3 font-weight-bold text-capitalize">

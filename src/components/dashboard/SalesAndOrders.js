@@ -219,6 +219,7 @@ const SalesAndOrders = () => {
           <Orders
             totalPrice={empty ? 0 : info.metaData?.totalPrice}
             salesAndOrders={empty ? [] : info.duration}
+            isNegative={isNegative}
             type={info.type}
           />
         </div>
