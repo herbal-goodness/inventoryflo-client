@@ -76,7 +76,7 @@ const OrdersChart = ({ salesAndOrders, type, totalPrice, isNegative }) => {
         }
       }
     }
-    const len = Object.values(dailySumTotal).length;
+    // const len = Object.values(dailySumTotal).length;
     const data = Object.values(dailySumTotal).map((arr, i) => {
       const price = arr.reduce((a, b) => {
         return {
@@ -86,16 +86,15 @@ const OrdersChart = ({ salesAndOrders, type, totalPrice, isNegative }) => {
 
       const date = new Date(arr[0].created_at).getDate();
       const mont = months[new Date(arr[0].created_at).getMonth()];
-      let label = "";
+      let label = `${date}-${mont}`;
 
-      if (len < 15) {
-        label = `${date}-${mont}`;
-      } else if (i % 2 === 0) {
-        label = `${date}-${mont}`;
-      } else if (i % 2 === 1) {
-        label = "";
-      }
-      // ,
+      // if (len > 15) {
+      //   label = ;
+      // }
+
+      // if (len < 15) {
+      //   label = `${date}-${mont}`;
+      // }
       return {
         total: Math.floor(price.total_price),
         label:
