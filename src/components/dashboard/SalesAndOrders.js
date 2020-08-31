@@ -5,6 +5,7 @@ import SalesBoxOne from "./SalesBoxOne";
 import SalesBoxTwo from "./SalesBoxTwo";
 import { useSelector, shallowEqual } from "react-redux";
 import { getTotalPrice } from "./functions";
+import Skeleton from "react-loading-skeleton";
 
 function getCanceledOrder(order) {
   if (order) {
@@ -216,33 +217,45 @@ const SalesAndOrders = () => {
       />
       <div className="col-md-8 d-size">
         <div className="card-body">
-          <Orders
-            totalPrice={empty ? 0 : info.metaData?.totalPrice}
-            salesAndOrders={empty ? [] : info.duration}
-            type={info.type}
-          />
+          {info.duration ? (
+            <Orders
+              totalPrice={empty ? 0 : info.metaData?.totalPrice}
+              salesAndOrders={empty ? [] : info.duration}
+              type={info.type}
+            />
+          ) : (
+            <div style={{ fontSize: 20, lineHeight: 3 }}>
+              <Skeleton count={4} height={35} />
+            </div>
+          )}
         </div>
       </div>
 
       <div className="col-md-4 d-size">
         <div className="row">
           <div className="col-12">
-            <div className="box-1 mt-3 py-3 text-center">
-              <span className="total-order-1 py-2">Total Orders </span>
-              <span className="total-order-3 text-green ml-4">
-                {empty ? "XX" : info.duration[0]?.orderCount}
-              </span>
-              <span className="total-order-1">
-                <i
-                  className={
-                    isNegative(info.duration[0]?.changeInOrder)
-                      ? "fa fa-arrow-down text-red fa-lg"
-                      : "fa fa-arrow-up text-green fa-lg"
-                  }
-                ></i>
-              </span>
-              <sub>{empty ? "XX" : info.duration[0]?.changeInOrder}</sub>
-            </div>
+            {info.duration[0] ? (
+              <div className="box-1 mt-3 py-3 text-center">
+                <span className="total-order-1 py-2">Total Orders </span>
+                <span className="total-order-3 text-green ml-4">
+                  {empty ? "XX" : info.duration[0]?.orderCount}
+                </span>
+                <span className="total-order-1">
+                  <i
+                    className={
+                      isNegative(info.duration[0]?.changeInOrder)
+                        ? "fa fa-arrow-down text-red fa-lg"
+                        : "fa fa-arrow-up text-green fa-lg"
+                    }
+                  ></i>
+                </span>
+                <sub>{empty ? "XX" : info.duration[0]?.changeInOrder}</sub>
+              </div>
+            ) : (
+              <div style={{ fontSize: 20, lineHeight: 3 }}>
+                <Skeleton count={1} height={50} />
+              </div>
+            )}
           </div>
 
           <SalesBoxOne

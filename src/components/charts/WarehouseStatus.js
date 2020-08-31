@@ -25,7 +25,7 @@ const WarehouseStatus = () => {
 
   return (
     <div>
-      {!state ? (
+      {state ? (
         <Bar
           data={state}
           options={{

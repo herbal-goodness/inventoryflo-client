@@ -20,7 +20,7 @@ const ProductStatus = ({ data }) => {
 
   return (
     <div className="chart-container mb-5">
-      {!data ? (
+      {data ? (
         <HorizontalBar
           data={chartData}
           options={{
