@@ -1,6 +1,14 @@
 import React from "react";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+
 const SalesBoxOne = ({ title, value, changeRate, isNegative }) => {
-  return (
+  return 1 < 2 ? (
+    <div style={{ fontSize: 20, lineHeight: 5 }}>
+      <SkeletonTheme color="lightGray" highlightColor="#444">
+        <Skeleton count={4} height={50} />
+      </SkeletonTheme>
+    </div>
+  ) : (
     <div className="col-6">
       <div className="box-1 mt-3  py-3 text-center">
         <div>
