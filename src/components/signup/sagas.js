@@ -4,7 +4,6 @@ import { signupError, signupSuccess } from "./actions";
 
 // Register Worker
 function* signupWorker({ payload }) {
-  console.log(payload);
   const response = yield fetch(`${API.API_ROOT + API.urls.SIGN_UP}`, {
     body: JSON.stringify(payload),
     headers: {

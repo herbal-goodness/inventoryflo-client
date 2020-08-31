@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import { Spinner } from "../utils/components";
 import { months } from "./constants";
+import classnames from "classnames";
 
 function spreadDataByTime(data) {
   const dailySumTotal = {};
@@ -33,19 +34,19 @@ function spreadDataByTime(data) {
   return dailySumTotal;
 }
 
-const OrdersChart = ({ salesAndOrders, type, totalPrice }) => {
+const OrdersChart = ({ salesAndOrders, type, totalPrice, isNegative }) => {
   const [chartData, setChartData] = useState([]);
-
+  const copyOfsalesAndOrders = [...salesAndOrders];
   useEffect(() => {
     //TODO: Build filters for each type;
     const filtererd =
       type !== "today" &&
-      salesAndOrders.sort(
+      copyOfsalesAndOrders.sort(
         (a, b) => new Date(b.created_at) - new Date(a.created_at)
       );
 
     const dailySumTotal =
-      type === "today" ? spreadDataByTime(salesAndOrders) : {};
+      type === "today" ? spreadDataByTime(copyOfsalesAndOrders) : {};
     let counter = 0;
     if (type !== "today" && filtererd?.length > 0) {
       for (let i = 0; i < filtererd.length - 1; i++) {
@@ -75,7 +76,7 @@ const OrdersChart = ({ salesAndOrders, type, totalPrice }) => {
         }
       }
     }
-    const len = Object.values(dailySumTotal).length;
+    // const len = Object.values(dailySumTotal).length;
     const data = Object.values(dailySumTotal).map((arr, i) => {
       const price = arr.reduce((a, b) => {
         return {
@@ -85,16 +86,15 @@ const OrdersChart = ({ salesAndOrders, type, totalPrice }) => {
 
       const date = new Date(arr[0].created_at).getDate();
       const mont = months[new Date(arr[0].created_at).getMonth()];
-      let label = "";
+      let label = `${date}-${mont}`;
 
-      if (len < 15) {
-        label = `${date}-${mont}`;
-      } else if (i % 2 === 0) {
-        label = `${date}-${mont}`;
-      } else if (i % 2 === 1) {
-        label = "";
-      }
-      // ,
+      // if (len > 15) {
+      //   label = ;
+      // }
+
+      // if (len < 15) {
+      //   label = `${date}-${mont}`;
+      // }
       return {
         total: Math.floor(price.total_price),
         label:
@@ -112,11 +112,28 @@ const OrdersChart = ({ salesAndOrders, type, totalPrice }) => {
         ${totalPrice && totalPrice.toFixed(2)}
         <span>
           <i
-            className="fa fa-arrow-up text-green sales-data mr-1"
+            className={classnames(
+              {
+                "fa fa-arrow-up text-green sales-data mr-1": !isNegative(
+                  salesAndOrders[0]?.salesChange &&
+                    salesAndOrders[0]?.salesChange
+                ),
+              },
+              {
+                "fa fa-arrow-down text-red sales-data mr-1": isNegative(
+                  salesAndOrders[0]?.salesChange &&
+                    salesAndOrders[0]?.salesChange
+                ),
+              }
+            )}
             aria-hidden="true"
           ></i>
         </span>
-        <span className="text-slim text-dark">XX%</span>
+        <span className="text-slim text-dark">
+          {salesAndOrders[0]?.salesChange
+            ? salesAndOrders[0]?.salesChange
+            : "XX%"}
+        </span>
       </h3>
       {salesAndOrders === undefined ? (
         <Spinner />

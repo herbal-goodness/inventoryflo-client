@@ -24,7 +24,6 @@ export async function isAuthenticated(dispatch, history) {
         return true;
       } else {
         const data = await response.json();
-        console.log(data);
         dispatch({ type: "RESET_STATE", history });
         return false;
       }

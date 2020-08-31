@@ -29,6 +29,7 @@ const Dashboard = () => {
     hasShopifySecret,
     isSuccessful,
     name,
+    filteredProducts,
     successfulSalesAndOrders,
   } = useSelector(
     ({ sales, userInfo, orders, dashboard, salesAndOrders }) => ({
@@ -42,6 +43,7 @@ const Dashboard = () => {
       name: userInfo.user.firstName,
       isSuccessful: userInfo.successful,
       sales: sales.products,
+      filteredProducts: sales.filteredProducts,
       orders: orders.userOrders,
       productsLoaded: sales.successful,
     }),
@@ -108,7 +110,7 @@ const Dashboard = () => {
           <div className="row">
             <div className="row">
               <div className="col-md-12">
-                <InventoryAnalysis data={dashboard.data} />
+                <InventoryAnalysis data={filteredProducts} />
               </div>
             </div>
           </div>
@@ -219,7 +221,7 @@ const SalesDrivers = ({ orders }) => {
     }
   };
   return (
-    <div className="chart-container py-2 px-3 mb-4">
+    <div className="chart-container py-2 px-3 mb-4 mx-2">
       <div className="row">
         <DashboardSubHeaders
           type={"S&D"}

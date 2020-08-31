@@ -3,6 +3,7 @@ const salesInitialState = {
   loading: false,
   successful: false,
   products: [],
+  filteredProducts: {},
 };
 const ordersInitialState = {
   error: false,
@@ -39,6 +40,7 @@ export const sales = (state = salesInitialState, actions) => {
         ...state,
         products: actions.payload.products,
         categories: actions.payload.categories,
+        filteredProducts: actions.payload.filteredProducts,
         successful: true,
         loading: false,
         error: false,

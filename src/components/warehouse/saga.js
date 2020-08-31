@@ -1,5 +1,30 @@
 import { put, all, takeLatest, select } from "redux-saga/effects";
 import API from "../utils/urls";
+import {
+  dayB4yesterday,
+  yesterday,
+  lastOther7Days,
+  last7Days,
+  thisWeek,
+  currentDay,
+  beginningOfmonth,
+} from "./constants";
+import { getTotalPrice } from "../dashboard/functions";
+
+/**
+ * Gets change in orders
+ * @param {*} previousOrder
+ * @param {*} currentOrder
+ * @returns {string} result of the change in percent
+ */
+function getChangeInSales(previousOrderCount, currentOrderCount) {
+  if (previousOrderCount === 0) {
+    return 0;
+  }
+  return `${Math.round(
+    ((previousOrderCount - currentOrderCount) / previousOrderCount) * 100
+  )}%`;
+}
 
 function* productsWorker({ payload }) {
   const token = yield select((state) => state.userInfo.user.IdToken);
@@ -22,7 +47,7 @@ function* productsWorker({ payload }) {
       const categories = [];
 
       const products = data.map(
-        ({ images, variants, title, vendor, product_type }) => {
+        ({ images, created_at, variants, title, vendor, product_type }) => {
           let totalQuantity = 0;
           let totalPrice = 0;
 
@@ -36,6 +61,7 @@ function* productsWorker({ payload }) {
           }
           return {
             image: images && images[0],
+            created_at,
             totalQuantity: totalQuantity === 0 ? "Out of stock" : totalQuantity,
             NoOfVariants: variants.length,
             totalPrice: totalPrice.toFixed(2),
@@ -46,11 +72,48 @@ function* productsWorker({ payload }) {
           };
         }
       );
+
+      //START TODAY
+      const filterByToDay = products.filter(
+        ({ created_at }) => new Date(created_at) >= new Date(currentDay)
+      );
+      //START YESTERDAY AND END TODAY
+      const filterByYesterday = products.filter(
+        ({ created_at }) => new Date(created_at) >= new Date(yesterday)
+      );
+      // START LAST 7 DAYS AND END TODAY
+      const filterByLast7Days = products.filter(
+        ({ created_at }) => new Date(created_at) >= new Date(last7Days)
+      );
+
+      // START BEGIINING OF THIS WEEK AND END TODAY
+      const filterBythisWeek = products.filter(
+        ({ created_at }) => new Date(created_at) >= new Date(thisWeek)
+      );
+      //START BEGINING OF THE MONTH AND END TODAY
+      const filterByMonthDate = products.filter(
+        ({ created_at }) => new Date(created_at) >= new Date(beginningOfmonth)
+      );
+
       yield put({
         type: "STORE_DASHBOARD_DATA",
         payload: { totalProductCount },
       });
-      yield put({ type: "STORE_PRODUCTS", payload: { products, categories } });
+      yield put({
+        type: "STORE_PRODUCTS",
+        payload: {
+          products,
+          categories,
+          filteredProducts: {
+            filterByToDay,
+            filterByYesterday,
+            filterByLast7Days,
+            filterBythisWeek,
+            filterByMonthDate,
+            filterByLast30Days: products,
+          },
+        },
+      });
     } else {
       yield put({ type: "PRODUCTS_ERROR" });
     }
@@ -204,6 +267,49 @@ function* salesAndOrdersWorker() {
 
     if (response.ok) {
       const data = yield response.json();
+
+      //START A DAY BEFORE YESTERDAY AND END YESTERDAY
+      const filterByB4Yesterday = data.filterBythisWeek.filter(
+        ({ created_at }) =>
+          new Date(created_at) >= new Date(dayB4yesterday) &&
+          new Date(created_at) < new Date(yesterday)
+      );
+      //START AT LAST 14 DAYS AND END LAST 7 DAYS
+      const filterByOthLast7Days = data.filterByMonthDate.filter(
+        ({ created_at }) =>
+          new Date(created_at) >= new Date(lastOther7Days) &&
+          new Date(created_at) < new Date(last7Days)
+      );
+
+      // START LAST 7 DAYS AND END BEGINING OF THIS WEEK
+      const filterByLasWeek = data.filterByMonthDate.filter(
+        ({ created_at }) =>
+          new Date(created_at) >= new Date(last7Days) &&
+          new Date(created_at) < new Date(thisWeek)
+      );
+
+      const todaySalesChange = getChangeInSales(
+        getTotalPrice(data.filterByYesterday),
+        getTotalPrice(data.filterByToDay)
+      );
+      const yesterdaySalesChange = getChangeInSales(
+        getTotalPrice(filterByB4Yesterday),
+        getTotalPrice(data.filterByYesterday)
+      );
+      const thisweekSalesChange = getChangeInSales(
+        getTotalPrice(filterByLasWeek),
+        getTotalPrice(data.filterBythisWeek)
+      );
+      const last7DaySalesChange = getChangeInSales(
+        getTotalPrice(filterByOthLast7Days),
+        getTotalPrice(data.filterByLast7Days)
+      );
+
+      data.filterByYesterday[0]["salesChange"] = yesterdaySalesChange;
+      data.filterByToDay[0]["salesChange"] = todaySalesChange;
+      data.filterBythisWeek[0]["salesChange"] = thisweekSalesChange;
+      data.filterByLast7Days[0]["salesChange"] = last7DaySalesChange;
+
       yield put({
         type: "STORE_SALES_AND_ORDER",
         payload: data,

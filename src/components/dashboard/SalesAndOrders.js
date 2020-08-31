@@ -218,16 +218,18 @@ const SalesAndOrders = () => {
       <div className="col-md-8 d-size">
         <div className="card-body">
           {info.duration ? (
-            <Orders
-              totalPrice={empty ? 0 : info.metaData?.totalPrice}
-              salesAndOrders={empty ? [] : info.duration}
-              type={info.type}
-            />
-          ) : (
+             <Orders
+            totalPrice={empty ? 0 : info.metaData?.totalPrice}
+            salesAndOrders={empty ? [] : info.duration}
+            isNegative={isNegative}
+            type={info.type}
+          />
+ ) : (
             <div className="skeleton-body">
               <Skeleton count={4} height={35} />
             </div>
           )}
+              
         </div>
       </div>
 
