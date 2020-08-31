@@ -15,6 +15,7 @@ import TopCustByOrders from "./TopCustByOrders";
 import SalesShareChart from "../charts/SalesShareChart";
 import LargestOrders from "./LargestOrders";
 import { AlertDismissible } from "../utils/components";
+import Skeleton from "react-loading-skeleton";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -227,27 +228,45 @@ const SalesDrivers = ({ orders }) => {
           handleChannelChange={handleChannelChange}
         />
         <div className="col-lg-12 col-md-12 col-sm-12">
-          <div className="d-flex flex-wrap justify-content-between mb-2 justify-items-center">
-            <div>
-              {/* Add data to sales by channel once we pull more API from other sources */}
-              <SalesByChannel isEmpty={isEmpty} data={info.duration} />
-            </div>
+          <div className="row d-flex flex-wrap justify-content-between mb-2 justify-items-center">
+            {info.duration ? (
+              <div>
+                {/* Add data to sales by channel once we pull more API from other sources */}
+                <SalesByChannel isEmpty={isEmpty} data={info.duration} />
+              </div>
+            ) : (
+              <div className="pl-4 col-12 col-sm-4 skeleton-body">
+                <Skeleton count={4} height={35} />
+              </div>
+            )}
+            {info.duration ? (
+              <div>
+                <SalesByProducts
+                  isEmpty={isEmpty}
+                  data={info.duration}
+                  allSales={orders}
+                  setTopProducts={setTopProducts}
+                />
+              </div>
+            ) : (
+              <div className="pl-4 col-12 col-sm-4 skeleton-body">
+                <Skeleton count={4} height={35} />
+              </div>
+            )}
 
-            <div>
-              <SalesByProducts
-                isEmpty={isEmpty}
-                data={info.duration}
-                allSales={orders}
-                setTopProducts={setTopProducts}
-              />
-            </div>
-            <div>
-              <SlowMovingProd
-                isEmpty={isEmpty}
-                data={info.duration}
-                allSales={orders}
-              />
-            </div>
+            {info.duration ? (
+              <div>
+                <SlowMovingProd
+                  isEmpty={isEmpty}
+                  data={info.duration}
+                  allSales={orders}
+                />
+              </div>
+            ) : (
+              <div className="pl-4 col-12 col-sm-4 skeleton-body">
+                <Skeleton count={4} height={35} />
+              </div>
+            )}
           </div>
           <div className="d-flex flex-wrap justify-content-between mb-2 justify-items-center">
             <div>

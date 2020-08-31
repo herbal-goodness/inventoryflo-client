@@ -68,7 +68,19 @@ const ProductStatus = ({ data }) => {
                 afterLabel: function (tooltipItem, data) {
                   var dataset = data["datasets"][0];
                 },
+                labelColor: function (tooltipItem, chart) {
+                  return {
+                    backgroundColor: "#000000",
+                  };
+                },
+                labelTextColor: function (tooltipItem, chart) {
+                  return "#000000";
+                },
               },
+              backgroundColor: "rgb(255, 255, 255)",
+              borderColor: "#000000",
+              borderWidth: 1,
+              titleFontColor: "#000000",
             },
             legend: {
               display: false,
@@ -76,7 +88,7 @@ const ProductStatus = ({ data }) => {
           }}
         />
       ) : (
-        <div style={{ fontSize: 20, lineHeight: 3 }}>
+        <div className="skeleton-body">
           <Skeleton count={4} height={35} />
         </div>
       )}

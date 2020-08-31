@@ -24,43 +24,46 @@ const WarehouseStatus = () => {
   });
 
   return (
-    <div>
+    <div className="warehouse-content">
       {state ? (
-        <Bar
-          data={state}
-          options={{
-            title: {
-              display: true,
-              // text: "Shopify US",
-              fontSize: 15,
-            },
-            scales: {
-              yAxes: [
-                {
-                  gridLines: {
-                    display: false,
+        <>
+          <h1 className="warehouse-ribbon">Coming Soon!</h1>
+          <Bar
+            data={state}
+            options={{
+              title: {
+                display: true,
+                // text: "Shopify US",
+                fontSize: 15,
+              },
+              scales: {
+                yAxes: [
+                  {
+                    gridLines: {
+                      display: false,
+                    },
+                    ticks: {
+                      display: false,
+                    },
                   },
-                  ticks: {
-                    display: false,
+                ],
+                xAxes: [
+                  {
+                    gridLines: {
+                      display: false,
+                    },
                   },
-                },
-              ],
-              xAxes: [
-                {
-                  gridLines: {
-                    display: false,
-                  },
-                },
-              ],
-            },
-            legend: {
-              display: true,
-              position: "right",
-            },
-          }}
-        />
+                ],
+              },
+              legend: {
+                display: true,
+                position: "right",
+              },
+            }}
+          />
+        </>
       ) : (
-        <div style={{ fontSize: 20, lineHeight: 3 }}>
+        <div className="skeleton-body">
           <Skeleton count={4} height={35} />
         </div>
       )}

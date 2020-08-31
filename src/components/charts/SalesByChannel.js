@@ -67,7 +67,7 @@ const SalesByChannel = ({ isEmpty, data }) => {
   }, [isEmpty, data]);
 
   return (
-    <div className="mb-3 bg-info">
+    <div className="mb-3">
       {/* <h3 className="text-center flex-grow">Top Products</h3> */}
 
       <Pie

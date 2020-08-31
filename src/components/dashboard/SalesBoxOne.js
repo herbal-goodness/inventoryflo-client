@@ -22,7 +22,7 @@ const SalesBoxOne = ({ title, value, changeRate, isNegative }) => {
           <div className="cancel-order">{title}</div>
         </div>
       ) : (
-        <div style={{ fontSize: 20, lineHeight: 3 }}>
+        <div className="skeleton-body">
           <Skeleton count={1} height={80} />
         </div>
       )}

@@ -224,7 +224,7 @@ const SalesAndOrders = () => {
               type={info.type}
             />
           ) : (
-            <div style={{ fontSize: 20, lineHeight: 3 }}>
+            <div className="skeleton-body">
               <Skeleton count={4} height={35} />
             </div>
           )}
@@ -252,7 +252,7 @@ const SalesAndOrders = () => {
                 <sub>{empty ? "XX" : info.duration[0]?.changeInOrder}</sub>
               </div>
             ) : (
-              <div style={{ fontSize: 20, lineHeight: 3 }}>
+              <div className="skeleton-body">
                 <Skeleton count={1} height={50} />
               </div>
             )}
