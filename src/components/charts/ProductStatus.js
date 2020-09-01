@@ -1,5 +1,6 @@
 import React from "react";
 import { HorizontalBar } from "react-chartjs-2";
+import Skeleton from "react-loading-skeleton";
 
 const getOutOfStocks = (products) => {
   return products.filter(
@@ -18,6 +19,7 @@ const ProductStatus = ({ data }) => {
         borderWidth: 1,
         hoverBackgroundColor: "rgba(39, 174, 96,0.4)",
         hoverBorderColor: "rgba(39, 174, 96,0.8)",
+
         data: data
           ? [
               data.length,
@@ -31,6 +33,8 @@ const ProductStatus = ({ data }) => {
 
   return (
     <div className="chart-container mb-5">
+
+  {data ? (
       <HorizontalBar
         data={chartData}
         options={{
@@ -97,6 +101,11 @@ const ProductStatus = ({ data }) => {
           },
         }}
       />
+                   ) : (
+        <div className="skeleton-body">
+          <Skeleton count={4} height={35} />
+        </div>
+      )}
     </div>
   );
 };

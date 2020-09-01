@@ -1756,3 +1756,7 @@ input:checked + .slider:before {
 }
 
 /* end of input switch */
+.skeleton-body {
+  font-size: 20;
+  line-height: 3;
+}
