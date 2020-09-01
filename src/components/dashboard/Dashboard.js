@@ -230,10 +230,11 @@ const SalesDrivers = ({ orders }) => {
           handleChannelChange={handleChannelChange}
         />
         <div className="col-lg-12 col-md-12 col-sm-12">
-          <div className="row d-flex flex-wrap justify-content-between mb-2 justify-items-center">
+          <div className="d-flex flex-wrap justify-content-between mb-2 justify-items-center">
             {info.duration ? (
               <div>
                 {/* Add data to sales by channel once we pull more API from other sources */}
+
                 <SalesByChannel isEmpty={isEmpty} data={info.duration} />
               </div>
             ) : (

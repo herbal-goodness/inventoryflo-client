@@ -269,6 +269,10 @@ h5 a {
 .text-red {
 	color: var(--textRed);
 }
+.text-dark-1 {
+	color: #333;
+	font-weight: 900;
+}
 .text-orange {
 	color: #f7931e !important;
 }
